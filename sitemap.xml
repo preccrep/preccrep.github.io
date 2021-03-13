@@ -860,13 +860,6 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Kruskal/</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://preccrep.github.io/categories/KM/</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
@@ -881,7 +874,21 @@
   </url>
   
   <url>
+    <loc>https://preccrep.github.io/categories/Kruskal/</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://preccrep.github.io/categories/STL/</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://preccrep.github.io/categories/Prim/</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -910,13 +917,6 @@
   
   <url>
     <loc>https://preccrep.github.io/categories/Trie/</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://preccrep.github.io/categories/Prim/</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -972,14 +972,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/</loc>
+    <loc>https://preccrep.github.io/categories/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
+    <loc>https://preccrep.github.io/categories/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
