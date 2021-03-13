@@ -1,156 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>后缀数组 | Serial | of or relating to the sequential performance of multiple operations</title>
-
-  
-  <meta name="author" content="preccrep">
-  
-
-  
-  <meta name="description" content="serial processing">
-  
-
-  
-  
-  <meta name="keywords" content="算法">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="后缀数组"/>
-
-  <meta property="og:site_name" content="Serial"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-<body>
-<div class="blog">
-  <div class="content">
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>后缀数组</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/11/14/后缀数组/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-11-14T15:01:06.000Z">
-          2020-11-14
-        </time>
-      </a>
-    </span>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
 
-  
+{% block content %}
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><p>对于待排序的数组a，在排序时逐个遍历数组a，将数组a的值作为”桶数组r”的下标。当a中数据被读取时，就将桶的值加1。例如，读取到数组a[3]=5，则将r[5]的值+1。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bucket_sort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">int</span> bucket[maxn]; <span class="comment">// maxn是a[]的最大值</span></span><br><span class="line">    <span class="built_in">memset</span>(bucket, <span class="number">0</span>, <span class="keyword">sizeof</span>(bucket));</span><br><span class="line">    <span class="comment">// 计数</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        bucket[a[i]]++;</span><br><span class="line">    <span class="comment">// 排序</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; maxn; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span>((bucket[i]--) &gt; <span class="number">0</span>)</span><br><span class="line">            a[j++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><p>桶排序的扩展。它的基本思想是：将整数按位数切割成不同的数字，然后按每个位数分别比较。<br>具体做法是：将所有待比较数值统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">base</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">10</span> * base(i - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bucket_sort</span><span class="params">(<span class="keyword">int</span> bit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bucket[maxn];</span><br><span class="line">    <span class="keyword">int</span> tmp[n];</span><br><span class="line">    <span class="built_in">memset</span>(bucket, <span class="number">0</span>, <span class="keyword">sizeof</span>(bucket));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        bucket[(a[i] / base(bit)) % <span class="number">10</span>]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; maxn; i++)</span><br><span class="line">        bucket[i] += bucket[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        tmp[bucket[(a[i] / base(bit)) % <span class="number">10</span>] - <span class="number">1</span>] = a[i];</span><br><span class="line">        bucket[(a[i] / base(bit)) % <span class="number">10</span>]--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        a[i] = tmp[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bit = getbit();  <span class="comment">//获取数组a的位数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bit; i++)</span><br><span class="line">        bucket_sort(i);</span><br><span class="line">    print();  <span class="comment">//已排好序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="后缀数组"><a href="#后缀数组" class="headerlink" title="后缀数组"></a>后缀数组</h1><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Str</span>: 需要处理的字符串(长度为<span class="symbol">Len</span>)</span><br><span class="line"><span class="symbol">Suffix</span>[i]: <span class="symbol">Str</span>下标为i~<span class="symbol">Len</span>的连续子串(例如<span class="symbol">Str</span>=<span class="string">&quot;abcdef&quot;</span>, <span class="symbol">Suffix</span>[<span class="number">3</span>]=<span class="string">&quot;def&quot;</span>)</span><br><span class="line"><span class="symbol">Rank</span>[i]: <span class="symbol">Suffix</span>[i]在所有后缀中的排名</span><br><span class="line"><span class="symbol">SA</span>[i]: 排名为i的后缀的起始下标，即排名为i的后缀为<span class="symbol">Suffix</span>[<span class="symbol">SA</span>[i]]，与<span class="symbol">Rank</span>是互逆运算</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>后缀数组</strong>指的就是这个<strong>SA[i]</strong>,有了它，我们就可以实现一些很强大的功能(如不相同子串个数、连续重复子串等)。如何快速的到它，便成为了这个算法的<strong>关键</strong>。而<strong>SA</strong>和<strong>Rank</strong>是互逆的，只要求出任意一个，另一个就可以O(Len)得到。<br>现在比较主流的算法有两种，<strong>倍增</strong>和<strong>DC3</strong>，在这里，就主要讲一下稍微慢一些，但比较好实现以及理解的倍增算法(虽说慢，但也是<strong>O(Len logLen)</strong>)的。</p>
-</blockquote>
-<h2 id="倍增算法"><a href="#倍增算法" class="headerlink" title="倍增算法"></a>倍增算法</h2><h2 id="Height数组"><a href="#Height数组" class="headerlink" title="Height数组"></a>Height数组</h2><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Height<span class="comment">[i]</span>: 表示Suffix<span class="comment">[SA<span class="comment">[i]</span>]</span>和Suffix<span class="comment">[SA<span class="comment">[i-1]</span>]</span>的最长公共前缀，也就是排名相邻的两个后缀的最长公共前缀</span><br><span class="line">H<span class="comment">[i]</span>: 等于Height<span class="comment">[Rank<span class="comment">[i]</span>]</span>，即Height<span class="comment">[i]</span>=H<span class="comment">[SA<span class="comment">[i]</span>]</span></span><br></pre></td></tr></table></figure>
-
-<p><code>H[i] &gt;= H[i-1] - 1</code></p>
-<blockquote>
-<p>证明：设<strong>Suffix[k]<strong>是排在</strong>Suffix[i - 1]<strong>前一名的后缀，则它们的最长公共前缀是</strong>H[i - 1]<strong>。都</strong>去掉第一个字符</strong>，就变成<strong>Suffix[k + 1]<strong>和</strong>Suffix[i]<strong>。</strong>如果H[i - 1] = 0或1</strong>,那么<strong>H[i] ≥ 0</strong>显然成立。<strong>否则</strong>，<strong>H[i] ≥ H[i - 1] - 1(去掉了原来的第一个,其他前缀一样相等)<strong>，所以</strong>Suffix[i]<strong>和在它前一名的后缀的最长公共前缀</strong>至少是H[i - 1] - 1。</strong></p>
-</blockquote>
-
-      
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
-
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
+{% endblock %}
 
-    
-      
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/算法/">算法</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/算法/">算法</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

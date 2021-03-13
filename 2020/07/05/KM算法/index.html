@@ -1,144 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>KM算法 | Serial | of or relating to the sequential performance of multiple operations</title>
-
-  
-  <meta name="author" content="preccrep">
-  
-
-  
-  <meta name="description" content="serial processing">
-  
-
-  
-  
-  <meta name="keywords" content="算法">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="KM算法"/>
-
-  <meta property="og:site_name" content="Serial"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-<body>
-<div class="blog">
-  <div class="content">
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>KM算法</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/07/05/KM算法/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-07-05T10:59:03.000Z">
-          2020-07-05
-        </time>
-      </a>
-    </span>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
 
-  
+{% block content %}
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>KM算法解决的是<strong>带权二分图的最优匹配</strong>问题。</p>
-<p>下面这段代码来自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wenruo/p/5264235.html">click here</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">305</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> love[MAXN][MAXN];   <span class="comment">// 记录每个妹子和每个男生的好感度</span></span><br><span class="line"><span class="keyword">int</span> ex_girl[MAXN];      <span class="comment">// 每个妹子的期望值</span></span><br><span class="line"><span class="keyword">int</span> ex_boy[MAXN];       <span class="comment">// 每个男生的期望值</span></span><br><span class="line"><span class="keyword">bool</span> vis_girl[MAXN];    <span class="comment">// 记录每一轮匹配匹配过的女生</span></span><br><span class="line"><span class="keyword">bool</span> vis_boy[MAXN];     <span class="comment">// 记录每一轮匹配匹配过的男生</span></span><br><span class="line"><span class="keyword">int</span> match[MAXN];        <span class="comment">// 记录每个男生匹配到的妹子 如果没有则为-1</span></span><br><span class="line"><span class="keyword">int</span> slack[MAXN];        <span class="comment">// 记录每个汉子如果能被妹子倾心最少还需要多少期望值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> girl)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vis_girl[girl] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> boy = <span class="number">0</span>; boy &lt; N; ++boy) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (vis_boy[boy]) <span class="keyword">continue</span>; <span class="comment">// 每一轮匹配 每个男生只尝试一次</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> gap = ex_girl[girl] + ex_boy[boy] - love[girl][boy];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (gap == <span class="number">0</span>) &#123;  <span class="comment">// 如果符合要求</span></span><br><span class="line">            vis_boy[boy] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (match[boy] == <span class="number">-1</span> || dfs( match[boy] )) &#123;    <span class="comment">// 找到一个没有匹配的男生 或者该男生的妹子可以找到其他人</span></span><br><span class="line">                match[boy] = girl;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            slack[boy] = min(slack[boy], gap);  <span class="comment">// slack 可以理解为该男生要得到女生的倾心 还需多少期望值 取最小值 备胎的样子【捂脸</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KM</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(match, <span class="number">-1</span>, <span class="keyword">sizeof</span>(match));    <span class="comment">// 初始每个男生都没有匹配的女生</span></span><br><span class="line">    <span class="built_in">memset</span>(ex_boy, <span class="number">0</span>, <span class="keyword">sizeof</span>(ex_boy));   <span class="comment">// 初始每个男生的期望值为0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每个女生的初始期望值是与她相连的男生最大的好感度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        ex_girl[i] = love[i][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; N; ++j) &#123;</span><br><span class="line">            ex_girl[i] = max(ex_girl[i], love[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 尝试为每一个女生解决归宿问题</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        fill(slack, slack + N, INF);    <span class="comment">// 因为要取最小值 初始化为无穷大</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 为每个女生解决归宿问题的方法是 ：如果找不到就降低期望值，直到找到为止</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 记录每轮匹配中男生女生是否被尝试匹配过</span></span><br><span class="line">            <span class="built_in">memset</span>(vis_girl, <span class="literal">false</span>, <span class="keyword">sizeof</span>(vis_girl));</span><br><span class="line">            <span class="built_in">memset</span>(vis_boy, <span class="literal">false</span>, <span class="keyword">sizeof</span>(vis_boy));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (dfs(i)) <span class="keyword">break</span>;  <span class="comment">// 找到归宿 退出</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果不能找到 就降低期望值</span></span><br><span class="line">            <span class="comment">// 最小可降低的期望值</span></span><br><span class="line">            <span class="keyword">int</span> d = INF;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j)</span><br><span class="line">                <span class="keyword">if</span> (!vis_boy[j]) d = min(d, slack[j]);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j) &#123;</span><br><span class="line">                <span class="comment">// 所有访问过的女生降低期望值</span></span><br><span class="line">                <span class="keyword">if</span> (vis_girl[j]) ex_girl[j] -= d;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 所有访问过的男生增加期望值</span></span><br><span class="line">                <span class="keyword">if</span> (vis_boy[j]) ex_boy[j] += d;</span><br><span class="line">                <span class="comment">// 没有访问过的boy 因为girl们的期望值降低，距离得到女生倾心又进了一步！</span></span><br><span class="line">                <span class="keyword">else</span> slack[j] -= d;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 匹配完成 求出所有配对的好感度的和</span></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)</span><br><span class="line">        res += love[ match[i] ][i];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;N)) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j)</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;love[i][j]);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, KM());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-<p>模板题：<a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2255">HDU2255</a></p>
-
-      
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
-
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
+{% endblock %}
 
-    
-      
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/KM/">KM</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/算法/">算法</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

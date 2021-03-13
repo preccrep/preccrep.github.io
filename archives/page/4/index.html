@@ -1,201 +1,62 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Page 4 | Archives | Serial | of or relating to the sequential performance of multiple operations</title>
+{% extends '_layout.swig' %}
+{% import '_macro/post-collapse.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <meta name="author" content="preccrep">
-  
+{% block title %}{{ __('title.archive') }} | {{ config.title }}{% endblock %}
 
-  
-  <meta name="description" content="serial processing">
-  
+{% block page_class %}page-archive{% endblock %}
 
-  
+{% block content %}
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  {#####################}
+  {### ARCHIVE BLOCK ###}
+  {#####################}
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        {% set cheers %}
+        {% set posts_length = site.posts.length %}
+        {% if posts_length > 210 %} {% set cheers = 'excellent' %}
+          {% elif posts_length > 130 %} {% set cheers = 'great' %}
+          {% elif posts_length > 80 %} {% set cheers = 'good' %}
+          {% elif posts_length > 50 %} {% set cheers = 'nice' %}
+          {% elif posts_length > 30 %} {% set cheers = 'ok' %}
+        {% else %}
+          {% set cheers = 'um' %}
+        {% endif %}
+        {{ __('cheers.' + cheers) }}! {{ _p("counter.archive_posts", site.posts.length) }} {{ __('keep_on') }}
+      </span>
 
-  <meta property="og:site_name" content="Serial"/>
+      {% for post in page.posts %}
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+        {# Show year #}
+        {% set year %}
+        {% set post.year = date(post.date, 'YYYY') %}
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
+        {% if post.year !== year %}
+          {% set year = post.year %}
+          <div class="collection-title">
+            <{% if theme.seo %}h2{% else %}h1{% endif %} class="archive-year" id="archive-year-{{ year }}">{{ year }}</{% if theme.seo %}h2{% else %}h1{% endif %}>
+          </div>
+        {% endif %}
+        {# endshow #}
 
+        {{ post_template.render(post) }}
 
-<body>
-<div class="blog">
-  <div class="content">
+      {% endfor %}
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+    </div>
   </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
+  {#########################}
+  {### END ARCHIVE BLOCK ###}
+  {#########################}
 
-    <main class="site-main posts-loop">
-    
+  {% include '_partials/pagination.swig' %}
 
-<article>
+{% endblock %}
 
-  <h2 class="article-title ">Archives</h2>
-
-  <div class="archive">
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-26T04:05:46.000Z">
-            <a href="/2020/07/26/数据分析与多项式计算/">2020-07-26</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/26/数据分析与多项式计算/"><span>数据分析与多项式计算</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-18T03:36:38.000Z">
-            <a href="/2020/07/18/GUID在线生成工具/">2020-07-18</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/18/GUID在线生成工具/"><span>GUID在线生成工具</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-17T14:43:44.000Z">
-            <a href="/2020/07/17/DFS/">2020-07-17</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/17/DFS/"><span>DFS</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-16T02:47:52.000Z">
-            <a href="/2020/07/16/MATLAB绘图/">2020-07-16</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/16/MATLAB绘图/"><span>MATLAB绘图</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-15T11:06:33.000Z">
-            <a href="/2020/07/15/MATLAB程序流程控制/">2020-07-15</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/15/MATLAB程序流程控制/"><span>MATLAB程序流程控制</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-15T03:15:24.000Z">
-            <a href="/2020/07/15/MATLAB矩阵处理-续/">2020-07-15</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/15/MATLAB矩阵处理-续/"><span>MATLAB矩阵处理-续</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-15T00:07:39.000Z">
-            <a href="/2020/07/15/MATLAB矩阵处理/">2020-07-15</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/15/MATLAB矩阵处理/"><span>MATLAB矩阵处理</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-14T02:03:25.000Z">
-            <a href="/2020/07/14/MATLAB学习记录/">2020-07-14</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/14/MATLAB学习记录/"><span>MATLAB学习记录</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-14T01:13:17.000Z">
-            <a href="/2020/07/14/树形dp/">2020-07-14</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/14/树形dp/"><span>树形dp</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2020-07-07T13:28:00.000Z">
-            <a href="/2020/07/07/数据结构合集/">2020-07-07</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2020/07/07/数据结构合集/"><span>数据结构合集</span></a></h3>
-          
-        </div>
-      </div>
-    
-    <nav class="pagination">
-  
-  <a href="/archives/page/3/" class="pagination-prev">Prev</a>
-  
-  
-  <a href="/archives/page/5/" class="pagination-next">Next</a>
-  
-</nav>
-  </div>
-
-</article>
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block sidebar %}
+  {{ sidebar_template.render(false) }}
+{% endblock %}

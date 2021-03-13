@@ -1,167 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Directory-Symbolic-Link | Serial | of or relating to the sequential performance of multiple operations</title>
-
-  
-  <meta name="author" content="preccrep">
-  
-
-  
-  <meta name="description" content="serial processing">
-  
-
-  
-  
-  <meta name="keywords" content="Questions">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="Directory-Symbolic-Link"/>
-
-  <meta property="og:site_name" content="Serial"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-<body>
-<div class="blog">
-  <div class="content">
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>Directory-Symbolic-Link</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/12/18/Directory-Symbolic-Link/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-12-18T13:37:42.000Z">
-          2020-12-18
-        </time>
-      </a>
-    </span>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
 
-  
+{% block content %}
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>In the context of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NTFS">NTFS</a>:</p>
-<p><code>MKLINK [[/D] | [/H] | [/J]] Link Target</code></p>
-<pre><code>    /D      创建目录符号链接。默认为文件
-            符号链接。
-    /H      创建硬链接而非符号链接。
-    /J      创建目录联接。
-    Link    指定新的符号链接名称。
-    Target  指定新链接引用的路径
-            (相对或绝对)。
-</code></pre>
-<ol>
-<li><p>Isn’t a <strong>directory junction</strong> the exact same thing as a <strong>directory symbolic link</strong>?</p>
-<p>What’s the difference between <code>mklink /D f1 f2</code> and <code>mklink /J f1 f2</code> ?</p>
-</li>
-<li><p>Since a “directory” is actually just a <em>file</em>, what would be the difference between a directory symbolic link and a file symbolic link?</p>
-</li>
-</ol>
-<p>A junction is definitely not the same thing as a directory symbolic link, although they behave similarly. The main difference is that, if you are looking at a remote server, <strong>junctions are processed at the server</strong> and <strong>directory symbolic links are processed at the client</strong>. Also see Matthew’s comment on the fact that this means symbolic links on the local file system can point to remote file systems.</p>
-<p>Suppose that on a machine named Alice you were to put a junction point <code>c:\myjp</code> and a directory symbolic link <code>c:\mysymlink</code>, both pointing to <code>c:\targetfolder</code>. While you’re using Alice you won’t notice much difference between them. But if you’re using another machine named Bob, then the junction point</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\m</span>yjp` will point to `<span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\t</span>argetfolder</span><br></pre></td></tr></table></figure>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-<p>but the symbolic link</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\m</span>ysymlink` will point to `<span class="symbol">\\</span>Bob<span class="symbol">\c</span>$<span class="symbol">\t</span>argetfolder</span><br></pre></td></tr></table></figure>
-
-<p>(Caveat: by default, the system doesn’t follow symlinks on remote volumes, so in most cases the second example will actually result in either <em>“File Not Found”</em> or <em>“The symbolic link cannot be followed because its type is disabled.”</em>)</p>
-<p>The difference between a directory symbolic link and a file symbolic link is simply that one represents a directory and one represents a file. Since the target of the link doesn’t need to exist when the link is created, the file system needs to know whether to tell applications that it is a directory or not.</p>
-<p>It should also be noted that creating a symbolic link requires special privilege (by default, only available to elevated processes) whereas creating a junction only requires access to the file system.</p>
-<p><a target="_blank" rel="noopener" href="https://superuser.com/questions/343074/directory-junction-vs-directory-symbolic-link/343079#343079">source</a></p>
-
-      
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
-
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
+{% endblock %}
 
-    
-      
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/笔记/">笔记</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Questions/">Questions</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

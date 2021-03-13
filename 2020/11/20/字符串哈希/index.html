@@ -1,275 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>字符串哈希 | Serial | of or relating to the sequential performance of multiple operations</title>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <meta name="author" content="preccrep">
-  
 
-  
-  <meta name="description" content="serial processing">
-  
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-  
-  
-  <meta name="keywords" content="算法">
-  
+{% block page_class %}page-post-detail{% endblock %}
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="字符串哈希"/>
+{% block content %}
 
-  <meta property="og:site_name" content="Serial"/>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>字符串哈希</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/11/20/字符串哈希/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-11-20T11:54:19.000Z">
-          2020-11-20
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h1 id="什么是字符串哈希"><a href="#什么是字符串哈希" class="headerlink" title="什么是字符串哈希"></a>什么是字符串哈希</h1><p>字符串Hash可以通俗的理解为，<strong>把一个字符串转换为一个整数</strong>。</p>
-<p>如果我们通过某种方法，将字符串转换为一个整数，就可以便的确定某个字符串是否重复出现过，这是最简单的字符串Hash应用情景了。</p>
-<p>当然也不难想到，如果有不同的两个字符串同时Hash到一个整数，这样就比较麻烦了。我们希望这个映射是一个单射，所以问题就是如何构造这个Hash函数，使得他们成为一个单射。</p>
-<h1 id="Hash方法"><a href="#Hash方法" class="headerlink" title="Hash方法"></a>Hash方法</h1><blockquote>
-<p>给定字符串 s，则 asc[s[i]] = s[i] - ‘a’ + 1.</p>
-</blockquote>
-<h2 id="自然溢出方法"><a href="#自然溢出方法" class="headerlink" title="自然溢出方法"></a>自然溢出方法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> Hash[n];</span><br><span class="line">Hash[i] = Hash[i - <span class="number">1</span>] * p + asc[s[i]]</span><br></pre></td></tr></table></figure>
-
-<p>利用unsigned long long的范围自然溢出，相当于自动对 2^64 -1 取模。</p>
-<h2 id="单哈希方法"><a href="#单哈希方法" class="headerlink" title="单哈希方法"></a>单哈希方法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hash[i] = (Hash[i - <span class="number">1</span>] * p + asc[s[i]]) % MOD</span><br></pre></td></tr></table></figure>
-
-<p>其中 p 和 MOD 均为质数，且有 p &lt; MOD。</p>
-<p>对于此种Hash方法，将 p 和 MOD 尽量取大即可，这种情况下，冲突的概率是很低的。</p>
-<blockquote>
-<p>如取 p = 13, MOD = 101, 对字符串 “abc” 进行Hash。这里注意asc[s[i]]是s[i]的ascii码加1.</p>
-<p>Hash[0] = 1;</p>
-<p>Hash[1] = (Hash[0] * 13 + 2) % 101 = 15;  // s[i] = ‘b’, asc[s[i]] = ‘b’ - ‘a’ + 1 = 2</p>
-<p>Hash[2] = (Hash[1] * 13 + 3) % 101 = 97;</p>
-<p>结果是Hash[n]，即Hash[2]。所以此时认为 97 就是字符串”abc”的值。</p>
-</blockquote>
-<h2 id="双哈希方法"><a href="#双哈希方法" class="headerlink" title="双哈希方法"></a>双哈希方法</h2><p>将一个字符串用不同的MOD Hash两次，将这两个结果用一个二元组表示，作为Hash结果。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hash1[i] = (Hash[i - <span class="number">1</span>] * p + asc[s[i]]) % MOD1;</span><br><span class="line">Hash2[i] = (Hash[i - <span class="number">1</span>] * p + asc[s[i]]) % MOD2;</span><br></pre></td></tr></table></figure>
-
-<p>Hash的结果为 <code>&lt; Hash1[n], Hash2[n] &gt;</code>。</p>
-<p>这种Hash很安全。</p>
-<h1 id="求子串公式"><a href="#求子串公式" class="headerlink" title="求子串公式"></a>求子串公式</h1><p>假设有一个∣S∣=5 的字符串，设 Si 为第 i 个字符，其中 1 ≤ i ≤ 5。</p>
-<p>根据定义分别求出hash[i]：</p>
-<p>hash[1] = s1;</p>
-<p>hash[2] = s1 ∗ p + s2;</p>
-<p>hash[3] = s1 ∗ p^2 + s2 ∗ p + s3;</p>
-<p>hash[4] = s1 ∗ p^3 + s2 ∗ p^2 + s3 ∗ p + s4;</p>
-<p>hash[5] = s1 ∗ p^4 + s2 ∗ p^3 + s3 ∗ p^2 + s4 ∗ p + s5;</p>
-<p>现在要求子串 s3s4 的hash值，不难得出为s3 ∗ p + s4。<br><code>Hash[4] - Hash[2] * pow(p, 4 - 3 + 1)</code></p>
-<p>所以公式如下：</p>
-<p><code>Hash[l~r] = Hash[r] - Hash[l - 1] * pow(p, r - l + 1) </code></p>
-<p>考虑到取模：</p>
-<p><code>Hash[l~r] = ((Hash[r] - Hash[l - 1] * pow(p, r - l + 1)) % MOD + MOD) % MOD </code></p>
-<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p><a target="_blank" rel="noopener" href="http://poj.org/problem?id=2774">POJ2774</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> p 131</span></span><br><span class="line"><span class="comment">// #define INF 0x3f3f3f3f</span></span><br><span class="line"><span class="comment">// #define MOD 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Hash1和Hash2存储两个字符串的哈希值，</span></span><br><span class="line"><span class="comment">// po记录p的乘方(相当于转化为p进制)，tmp用于比较(后面会讲解)</span></span><br><span class="line">ull Hash1[maxn], Hash2[maxn], po[maxn], tmp[maxn];</span><br><span class="line"><span class="keyword">int</span> len1, len2;  <span class="comment">// 两字符串的长度</span></span><br><span class="line"><span class="keyword">char</span> s1[maxn], s2[maxn];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求h的子串s[l~r](包括s[l]和s[r])的Hash值</span></span><br><span class="line"><span class="function">ull <span class="title">getHash</span><span class="params">(ull* h, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> h[r] - h[l - <span class="number">1</span>] * po[r - l + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">check函数用来判断是否有长度为len的相同子串</span></span><br><span class="line"><span class="comment">先将Hash1的长度为len的子串的Hash值依次求出，存入tmp数组中</span></span><br><span class="line"><span class="comment">将tmp由小到大排序(这里排序只是为了便于Hash2的二分查找)</span></span><br><span class="line"><span class="comment">因为二分查找要求数组有序！</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i + len - <span class="number">1</span> &lt;= len1; i++)</span><br><span class="line">		tmp[cnt ++] = getHash(Hash1, i, i + len - <span class="number">1</span>);</span><br><span class="line">	sort(tmp, tmp + cnt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i + len - <span class="number">1</span> &lt;= len2; i++) &#123;</span><br><span class="line">		ull x = getHash(Hash2, i, i + len - <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span>(binary_search(tmp, tmp + cnt, x)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="comment">// 这里用到了&lt;algorithm&gt;中的binary_search函数，这是一个bool类型函数，</span></span><br><span class="line">		<span class="comment">// 是在[tmp, tmp + cnt)，即[tmp, tmp + cnt - 1]范围内</span></span><br><span class="line">		<span class="comment">// 二分查找x，如果找到了就返回true，否则返回false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_po</span><span class="params">()</span> </span>&#123;  <span class="comment">// 将p的乘方都算出来，打表</span></span><br><span class="line">	po[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; maxn; i++)</span><br><span class="line">		po[i] = po[i - <span class="number">1</span>] * p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	init_po();</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>, s1 + <span class="number">1</span>, s2 + <span class="number">1</span>)) &#123;  <span class="comment">// s1和s2都从索引1开始存储</span></span><br><span class="line">		len1 = <span class="built_in">strlen</span>(s1 + <span class="number">1</span>);</span><br><span class="line">		len2 = <span class="built_in">strlen</span>(s2 + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 计算s1和s2的Hash值</span></span><br><span class="line">		Hash1[<span class="number">0</span>] = Hash2[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1; i++)</span><br><span class="line">			Hash1[i] = Hash1[i - <span class="number">1</span>] * p + (s1[i] - <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2; i++)</span><br><span class="line">			Hash2[i] = Hash2[i - <span class="number">1</span>] * p + (s2[i] - <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 二分查找最大长度</span></span><br><span class="line">		<span class="keyword">int</span> l = <span class="number">0</span>, r = min(len1, len2);</span><br><span class="line">		<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(l &lt;= r) &#123;</span><br><span class="line">			<span class="keyword">int</span> m = (l + r) &gt;&gt; <span class="number">1</span>;  <span class="comment">// 移位更快</span></span><br><span class="line">			<span class="keyword">if</span>(check(m)) &#123;  <span class="comment">// 如果m满足长度为m的子串相等</span></span><br><span class="line">				l = m + <span class="number">1</span>;  <span class="comment">// 就增大左边界l，看看有没有更大的长度</span></span><br><span class="line">				ans = m;    <span class="comment">// ans更新为当前的最大值</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				r = m - <span class="number">1</span>;  <span class="comment">// 没有找到，那就先减小右边界看看有没有符合的m</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
-
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
+{% endblock %}
 
-    
-      
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/算法/">算法</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/算法/">算法</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

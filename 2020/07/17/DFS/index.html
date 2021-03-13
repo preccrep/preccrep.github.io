@@ -1,187 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>DFS | Serial | of or relating to the sequential performance of multiple operations</title>
-
-  
-  <meta name="author" content="preccrep">
-  
-
-  
-  <meta name="description" content="serial processing">
-  
-
-  
-  
-  <meta name="keywords" content="算法">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="DFS"/>
-
-  <meta property="og:site_name" content="Serial"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-<body>
-<div class="blog">
-  <div class="content">
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>DFS</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/07/17/DFS/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-07-17T14:43:44.000Z">
-          2020-07-17
-        </time>
-      </a>
-    </span>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
 
-  
+{% block content %}
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA10364">Problem 1</a></p>
-<p><strong>题目描述</strong><br>给定M根小木棍，每根木棍有各自的长度，能否把它们全部用上来围成一个正方形？其中4≤M≤20，每根木棍的长度是1到10000之间的整数</p>
-<p><strong>输入格式</strong><br>第一行是一个整数T表示测试数据的组数。 对于每组测试数据，输入一行，包含M+1个整数，第一个整数表示M，接下来M个整数表示M个木棍的长度</p>
-<p><strong>输出格式</strong><br>对于每组数据一行，如果能够围成正方形 输出“yes” 否则输出“no”</p>
-<p><strong>输入输出样例</strong></p>
-<p><strong>输入</strong></p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="symbol">4 </span><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">5 </span><span class="number">10</span> <span class="number">20</span> <span class="number">30</span> <span class="number">40</span> <span class="number">50</span></span><br><span class="line"><span class="symbol">8 </span><span class="number">1</span> <span class="number">7</span> <span class="number">2</span> <span class="number">6</span> <span class="number">4</span> <span class="number">4</span> <span class="number">3</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-<p><strong>输出</strong></p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">yes</span></span><br><span class="line"><span class="literal">no</span></span><br><span class="line"><span class="literal">yes</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Solution</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> len[<span class="number">25</span>],v[<span class="number">25</span>],m,l;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> g,<span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(d==<span class="number">3</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=p; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i])&#123;</span><br><span class="line">			v[i]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> t=g+len[i];</span><br><span class="line">			<span class="keyword">if</span>(t&lt;l)&#123;</span><br><span class="line">				<span class="keyword">if</span>(dfs(p<span class="number">-1</span>,t,d))</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t==l)&#123;</span><br><span class="line">				<span class="keyword">if</span>(dfs(m<span class="number">-1</span>,<span class="number">0</span>,d+<span class="number">1</span>))</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				v[i]=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;m);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;len[i]);</span><br><span class="line">			sum+=len[i];</span><br><span class="line">		&#125;</span><br><span class="line">		sort(len,len+m);</span><br><span class="line">		<span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span>(v));</span><br><span class="line">		l=sum/<span class="number">4</span>;</span><br><span class="line">		<span class="keyword">if</span>(sum%<span class="number">4</span>!=<span class="number">0</span> || m&lt;<span class="number">4</span> || l&lt;len[m<span class="number">-1</span>]) <span class="built_in">printf</span>(<span class="string">&quot;no\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(dfs(m<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>)) <span class="built_in">printf</span>(<span class="string">&quot;yes\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;no\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4961">Problem 2</a></p>
-<p><strong>题目描述</strong><br>小埋会告诉你一盘扫雷，用一个 n*m 的矩阵表示，1 是雷 ，0 不是雷，请你告诉她这盘扫雷的 3bv 。</p>
-<p>周围八格没有“雷”且自身不是“雷”的方格称为“空格”，周围八格有“雷”且自身不是“雷”的方格称为“数字”，由“空格”组成的八连通块称为一个“空”。3bv = 周围八格没有“空格”的“数字”个数 + “空”的个数。</p>
-<p><strong>输入格式</strong><br>第一行有两个整数 n 和 m，代表这盘扫雷是一个 n*m 的矩阵。</p>
-<p>后面的 n 行每行有 m 个整数，表示这个矩阵，每个数字为 0 或 1，1 代表是雷，0 代表不是雷。</p>
-<p><strong>输出格式</strong><br>一个整数，代表这盘扫雷的 3bv 。</p>
-<p><strong>输入</strong></p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">8 </span><span class="number">8</span></span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">1 </span><span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> </span><br><span class="line"><span class="symbol">1 </span><span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br></pre></td></tr></table></figure>
-
-<p><strong>输出</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13</span><br></pre></td></tr></table></figure>
-
-<p><strong>Solution</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000</span>][<span class="number">1000</span>],v[<span class="number">1000</span>][<span class="number">1000</span>],bv3,n,m;</span><br><span class="line"><span class="keyword">int</span> x[<span class="number">8</span>]=&#123;<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,y[<span class="number">8</span>]=&#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">noBlank</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;     <span class="comment">//周围八格没有“空格”的</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> ll=l+x[i]; <span class="keyword">int</span> rr=r+y[i];</span><br><span class="line">		<span class="keyword">if</span>(ll&gt;=<span class="number">0</span> &amp;&amp; ll&lt;n &amp;&amp; rr&gt;=<span class="number">0</span> &amp;&amp; rr&lt;m &amp;&amp; !a[ll][rr])</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">incr</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;      <span class="comment">//让“雷”周围八格中不是“雷”的都增加1</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> ll=l+x[i]; <span class="keyword">int</span> rr=r+y[i];</span><br><span class="line">		<span class="keyword">if</span>(ll&gt;=<span class="number">0</span> &amp;&amp; ll&lt;n &amp;&amp; rr&gt;=<span class="number">0</span> &amp;&amp; rr&lt;m &amp;&amp; a[ll][rr]!=<span class="number">-1</span>)</span><br><span class="line">			a[ll][rr]++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> ll=l+x[i]; <span class="keyword">int</span> rr=r+y[i];</span><br><span class="line">		<span class="keyword">if</span>(ll&gt;=<span class="number">0</span> &amp;&amp; ll&lt;n &amp;&amp; rr&gt;=<span class="number">0</span> &amp;&amp; rr&lt;m &amp;&amp; !a[ll][rr] &amp;&amp; !v[ll][rr])&#123;   <span class="comment">//判断是否越界，用v判重</span></span><br><span class="line">			v[ll][rr]=<span class="number">1</span>;</span><br><span class="line">			dfs(ll,rr);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i][j]);</span><br><span class="line">			<span class="keyword">if</span>(a[i][j])</span><br><span class="line">				a[i][j]=<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)</span><br><span class="line">			<span class="keyword">if</span>(a[i][j]==<span class="number">-1</span>)</span><br><span class="line">				incr(i,j);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i][j] &amp;&amp; a[i][j]!=<span class="number">-1</span> &amp;&amp; noBlank(i,j))   <span class="comment">//周围八格没有“空格”的“数字”的个数</span></span><br><span class="line">				bv3++;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i][j] &amp;&amp; !v[i][j])&#123;     <span class="comment">//“空”的个数</span></span><br><span class="line">				bv3++;</span><br><span class="line">				dfs(i,j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, bv3);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/A1143">Problem 3</a></p>
-<p>将数字 1…9 填入一个 3×3 的九宫格中，使得格子中每一横行和的值全部相等，每一竖列和的值全部相等。请你计算有多少种填数字的方案。</p>
-<p><em>next_permutation</em></p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/eudiwffe/p/6260699.html">https://www.cnblogs.com/eudiwffe/p/6260699.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/c18219227162/article/details/50301513">https://blog.csdn.net/c18219227162/article/details/50301513</a></p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i++)</span><br><span class="line">        a[i] = i;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[<span class="number">1</span>] + a[<span class="number">2</span>] + a[<span class="number">3</span>] == a[<span class="number">4</span>] + a[<span class="number">5</span>] + a[<span class="number">6</span>]</span><br><span class="line">        &amp;&amp; a[<span class="number">4</span>] + a[<span class="number">5</span>] + a[<span class="number">6</span>] == a[<span class="number">7</span>] + a[<span class="number">8</span>] + a[<span class="number">9</span>]</span><br><span class="line">        )&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[<span class="number">1</span>] + a[<span class="number">4</span>] + a[<span class="number">7</span>] == a[<span class="number">2</span>] + a[<span class="number">5</span>] + a[<span class="number">8</span>]</span><br><span class="line">            &amp;&amp; a[<span class="number">2</span>] + a[<span class="number">5</span>] + a[<span class="number">8</span>] == a[<span class="number">3</span>] + a[<span class="number">6</span>] + a[<span class="number">9</span>]</span><br><span class="line">            )</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(a + <span class="number">1</span>, a + <span class="number">10</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//72</span></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/A1145">Problem 4</a></p>
-<p>右侧代码是将 6 个整数按照任意顺序组合到一起，计算能组合出的最大数字。</p>
-<p>例如：4123，25，66 组合到一起就是 66412325。</p>
-<p>请阅读程序补全代码，实现这个功能</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> tp = a[i];</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(tp) &#123;</span><br><span class="line">			j *= <span class="number">10</span>;</span><br><span class="line">			tp /= <span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		ret = ret * j + a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (k == <span class="number">6</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> test(a, k);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = k; i &lt; <span class="number">6</span>; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> t = a[k];</span><br><span class="line">		a[k] = a[i];</span><br><span class="line">		a[i] = t;</span><br><span class="line">		ret = <span class="built_in">std</span>::max(ret,  f(a, k + <span class="number">1</span>));</span><br><span class="line">		t = a[k];</span><br><span class="line">		a[k] = a[i];</span><br><span class="line">		a[i] = t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">6</span>] = &#123;<span class="number">517</span>, <span class="number">283</span>, <span class="number">429</span>, <span class="number">65</span>, <span class="number">6566</span>, <span class="number">32</span>&#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, f(a, <span class="number">0</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
-
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
+{% endblock %}
 
-    
-      
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/DFS/">DFS</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/算法/">算法</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

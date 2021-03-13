@@ -1,162 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>MATLAB绘制三维图形 | Serial | of or relating to the sequential performance of multiple operations</title>
-
-  
-  <meta name="author" content="preccrep">
-  
-
-  
-  <meta name="description" content="serial processing">
-  
-
-  
-  
-  <meta name="keywords" content="MATLAB">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="MATLAB绘制三维图形"/>
-
-  <meta property="og:site_name" content="Serial"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-<body>
-<div class="blog">
-  <div class="content">
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>MATLAB绘制三维图形</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2020/07/29/MATLAB绘制三维图形/" rel="bookmark">
-        <time class="entry-date published" datetime="2020-07-29T13:18:30.000Z">
-          2020-07-29
-        </time>
-      </a>
-    </span>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
 
-  
+{% block content %}
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <h1 id="平面网格数据的生成"><a href="#平面网格数据的生成" class="headerlink" title="平面网格数据的生成"></a>平面网格数据的生成</h1><h2 id="利用矩阵运算生成"><a href="#利用矩阵运算生成" class="headerlink" title="利用矩阵运算生成"></a>利用矩阵运算生成</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">X = <span class="built_in">ones</span>(<span class="built_in">size</span>(y))*x;</span><br><span class="line">Y = y*<span class="built_in">ones</span>(<span class="built_in">size</span>(x));</span><br></pre></td></tr></table></figure>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-<h2 id="利用meshgrid函数生成"><a href="#利用meshgrid函数生成" class="headerlink" title="利用meshgrid函数生成"></a>利用meshgrid函数生成</h2><p>[X, Y] = meshgrid(x, y);</p>
-<p>其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = <span class="built_in">randn</span>(<span class="built_in">size</span>(X));</span><br><span class="line"><span class="built_in">plot3</span>(X, Y, Z)</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
-
-<h1 id="绘制三维曲面的函数"><a href="#绘制三维曲面的函数" class="headerlink" title="绘制三维曲面的函数"></a>绘制三维曲面的函数</h1><p>**mesh(x, y, z, c)**用于绘制三维网格图</p>
-<p>**surf(x, y, z, c)**用于绘制三维曲面图</p>
-<p>其中，x、y是网格坐标矩阵，z是网格点上的高度矩阵，c用于指定在不同高度下的曲面颜色。</p>
-<p><strong>mesh(z, c)</strong></p>
-<p><strong>surf(z, c)</strong></p>
-<p>当x、y省略时，z矩阵的第2维下标当作x轴坐标，z矩阵的第1维下标当作y轴坐标。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">1</span>:<span class="number">5</span>;</span><br><span class="line">z = [<span class="number">0.5</span>*t; <span class="number">2</span>*t; <span class="number">3</span>*t];</span><br><span class="line">mesh(z);</span><br></pre></td></tr></table></figure>
-
-<p><strong>meshc</strong>带等高线的三维网格曲面函数</p>
-<p><strong>meshz</strong>带底座的三维网格曲面函数</p>
-<p><strong>surfc</strong>带等高线的曲面函数</p>
-<p><strong>surfl</strong>带光照效果的曲面函数</p>
-<h1 id="标准三维曲面"><a href="#标准三维曲面" class="headerlink" title="标准三维曲面"></a>标准三维曲面</h1><p><strong>sphere</strong></p>
-<p>[x, y, z] = sphere(n)</p>
-<p><strong>cylinder</strong></p>
-<p>[x, y, z] = cylinder(R, n)</p>
-<p>参数n决定曲面的圆滑程度，默认为20。</p>
-
-      
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
-
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
+{% endblock %}
 
-    
-      
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/笔记/">笔记</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/MATLAB/">MATLAB</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

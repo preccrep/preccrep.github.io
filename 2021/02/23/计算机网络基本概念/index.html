@@ -1,230 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>计算机网络基本概念 | Serial | of or relating to the sequential performance of multiple operations</title>
-
-  
-  <meta name="author" content="preccrep">
-  
-
-  
-  <meta name="description" content="serial processing">
-  
-
-  
-  
-  <meta name="keywords" content="计算机网络">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="计算机网络基本概念"/>
-
-  <meta property="og:site_name" content="Serial"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.0"></head>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-<body>
-<div class="blog">
-  <div class="content">
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Serial</a>
-    </h1>
-    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>计算机网络基本概念</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2021/02/23/计算机网络基本概念/" rel="bookmark">
-        <time class="entry-date published" datetime="2021-02-23T00:04:28.000Z">
-          2021-02-23
-        </time>
-      </a>
-    </span>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
 
-  
+{% block content %}
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <p><strong>网络的定义</strong>：利用通信线路将地理上分散的、具有独立功能的计算机系统和通信设备按不同的形式连接起来，以功能完善的网络软件实现资源共享和信息传递的复合系统。</p>
-<p><strong>网络的基本特征</strong>：</p>
-<ol>
-<li>具有共享能力</li>
-<li>各计算机自治（计算机自成系统）</li>
-<li>网络协议支持（管理、控制和通信）</li>
-<li>支持互操作功能</li>
-</ol>
-<p><strong>资源子网</strong>是由各计算机系统、终端控制器和终端设备、软件和可供共享的数据库等组成。其功能是负责全网面向应用的数据处理工作，向用户提供数据处理能力、数据存储能力、数据管理能力和数据输入输出能力以及其它数据资源。</p>
-<p><strong>网络资源</strong>：硬件资源、软件资源、数据资源。</p>
-<p><strong>资源共享</strong>：是指网络系统中的各计算机用户可以利用网内其他计算机系统中的全部或部分资源的过程。它是网络的主要功能之一。</p>
-<p><strong>通信子网</strong>是由通信硬件（通信设备和通信线路等）和通信软件组成，其功能是为网中用户共享各种网络资源提供必要的通信手段和通信服务。</p>
-<p><strong>通信子网类型</strong>：结合型、公用型、专用型</p>
-<p><strong>节点</strong>：就是由一条或多条通信线路连接的具有一定功能的设备。网络中的各主计算机、终端和通信设备等均可称为节点。网络节点有两类：访问节点和交换节点。</p>
-<p><strong>广域网（WAN）</strong>：覆盖的范围大，如一个大城市、国家或洲际间建立的网络。</p>
-<p><strong>局域网（LAN）</strong>：覆盖范围有限，属于一个部门或单位组建的小范围网络，是目前计算机网络发展中最活跃的分支。</p>
-<p><strong>城域网（MAN）</strong>：是指建立在大城市、大都市区域的计算机网络，覆盖城市的大部分或全部地域。</p>
-<p><strong>互联网</strong>：一般把由多个网络相互连接构成的复合网络称为互联网。互联网是不同网络的相互连接，如局域网和广域网连接、两个局域网相互连接或多个局域网通过广域网连接。</p>
-<p><strong>虚拟局域网（VLAN）</strong>是指利用网络软件和网络交换技术将跨越不同地理位置的一个或多个物理网段上的相关用户组成的一个逻辑工作组（逻辑网络）。VLAN是依赖网络软件建立起的逻辑网络，相当部分的VLAN是临时性的。</p>
-<p><strong>虚拟专用网（VPN）</strong>是指依靠Internet服务提供者(ISP)和其他网络服务提供者(NSP)在公共网络中建立的专用的数据通信网络。VPN可使用户利用公共网的资源将分散在各地的机构动态地连接起来，进行数据低成本的安全传输，这样既节省长途电话费用支出，又不再需要专用线路。</p>
-<p><strong>主计算机（HOST）</strong>：与其他主计算机联网后构成网络中的主要资源。主计算机的作用：</p>
-<ul>
-<li>负责网络中的数据处理</li>
-<li>执行网络协议</li>
-<li>网络控制和管理</li>
-<li>维护共享数据库</li>
-</ul>
-<p><strong>终端</strong>：用户访问网络的设备。终端的主要功能：</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 把用户输入的信息转变为适合传送的信息送到网络上</li>
-<li><input checked="" disabled="" type="checkbox"> 把网络上其他节点输出并经过通信线路接收的数据转变为用户所能识别的信息</li>
-</ul>
-<p><strong>通信控制处理机（CCP）</strong>：也称通信控制器，在某些网络中也叫前端处理机（FEP）、接口信息处理机（IMP）等。</p>
-<p><strong>CCP主要作用</strong>：承担通信控制和管理工作，减轻主机负担。</p>
-<p>通信控制处理机是一种在计算机网络系统中执行通信控制与处理功能的专用计算机，通常由小型机或微型机担任。</p>
-<p><strong>调制解调器（MODEM）</strong>：一种数据传输和信号转换设备。借助于调制解调器，就可以进行远距离通信，便于实现多路复用。</p>
-<p><strong>多路复用器</strong>：具有多路复用功能。</p>
-<p>利用多路复用器可以实现在一条物理链路上同时传输多路信号，提高信道利用率。</p>
-<p><strong>集中器</strong>：用于在终端密集的地方，可以节省通信链路，提高线路利用率。集中器可由微型计算机或单片机担任。</p>
-<p><strong>网络连接设备</strong>有：中继器、集线器及各种线路连接器等。</p>
-<p><strong>网络互联设备</strong>有：网桥、路由器、交换机和网关等。</p>
-<p><strong>网络操作系统（NOS）</strong>的主要作用：除了具有常规操作系统的功能外，还应有网络通信管理功能、网络范围内的资源管理功能和网络服务等。</p>
-<p><strong>网络协议软件（Protocol）</strong>：网络协议软件是网络软件中最重要、最核心的部分。它是计算机网络中各部分通信所必须遵守的规则集合。</p>
-<p><strong>计算机网络的特点</strong>：</p>
-<ul>
-<li>可靠性：当网内某子系统出现故障时，可由网内其他子系统代为处理，网络环境提供了高度的可靠性。</li>
-<li>独立性：网络系统中各相连的计算机系统是相对独立的，它们各自既相互联系又相互独立。</li>
-<li>高效率性：网络信息传递迅速，系统实时性强。网络系统可把一个大型复杂的任务分给几台计算机去处理，从而提高工作效率。</li>
-<li>易扩充性：可以灵活地在网络中接入新的节点，如远程终端系统等，达到扩充网络系统功能的目的。</li>
-<li>廉价性</li>
-<li>透明性：网络用户所关心的是如何利用网络高效而可靠地完成自己的任务，而不去考虑网络所涉及的技术和具体工作过程。</li>
-<li>易操作性</li>
-</ul>
-<p><strong>计算机网络的分类</strong>：</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 按照覆盖范围划分：广域网、局域网、城域网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照逻辑功能划分：资源子网、通信子网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照传输介质划分：有线网、无线网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照拓扑结构划分：星型网、总线型网、环形网、树形网、网型网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照传输介质种类划分：双绞线网、同轴电缆网、光纤网、卫星网、微波网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照应用范围和管理性质划分：公用网和专用网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照交换方式划分：电路交换网、分组交换网、ATM交换网等</li>
-<li><input checked="" disabled="" type="checkbox"> 按照连接方式划分：全连通式网络、交换式网络、广播式网络</li>
-</ul>
-<p>网络体系结构是针对计算机网络所执行的各种功能而设计出的一种<strong>层次结构模型</strong>。</p>
-<p>网络协议组成的三要素：</p>
-<ul>
-<li>语义：规定了通信双方要发出的控制信息、执行的动作和返回的应答等。</li>
-<li>语法：规定通信双方彼此应该如何操作，即确定协议元素的形式。</li>
-<li>时序：（也称定时、同步）是对事件实现顺序的详细说明，指出事件的顺序和速率匹配等，</li>
-</ul>
-<p>OSI七层模型：</p>
-<ol>
-<li><p>物理层：物理介质为数据链路层提供传输比特流的一个物理连接</p>
-<p>主要任务：为通信双方的数据传输提供物理连接，并在物理连接上透明地传输比特流。传输单位是位（比特）。</p>
-</li>
-<li><p>数据链路层：检测并校正物理层传输介质上产生的传输差错，使两系统之间构成一条无差错的链路。</p>
-</li>
-<li><p>网络层：通信子网的最高层，用于控制和管理通信子网的操作。它体现了网络应用环境中资源子网访问通信子网的方式。网络层的数据传输单位是数据分组（包）。</p>
-<p>主要任务：在数据链路服务的基础上，实现整个通信子网内的连接，向传输层提供端到端的数据传输链路，为报文分组以最佳路径通过通信子网到达目的主机提供服务。</p>
-</li>
-<li><p>传输层：OSI中1-3层面向数据通信，是由通信子网所完成的通信功能的集合，通信子网就是基于低三层通信协议构成的网络。5-7层是由端主机进程所完成的面向应用功能的集合。传输层是OSI中高层与低层之间的接口层。</p>
-<p>对于网络中通信的两个主机，其端到端的可靠通信最后要靠传输层来完成。传输层是OSI中负责通信的最高层，是唯一总体负责数据传输和控制的层次。传输层还是OSI中用户功能的最低层。</p>
-</li>
-<li><p>会话层：利用传输层提供的端到端服务，向表示层提供它的增值服务。这种服务主要是向表示层实体或用户进程提供建立连接并在连接上有序地传输数据。</p>
-</li>
-<li><p>表示层：</p>
-</li>
-<li><p>应用层</p>
-</li>
-</ol>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-      
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
-
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
+{% endblock %}
 
-    
-      
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/笔记/">笔记</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/计算机网络/">计算机网络</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-  
-
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 preccrep
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}
