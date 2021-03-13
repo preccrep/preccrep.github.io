@@ -1,25 +1,142 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>二分图判定 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="算法">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="二分图判定"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>二分图判定</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/07/05/二分图判定/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-07-05T10:58:53.000Z">
+          2020-07-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>二分图的判定问题比较少见，简单来说，就是对于给定的图，判断图是否为二分图。</p>
+<p>可以把每个节点着以黑色和白色之一，使得每条边的两个端点颜色不同，不难发现，对于一个当且仅当每个连通分量都是二分图，因此我们只考虑无向连通图。</p>
+<p>无向图 G 为二分图的充分必要条件：<strong>G 至少有两个顶点，且其所有回路的长度均为偶数</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;  <span class="comment">//节点数</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[N];  <span class="comment">//G[i]表示i节点邻接的点</span></span><br><span class="line"><span class="keyword">int</span> color[N];  <span class="comment">//color[i]=0,1,2 代表i节点不涂颜色、涂白色、涂黑色</span></span><br><span class="line"><span class="comment">//假设u是遍历时的第一个结点，则color[u]已经被初始化为1或2</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bipartite</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;  <span class="comment">//判断无向图是否可二分</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); i++)&#123;  <span class="comment">//枚举结点</span></span><br><span class="line">		<span class="keyword">int</span> v = G[u][i];  <span class="comment">//相邻节点</span></span><br><span class="line">		<span class="keyword">if</span>(color[v] == color[u])  <span class="comment">//若两结点颜色相同，无法二分</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span>(!color[v])&#123;  <span class="comment">//若结点没涂颜色</span></span><br><span class="line">			color[v] = <span class="number">3</span> - color[u];  <span class="comment">//改变结点颜色，使v的颜色与u的颜色对立</span></span><br><span class="line">			<span class="keyword">if</span>(!bipartite(v))  <span class="comment">//若点v不满足二分图话，则无法二分</span></span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/图论/">图论</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/算法/">算法</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

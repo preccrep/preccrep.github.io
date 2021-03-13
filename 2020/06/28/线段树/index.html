@@ -1,25 +1,142 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>线段树 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="数据结构">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="线段树"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>线段树</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/06/28/线段树/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-06-28T06:37:20.000Z">
+          2020-06-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>基本概念</strong></p>
+<p>线段树(segment tree)是一种二叉搜索树，它的每一个结点对应着一个区间 [L, R]，叶子结点对应的是一个单位区间，即 L == R。对于一个非叶子结点 [L, R]，它的左儿子所表示的区间为 [L, (L + R) / 2]，右儿子所表示的区间为 [(L + R) / 2 + 1, R] (也可以用位运算，更快：[L, (L + R) &gt;&gt; 1] 和 [((L + R) &gt;&gt; 1) | 1, R])。根据定义，线段树是一棵平衡二叉树，它的叶子结点数目为 N，即整个区间的长度。</p>
+<p><strong>基本操作</strong></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/线段树/">线段树</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/数据结构/">数据结构</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

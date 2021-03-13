@@ -1,7 +1,1018 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 3 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+  
+  <meta name="author" content="preccrep">
+  
+
+  
+  <meta name="description" content="serial processing">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/10/04/数据结构与算法学习笔记1/"><span>数据结构与算法学习笔记1</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/10/04/数据结构与算法学习笔记1/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-10-04T00:03:00.000Z">
+          2020-10-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="程序性能"><a href="#程序性能" class="headerlink" title="程序性能"></a>程序性能</h1><h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>程序所需要的空间主要由以下部分构成：</p>
+<p><strong>指令空间</strong>（instruction space）指令空间是指用来存储经过编译之后的程序指令所需的空间。</p>
+<p><strong>数据空间</strong>（data space）数据空间是指用来存储所有常量和所有变量值所需的空间。数据空间由两个部分构成：</p>
+<ol>
+<li><p>存储常量和简单变量所需要的空间：如4是常量，a、b、c是简单变量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c + <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>存储复合变量所需要的空间。这一类包括数据结构所需的空间及动态分配的空间。如数组a。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        sum += a[i];</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>环境栈空间</strong>（environment stack space）环境栈用来保存函数调用返回时恢复运行所需要的信息。例如，如果函数fun1调用了函数fun2，那么至少必须保存fun2结束时fun1将要继续执行的指令的地址。</p>
+<h3 id="指令空间"><a href="#指令空间" class="headerlink" title="指令空间"></a>指令空间</h3><p>程序所需要的指令空间的数量取决于如下因素：</p>
+<p><code>把程序编译成机器代码的编译器</code></p>
+<p><code>编译时实际采用的编译器选项</code></p>
+<p><code>目标计算机</code></p>
+<h3 id="数据空间"><a href="#数据空间" class="headerlink" title="数据空间"></a>数据空间</h3><p>对于简单变量和常量来说，所需要的空间取决于所使用的使用的计算机和编译器以及变量与常量的数目。</p>
+<h3 id="环境栈"><a href="#环境栈" class="headerlink" title="环境栈"></a>环境栈</h3><p>当一个函数被调用时，下面的数据将被保存在环境栈中：</p>
+<p><code>返回地址</code></p>
+<p><code>函数被调用时所有局部变量的值以及传值形式参数的值</code></p>
+<p><code>所有引用参数及常量引用参数的定义</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function">T <span class="title">Rsum</span><span class="params">(T a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> Rsum(a, n - <span class="number">1</span>) + a[n - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>当Rsum被调用时，不管该调用是来自外部或第4行，a的当前赋值、n的值以及程序运行结束时的返回地址都被存储在环境栈之中。</strong></em></p>
+<p>值得注意的是，有些编译器在保留局部变量的值、传值形式参数的值以及引用参数和常量引用参数的定义时，对于递归函数和非递归函数一视同仁，而有些编译器则仅为递归函数保存上述内容。所以实际使用的编译器将影响环境栈所需要的空间。</p>
+<p>可以把一个程序所需要的空间分成两部分：</p>
+<p><code>固定部分</code>：它独立于实例的特征。一般包含指令空间、简单变量和常量及定长复合变量所占空间等等。</p>
+<p><code>可变部分</code>：包含复合变量所需空间（这些变量的大小依赖于所解决的具体问题）、动态分配的空间（一般都依赖于实例特征）、递归栈所需空间（也依赖于实例特征）。</p>
+<p>任意程序P所需要的空间S(P)可以表示为：<br>$$<br>S(P) = c + S_p<br>$$<br>其中c是一个常量，表示固定部分所需要的空间， Sp表示可变部分所需要的空间。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">seq_search</span><span class="params">(T a[], <span class="keyword">const</span> T&amp; x, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n &amp;&amp; a[i] != x; i++);</span><br><span class="line">    <span class="keyword">if</span>(i == n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们希望采用实例特征n来估算该函数的空间复杂性。假定T为int类型，则数组a中的每个元素需要2个字节，实参x需要2个字节，传值形式参数n需要2个字节，局部变量i需要2个字节，每个整型常量0和-1也分别需要2个字节。因此，所需要的总的数据空间为12字节。因为该空间独立于n，所以S(n) = 0。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function">T <span class="title">Sum</span><span class="params">(T a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T tsum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        tsum += a[i];</span><br><span class="line">    <span class="keyword">return</span> tsum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在该函数中，a、n、i和tsum需要分配空间，所以程序所需要的空间与n无关，因此有S(n) = 0。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该程序的空间复杂性是n的函数而不是输入（只有一个）或输出（也只有一个）个数的函数。递归深度为max{n, 1}。每次调用函数Factorial 时，递归栈需要保留返回地址（ 2个字节）和n的值（2个字节）。此外没有其他依赖于n的空间，所以S(n) = 4*max{n, 1}。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用递归函数生成排列</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Perm</span><span class="params">(T <span class="built_in">list</span>[], <span class="keyword">int</span> k, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>(k == m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">list</span>[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = k; i &lt;= m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(<span class="built_in">list</span>[k], <span class="built_in">list</span>[i]);</span><br><span class="line">            Perm(<span class="built_in">list</span>, k + <span class="number">1</span>, m);</span><br><span class="line">            swap(<span class="built_in">list</span>[k], <span class="built_in">list</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于初始调用Perm(list, 0, n-1)，递归的深度为n。由于每次调用需要10个字节的递归栈空间（每个返回地址、list、k、m以及i各需要2个字节），所以需要10n字节的递归栈空间，S(n) = 10n。</p>
+<h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>有两个更可行的方法可以用来估算运行时间：</p>
+<ol>
+<li>确定关键操作所需要的执行时间；</li>
+<li>确定程序执行的总步数。</li>
+</ol>
+<h3 id="操作计数"><a href="#操作计数" class="headerlink" title="操作计数"></a>操作计数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算名次</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rank</span><span class="params">(T a[], <span class="keyword">int</span> n, <span class="keyword">int</span> r[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        r[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt;= a[i]) r[j]++;</span><br><span class="line">            <span class="keyword">else</span> r[i]++; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意在估算时间复杂性时没有考虑for循环的额外开销、初始化数组r的开销以及每次比较a中两个元素时对r进行增值的开销。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原地重排</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rearrange</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// rank: r[], array: a[]</span></span><br><span class="line">    <span class="comment">// int r[5] = &#123;2, 0, 4, 1, 3&#125;;</span></span><br><span class="line">    <span class="comment">// int a[5] = &#123;4, 3, 9, 3, 7&#125;;</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(r[i] != i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = r[i];</span><br><span class="line">            swap(a[t], a[i]);</span><br><span class="line">            swap(r[t], r[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="执行步数"><a href="#执行步数" class="headerlink" title="执行步数"></a>执行步数</h3><p><strong>程序步</strong>（program step）可以定义为一个语法或语义意义上的程序片段，该片段的执行时间独立于实例特征。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/数据结构/">数据结构</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/09/28/正则表达式/"><span>正则表达式</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/09/28/正则表达式/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-09-28T12:33:14.000Z">
+          2020-09-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><em>学习<a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-syntax.html">菜鸟教程</a>的一些记录。</em></p>
+<p>正则表达式（regular expression）描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p><code>runoo+b</code> 匹配 runoob、runooob、runoooooob 等，+ 号代表前面的字符必须至少出现一次（1次或多次）</p>
+<p><code>runoo*b</code> 可以匹配 runob、runoob、runoooooob 等，* 号代表前面的字符可以不出现，也可以出现一次或者多次（0次、或1次、或多次）。</p>
+<p><code>colou?r</code> 可以匹配 color 或者 colour，? 问号代表前面的字符最多只可以出现一次（0次、或1次）。</p>
+<p><strong>普通字符</strong></p>
+<p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
+<p><code>[ABC]</code> 匹配 <code>[...]</code> 中的所有字符。</p>
+<p><code>[^ABC]</code> 匹配除了 <code>[...]</code> 中的所有字符。</p>
+<p><code>[A-Z]</code> 匹配所有大写字母，<code>[a-z]</code> 匹配所有小写字母。</p>
+<p><code>.</code> 相当于 <code>[^\n\r]</code>，匹配除换行符（\n、\r）之外的任何单个字符。</p>
+<p><code>[\s\S]</code> ：\s 是匹配所有空白符，包括换行，\S 非空白符，不包括换行。</p>
+<p><code>\w</code> 匹配字母、数字、下划线，等价于 <code>[A-Za-z0-9_]</code>。</p>
+<p><strong>非打印字符</strong></p>
+<p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\cx</code></td>
+<td>匹配由x指明的控制字符。例如， <code>\cM</code> 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>匹配一个换页符。等价于 <code>\x0c</code> 和 <code>\cL</code>。</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>匹配一个换行符。等价于 <code>\x0a</code> 和 <code>\cJ</code>。</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>匹配一个回车符。等价于 <code>\x0d</code> 和 <code>\cM</code>。</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 <code>[\f\n\r\t\v]</code>。注意 Unicode 正则表达式会匹配全角空格符。</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>匹配任何非空白字符。等价于 <code>[^\f\n\r\t\v]</code>。</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>匹配一个制表符。等价于 <code>\x09</code> 和 <code>\cI</code>。</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>匹配一个垂直制表符。等价于 <code>\x0b</code> 和 <code>\cK</code>。</td>
+</tr>
+</tbody></table>
+<p><strong>特殊字符</strong></p>
+<p>所谓特殊字符，就是一些有特殊含义的字符，如上面说的 <code>runoo*b</code> 中的 *，简单的说就是表示任何字符串的意思。如果要查找字符串中的 * 符号，则需要对 * 进行转义，即在其前加一个 <code>\</code>: <code>runo\*ob</code> 匹配 <code>runo*ob</code>。</p>
+<p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符 <code>\</code> 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
+<table>
+<thead>
+<tr>
+<th>特别字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$</code></td>
+<td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 <code>$</code> 也匹配 ‘\n’ 或 ‘\r’。要匹配 <code>$</code> 字符本身，请使用 <code>\$</code>。</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 <code>\(</code> 和 <code>\)</code>。</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>匹配前面的子表达式零次或多次。要匹配 <code>*</code> 字符，请使用 <code>\*</code>。</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>匹配前面的子表达式一次或多次。要匹配 <code>+</code> 字符，请使用 <code>\+</code>。</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>匹配除换行符 <code>\n</code> 之外的任何单字符。要匹配 <code>.</code> ，请使用 <code>\.</code> 。</td>
+</tr>
+<tr>
+<td><code>[</code></td>
+<td>标记一个中括号表达式的开始。要匹配 <code>[</code>，请使用 <code>\[</code>。</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 <code>?</code> 字符，请使用 <code>\?</code>。</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， <code>n</code> 匹配字符 <code>n</code>。<code>\n</code> 匹配换行符。序列 <code>\\</code> 匹配 <code>\</code>，而 <code>\(</code> 则匹配 <code>(</code>。</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 <code>^</code> 字符本身，请使用 <code>\^</code>。</td>
+</tr>
+<tr>
+<td><code>&#123;</code></td>
+<td>标记限定符表达式的开始。要匹配 <code>&#123;</code>，请使用 <code>\&#123;</code>。</td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+</tr>
+</tbody></table>
+<p><strong>限定符</strong></p>
+<p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 <code>*</code> 或 <code>+</code> 或 <code>?</code> 或 <code>&#123;n&#125;</code> 或 <code>&#123;n,&#125;</code> 或 <code>&#123;n,m&#125;</code> 共6种。</p>
+<p>正则表达式的限定符有：</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/正则表达式/">正则表达式</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/正则表达式/">正则表达式</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/09/22/操作系统笔记（一）/"><span>操作系统笔记（一）</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/09/22/操作系统笔记（一）/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-09-22T13:51:05.000Z">
+          2020-09-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><em><strong>计算机的启动（boot）过程</strong></em></p>
+<p><code>第一阶段：BIOS（Basic Input / Output System）</code></p>
+<p><em>硬件自检</em>（Power-On Self-Test，缩写为POST）：首先检查计算机硬件能否满足运行的基本条件</p>
+<p><em>启动顺序</em>（Boot Sequence）：硬件自检完成后，BIOS将控制权转交给下一阶段的启动程序。这时，BIOS需要知道“下一阶段的启动程序“具体在哪一个设备。BIOS需要一个外部存储设备的排序，排在前面的设备就是优先转交控制权的设备</p>
+<p><code>第二阶段：主引导记录</code></p>
+<p>BIOS按照用户指定的引导顺序，从硬盘、软盘或可移动设备中读取启动设备的MBR（Master Root Record，主引导记录）并放入指定位置（0x7c000）的内存中。</p>
+<p>计算机读取该设备的第一个扇区，也就是读取最前面的 512 个字节。它的主要作用是告诉计算机<em>到硬盘的哪一个位置去找操作系统</em>。</p>
+<p>如果这512个字节的最后两个字节是0x55和0xAA，表明这个设备可以用于启动；如果不是，表明设备不能用于启动，控制权被转交给启动顺序中的下一个设备。</p>
+<p><code>第三阶段：硬盘启动</code></p>
+<p>计算机的控制权要交给硬盘的某个分区了。</p>
+<p>计算机会读取激活分区的第一个扇区，叫做“卷引导记录”（Volume Boot Record，缩写为VBR）。</p>
+<p>VBR的主要作用是告诉计算机操作系统在这个分区里的位置，这样计算机就会加载操作系统了。</p>
+<p><em>启动管理器</em></p>
+<p>在这种情况下，计算机读取主引导记录前面446字节的机器码之后，不再把控制权转交给某一个分区，而是运行事先安装的启动管理器（boot loader ），由用户选择启动哪一个操作系统。</p>
+<p><code>第四阶段：操作系统</code></p>
+<p>控制权转交给操作系统后，操作系统的内核首先被载入内存。</p>
+<p><em><strong>操作系统的目标</strong></em></p>
+<p><code>提高系统的资源利用率</code>，<code>提高系统效率</code>，<code>方便性</code>，<code>可扩充性</code>，<code>开放性</code></p>
+<p><em><strong>Simple Batch Systems 单道批处理系统</strong></em></p>
+<p>为解决人机速度不匹配问题。</p>
+<p><code>实现</code></p>
+<p>通过一种称为监控程序的软件，使用户不必直接接触机器，而是先通过卡片机和纸带机向监控程序提交（同类）作业 ，由监控程序将作业组织在一起构成一批作业 ，然后将整批作业放入由监控程序管理的输入设备上，每当一个作业执行完毕返回监控程序时，监控程序自动装入下一个作业 。</p>
+<p>60年代初期，硬件获得了两方面的发展，即<code>通道和中断技术</code>，导致了OS进入<code>执行系统阶段</code>。</p>
+<p>用监督程序（或管理程序monitor）来实现作业的自动转换处理。</p>
+<p>原来的Monitor不仅负责作业运行的自动调度，而且还要提供 I/0 控制功能，常驻内存，称为<code>执行系统</code>（ Executive System）。</p>
+<p><code>特点</code></p>
+<p>解决了人工干预过长的问题，但仍然是单道顺序的处理作业，资源容易造成空闲，即利用率不高。</p>
+<p>为解决该问题，OS进入了多道程序阶段。</p>
+<p><em><strong>Multiprogramming Batch Systems 多道程序批处理系统</strong></em></p>
+<p>集成电路——现代意义上的操作系统出现</p>
+<p>主存中可同时有若干个作业，CPU在其中切换。</p>
+<p><code>优点</code></p>
+<p>资源利用率高：</p>
+<p><strong>标准MBR结构</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">地址</th>
+<th align="center"></th>
+<th align="center">描述</th>
+<th align="center">长度（字节）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Hex</td>
+<td align="center">Oct</td>
+<td align="center">Dec</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0000</td>
+<td align="center">0000</td>
+<td align="center">0</td>
+<td align="center">代码区</td>
+<td align="center">440（最大446）</td>
+</tr>
+<tr>
+<td align="center">01B8</td>
+<td align="center">0670</td>
+<td align="center">440</td>
+<td align="center">选用磁盘标志</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">01BC</td>
+<td align="center">0674</td>
+<td align="center">444</td>
+<td align="center">一般为空值；0x0000</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">01BE</td>
+<td align="center">0676</td>
+<td align="center">446</td>
+<td align="center"></td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td align="center">01FE</td>
+<td align="center">0776</td>
+<td align="center">510</td>
+<td align="center">55h     MBR有效标志：</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">01FF</td>
+<td align="center">0777</td>
+<td align="center">511</td>
+<td align="center">AAh                   0x55AA</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">MBR，</td>
+<td align="center">总大小：</td>
+<td align="center">446</td>
+<td align="center">+  64  +  2  =</td>
+<td align="center">512</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/操作系统/">操作系统</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/09/12/LaTex-命令查看免费说明文档/"><span>LaTex--命令查看免费说明文档</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/09/12/LaTex-命令查看免费说明文档/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-09-12T14:08:41.000Z">
+          2020-09-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>ctex宏包的使用方法：</p>
+<p>查看ctex宏包手册，终端输入，并另存为：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">texdoc ctex</span><br></pre></td></tr></table></figure>
+
+<p>LaTex简单实用教程：</p>
+<p>终端输入：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">texdoc lshort     <span class="comment">% 英文版</span></span><br><span class="line">texdoc lshort-zh  <span class="comment">% 中文版</span></span><br></pre></td></tr></table></figure>
+
+<p>（摘自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Mikowoo007/article/details/87464547">LaTex–命令查看免费的说明文档 </a> )</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/LaTex/">LaTex</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/LaTex/">LaTex</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/08/14/验证本征值和本征向量/"><span>验证本征值和本征向量</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/08/14/验证本征值和本征向量/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-08-14T02:33:44.000Z">
+          2020-08-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>验证python中根据np.linalg.eig生成的本征值和本征向量的对应关系：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">dim = <span class="number">4</span></span><br><span class="line">M = np.random.randn(dim, dim)</span><br><span class="line">M = M + M.T</span><br><span class="line">print(M)</span><br><span class="line"></span><br><span class="line">lm, u = np.linalg.eig(M)</span><br><span class="line">print(<span class="string">&#x27;Eigenvalues:&#x27;</span>)</span><br><span class="line">print(lm)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;Eigenvectors:&#x27;</span>)</span><br><span class="line">print(u)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">4</span>):</span><br><span class="line">    e_val = lm[i]</span><br><span class="line">    v = []</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">4</span>):</span><br><span class="line">        e_vec = u[j][i]</span><br><span class="line">        v.append(e_vec)</span><br><span class="line">    a = np.array(v)</span><br><span class="line">    a = a.reshape(-<span class="number">1</span>, <span class="number">1</span>)  <span class="comment"># 将行向量转置为列向量，这里先转换为np.array，再用reshape</span></span><br><span class="line">    print(<span class="string">&#x27;M * a:&#x27;</span>)</span><br><span class="line">    print(M.dot(a))</span><br><span class="line">    print(<span class="string">&#x27;r * a:&#x27;</span>)</span><br><span class="line">    print(e_val * a)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">dim = <span class="number">4</span></span><br><span class="line">M = np.random.randn(dim, dim)</span><br><span class="line">M = M + M.T</span><br><span class="line">print(M)</span><br><span class="line"></span><br><span class="line">lm, u = np.linalg.eig(M)</span><br><span class="line">print(<span class="string">&#x27;Eigenvalues:&#x27;</span>)</span><br><span class="line">print(lm)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;Eigenvectors:&#x27;</span>)</span><br><span class="line">print(u)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">4</span>):</span><br><span class="line">    e_val = lm[i]</span><br><span class="line">    a = u[:, i]  <span class="comment"># 这种方法可以验证，但是得到的向量是行向量</span></span><br><span class="line">    print(<span class="string">&#x27;M * a:&#x27;</span>)</span><br><span class="line">    print(M.dot(a))</span><br><span class="line">    print(<span class="string">&#x27;r * a:&#x27;</span>)</span><br><span class="line">    print(e_val * a)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/linear-algebra/">linear algebra</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python/">python</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/08/12/线性代数基础/"><span>线性代数基础</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/08/12/线性代数基础/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-08-12T11:07:31.000Z">
+          2020-08-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="本征向量、本征值、正定矩阵的定性理解"><a href="#本征向量、本征值、正定矩阵的定性理解" class="headerlink" title="本征向量、本征值、正定矩阵的定性理解"></a>本征向量、本征值、正定矩阵的定性理解</h1><p>对于一个非零向量x和一个矩阵A，如果标量a使得：Ax=ax，则称a为A的本征值，x为本征向量。</p>
+<p>本征值和本征向量的求法：</p>
+<p>Ax-ax=0</p>
+<p>(A-aI)x=0</p>
+<p>只要|A-aI|=0，就可以求出a，然后代入a求出本征向量x里元素的关系。</p>
+<p>本征值在几何上的意义：<strong>会将对应本征向量方向上的向量进行缩放，也可以说：缩放的倍数就是本征值</strong></p>
+<p>正定矩阵：对于任意非零的向量x和一个对称矩阵A，如果满足：xTAx&gt;0，就称A为正定矩阵。</p>
+<p>正定矩阵在几何上面的理解：</p>
+<p>在空间中找到一组为正交的向量，经过正定矩阵的变化，变化后他们还是正交的，且方向会不变。但是他们的向量的模会改变。</p>
+<p>猜测：可以用来对图片进行缩放。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jian-gao/p/10781649.html">特征值分解和奇异值分解</a></p>
+<p>参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/MyUniverse/p/10146907.html">https://www.cnblogs.com/MyUniverse/p/10146907.html</a></li>
+</ol>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/张量网络/">张量网络</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/机器学习/">机器学习</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/08/08/TensorNetwork-1/"><span>TensorNetwork_1</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/08/08/TensorNetwork-1/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-08-08T13:28:11.000Z">
+          2020-08-08
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>首先学python。</p>
+<p>python numpy函数：dot()</p>
+<p><strong>dot</strong>函数是矩阵乘，*是对应元素相乘。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]])</span><br><span class="line">b = np.array([[<span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>]])</span><br><span class="line">c = np.dot(a, b)</span><br><span class="line"><span class="comment"># print(a.dot(b))</span></span><br><span class="line"><span class="comment"># print(np.inner(a, b))</span></span><br><span class="line"><span class="comment"># print(np.dot(a, b))</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c = a * b</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+<p><strong>transpose</strong>函数：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012762410/article/details/78912667">请看这里</a></p>
+<p><strong>ndarray</strong>：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5cc8738aa3da">请看这里</a></p>
+<p><strong>tensordot</strong>：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_28710515/article/details/90230842">请看这里</a></p>
+<p><strong>einsum</strong>：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27739282">请看这里</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/张量网络/">张量网络</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/机器学习/">机器学习</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/07/29/MATLAB绘制三维图形/"><span>MATLAB绘制三维图形</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/07/29/MATLAB绘制三维图形/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-07-29T13:18:30.000Z">
+          2020-07-29
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="平面网格数据的生成"><a href="#平面网格数据的生成" class="headerlink" title="平面网格数据的生成"></a>平面网格数据的生成</h1><h2 id="利用矩阵运算生成"><a href="#利用矩阵运算生成" class="headerlink" title="利用矩阵运算生成"></a>利用矩阵运算生成</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">X = <span class="built_in">ones</span>(<span class="built_in">size</span>(y))*x;</span><br><span class="line">Y = y*<span class="built_in">ones</span>(<span class="built_in">size</span>(x));</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用meshgrid函数生成"><a href="#利用meshgrid函数生成" class="headerlink" title="利用meshgrid函数生成"></a>利用meshgrid函数生成</h2><p>[X, Y] = meshgrid(x, y);</p>
+<p>其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = <span class="built_in">randn</span>(<span class="built_in">size</span>(X));</span><br><span class="line"><span class="built_in">plot3</span>(X, Y, Z)</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
+
+<h1 id="绘制三维曲面的函数"><a href="#绘制三维曲面的函数" class="headerlink" title="绘制三维曲面的函数"></a>绘制三维曲面的函数</h1><p>**mesh(x, y, z, c)**用于绘制三维网格图</p>
+<p>**surf(x, y, z, c)**用于绘制三维曲面图</p>
+<p>其中，x、y是网格坐标矩阵，z是网格点上的高度矩阵，c用于指定在不同高度下的曲面颜色。</p>
+<p><strong>mesh(z, c)</strong></p>
+<p><strong>surf(z, c)</strong></p>
+<p>当x、y省略时，z矩阵的第2维下标当作x轴坐标，z矩阵的第1维下标当作y轴坐标。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">1</span>:<span class="number">5</span>;</span><br><span class="line">z = [<span class="number">0.5</span>*t; <span class="number">2</span>*t; <span class="number">3</span>*t];</span><br><span class="line">mesh(z);</span><br></pre></td></tr></table></figure>
+
+<p><strong>meshc</strong>带等高线的三维网格曲面函数</p>
+<p><strong>meshz</strong>带底座的三维网格曲面函数</p>
+<p><strong>surfc</strong>带等高线的曲面函数</p>
+<p><strong>surfl</strong>带光照效果的曲面函数</p>
+<h1 id="标准三维曲面"><a href="#标准三维曲面" class="headerlink" title="标准三维曲面"></a>标准三维曲面</h1><p><strong>sphere</strong></p>
+<p>[x, y, z] = sphere(n)</p>
+<p><strong>cylinder</strong></p>
+<p>[x, y, z] = cylinder(R, n)</p>
+<p>参数n决定曲面的圆滑程度，默认为20。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/MATLAB/">MATLAB</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/07/26/Windows任务管理器/"><span>Windows任务管理器</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/07/26/Windows任务管理器/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-07-26T15:03:25.000Z">
+          2020-07-26
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>Dave Plummer是最初的任务管理器开发者，他解释说，他所创建的一些功能目前仍然存在，只是很少有人真正了解这些功能。</p>
+<p><strong>CTRL + Shift + Esc</strong></p>
+<p>大多数人启动任务管理器的方法是右击任务栏选择任务管理器，或者按CTRL + Alt + Del，然后选择任务管理器。但实际上，按CTRL + Shift + Esc就可以直接启动任务管理器，这要简单得多，并且可以在不使用shell的情况下打开任务管理器。</p>
+<p>为什么说这比其他方法更有用呢?因为在不涉及shell的情况下，这个快捷键可以让你在shell本身崩溃的情况下也能启动任务管理器，有时候任务栏消失就不能右键启动任务管理器。</p>
+<p>Plummer说，即使在任务管理器本身崩溃时，也可以使用同样的快捷方式启动该应用，而这一切都是因为这个快捷键从一开始设计就专门考虑到了这个问题。</p>
+<p>“如果任务管理器曾经卡死或崩溃，按ctrl-shift-esc启动另一个任务管理器。Winlogon会寻找一个现有的实例，并尝试重启它，最多10秒。如果旧的任务管理器没有在这段时间内以秘密代码响应，那么另一个任务管理器将被启动。”他说：“这样一来，只要有一些资源可用，你永远不会打不开任务管理器。”</p>
+<p><strong>任务管理器精简模式</strong></p>
+<p>很多用户都已经知道，APP死机、系统资源耗尽，可能会导致各种问题，包括电脑一开始就无法启动任务管理器。</p>
+<p>这是因为没有资源来加载任务管理器，所以开发者在创建这个APP的时候，也准备了一个精简模式来处理资源不足的问题。</p>
+<p>换句话说，这是一个特殊的“安全”模式，你可以启动，然后直接点开进程选项卡，看看是什么原因导致资源占用，然后手动杀死进程，让系统恢复到正常工作状态。同样，你可以使用上述的快捷方式来完成，因为当系统资源耗尽时，任务管理器会自动进入精简模式。</p>
+<p>“任务管理器会在资源不足的情况下以精简模式加载，比如只加载进程页面。它是极少数不会在出现问题时直接‘失败和退出’的应用程序之一。”Plummer说。</p>
+<p><strong>重置任务管理器</strong></p>
+<p>在某些情况下，即使任务管理器也难以处理系统上的所有崩溃，因此任务管理器本身有时也可能会崩溃。</p>
+<p>不过不用担心，因为Plummer表示，你只需要用一个非常小的技巧就可以轻松地将其重置，并将其恢复到正常状态。</p>
+<p>“如果任务管理器一旦内部损坏，请杀死/关闭它。然后重启它的同时按住CTRL、ALT和SHIFT键，任务管理器在启动时如果检测到了这个组合键，就会将所有内部设置重置为出厂时的状态。”他还解释说：“我写的每一个应用都有这个小技巧!”。</p>
+<p>总而言之，Windows任务管理器是一个比大多数人想象的要复杂得多的应用，而这一切都是因为它在开发之初就考虑到了用户在需要该应用时可能遇到的大部分场景。幸运的是，微软在这么多年的时间里并没有改变任务管理器的根基，所以上述技巧不仅在老版本的Windows中可以使用，在Windows 10中也可以正常使用。</p>
+<p>(注：仅为学习记录，摘自网络)</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Windows/">Windows</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/操作系统/">操作系统</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2020/07/26/数值微积分与方程求解/"><span>数值微积分与方程求解</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/07/26/数值微积分与方程求解/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-07-26T10:04:20.000Z">
+          2020-07-26
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="数值微分与数值积分"><a href="#数值微分与数值积分" class="headerlink" title="数值微分与数值积分"></a>数值微分与数值积分</h1><h1 id="线性方程组求解"><a href="#线性方程组求解" class="headerlink" title="线性方程组求解"></a>线性方程组求解</h1><h1 id="非线性方程求解与函数极值计算"><a href="#非线性方程求解与函数极值计算" class="headerlink" title="非线性方程求解与函数极值计算"></a>非线性方程求解与函数极值计算</h1><h1 id="常微分方程数值求解"><a href="#常微分方程数值求解" class="headerlink" title="常微分方程数值求解"></a>常微分方程数值求解</h1>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/MATLAB/">MATLAB</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/page/2/" class="pagination-prev">Prev</a>
+  
+  
+  <a href="/page/4/" class="pagination-next">Next</a>
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

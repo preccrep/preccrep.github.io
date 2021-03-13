@@ -1,28 +1,181 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>about | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  if page.type === 'tags'
-    .tag-cloud
-      .tag-cloud__title= _p('page.tag')
-        |  - 
-        span.tag-cloud__amount= site.tags.length
-      .tag-cloud-tags
-        !=cloudTags({source: site.tags, minfontsize: 15, maxfontsize: 30, limit: 0})
-      if page.comments !== false
-        include includes/comments/index.pug
-  else if page.type === 'link'
-    include flink.pug
-  else if page.type === 'categories'    
-    .category-content
-      .category-lists
-        .category__title= _p('page.category')
-          |  - 
-          span.category__amount= site.categories.length
-        div!= list_categories()
-      if page.comments !== false
-        include includes/comments/index.pug
-  else
-    #page
-      #article-container!= page.content
-      if page.comments !== false
-        include includes/comments/index.pug
+  
+  <meta name="author" content="preccrep">
+  
+
+  
+  <meta name="description" content="serial processing">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="about"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>about</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/about/index.html" rel="bookmark">
+        <time class="entry-date published" datetime="2020-06-15T05:35:30.000Z">
+          2020-06-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h1> <center>
+     <h1>preccrep</h1>
+     <div>
+         <span>
+             <img src="assets/phone-solid.svg" width="18px">
+             12345678912
+         </span>
+         ·
+         <span>
+             <img src="assets/envelope-solid.svg" width="18px">
+             preccrepad@gmail.com
+         </span>
+         ·
+         <span>
+             <img src="assets/github-brands.svg" width="18px">
+             <a target="_blank" rel="noopener" href="https://github.com/preccrep">GitHub</a>
+         </span>
+         ·
+         <span>
+             <img src="assets/rss-solid.svg" width="18px">
+             <a target="_blank" rel="noopener" href="https://www.preccrep.com/">My Blog</a>
+         </span>
+     </div>
+ </center>
+
+
+
+
+<h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h2><ul>
+<li>坐标天津</li>
+</ul>
+<h2 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h2><ul>
+<li>本科，天津大学，计算机科学与技术专业，2019.09~2023.07.</li>
+</ul>
+<h2 id="校外实习"><a href="#校外实习" class="headerlink" title="校外实习"></a>校外实习</h2><ul>
+<li>（目前无）<ul>
+<li><strong>项目描述</strong>：</li>
+<li><strong>工作描述</strong>：</li>
+</ul>
+</li>
+</ul>
+<h2 id="个人项目"><a href="#个人项目" class="headerlink" title="个人项目"></a>个人项目</h2><ul>
+<li><strong>项目一</strong>：</li>
+<li><strong>项目二</strong>：</li>
+<li><strong>项目二</strong>：</li>
+<li><strong>项目三</strong>：</li>
+</ul>
+<h2 id="获奖情况"><a href="#获奖情况" class="headerlink" title="获奖情况"></a>获奖情况</h2><ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<h2 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h2><ul>
+<li></li>
+<li></li>
+</ul>
+<blockquote>
+<p>感谢抽空阅读</p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

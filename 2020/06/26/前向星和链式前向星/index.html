@@ -1,25 +1,155 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前向星和链式前向星 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="算法">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="前向星和链式前向星"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>前向星和链式前向星</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/06/26/前向星和链式前向星/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-06-25T16:13:12.000Z">
+          2020-06-26
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>前向星</strong></p>
+<p>一种数据结构，以储存边的方式来存储图。构造方法如下：读入每条边的信息，<strong>将边存放在数组中</strong>，把数组中的边按照<strong>起点顺序</strong>排序(可以使用基数排序)，前向星就构造完了。通常用在点的数目太多，或两点之间有多条弧的时候。一般在别的数据结构不能使用的时候才考虑用前向星。除了不能直接用起点终点定位以外，前向星几乎是完美的。</p>
+<p>前向星不需要像邻接表那样用指针指向下一条边，还是挺方便的。但是，由于前向星初始化需要快排一遍，相对邻接表要慢许多。考虑到一般图论题点数都不会很大，所以可以改为采用基数排序的思想对前向星进行排序。</p>
+<p>一开始读入时，先算出每个点出去的边有多少条，然后计算出排序后每个点出去的第一条边位置应在哪里，最后把全部边扫一遍放到排序后应在的位置就好了。</p>
+<p>这样排序的话初始化的时间复杂度就降到了O(m)，总体时间并不会逊色于邻接表。                            ——百度百科</p>
+<p>前向星是一种特殊的边集数组，我们把边集数组中的每一条边按照起点从小到大排序，如果起点相同就按照终点从小到大排序，并记录下以某个点为起点的所有边在数组中的起始位置和存储长度，那么前向星就构造好了。</p>
+<p>通常，用 len[i] 来记录所有以 i 为起点的边在数组中的存储长度，用 head[i] 记录以 i 为边集在数组中的第一个存储位置。</p>
+<p><strong>链式前向星</strong></p>
+<p>用链式前向星，可以避免排序。</p>
+<p>一篇比较详细的博客：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/acdreamers/article/details/16902023">https://blog.csdn.net/acdreamers/article/details/16902023</a></p>
+</blockquote>
+<p>代码实现如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//edge[i].v表示第i条边的终点，edge[i].next表示与第i条边同起点的下一条边的位置，edge[i].w为边权值</span></span><br><span class="line"><span class="comment">//数组head表示以i为起点的第一条边存储的位置，一般初始化为-1</span></span><br><span class="line"><span class="comment">//你会发现head表示的以i为起点的第一条边存储的位置，实际上是在以i为起点的所有边的最后输入的那个编号(因为cnt已经加过1了)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v;</span><br><span class="line">    <span class="keyword">int</span> w;</span><br><span class="line">    <span class="keyword">int</span> next;</span><br><span class="line">&#125;edge[<span class="number">100001</span>];</span><br><span class="line"><span class="keyword">int</span> cnt, head[<span class="number">100001</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    cnt++;</span><br><span class="line">    edge[cnt].v = y;</span><br><span class="line">    edge[cnt].w = w;</span><br><span class="line">    edge[cnt].next = head[x];</span><br><span class="line">    head[x] = cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/前向星和链式前向星/">前向星和链式前向星</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/算法/">算法</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

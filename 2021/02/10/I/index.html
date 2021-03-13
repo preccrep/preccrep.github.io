@@ -1,25 +1,206 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Note for Computer Networking, Chapter I | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="Computer Networking">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Note for Computer Networking, Chapter I"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Note for Computer Networking, Chapter I</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/02/10/I/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-02-10T12:19:16.000Z">
+          2021-02-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="What-is-the-Internet"><a href="#What-is-the-Internet" class="headerlink" title="What is the Internet"></a>What is the Internet</h1><blockquote>
+<p>主机（host）和端系统（end system）有什么区别？列举几种不同类型的端系统。Web服务器是一种端系统吗？</p>
+</blockquote>
+<p>没有不同，只是两种不同的叫法。<br>智能手机、电脑、电视、WEB服务器、游戏机等等。<br>如上所述，WEB服务器也是一种端系统。</p>
+<h2 id="从硬件和软件组件的角度描述因特网"><a href="#从硬件和软件组件的角度描述因特网" class="headerlink" title="从硬件和软件组件的角度描述因特网"></a>从硬件和软件组件的角度描述因特网</h2><blockquote>
+<p>端系统通过<strong>通信链路</strong>（communication link）和<strong>分组交换机</strong>（packet switch）连接到一起</p>
+</blockquote>
+<p><strong>通信链路</strong>有许多类型，它们由不同类型的物理媒体组成。这些物理媒体包括同轴电缆、铜线、光纤和无线电频谱。不同的链路能够以不同的速率传输数据，链路的<strong>传输速率</strong>（transmission rate）以比特/秒（bit/s, or bps）度量。当一台端系统要向另一台端系统发送数据时，<em>发送端系统（sending end system）</em>将数据分段，并为每段加上首部字节（When one end system has data to send to another end system, the sending end system segments the data and adds header bytes to each segment.）。由此形成的信息包成为<strong>分组</strong>（packet）。这些分组通过网络发送到<em>目的端系统（destination end system）</em>，在那里被装配成初始数据。</p>
+<p><strong>分组交换机</strong>从它的一条<em>入通信链路（incoming communication links）</em>接收到达的分组，并从它的一条<em>出通信链路（outgoing communication links）</em>转发该分组。分组交换机类型很多，最著名的是<strong>路由器</strong>（router）和<strong>链路层交换机</strong>（link-layer switch）。</p>
+<p>链路层交换机通常用于<em>接入网（access networks）</em>中，而路由器通常用于<em>网络核心（network core）</em>中。</p>
+<p>从发送端系统到接收端系统，一个分组所经历的一系列通信链路和分组交换机成为通过该网络的<strong>路径</strong>（route or path）。</p>
+<blockquote>
+<p>泽字节：zettabyte，10^21字节</p>
+</blockquote>
+<p>端系统通过<strong>因特网服务提供商</strong>（Internet Service Provider, ISP）接入因特网。较低层的ISP通过国家的、国际的较高层ISP（如Level 3 Communications、AT&amp;T、Sprint和NTT）互联起来。较高层ISP是由通过高速光纤链路互联的高速路由器组成的。无论是较高层还是较低层ISP网络，它们每个都是独立管理的，运行着IP协议（详情见后），遵从一定的命名和地址规则。</p>
+<p>端系统、分组交换机和其他因特网部件都要运行一系列<strong>协议</strong>（protocol），这些协议控制因特网中信息的接收和发送。<strong>TCP</strong>（Transmission Control Protocol，传输控制协议）和<strong>IP</strong>（Internet Protocol，网际协议）是因特网中两个最为重要的协议。</p>
+<p>IP协议定义了在路由器和端系统之间发送和接收的分组格式。因特网的主要协议统称为TCP/IP。</p>
+<p><strong>因特网标准</strong>（Internet standard）由因特网工程任务组（Internet Engineering Task Force, IETF）研发。IETF的标准文档称为<strong>请求评论</strong>（Request For Comment, RFC）。RFC最初只是普通的请求评论（因此而得名），目的是解决因特网先驱者们面临的网络和协议问题。RFC文档往往是技术性很强并相当详细的。它们定义了TCP、IP、HTTP（用于Web）和SMTP（用于电子邮件）等协议。</p>
+<h2 id="从为应用程序提供服务的基础设施的角度描述因特网"><a href="#从为应用程序提供服务的基础设施的角度描述因特网" class="headerlink" title="从为应用程序提供服务的基础设施的角度描述因特网"></a>从为应用程序提供服务的基础设施的角度描述因特网</h2><blockquote>
+<p>涉及多个相互交换数据的端系统的的应用程序称为<strong>分布式应用程序</strong>（distributed application）。</p>
+<p>因特网应用程序运行在端系统上，即它们并不运行在网络核心中的分组交换机中。分组交换机能够加速端系统之间的数据交换，并不在意应用程序。</p>
+</blockquote>
+<blockquote>
+<p>运行在一个端系统上的应用程序如何让因特网向运行在另一个端系统上的软件发送数据？</p>
+<p>与因特网相连的端系统提供了一个<strong>套接字接口</strong>（socket interface），该接口规定了运行在一个端系统上的程序请求因特网基础设施向运行在另一个端系统上的特定目的地程序交付数据的方式。因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
+</blockquote>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p><strong>协议</strong>定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送和/或接收一条报文或其他事物所采取的动作。</p>
+<h2 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h2><p>端系统位于因特网的边缘，包括桌面计算机、服务器（Web和电子邮件）和移动计算机。</p>
+<p>端系统也称为主机，因为它们容纳（即运行）应用程序，如Web浏览器程序、Web服务器程序、电子邮件客户程序或电子邮件服务器程序等。</p>
+<p>主机有时又被进一步划分为两类：<strong>客户</strong>（client）和<strong>服务器</strong>（server）。客户通常是桌面PC、移动PC和智能手机等；服务器通常是更为强大的机器，用于存储和发布Web页面、流视频、中继电子邮件等。如今大部分提供搜索结果、电子邮件、Web页面和视频的服务器都属于大型<strong>数据中心</strong>（data center）。</p>
+<h3 id="接入网"><a href="#接入网" class="headerlink" title="接入网"></a>接入网</h3><p>接入网是将端系统物理连接到其<strong>边缘路由器</strong>（edge router）的网络。边缘路由器是端系统到任何其他远程端系统的路径上的第一台路由器。</p>
+<h4 id="家庭接入"><a href="#家庭接入" class="headerlink" title="家庭接入"></a>家庭接入</h4><p>宽带住宅接入有两种最流行的类型：<strong>数字用户线</strong>（Digital Subscriber Line, DSL）和<strong>电缆</strong>。住户通常从提供本地电话接入的本地电话公司处获得DSL因特网接入。因此，当使用DSL时，用户的本地电话公司也是它的ISP。例如，每个用户的DSL调制解调器使用现有的电话线（即双绞铜线）与位于电话公司的本地中心局（CO）中的数字用户线接入复用器（DSLAM）交换数据。家庭的DSL调制解调器得到数字数据后将其转换为高频音，以通过电话线传输给本地中心局；来自许多家庭的模拟信号在DSLAM处被转换回数字形式。</p>
+<p>家庭电话线同时承载了数据和传统的电话信号，它们用不同的频率进行编码：</p>
+<ul>
+<li>高速下行信道，位于50kHz到1MHz频段；</li>
+<li>中速上行信道，位于4kHz到50kHz频段；</li>
+<li>普通的双向电话信道，位于0到4kHz频段.</li>
+</ul>
+<p>这种方法使单根DSL线路看起来就像有3根单独的线路一样，因此一个电话呼叫和一个因特网连接能够同时共享DSL线路。在用户一侧，一个分配器把到达家庭的数据信号和电话信号分隔开，并将数据信号转发给DSL调制解调器。在电话公司一侧，在CO中，DSLAM把数据和电话信号分隔开，并将数据送往因特网。数百甚至上千个家庭与同一个DSLAM相连。</p>
+<p>DSL利用电话公司现有的本地电话基础设施，而<strong>电缆因特网接入</strong>（cable Internet access）利用了有线电视公司现有的有线电视基础设施。住宅从提供有线电视的公司获得了电缆因特网接入。</p>
+<p>在<strong>混合光纤同轴</strong>（Hybrid Fiber Coax, HFC）系统中，光缆将电缆头端连接到地区枢纽，从这里使用传统的同轴电缆到达各家各户和公寓。</p>
+<p>电缆因特网接入需要特殊的调制解调器，称为<em>电缆调制解调器（cable modem）</em>。</p>
+<p>电缆因特网接入的一个重要特征是共享广播媒体。</p>
+<p>还有一种更高速率的接入方式是<strong>光纤到户</strong>（Fiber To The Home, FTTH），即从本地中心局直接到家庭连一条光线路径。</p>
+<h3 id="企业（和家庭）接入：以太网和WiFi"><a href="#企业（和家庭）接入：以太网和WiFi" class="headerlink" title="企业（和家庭）接入：以太网和WiFi"></a>企业（和家庭）接入：以太网和WiFi</h3><p>使用局域网（LAN）将端系统连接到边缘路由器。</p>
+<p>以太网用户使用双绞铜线与一台以太网交换机相连，以太网交换机或这样相连的交换机网络，则再与更大的因特网相连。</p>
+<h3 id="广域无线接入：3G和LTE"><a href="#广域无线接入：3G和LTE" class="headerlink" title="广域无线接入：3G和LTE"></a>广域无线接入：3G和LTE</h3><p>电信公司已经在所谓第三代（3G）无线技术中进行了大量投资，3G为分组交换广域无线因特网接入提供了超过1Mbps的速率。甚至更高速率的广域接入技术即第四代（4G）广域无线网络也已经被部署了。</p>
+<p>LTE（长期演进，Long-Term Evolution）来源于3G技术，它能够取得超过10Mbps的速率。</p>
+<h2 id="物理媒体"><a href="#物理媒体" class="headerlink" title="物理媒体"></a>物理媒体</h2><blockquote>
+<p>前面提到的物理媒体：</p>
+<p>HFC使用光缆和同轴电缆，DSL和以太网使用双绞铜线，移动接入网使用无线电频谱</p>
+</blockquote>
+<p>对于每个发射器-接收器对，通过跨越一种<strong>物理媒体</strong>（physical medium）传播电磁波或光脉冲来发送该比特。该物理媒体可具有多种形状和形式，并且对沿途的每个发射器-接收器对不必具有相同的类型。</p>
+<blockquote>
+<p>物理媒体分为<strong>导引型媒体</strong>（guided media）和<strong>非导引型媒体</strong>（unguided media）。对于导引型媒体，电波沿着固体媒体前行，如光缆、双铜绞线或同轴电缆。对于非引导型媒体，电波在空气或外层空间中传播，例如在无线局域网或数字卫星频道中。</p>
+</blockquote>
+<h2 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h2><p>网络核心是由互联因特网端系统的分组交换机和链路构成的网状网络。</p>
+<h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><h4 id="存储转发传输"><a href="#存储转发传输" class="headerlink" title="存储转发传输"></a>存储转发传输</h4><p>多数分组交换机在链路的输入端使用<strong>存储转发传输</strong>（store-and-forward transmission）机制。</p>
+<blockquote>
+<p>在交换机能够开始向输出链路传输该分组的第一个比特之前，必须接收到整个分组。</p>
+</blockquote>
+<p>该分组的比特缓存在路由器中，直到该分组的所有比特全部到达路由器才会向目的地传输。</p>
+<h4 id="排队时延和分组丢失"><a href="#排队时延和分组丢失" class="headerlink" title="排队时延和分组丢失"></a>排队时延和分组丢失</h4><p>每台分组交换机有多条链路与之相连。对于每条相连的链路，该分组交换机具有一个<strong>输出缓存</strong>（output buffer，也成为<strong>输出队列</strong>），它用于存储路由器准备发往那条链路的分组。如果到达的分组发现要走的链路还在传输其他分组，那么该分组就必须等待。因此，除了存储转发时延，还有输出缓存的<strong>排队时延</strong>（queuing delay）。</p>
+<p>这些时延是变化的，变化程度取决于网络的拥塞程度。因为缓存空间的大小是有限的，一个到达的分组可能发现该缓存已被其他等待传输的分组完全充满了。在此情况下，将出现<strong>分组丢失（丢包）</strong>（packet loss），到达的分组或已经排队的分组之一将被丢弃。</p>
+<h4 id="转发表和路由选择协议"><a href="#转发表和路由选择协议" class="headerlink" title="转发表和路由选择协议"></a>转发表和路由选择协议</h4><p>每个端系统都有一个IP地址。源在该分组的首部包含了目的地IP地址。</p>
+<p>当一个分组到达路由器时，路由器检查目的地址那部分，并向一台相邻路由器转发该分组。每台路由器具有一个<strong>转发表</strong>（forwarding table）。</p>
+<p>因特网具有一些特殊的<strong>路由选择协议</strong>（routing protocol），用于自动地设置这些转发表。例如，一个路由选择协议可以决定从每台路由器到每个目的地的最短路径，并使用这些最短路径结果来配置路由器中的转发表。</p>
+<h4 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h4><p>通过网络链路和交换机移动数据有两种基本方法：<strong>电路交换</strong>（circuit switching）和<strong>分组交换</strong>（packet switching）。</p>
+<p>在电路交换网络中，在端系统间通信会话期间，预留了端系统间沿路径通信所需要的资源（缓存，链路传输速率）。也就是说原则上是不需要等待的。</p>
+<h5 id="电路交换网络中的复用"><a href="#电路交换网络中的复用" class="headerlink" title="电路交换网络中的复用"></a>电路交换网络中的复用</h5><p>链路中的电路是通过<strong>频分复用</strong>（Frequency-Division Multiplexing, FDM）或<strong>时分复用</strong>（Time-Division Multiplexing, TDM）来实现的。对于FDM，链路的频谱由跨越链路创建的所有连接共享。特别是，在连接期间链路为每条连接专用一个频段。在电话网络中，这个频段的宽度通常为4kHz（即每秒4000周期）。该频段的宽度称为<strong>带宽</strong>（bandwidth）。调频无线电台也使用FDM来共享88MHz~108MHz的频谱，其中每个电台被分配一个特定的频段。</p>
+<p>对于一条TDM链路，时间被划分为固定期间的帧，并且每个帧又被划分为固定数量的时隙。当网络跨越一条链路创建一条连接时，网络在每个帧中为该连接指定一个时隙，这些时隙由该连接专门使用，一个时隙（在每个帧内）可用于传输该连接的数据。</p>
+<blockquote>
+<p>考虑从主机A到主机B经一个电路交换网络发送一个640000比特的文件需要多长时间。假如在该网络中所有链路使用具有24时隙的TDM，比特速率为1.536Mbps。同时假定在主机A能够开始传输该文件之前，需要500ms创建一条端到端电路。它需要多长时间才能发送该文件？每条链路具有的传输速率是1. 536Mbps/24 = 64kbps，因此传输该文件需要（640kb）/（64kbps） =10s。这个10s，再加上电路创建时间，这样就需要10.5s发送该文件。值得注意的是，该传输时间与链路数量无关：端到端电路不管是通过一条链路还是100条链路，传输时间都将是10s。</p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Computer-Networking/">Computer Networking</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

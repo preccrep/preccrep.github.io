@@ -1,25 +1,269 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MATLAB绘图 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="MATLAB">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="MATLAB绘图"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>MATLAB绘图</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/07/16/MATLAB绘图/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-07-16T02:47:52.000Z">
+          2020-07-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="二维曲线"><a href="#二维曲线" class="headerlink" title="二维曲线"></a>二维曲线</h1><h2 id="plot函数"><a href="#plot函数" class="headerlink" title="plot函数"></a>plot函数</h2><h3 id="plot函数的基本用法"><a href="#plot函数的基本用法" class="headerlink" title="plot函数的基本用法"></a>plot函数的基本用法</h3><p><strong>plot(x, y)</strong></p>
+<p>其中，x、y 分别存储 x 坐标和 y 坐标。</p>
+<p>绘制一条折线：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">y = [<span class="number">7</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">1</span>];</span><br><span class="line"><span class="built_in">plot</span>(x,y)</span><br></pre></td></tr></table></figure>
+
+<h3 id="最简单的plot函数调用格式"><a href="#最简单的plot函数调用格式" class="headerlink" title="最简单的plot函数调用格式"></a>最简单的plot函数调用格式</h3><p> <strong>plot(x)</strong></p>
+<p>当 x 是实向量时，则以该向量元素的下标为横坐标，元素的值为纵坐标，绘制曲线。</p>
+<p>当 x 是复向量时，则以该向量元素的实部为横坐标，虚部为纵坐标，绘制曲线。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>];</span><br><span class="line">y = [<span class="number">6</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">3</span>];</span><br><span class="line">c = <span class="built_in">complex</span>(x, y);</span><br><span class="line"><span class="built_in">plot</span>(c)</span><br></pre></td></tr></table></figure>
+
+<h3 id="plot-x-y-函数参数的变化形式"><a href="#plot-x-y-函数参数的变化形式" class="headerlink" title="plot(x, y)函数参数的变化形式"></a>plot(x, y)函数参数的变化形式</h3><p>一般地，x、y 是长度相等的向量。</p>
+<p><strong>当 x 是向量，y 是矩阵时：</strong></p>
+<p>如果矩阵 y 的列数等于 x 的长度，则以向量 x 为横坐标，以 y 的每个行向量为纵坐标绘制曲线，曲线的条数等于 y 的行数。</p>
+<p>如果矩阵 y 的行数等于 x 的长度，则以向量 x 为横坐标，以 y 的每个列向量为纵坐标绘制曲线，曲线的条数等于 y 的列数。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">y = [sin(x);sin(2*x);sin(x/2)];  # y是一个矩阵</span><br><span class="line"><span class="built_in">plot</span>(x,y)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">0</span>:<span class="number">0.01</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">t1 = t&#x27;;</span><br><span class="line">x = [t1,t1,t1];</span><br><span class="line">y = [<span class="built_in">sin</span>(t1),<span class="built_in">sin</span>(<span class="number">2</span>*t1),<span class="built_in">sin</span>(<span class="number">0.5</span>*t1)];</span><br><span class="line"><span class="built_in">plot</span>(x,y)</span><br></pre></td></tr></table></figure>
+
+<h3 id="含多个输入参数的plot函数"><a href="#含多个输入参数的plot函数" class="headerlink" title="含多个输入参数的plot函数"></a>含多个输入参数的plot函数</h3><p><strong>ploy(x1, y1, x2, y2, … xn, yn)</strong></p>
+<p>其中，每一向量对构成一组数据的横、纵坐标，绘制一条曲线。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t1 = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">10</span>);</span><br><span class="line">t2 = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">20</span>);</span><br><span class="line">t3 = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line"><span class="built_in">plot</span>(t1,<span class="built_in">sin</span>(t1),t2,<span class="built_in">sin</span>(t2)+<span class="number">1</span>,t3,<span class="built_in">sin</span>(t3)+<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="含选项的plot函数"><a href="#含选项的plot函数" class="headerlink" title="含选项的plot函数"></a>含选项的plot函数</h3><p><strong>plot(x, y, 选项)</strong></p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">线型：<span class="string">&quot;-&quot;</span><span class="comment">(实线)</span>, <span class="string">&quot;:&quot;</span><span class="comment">(虚线)</span>, <span class="string">&quot;-.&quot;</span><span class="comment">(点画线)</span>, <span class="string">&quot;--&quot;</span><span class="comment">(双画线)</span></span><br><span class="line">颜色：<span class="string">&quot;r&quot;</span><span class="comment">(红)</span>, <span class="string">&quot;g&quot;</span><span class="comment">(绿)</span>, <span class="string">&quot;b&quot;</span><span class="comment">(蓝)</span>, <span class="string">&quot;w&quot;</span><span class="comment">(白)</span>, <span class="string">&quot;k&quot;</span><span class="comment">(黑)</span></span><br><span class="line">数据点标记：<span class="string">&quot;*&quot;</span><span class="comment">(星号)</span>, <span class="string">&quot;o&quot;</span><span class="comment">(圆圈)</span>, <span class="string">&quot;s&quot;</span><span class="comment">(方块)</span>, <span class="string">&quot;p&quot;</span><span class="comment">(五角星)</span>, <span class="string">&quot;^&quot;</span><span class="comment">(朝上三角符号)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = (<span class="number">0</span>:<span class="built_in">pi</span>/<span class="number">50</span>:<span class="number">2</span>*<span class="built_in">pi</span>)&#x27;;</span><br><span class="line">y1 = <span class="number">2</span>*<span class="built_in">exp</span>(<span class="number">-0.5</span>*x)*[<span class="number">1</span>,<span class="number">-1</span>];</span><br><span class="line">y2 = <span class="number">2</span>*<span class="built_in">exp</span>(<span class="number">-0.5</span>*x).*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>*x);</span><br><span class="line">x1 = <span class="number">0</span>:<span class="number">0.5</span>:<span class="number">6</span>;</span><br><span class="line">y3 = <span class="number">2</span>*<span class="built_in">exp</span>(<span class="number">-0.5</span>*x1).*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>*x1);</span><br><span class="line"><span class="built_in">plot</span>(x,y1,<span class="string">&#x27;k:&#x27;</span>,x,y2,<span class="string">&#x27;b--&#x27;</span>,x1,y3,<span class="string">&#x27;rp&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="fplot函数"><a href="#fplot函数" class="headerlink" title="fplot函数"></a>fplot函数</h2><h3 id="fplot函数的基本用法"><a href="#fplot函数的基本用法" class="headerlink" title="fplot函数的基本用法"></a>fplot函数的基本用法</h3><p><strong>fplot(f, lims, 选项)</strong></p>
+<p>其中，f 代表一个函数，通常采用函数句柄的形式。lims 为 x 轴的取值范围，用二元向量 [xmin, xmax] 描述，默认值为 [-5, 5]。选项定义与 plot 函数相同。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fplot(@(x)<span class="built_in">sin</span>(<span class="number">1.</span>/x),[<span class="number">0</span>,<span class="number">0.2</span>],<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="双输入函数参数的用法"><a href="#双输入函数参数的用法" class="headerlink" title="双输入函数参数的用法"></a>双输入函数参数的用法</h3><p><strong>fplot(funx, funy, tlims, 选项)</strong></p>
+<p>其中，funx、funy 代表函数，通常采用函数句柄的形式。tlims 为参数函数 funx 和 funy 的自变量的取值范围，用二元向量 [tmin, tmax] 描述。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fplot(@(t)t.*<span class="built_in">sin</span>(t),@(t)t.*<span class="built_in">cos</span>(t),[<span class="number">0</span>,<span class="number">10</span>*<span class="built_in">pi</span>],<span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="绘制图形的辅助操作"><a href="#绘制图形的辅助操作" class="headerlink" title="绘制图形的辅助操作"></a>绘制图形的辅助操作</h1><h2 id="图形标注"><a href="#图形标注" class="headerlink" title="图形标注"></a>图形标注</h2><p><strong>title(图形标题)</strong></p>
+<p><strong>xlabel(x 轴说明)</strong></p>
+<p><strong>ylabel(y轴说明)</strong></p>
+<p><strong>text(x, y, 图形说明)</strong></p>
+<p><strong>legend(图例1, 图例2, …)</strong></p>
+<h3 id="title函数"><a href="#title函数" class="headerlink" title="title函数"></a>title函数</h3><p><strong>title函数的基本用法</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">-2</span>*<span class="built_in">pi</span>:<span class="number">0.05</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">y = <span class="built_in">sin</span>(x);</span><br><span class="line"><span class="built_in">plot</span>(x, y);</span><br><span class="line">title(&#123;&#x27;MATLAB&#x27;, &#x27;y=sin x&#x27;&#125;)   # 有多行标题时要用&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>在图形标题中使用LaTeX格式控制符</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title(<span class="string">&#x27;y=cos&#123;\omega&#125;t&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;y=e^&#123;axt&#125;&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;X_&#123;1&#125;&#123;\geq&#125;X_&#123;2&#125;&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;&#123;\bf y=cos&#123;\omega&#125;t + &#123;\beta&#125;&#125;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">\bf</span> 加粗</span><br><span class="line"><span class="string">\it</span> 斜体</span><br><span class="line"><span class="string">\rm</span> 正体</span><br></pre></td></tr></table></figure>
+
+<p><strong>含属性设置的title函数</strong></p>
+<p><strong>title(图形标题，属性名，属性值)</strong></p>
+<p><strong>Color</strong>属性：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title(<span class="string">&#x27;y=sin x&#x27;</span>,<span class="string">&#x27;Color&#x27;</span>,<span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>FontSize</strong>属性：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title(<span class="string">&#x27;y=sin x&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">24</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="xlabel和ylabel"><a href="#xlabel和ylabel" class="headerlink" title="xlabel和ylabel"></a>xlabel和ylabel</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">-2</span>*<span class="built_in">pi</span>:<span class="number">0.05</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">y = <span class="built_in">sin</span>(x);</span><br><span class="line"><span class="built_in">plot</span>(x, y)</span><br><span class="line">title(<span class="string">&#x27;y = sin(x)&#x27;</span>)</span><br><span class="line">xlabel(<span class="string">&#x27;-2\pi \leq x \leq 2\pi&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="text函数和gtext函数"><a href="#text函数和gtext函数" class="headerlink" title="text函数和gtext函数"></a>text函数和gtext函数</h3><p><strong>text(x, y, 说明)</strong></p>
+<p><strong>gtext(说明)</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; text(<span class="number">-2</span>*<span class="built_in">pi</span>, <span class="number">0</span>, <span class="string">&#x27;-2&#123;\pi&#125;&#x27;</span>)</span><br><span class="line">&gt;&gt; text(<span class="number">3</span>, <span class="number">0.28</span>, <span class="string">&#x27;\leftarrow sin(x)&#x27;</span>)</span><br><span class="line">&gt;&gt; gtext(<span class="string">&#x27;\leftarrow sin(x)&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="legend函数"><a href="#legend函数" class="headerlink" title="legend函数"></a>legend函数</h3><p><strong>legend(图例1, 图例2, …)</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line"><span class="built_in">plot</span>(x,[<span class="built_in">sin</span>(x);<span class="built_in">sin</span>(<span class="number">2</span>*x);<span class="built_in">sin</span>(<span class="number">3</span>*x)])</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">&#x27;sin(x)&#x27;</span>,<span class="string">&#x27;sin(2x)&#x27;</span>,<span class="string">&#x27;sin(3x)&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="坐标控制"><a href="#坐标控制" class="headerlink" title="坐标控制"></a>坐标控制</h2><h3 id="axis函数"><a href="#axis函数" class="headerlink" title="axis函数"></a>axis函数</h3><p><strong>axis([xmin, xmax, ymin, ymax, zmin, zmax])</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axis([-<span class="built_in">pi</span>,<span class="built_in">pi</span>,<span class="number">-10</span>,<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>axis equal</strong>：纵、横坐标轴采用等长刻度</p>
+<p><strong>axis square</strong>：产生正方形坐标系(默认为矩形)</p>
+<p><strong>axis auto</strong>：使用默认设置</p>
+<p><strong>axis off</strong>：取消坐标轴</p>
+<p><strong>axis on</strong>：显示坐标轴</p>
+<h3 id="给坐标系加网格和边框"><a href="#给坐标系加网格和边框" class="headerlink" title="给坐标系加网格和边框"></a>给坐标系加网格和边框</h3><p><strong>网格</strong></p>
+<p><strong>grid on</strong>：显示网格</p>
+<p><strong>grid off</strong>：不显示网格</p>
+<p><strong>grid</strong>：在两种状态下切换</p>
+<p><strong>边框</strong></p>
+<p><strong>box on</strong></p>
+<p><strong>box off</strong></p>
+<p><strong>box</strong></p>
+<p>一般来说，绘图命令每执行一次，就刷新一次图形窗口，原有图形不会保持。要想保持原有图形，可以用图形保持命令：</p>
+<p><strong>hold on</strong></p>
+<p><strong>hold off</strong></p>
+<p><strong>hold</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">x = <span class="built_in">sin</span>(t); y = <span class="built_in">cos</span>(t);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(<span class="number">2</span>*x, <span class="number">2</span>*y, <span class="string">&#x27;r--&#x27;</span>)</span><br><span class="line">grid on</span><br><span class="line">axis([<span class="number">-2.2</span>,<span class="number">2.2</span>,<span class="number">-2.2</span>,<span class="number">2.2</span>])</span><br><span class="line">axis equal   # 显示正圆而不是椭圆</span><br></pre></td></tr></table></figure>
+
+<h2 id="图形窗口的分割"><a href="#图形窗口的分割" class="headerlink" title="图形窗口的分割"></a>图形窗口的分割</h2><p>子图：同一图形窗口中的不同坐标系下的图形称为子图。</p>
+<p><strong>subplot</strong>函数</p>
+<p>**subplot(m, n, p)**：其中，m 和 n 指定将图形窗口分成 m * n 个绘图区，p 指定当前活动区。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">60</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">sin</span>(x)<span class="number">-1</span>)</span><br><span class="line">title(<span class="string">&#x27;sin(x)-1&#x27;</span>); axis([<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">-2</span>,<span class="number">0</span>])</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">cos</span>(x)+<span class="number">1</span>)</span><br><span class="line">title(<span class="string">&#x27;cos(x)+1&#x27;</span>); axis([<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">0</span>,<span class="number">2</span>])</span><br><span class="line">subplot(<span class="number">4</span>,<span class="number">4</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">tan</span>(x))</span><br><span class="line">title(<span class="string">&#x27;tan(x)&#x27;</span>);</span><br><span class="line">subplot(<span class="number">4</span>,<span class="number">4</span>,<span class="number">8</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">cot</span>(x))</span><br><span class="line">title(<span class="string">&#x27;cot(x)&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他坐标系下的二维曲线图"><a href="#其他坐标系下的二维曲线图" class="headerlink" title="其他坐标系下的二维曲线图"></a>其他坐标系下的二维曲线图</h1><h2 id="对数坐标图"><a href="#对数坐标图" class="headerlink" title="对数坐标图"></a>对数坐标图</h2><p><strong>semilogx(x1, y1, 选项1, x2, y2, 选项2, …)</strong></p>
+<p><strong>semilogy(x1, y1, 选项1, x2, y2, 选项2, …)</strong></p>
+<p><strong>loglog(x1, y1, 选项1, x2, y2, 选项2, …)</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">10</span>;</span><br><span class="line">y = <span class="number">1.</span>/x;</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y)</span><br><span class="line">title(<span class="string">&#x27;plot(x,y)&#x27;</span>); subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">semilogx(x, y)</span><br><span class="line">title(<span class="string">&#x27;semilogx(x,y)&#x27;</span>); grid on</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">semilogy(x, y)</span><br><span class="line">title(<span class="string">&#x27;semilogy(x,y)&#x27;</span>); grid on</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">loglog(x, y)</span><br><span class="line">title(<span class="string">&#x27;loglog(x,y)&#x27;</span>); grid on</span><br></pre></td></tr></table></figure>
+
+<h2 id="极坐标图"><a href="#极坐标图" class="headerlink" title="极坐标图"></a>极坐标图</h2><p><strong>polar(theta, rho, 选项)</strong></p>
+<p>其中，theta 为极角，rho 为极径，选项的内容与 plot 函数相同。</p>
+<p>绘制心形线：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">0</span>:<span class="built_in">pi</span>/<span class="number">100</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">r = <span class="number">1</span> - <span class="built_in">sin</span>(t);</span><br><span class="line">subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">polar(t, r)</span><br><span class="line">subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">t1 = t - <span class="built_in">pi</span>/<span class="number">2</span>;</span><br><span class="line">r1 = <span class="number">1</span> - <span class="built_in">sin</span>(t1);</span><br><span class="line">polar(t, r1)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/MATLAB/">MATLAB</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

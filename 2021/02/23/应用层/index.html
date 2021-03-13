@@ -1,25 +1,359 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>应用层 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="计算机网络">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="应用层"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>应用层</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2021/02/23/应用层/" rel="bookmark">
+        <time class="entry-date published" datetime="2021-02-23T06:12:36.000Z">
+          2021-02-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>应用层<br>应用层协议原理<br>网络应用程序体系结构<br>现代网络应用程序的两大主流体系结构：客户-服务器体系结构 对等（P2P）体系结构</p>
+<p>客户-服务器体系结构（client-server architecture）<br>在此结构中，有一个总是打开的主机称为服务器，它服务于来自许多其他称为客户的主机的请求。客户之间不能相互通信。</p>
+<p>该服务器具有固定的、周知的地址，即IP地址。</p>
+<p>P2P体系结构<br>在一个P2P体系结构中，对位于数据中心的专用服务器有最小的（或者没有）依赖。相反，应用程序在间断连接的主机对之间使用直接通信，这些主机对被称为对等方。</p>
+<p>进程通信</p>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>应用层的大多数协议都是基于客户服务器方式。客户和服务器都是指通信中所涉及的两个应用进程。客户服务器方式所描述的进程之间服务和被服务的关系。</p>
+<p>**域名系统(Domain Name System, 简称DNS)**，主要是解决Internet网上机器或设备命名的一种系统。它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。</p>
+<p>DNS使用TCP和UDP端口53.</p>
+<p>对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p>
+<p>域名系统是一种服务器资源，许多应用层软件经常直接使用域名系统DNS，但计算机的用户只是间接而不是直接使用域名系统。</p>
+<p>Internet采用层次结构的命名树作为主机的名字，并使用分布式的域名系统DNS。</p>
+<p>域名服务器程序在专设的节点上运行，运行该程序的机器称为域名服务器。</p>
+<blockquote>
+<p><strong>域名</strong>（英语：<strong>Domain Name</strong>），又称<strong>网域</strong>，是由一串用点分隔的名字组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时对计算机的定位标识（有时也指地理位置）。</p>
+<p>由于IP地址具有不方便记忆并且不能显示地址组织的名称和性质等缺点，人们设计出了域名，并通过网域名称系统（DNS，Domain Name System）来将域名和IP地址相互映射，使人更方便地访问互联网，而不用去记住能够被机器直接读取的IP地址数串。</p>
+</blockquote>
+<p>Internet采用了层次树状结构的命名方法，任何一个连接在Internet上的主机或路由器，都有一个唯一的层次结构的名字，即域名。</p>
+<p>域名的结构由若干层次组成，各分量之间用点隔开，各分量分别代表不同级别的域名。</p>
+<p><strong>域名服务器与域名解析</strong></p>
+<p>Internet允许各个单位根据具体情况将本单位的域名划分为若干个域名服务器管辖区(zone)，并在各管辖区中设置相应的授权域名服务器。</p>
+<p>域名是需要授权的，需要预先注册登记，如果没有授权，域名是不允许改动、删除的。</p>
+<p>在Internet中，划分多个区域，每个区域中设一个授权区域。</p>
+<p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210223145913712.png" alt="image-20210223145913712"></p>
+<p><strong>域名解析过程</strong>：</p>
+<p>DNS查询有两种方式：递归查询和迭代查询。</p>
+<p>DNS客户端设置使用的DNS服务器一般都是递归服务器，它负责全权处理客户端的DNS查询请求，直到返回最终结果。DNS服务器之间一般采用迭代查询方式。</p>
+<p><strong>递归查询</strong>：如果想知道一个域名对应的IP地址，但在访问本地域名服务器时，可能该域名查询不到，此时该本地域名服务器就会请求它的上级支援，直到查到所查询的IP地址。</p>
+<p>递归解析（递归查询）过程中，一直是以本地名称服务器为中心的，DNS客户端只是发出原始的域名查询请求报文，然后就一直处于等待状态，直到本地域名服务器发来最终的查询结果。此时的本地域名服务器只是起到了中介代理的作用。</p>
+<p>本地名称服务器也有缓存技术。</p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210223152830400.png" alt="image-20210223152830400"  />
+
+<p><strong>域名解析过程加快的途径</strong>：</p>
+<ul>
+<li>物理配置上，配一台运行速度高（CPU主频高、计算机内存大）的域名服务器；</li>
+<li>让数据库域名表中记录有序存放，可采用效率高的查找算法，例如折半查找法；</li>
+<li>准备一个高速缓冲cache，将域名放入其中，即名字的高速缓存。</li>
+</ul>
+<h1 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h1><p>文件传输协议FTP是用于在网络上进行文件传输的一套标准协议。</p>
+<p>FTP能把多种类型的文件或文档，从不同厂家生产的计算机、手机等智能终端，通过有线或无线的计算机网络，发送复制到远程另外一台智能设备中，是网络环境的一项基本应用。</p>
+<p>网络环境下复制文件的复杂性主要是：</p>
+<ol>
+<li>计算机存储数据的格式不同；</li>
+<li>文件的目录结构和文件命名的规定不同；</li>
+<li>对于相同的文件存取功能，操作系统使用的命令不同；</li>
+<li>访问控制方法不同。</li>
+</ol>
+<p><strong>FTP特点</strong>：</p>
+<ul>
+<li>文件传输协议FTP只提供文件传送的一些基本的服务，它使用TCP可靠的传输服务。</li>
+<li>FTP的主要功能是减少或消除在不同操作系统下处理文件的不兼容性。</li>
+<li>FTP使用客户服务器方式。一个FTP服务器进程可同时为多个客户进程提供服务。</li>
+<li>FTP的服务器进程由两大部分组成：一个主进程，负责接受新的请求；另外有若干个从属进程，负责处理单个请求。</li>
+</ul>
+<p><strong>主进程的工作步骤</strong>：</p>
+<ul>
+<li>打开熟知端口(端口号为21)，使客户进程能够连接上；</li>
+<li>等待客户进程发出连接请求；</li>
+<li>启动从属进程来处理客户进程发来的请求。从属进程将客户进程的请求处理完毕后即终止，但从属进程在运行期间根据需要还可能创建其他一些子进程；</li>
+<li>回到等待状态，继续接受其他客户进程发来的请求。主进程和从属进程的处理是并发进行。</li>
+</ul>
+<blockquote>
+<p><strong>TCP的端口(用16位端口号来标示一个端口  0-66535正好65536个  0为保留，可允许有65535个不同的端口)</strong></p>
+<p><strong>注意：端口只具有本地意义，只是为标志本计算机应用层中的各个进程在和运输层交互时的层间接口，在因特网上不同主机中，相同的端口号没有关联。</strong></p>
+<p><strong>由此可见，两个计算机的进程要互相通信，不仅必须知道对方的IP地址(为了找到对方的计算机)，而且还要知道对方的端口号(为了找到对方计算机中的应用进程)</strong></p>
+<p>TCP的端口号可分为两大类:</p>
+<ol>
+<li><p>服务器端使用的端口号(又可分为两类):</p>
+<ol>
+<li>熟知端口号/系统端口号(well known port number): 数值为0-1023.可在<a target="_blank" rel="noopener" href="http://www.iana.org查到,iana把这些端口号指派给tcp/IP%E4%B8%AD%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%EF%BC%8C%E8%AE%A9%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7%E9%83%BD%E7%9F%A5%E9%81%93%E3%80%82%E5%BD%93%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%87%BA%E7%8E%B0%E5%90%8E%EF%BC%8CIANA%E5%BF%85%E9%A1%BB%E4%B8%BA%E5%AE%83%E6%8C%87%E6%B4%BE%E4%B8%80%E4%B8%AA%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%EF%BC%8C%E5%90%A6%E5%88%99%E5%9B%A0%E7%89%B9%E7%BD%91%E4%B8%8A%E7%9A%84%E5%85%B6%E4%BB%96%E5%BA%94%E7%94%A8%E8%BF%9B%E7%A8%8B%E5%B0%B1%E6%97%A0%E6%B3%95%E5%92%8C%E5%AE%83%E8%BF%9B%E8%A1%8C%E9%80%9A%E4%BF%A1%E3%80%82%E5%A6%82%E4%B8%8B%E6%98%AF%E4%B8%80%E4%BA%9B%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7%EF%BC%9A">www.iana.org查到，IANA把这些端口号指派给TCP/IP中最重要的一些应用程序，让所有用户都知道。当一种新的应用程序出现后，IANA必须为它指派一个熟知端口，否则因特网上的其他应用进程就无法和它进行通信。如下是一些熟知端口号：</a></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>应用程序</th>
+<th>FTP</th>
+<th>TELNET</th>
+<th>SMTP</th>
+<th>DNS</th>
+<th>TFTP</th>
+<th>HTTP</th>
+<th>SNMP</th>
+<th>SNMP(trap)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>熟知端口号</td>
+<td>21</td>
+<td>23</td>
+<td>25</td>
+<td>53</td>
+<td>69</td>
+<td>80</td>
+<td>161</td>
+<td>162</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>注册端口号: 数值为1024-49151.为没有熟知端口号的应用程序使用的。使用这类端口号必须按照IANA的规定手续登记，以防止重复。</li>
+</ol>
+</li>
+<li><p>客户端使用的端口号</p>
+<p>数值为49152-65535。由于这类端口号仅在客户进程运行时才动态的选择，因此又称短暂端口号(临时端口号)。是留给客户进程选择暂时使用，当服务器进程收到客户进程的报文，就知道了客户进程所使用的端口号，因而可以把数据发送给客户进程。通信结束后，这个端口号就不存在了，就可以供给其他客户进程以后使用。</p>
+</li>
+</ol>
+</blockquote>
+<p>FTP使用的两个TCP连接：控制连接和数据连接</p>
+<p>控制连接在整个会话期间一直保持打开，FTP客户发出的传送请求，通过控制连接发送给服务器端的控制进程，但控制连接不用来传送文件。</p>
+<p>实际用于传输文件的是“数据连接”。服务器端的控制进程在受到FTP客户发送来的文件传输请求后，就创建“数据传送进程”和“数据连接”，用来连接客户端和服务器端的数据传送进程。</p>
+<p>两个不同的端口号：当客户进程向服务器进程发出建立连接请求时，要寻找连接服务器进程的熟知端口(21)，同时还要告诉服务器进程自己的另一个端口号码，用于建立数据传送连接。接着，服务器进程用自己传送数据的熟知端口(20)与客户进程所提供的端口号码建立数据传送连接。</p>
+<p>由于FTP使用了两个不同的端口号，所以数据连接与控制连接不会发生混乱。</p>
+<p>FTP的使用模式：主动模式和被动模式</p>
+<p>主动模式要求客户端和服务器端同时打开并且监听一个端口以建立连接。在这种情况下，客户端如果安装了防火墙，文件传输就会产生一些问题。所以，创立了被动模式。</p>
+<p>被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装防火墙的问题。</p>
+<p><strong>基于主动模式的FTP连接创建步骤</strong></p>
+<p>客户端打开一个随机的端口(端口号大于1024，在这里称其为X)，同时一个FTP进程连接至服务器的21号命令端口。此时，该TCP连接的来源地端口为客户端指定的随机端口X，目的地端口(远程端口)为服务器上的21号端口。</p>
+<p>客户端开始监听端口X+1，同时向服务器发送一个端口命令(通过服务器的21号命令端口)，此命令告诉服务器客户端正在监听的端口号并且已准备好从此端口接收数据。这个端口就是数据端口。</p>
+<p>服务器打开20号源端口并且创建和客户端数据端口的连接。此时，来源地端口为20，目的地端口为X+1.</p>
+<p>客户端通过本地的数据端口创建一个和服务器20号端口的连接，然后向服务器发送一个应答，告诉服务器它已经创建好了一个连接。</p>
+<p>大多数网页浏览器和文件管理器都能和FTP服务器创建连接。这使得在FTP上通过一个接口就可以操控远程文件，如同操控本地文件一样。</p>
+<p>是否提供密码是可选择的，如果有密码，则形如<code>ftp://&lt;login&gt;:&lt;password&gt;@&lt;ftpserveraddress&gt;</code>.</p>
+<h1 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h1><p>网络文件系统是FreeBSD支持的文件系统中的一种，它允许一个系统在网络上与他人共享目录和文件。</p>
+<p>通过使用NFS，用户和程序可以像访问本地文件一样，访问远端系统上的文件。</p>
+<p>NFS至少有两个主要部分：一台服务器和一台(或者更多)客户机。客户机远程访问存放在服务器上 的数据。为了正常工作，一些进程需要被配置并运行。</p>
+<p>Linux环境下，NFS的配置重点在于对<code>/etc/rc.conf</code>文件的修改，过程如下：</p>
+<p>NFS服务器端，确认<code>/etc/rc.conf</code>文件有如下语句：</p>
+<p><code>rpcbind_enable=&quot;YES&quot;</code></p>
+<p><code>nfs_server_enable=&quot;YES&quot;</code></p>
+<p><code>mountd_flags=&quot;-r&quot;</code></p>
+<blockquote>
+<p>NFS被设置为enable，mountd就能自动运行。</p>
+</blockquote>
+<p>客户端，确认<code>/etc/rc.conf</code>文件有如下语句：</p>
+<p><code>nfs_client_enable=&quot;YES&quot;</code></p>
+<blockquote>
+<p><code>/etc/exports</code>文件指定了哪个文件系统NFS应该输出(也成为共享)。<code>/etc/exports</code>里面每行指定一个输出的文件系统和哪些机器可以访问该文件系统。在指定机器访问权限的同时，访问选项开关也可以被指定。</p>
+</blockquote>
+<p>NFS的技术优势：</p>
+<ul>
+<li>本地工作站使用更少的磁盘空间，因为通常的数据可以存放在一台机器上而且可以通过网络访问到。</li>
+<li>用户不必在每个网络机器上都有一个home目录。home目录可以被放在NFS服务器上并且在网络上处处可用。</li>
+</ul>
+<blockquote>
+<p>以下内容来自<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">维基</a>：</p>
+<p><strong>文件传输协议</strong>（英语：<strong>F</strong>ile <strong>T</strong>ransfer <strong>P</strong>rotocol，缩写：<strong>FTP</strong>）是一个用于在计算机网络上在客户端和服务器之间进行文件传输的应用层协议。文件传送（file transfer）和文件访问（file access）之间的区别在于：前者由FTP提供，后者由如NFS(<strong>N</strong>etwork <strong>F</strong>ile <strong>S</strong>ystem)等应用系统提供。</p>
+<p>FTP是一个8位的客户端-服务器协议，能操作任何类型的文件而不需要进一步处理，就像<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/MIME">MIME</a>或<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Unicode">Unicode</a>一样。但是，FTP有着极高的延时，这意味着，从开始请求到第一次接收需求数据之间的时间，会非常长；并且不时的必须执行一些冗长的登录进程。</p>
+<p>FTP服务一般运行在20和21两个端口。端口20用于在客户端和服务器之间传输数据流，而端口21用于传输控制流，并且是命令通向ftp服务器的进口。当数据通过数据流传输时，控制流处于空闲状态。而当控制流空闲很长时间后，客户端的防火墙会将其会话置为超时，这样当大量数据通过防火墙时，会产生一些问题。此时，虽然文件可以成功的传输，但因为控制会话，会被防火墙断开；传输会产生一些错误。</p>
+</blockquote>
+<h1 id="TFTP"><a href="#TFTP" class="headerlink" title="TFTP"></a>TFTP</h1><p>TFTP(<strong>简单文件传输协议</strong>也称<strong>小型文件传输协议</strong>（<strong>T</strong>rivial <strong>F</strong>ile <strong>T</strong>ransfer <strong>P</strong>rotocol, <strong>TFTP</strong>）)是一个很小且易于实现的文件传送协议。</p>
+<p>TFTP使用客户服务器方式和使用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE">UDP</a>数据报，它得不到可靠的数据传输，因此TFTP需要有自己的差错改正措施。</p>
+<p>TFTP只支持文件传输而不支持交互。</p>
+<p>TFTP没有一个庞大的命令集，没有列目录的功能，也不能对用户进行身份鉴别。</p>
+<p>特点：</p>
+<ul>
+<li>每次传送的数据PDU中有512个字节的数据，但最后一次可不足512字节</li>
+<li>数据PDU(协议数据单元)也称为文件块(block)，每个块按序编号，从1开始</li>
+<li>支持ASCII码(即支持文本文件传输)或二进制(即支持非文本传输，如一段音乐、一个照片等)传送</li>
+<li>可对文件进行读或写</li>
+<li>使用很简单的首部</li>
+</ul>
+<blockquote>
+<p><strong>协议数据单元</strong>（英语：Protocol Data Unit，缩写为<strong>PDU</strong>）:</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">OSI模型</a>系统里，PDU和最下面四层相关。</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>（一层）PDU指<strong>数据位</strong>（<strong>Bit</strong>）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>（二层）PDU指<strong>数据帧</strong>（<strong>Frame</strong>）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a>（三层）PDU指<strong>数据包</strong>（<strong>Packet</strong>）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82">传输层</a>（四层）PDU指<strong>数据段</strong>（<strong>Segment</strong>）。</p>
+</li>
+</ol>
+<p>第五层或以上为<strong>数据</strong>（<strong>data</strong>）。在特定的上下文情况下，一个特定层的PDU有时可以代表这个层。</p>
+</blockquote>
+<p>关于UDP：</p>
+<blockquote>
+<p><strong>用户数据报协议</strong>（英语：<strong>U</strong>ser <strong>D</strong>atagram <strong>P</strong>rotocol，缩写：<strong>UDP</strong>；又称<strong>用户数据包协议</strong>）是一个简单的面向<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E6%8A%A5">数据报</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE">通信协议</a>，位于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">OSI模型</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82">传输层</a>。</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/TCP/IP">TCP/IP</a>模型中，UDP为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a>以上和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>以下提供了一个简单的接口。UDP只提供<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE">数据</a>的不可靠传递，它一旦把应用程序发给网络层的数据发送出去，就不保留数据备份（所以UDP有时候也被认为是不可靠的数据报协议）。UDP在IP数据报的头部仅仅加入了复用和数据校验字段。</p>
+<p>UDP适用于不需要或在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F">程序</a>中执行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B%E4%B8%8E%E7%BA%A0%E6%AD%A3">错误检查和纠正</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F">应用</a>，它避免了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%8F%E8%AE%AE%E6%A0%88">协议栈</a>中此类处理的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%BC%80%E9%94%80&action=edit&redlink=1">开销</a>。对时间有较高要求的应用程序通常使用UDP，因为丢弃数据包比等待或重传导致延迟更可取。</p>
+</blockquote>
+<p>数据报（Datagram）：</p>
+<blockquote>
+<p>是在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%81%E5%8C%85%E4%BA%A4%E6%8F%9B%E7%B6%B2%E8%B7%AF">分组交换网络</a>中的最小传输资料单元。是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%84%A1%E9%80%A3%E6%8E%A5%E5%BC%8F%E9%80%9A%E8%A8%8A">无连接式通信</a>方法，它与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E9%9B%BB%E8%B7%AF">虚拟电路</a>构成了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2">分组交换</a>的两种主要传输方式。</p>
+</blockquote>
+<p>TFTP工作原理：</p>
+<ul>
+<li>在一开始工作时，TFTP客户进程发送一个读请求PDU或写请求PDU给TFTP服务器进程，其熟知端口号为69(16进制)</li>
+<li>初始连接时要发出WRQ(请求写入远程系统)或RRQ(请求读取远程系统)，收到一个确定应答，一个确定可以写出的包或应该读取的第一块数据</li>
+<li>创建连接时，通信双方随机选择一个TID，因此两次选择同一个ID的可能性就很小</li>
+<li>每个包包括两个TID，发送者ID和接收者ID</li>
+<li>TFTP服务器进程要选择一个新的端口和TFTP客户进程进行通信。若文件长度恰好为512字节的整数倍，则在文件传送完毕后，还必须在最后发送一个只含首部而无数据的数据PDU。若文件长度不是512字节的整数倍，则最后传送数据PDU的数据字段一定不满足512字节，这正好可作为文件结束的标志</li>
+</ul>
+<p>TFTP工作原理：</p>
+<p>写入例子(WRQ，ACK和DATA代表写入、确认和数据)</p>
+<p>主机A向主机B发出WRQ，其中端口为69</p>
+<p>B机向A机发出ACK，块号为0，包括B和A的TID</p>
+<h1 id="EMAIL"><a href="#EMAIL" class="headerlink" title="EMAIL"></a>EMAIL</h1><p>3个主要组成部分：</p>
+<ol>
+<li>用户代理</li>
+<li>邮件服务器</li>
+<li>简单邮件传输协议：SMTP</li>
+</ol>
+<p><strong>用户代理</strong>：</p>
+<ul>
+<li>又名“邮件阅读器”</li>
+<li>撰写、编辑和阅读邮件</li>
+<li>如Outlook, Foxmail</li>
+<li>输出和输入邮件保存在服务器上</li>
+</ul>
+<p>例如WEB的HTTP代理就是浏览器，FTP的代理就是FTP的后端软件</p>
+<p><strong>邮件服务器</strong>：</p>
+<ul>
+<li>邮箱中管理和维护发送给用户的邮件</li>
+<li>输出报文队列保持待发送邮件报文</li>
+<li>邮件服务器之间的SMTP协议：发送EMAIL报文<ul>
+<li>客户：发送方邮件服务器</li>
+<li>服务器：接收端邮件服务器</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/计算机网络/">计算机网络</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

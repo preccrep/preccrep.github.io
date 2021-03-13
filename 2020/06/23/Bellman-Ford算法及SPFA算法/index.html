@@ -1,25 +1,160 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Bellman-Ford算法及SPFA算法 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="算法">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Bellman-Ford算法及SPFA算法"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Bellman-Ford算法及SPFA算法</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/06/23/Bellman-Ford算法及SPFA算法/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-06-23T12:50:20.000Z">
+          2020-06-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h1><p>Bellman-Ford算法能解决存在负权边的单源点最短路径问题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Bellman_Ford</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> f;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        f = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = edge[j].from;</span><br><span class="line">            <span class="keyword">int</span> y = edge[j].to;</span><br><span class="line">            <span class="keyword">int</span> z = edge[j].v;</span><br><span class="line">            <span class="keyword">if</span>(dis[x] + z &lt; dis[y])&#123;</span><br><span class="line">                dis[y] = dis[x] + z;</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!f) <span class="keyword">break</span>;</span><br><span class="line">    	<span class="keyword">if</span>(i == n - <span class="number">1</span> &amp;&amp; f) <span class="keyword">return</span> <span class="literal">false</span>;  <span class="comment">//表示图中存在负权环(因为从源点出发到n-1个结点，而n-1遍还没有更新完毕)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">//表示找到了最短路</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>几点解释：</strong></p>
+<blockquote>
+<p><strong>m是什么？</strong>   图中一共有m条边。</p>
+<p><strong>为什么松弛的过程要循环n次？</strong>   因为在进行了一次寻找可松弛边的循环（我们暂且将它称为m循环）后，结果只有两种情况。</p>
+<p>第一种情况：没找到可松弛边，此时 f 仍旧等于 false，n循环直接break了；</p>
+<p>第二种情况：找到了可松弛边。无论在第一轮m循环中松弛了多少次，总会有一次松弛得到的是源点到目标点的最短距离，否则就出现负权环了。此时按照这种最坏假设，循环 n-1 次就一定可以使 n-1 个点都找到各自到源点的最短路径。</p>
+</blockquote>
+<h2 id="SPFA算法"><a href="#SPFA算法" class="headerlink" title="SPFA算法"></a>SPFA算法</h2><p>SPFA (shortest path faster algorithm) 是Bellman-Ford算法的一种队列实现，减少了不必要的冗余计算。(SPFA是Bellman-Ford的优化)</p>
+<p>Bellman-Ford算法的复杂度较高，中间进行了一些不必要的计算，因为并不是每个顶点都会在松弛操作中改变。SPFA算法在最坏情况下的复杂度很高，但是在正常情况下点的平均入队次数不大于2。</p>
+<p>Bellman-Ford能实现的，都可以用SPFA来解决，所以一般都会用SPFA。</p>
+<p>基本思想是：使用队列，初始时队列里只有源点，dis 记录源点到所有点的最短路径 (初始时为无穷，若源点为s，则 dis[s] = 0。除了起点赋值为0外，其他顶点的对应的dis的值都赋予无穷大，这样有利于后续的<strong>松弛</strong>)，然后用队列里的点更新 dis 数组的值，如果某点的 dis 值被更新，则将该点加入到队尾。重复执行直到队列为空。</p>
+<p>如果存在一点进入队列的次数大于等于 n 次，则存在负权环。(<strong>当图中有负权环时，队列就不会有空的情况了，因为由于负权环的存在，负权环上的点就可以一直被松弛，一直能被松弛就代表着队列会不断反复让负权环上的点入队出队，程序就会死循环</strong>)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;  <span class="comment">//SPFA判断负权环</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != top; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x = q[i];  <span class="comment">//取队列元素，数组q模拟队列</span></span><br><span class="line">        have[x] = <span class="number">0</span>;  <span class="comment">//出队，have[x] = 0 表示x已经不在队列中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; head[x].size(); j++)&#123;</span><br><span class="line">            y = head[x][j].to;</span><br><span class="line">            z = head[x][j].v;</span><br><span class="line">            <span class="keyword">if</span>(dis[x] + z &lt; dis[y])&#123;</span><br><span class="line">                dis[y] = dis[x] + z;</span><br><span class="line">                <span class="keyword">if</span>(!have[y])&#123;  <span class="comment">//如果y不在队列中</span></span><br><span class="line">                    have[y] = <span class="number">1</span>;  <span class="comment">//将y入队</span></span><br><span class="line">                    q[top++] = y;  <span class="comment">//加到队尾</span></span><br><span class="line">                    cnt[y]++;  <span class="comment">//记录结点y入队次数</span></span><br><span class="line">                    <span class="keyword">if</span>(cnt[y] &gt;= n)  <span class="comment">//存在负权环</span></span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;  <span class="comment">//不存在负权环</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关于SPFA的一篇很详细的博客：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35644234/article/details/61614581">https://blog.csdn.net/qq_35644234/article/details/61614581</a></p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Bellman-Ford-SPFA/">Bellman-Ford & SPFA</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/算法/">算法</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

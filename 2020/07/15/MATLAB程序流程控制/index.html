@@ -1,25 +1,174 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MATLAB程序流程控制 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="MATLAB">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="MATLAB程序流程控制"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>MATLAB程序流程控制</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/07/15/MATLAB程序流程控制/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-07-15T11:06:33.000Z">
+          2020-07-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>MATLAB 程序文件包含脚本文件和函数文件。</p>
+<p>脚本文件是可以在命令行窗口直接执行的文件，也叫命令文件。</p>
+<p>函数文件是定义一个函数，不能直接执行，而必须以函数调用的方式来调用它。</p>
+<p><em><strong>文件的建立</strong></em></p>
+<ol>
+<li>用命令按钮创建文件(主页–&gt;新建脚本)；</li>
+<li>用 edit 命令创建文件：</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; edit test</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>顺序结构</strong></em></p>
+<p>1）数据的输入：input()</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = input(<span class="string">&#x27;Please enter the value of variable A: &#x27;</span>)</span><br><span class="line">Please enter the value of variable A: <span class="number">100</span></span><br><span class="line">A =</span><br><span class="line">   <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<p>2）数据的输出：disp()</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt; <span class="built_in">disp</span>(A)</span><br></pre></td></tr></table></figure>
+
+<p>3）程序的暂停：pause(延迟秒数)</p>
+<p>或者，Ctrl + C。</p>
+<p><em><strong>选择结构</strong></em></p>
+<p><strong>if</strong></p>
+<p>当条件结果为标量时，非零表示条件成立；</p>
+<p>当条件结果为矩阵时，非空且不包含零元素表示条件成立。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">c = input(<span class="string">&#x27;Please enter a char: &#x27;</span>,<span class="string">&#x27;s&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span> c &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;Z&#x27;</span></span><br><span class="line">    <span class="built_in">disp</span>(lower(c))</span><br><span class="line"><span class="keyword">elseif</span> c &gt;= <span class="string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="built_in">disp</span>(upper(c))</span><br><span class="line"><span class="keyword">elseif</span> c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span></span><br><span class="line">    <span class="built_in">disp</span>(str2double(c))</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(c)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>switch</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x = input(<span class="string">&#x27;x = ?&#x27;</span>);</span><br><span class="line"><span class="keyword">switch</span> <span class="built_in">fix</span>(x)</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">111</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">222</span>)</span><br><span class="line">    <span class="keyword">case</span> &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">333</span>)</span><br><span class="line">    <span class="keyword">otherwise</span></span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">444</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>输入2、4、8时，分别输出111、333、444。</p>
+<p><em><strong>函数参数的可调性</strong></em></p>
+<p><strong>nargin</strong>：输入实参的个数</p>
+<p><strong>nargout</strong>：输出实参的个数</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">font</span>=<span class="title">fib</span><span class="params">(a,b,c)</span></span></span><br><span class="line"><span class="keyword">if</span> nargin==<span class="number">1</span></span><br><span class="line">    font=a;</span><br><span class="line"><span class="keyword">elseif</span> nargin==<span class="number">2</span></span><br><span class="line">    font=a+b;</span><br><span class="line"><span class="keyword">elseif</span> nargin==<span class="number">3</span></span><br><span class="line">    font=a+b+c;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/MATLAB/">MATLAB</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

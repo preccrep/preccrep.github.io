@@ -1,25 +1,224 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据分析与多项式计算 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="MATLAB">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="数据分析与多项式计算"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>数据分析与多项式计算</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/07/26/数据分析与多项式计算/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-07-26T04:05:46.000Z">
+          2020-07-26
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="数据统计分析"><a href="#数据统计分析" class="headerlink" title="数据统计分析"></a>数据统计分析</h1><p>max()：求向量或矩阵元素的最大值。</p>
+<p>min()：求向量或矩阵元素的最小值。</p>
+<p><em>当参数为向量时：</em></p>
+<p>y = max(X)：返回向量 X 的最大值存入 y，如果 X 中包含复数元素，则按模取最大值。</p>
+<p>[y, k] = max(X)：返回向量 X 的最大值存入 y，最大值元素的序号存入 k，如果 X 中包含复数元素，则按模取最大值。</p>
+<p><em>当参数为矩阵时：</em></p>
+<p>max(A)：返回一个行向量，向量的第 i 个元素是矩阵 A 的第 i 列上的最大值。</p>
+<p>[Y, U] = max(A)：返回行向量 Y 和 U，Y 向量记录 A 的每列的最大值，U 向量记录每列最大值的行号。</p>
+<p>max(A, [], dim)：dim 取 1 或 2。dim 取 1 时，该函数的功能与 max(A) 完全相同；dim 取 2 时，该函数返回一个列向量，其第 i 个元素是 A 矩阵的第 i 行上的最大值。</p>
+<p>求矩阵的最大值：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(<span class="built_in">max</span>(A))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(A(:))</span><br></pre></td></tr></table></figure>
+
+<p>mean()：求算术平均值。</p>
+<p>median()：求中值。</p>
+<p>sum()：求和函数。</p>
+<p>prod()：求积函数。</p>
+<p>cumsum()：累加和函数。</p>
+<p>cumprod()：累乘积函数。</p>
+<p><em>标准差：</em></p>
+<p>std()：计算标准差函数。</p>
+<p>调用格式：</p>
+<p>std(X)：计算向量 X 的标准差。</p>
+<p>std(A)：计算矩阵 A 是各列的标准差。</p>
+<p>std(A, flag, dim)：flag 取 0 或 1，当 flag = 0 时，按 S1 公式计算样本标准差；当 flag = 1 时，按 S2 公式计算总体标准差。默认情况下，flag = 0，dim = 1。</p>
+<p>生成满足正态分布的 50000 * 4 随机矩阵，用不同的形式求其各列之间的标准差。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">randn</span>(<span class="number">50000</span>, <span class="number">4</span>);</span><br><span class="line">y1 = std(x, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">y2 = std(x, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">x1 = x&#x27;;</span><br><span class="line">y3 = std(x1, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">y3 = y3&#x27;;</span><br><span class="line">y4 = std(x1, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">y4 = y4&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><em>相关系数：</em></p>
+<p>corrcoef()</p>
+<p>调用格式：</p>
+<p>corrcoef(A)：返回的相关系数矩阵的第 i 行第 j 列元素表示矩阵 A 中第 i 列和第 j 列的相关系数。</p>
+<p>corrcoef(X, Y)：这里 X，Y是向量。</p>
+<p><em>排序：</em></p>
+<p>sort()</p>
+<p>调用格式：</p>
+<p>sort(X)：对向量 X 按升序排序。</p>
+<p>[Y, I] = sort(A, dim, mode)：其中 dim 指明对 A 的列还是行进行排序，mode 指明升序还是降序排序，若取 “ascend”，则按升序；若取 “descend”，则按降序。默认为升序。输出参数中，Y 是排序后的矩阵，I 记录 Y 中元素在 A 中的位置。</p>
+<h1 id="多项式计算"><a href="#多项式计算" class="headerlink" title="多项式计算"></a>多项式计算</h1><p><em>多项式乘法</em></p>
+<p>conv(P1, P2)：P1，P2是多项式系数向量。</p>
+<p><em>多项式除法</em></p>
+<p>[Q, r] = deconv(P1, P2)：Q 返回多项式 P1 除以 P2 的商式，r 返回 P1 除以 P2 的余式。</p>
+<p><em>多项式的求导</em></p>
+<p>polyder()</p>
+<p>p = polyder(P)：求多项式 P 的导函数。</p>
+<p>p = polyder(P, Q)：求 P*Q 的导函数。</p>
+<p>[p, q] = polyder(P, Q)：求 P/Q 的导函数。导函数的分子存入 p，分母存入 q。</p>
+<p><em>多项式的求值</em></p>
+<p>polyval(p, x)：代数多项式求值。p 为多项式系数向量，x 可以是标量、向量或矩阵。</p>
+<p>polyvalm(p, x)：矩阵多项式求值。x 为方阵。</p>
+<p><em>多项式求根</em></p>
+<p>roots(p)：p 为多项式系数向量。</p>
+<p>若已知多项式的全部根，则可以用 poly 函数建立起该多项式：p = poly(x)。</p>
+<p>求多项式 - 38.89 * t^2 + 126.11 * t - 3.42 的极大值：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = [<span class="number">-38.89</span>, <span class="number">126.11</span>, <span class="number">-3.42</span>];</span><br><span class="line">q = polyder(p);</span><br><span class="line">a = roots(q);</span><br><span class="line">b = polyval(p, a);</span><br><span class="line">x = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">2</span>;</span><br><span class="line"><span class="built_in">plot</span>(x, polyval(p, x), a, b, <span class="string">&#x27;rp&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="数据插值"><a href="#数据插值" class="headerlink" title="数据插值"></a>数据插值</h1><p>数据插值可以根据有限个点的取值状况，合理估算出附近其他点的取值，从而节约大量的实验和测试资源。数据插值是一种函数逼近的方法。</p>
+<p><em><strong>interp1()：一维插值函数。</strong></em></p>
+<p><strong>Y1 = interp1(X, Y, X1, method)</strong></p>
+<p>根据 X，Y 的值，计算函数在 X1 处的值。其中，X，Y是两个等长的已知向量，分别表示采样点和采样值。X1 是一个向量或标量，表示要插值的点。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>];</span><br><span class="line">y = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1.7</span>,<span class="number">2.0</span>,<span class="number">2.1</span>,<span class="number">2.0</span>,<span class="number">1.8</span>,<span class="number">1.2</span>,<span class="number">1.0</span>,<span class="number">1.6</span>];</span><br><span class="line">x1 = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">15</span>;</span><br><span class="line">y1 = interp1(x, y, x1, <span class="string">&#x27;spline&#x27;</span>);</span><br><span class="line"><span class="built_in">plot</span>(x1, y1)</span><br></pre></td></tr></table></figure>
+
+<p><strong>method</strong> 用于指定插值方法，常用的取值有以下四种：</p>
+<p><em>linear</em>：线性插值，默认方法。将插值点与靠近的两个数据点用直线连接，然后在直线上选取对应插值点的数据。</p>
+<p><em>nearest</em>：最近插值点。选择最近样本点的值作为插值数据。(如果是中间点，则取后一个数据点的值)</p>
+<p><em>pchip</em>：分段 3 次埃尔米特插值。采用分段三次多项式，除满足插值条件，还需满足在若干节点处相邻段插值函数的一阶导数相等，使得曲线光滑的同时，还具有保形性。</p>
+<p><em>spline</em>：3 次样条插值。每个分段内构造一个三次多项式，使其插值函数除满足插值条件外，还要求在各节点处具有连续的一阶和二阶导数。</p>
+<p><em><strong>为什么这两种插值方法都用 3 次多项式而不用更高次的？</strong></em></p>
+<p><em>多项式次数并非越高越好。次数越高，越容易产生震荡而偏离原函数，这种现象称为龙格(Runge)现象。</em></p>
+<p><em><strong>interp2()：二维插值函数</strong></em></p>
+<p><strong>Z1 = interp2(X, Y, Z, X1, Y1, method)</strong></p>
+<p>其中，X，Y 是两个向量，表示两个参数的采样点，Z 是采样点对应的函数值。X1，Y1 是两个标量或向量，表示要插值的点。</p>
+<h1 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h1><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1790</span>:<span class="number">10</span>:<span class="number">2020</span>;</span><br><span class="line">y = [...];    # 此处数据省略。。。</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">p = polyfit(x, y, <span class="number">3</span>);</span><br><span class="line">polyval(p, <span class="number">2020</span>)</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>, polyval(p, x))</span><br></pre></td></tr></table></figure>
+
+<p>与数据插值类似，曲线拟合也是一种函数逼近的方法，但是拟合出的曲线不一定经过所有样本点。</p>
+<p>曲线拟合的原理：最小二乘法</p>
+<p>polyfit()：多项式拟合函数。可求得最小二乘拟合多项式系数。</p>
+<p>调用格式：</p>
+<p>P = polyfit(X, Y, m)</p>
+<p>[P, S] = polyfit(X, Y, m)</p>
+<p>[P, S, mu] = polyfit(X, Y, m)</p>
+<p>根据样本数据 X 和 Y，产生一个 m 次多项式 P 及其在采样点误差数据 S，mu 是一个二元向量，mu(1) 是 mean(X)，而 mu(2) 是 std(X)。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/笔记/">笔记</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/MATLAB/">MATLAB</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

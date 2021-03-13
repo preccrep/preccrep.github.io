@@ -1,25 +1,215 @@
-extends includes/layout.pug
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>代价函数 | Serial | of or relating to the sequential performance of multiple operations</title>
 
-block content
-  article#post(class="")
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      !=partial('includes/share/index', {}, {cache:theme.fragment_cache})
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  
+  <meta name="author" content="preccrep">
+  
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+  
+  <meta name="description" content="serial processing">
+  
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-    if page.comments !== false
-      include includes/comments/index.pug
+  
+  
+  <meta name="keywords" content="tensorflow">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="代价函数"/>
+
+  <meta property="og:site_name" content="Serial"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Serial</a>
+    </h1>
+    <p class="site-description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>代价函数</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2020/05/28/Tensorflow-Note/" rel="bookmark">
+        <time class="entry-date published" datetime="2020-05-28T04:07:09.000Z">
+          2020-05-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>二次代价函数(quadratic cost)</strong></p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528120907105.png" alt="image-20200528120907105" style="zoom: 33%;" />
+
+<p>其中，C代表代价函数，x代表样本，y表示实际值，a表示输出值，n表示样本的总数。</p>
+<p>相当于把误差的平方加起来再除以一个总数。</p>
+<p>以一个样本为例：</p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528121549753.png" alt="image-20200528121549753" style="zoom: 50%;" />
+
+<p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528121411995.png" alt="image-20200528121411995"></p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528121947827.png" alt="image-20200528121947827" style="zoom:80%;" />
+
+<p>z表示神经元的输入，σ表示激活函数。w和b的梯度跟激活函数的梯度成正比,激活函数的梯度越大,w和b的大小调整得越快,训练收敛得就越快。假设我们的激活函数是sigmoid函数:</p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528143620424.png" alt="image-20200528143620424" style="zoom: 33%;" />
+
+
+
+<p>假设我们目标是收敛到1.0。1点为0.82离目标比较远,梯度比较大,权值调整比较大。2点为0.98离目标比较近,梯度比较小,权值调整比较小。调整方案合理。<br>假如我们目标是收敛到0。1点为0.82目标比较近,梯度比较大,权值调整比较大。2点为0.98离目标比较远,梯度比较小,权值调整比较小。调整方案不合理。</p>
+<p><strong>交叉熵代价函数(cross-entropy)</strong></p>
+<p>换一个思路，我们不改变激活函数，而是改变代价函数，改用交叉熵代价函数：</p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528123023183.png" alt="image-20200528123023183" style="zoom:80%;" />
+
+<p>其中，C代表代价函数，x代表样本，y表示实际值，a表示输出值，n表示样本的总数。</p>
+<p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528123222414.png" alt="image-20200528123222414" style="zoom:80%;" /><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528123254307.png" alt="image-20200528123254307"></p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528123309837.png" alt="image-20200528123309837" style="zoom:80%;" />
+
+<p>对于交叉熵代价函数：(输出值即为预测值)</p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528123622492.png" alt="image-20200528123622492" style="zoom:80%;" />
+
+<p>(S型函数，如sigmoid函数、双曲正弦等等)</p>
+<p><strong>对数似然代价函数(log-likelihood cost)</strong></p>
+<p>对数似然函数常用来作为softmax回归的代价函数，如果输出层神经元是sigmoid函数，可以采用交叉熵代价函数。而深度学习中更普遍的做法是将softmax作为最后一层，此时常用的代价函数是对数似然代价函数。</p>
+<p>对数似然代价函数与softmax的组合和交叉熵与sigmoid函数的组合非常相似。对数似然代价函数在二分类时可以简化为交叉熵代价函数的形式。</p>
+<p>在Tensorflow中，用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tf.nn.sigmoid_cross_entropy_with_logits()来表示跟sigmoid搭配使用的交叉熵</span><br><span class="line">tf.nn.softmax_cross_entropy_with_logits()来表示跟softmax搭配使用的交叉熵</span><br></pre></td></tr></table></figure>
+
+
+
+<p>关于softmax函数和sigmoid函数，可参考：</p>
+<blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1092667">https://cloud.tencent.com/developer/article/1092667</a></p>
+</blockquote>
+</blockquote>
+<p><strong>1.Sigmoid函数</strong></p>
+<p>Sigmoid函数是一个在生物学中常见的S型的函数，也称为S型生长曲线。Sigmoid函数常被用作神经网络的阈值函数，将变量映射到0,1之间。</p>
+<p><strong>1.1公式</strong></p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528142355314.png" alt="image-20200528142355314" style="zoom:80%;" />
+
+<p>其对x的导数可以用自身表示：</p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528142519308.png" alt="image-20200528142519308" style="zoom: 80%;" />
+
+<p><strong>1.2python实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span>/(<span class="number">1</span>+np.exp(-x))</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.3函数图像</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span>/(<span class="number">1</span>+np.exp(-x))</span><br><span class="line"></span><br><span class="line">sigmoid_inputs = np.arange(-<span class="number">10</span>,<span class="number">10</span>)</span><br><span class="line">sigmoid_outputs=sigmoid(sigmoid(sigmoid_inputs))</span><br><span class="line">print(<span class="string">&quot;Sigmoid Function Input :: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(sigmoid_inputs))</span><br><span class="line">print(<span class="string">&quot;Sigmoid Function Output :: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(sigmoid_outputs))</span><br><span class="line"></span><br><span class="line">plt.plot(sigmoid_inputs,sigmoid_outputs)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Sigmoid Inputs&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Sigmoid Outputs&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528142712145.png" alt="image-20200528142712145" style="zoom: 67%;" />
+
+<p><strong>2.softmax函数</strong></p>
+<p>在数学，尤其是概率论和相关领域中，softmax函数，或称归一化指数函数<br> ，是逻辑函数的一种推广。它能将一个含任意实数的K维的向量z的“压缩”到另一个K维实向量σ(z) 中，使得每一个元素的范围都在(0,1)之间，并且所有元素的和为1。</p>
+<p><strong>2.1公式</strong></p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528143027539.png" alt="image-20200528143027539" style="zoom:67%;" />
+
+<p>在多项逻辑回归和线性判别分析中，函数的输入是从K个不同的线性函数得到的结果，而样本向量 x 属于第 j 个分类的概率为：</p>
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528143059592.png" alt="image-20200528143059592" style="zoom:67%;" />
+
+<p>这可以被视作K个线性函数x→xTw1,…,→xTwK softmax函数的复合(xTwxw)</p>
+<p><strong>2.2python实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">x</span>):</span></span><br><span class="line">    orig_shape=x.shape</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(x.shape)&gt;<span class="number">1</span>:</span><br><span class="line">        <span class="comment">#Matrix</span></span><br><span class="line">        <span class="comment">#shift max whithin each row</span></span><br><span class="line">        constant_shift=np.<span class="built_in">max</span>(x,axis=<span class="number">1</span>).reshape(<span class="number">1</span>,-<span class="number">1</span>)</span><br><span class="line">        x-=constant_shift</span><br><span class="line">        x=np.exp(x)</span><br><span class="line">        normlize=np.<span class="built_in">sum</span>(x,axis=<span class="number">1</span>).reshape(<span class="number">1</span>,-<span class="number">1</span>)</span><br><span class="line">        x/=normlize</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#vector</span></span><br><span class="line">        constant_shift=np.<span class="built_in">max</span>(x)</span><br><span class="line">        x-=constant_shift</span><br><span class="line">        x=np.exp(x)</span><br><span class="line">        normlize=np.<span class="built_in">sum</span>(x)</span><br><span class="line">        x/=normlize</span><br><span class="line">    <span class="keyword">assert</span> x.shape==orig_shape</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.3函数图像</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span>(<span class="params">x</span>):</span></span><br><span class="line">    orig_shape=x.shape</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(x.shape)&gt;<span class="number">1</span>:</span><br><span class="line">        <span class="comment">#Matrix</span></span><br><span class="line">        <span class="comment">#shift max whithin each row</span></span><br><span class="line">        constant_shift=np.<span class="built_in">max</span>(x,axis=<span class="number">1</span>).reshape(<span class="number">1</span>,-<span class="number">1</span>)</span><br><span class="line">        x-=constant_shift</span><br><span class="line">        x=np.exp(x)</span><br><span class="line">        normlize=np.<span class="built_in">sum</span>(x,axis=<span class="number">1</span>).reshape(<span class="number">1</span>,-<span class="number">1</span>)</span><br><span class="line">        x/=normlize</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#vector</span></span><br><span class="line">        constant_shift=np.<span class="built_in">max</span>(x)</span><br><span class="line">        x-=constant_shift</span><br><span class="line">        x=np.exp(x)</span><br><span class="line">        normlize=np.<span class="built_in">sum</span>(x)</span><br><span class="line">        x/=normlize</span><br><span class="line">    <span class="keyword">assert</span> x.shape==orig_shape</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">softmax_inputs = np.arange(-<span class="number">10</span>,<span class="number">10</span>)</span><br><span class="line">softmax_outputs=softmax(softmax_inputs)</span><br><span class="line">print(<span class="string">&quot;Sigmoid Function Input :: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(softmax_inputs))</span><br><span class="line">print(<span class="string">&quot;Sigmoid Function Output :: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(softmax_outputs))</span><br><span class="line"><span class="comment"># 画图像</span></span><br><span class="line">plt.plot(softmax_inputs,softmax_outputs)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Softmax Inputs&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Softmax Outputs&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200528143302951.png" alt="image-20200528143302951" style="zoom:67%;" />
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/机器学习/">机器学习</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/tensorflow/">tensorflow</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 preccrep
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>
