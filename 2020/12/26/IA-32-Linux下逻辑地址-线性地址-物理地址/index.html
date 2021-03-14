@@ -142,7 +142,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
 
   </li>
   </ul>
@@ -248,53 +248,56 @@
 <p>对于物理地址：（实际的不知道）假设就是32位，那外面的物理存储器可能就是4GB(2^32B=4GB)</p>
 </blockquote>
 </blockquote>
-<p><em><strong>分段过程实现   逻辑地址 –&gt; 线性地址</strong></em></p>
-<p><em><strong>分页过程实现    线性地址–&gt;物理地址</strong></em></p>
-<h1 id="逻辑地址到线性地址（分段）"><a href="#逻辑地址到线性地址（分段）" class="headerlink" title="逻辑地址到线性地址（分段）"></a>逻辑地址到线性地址（分段）</h1><p>*8086处理器的所有内部寄存器都是16位（AX, BX, CX, DX, SP, BP, SI, <strong>CS</strong>, <strong>DS</strong>）*</p>
+<p><strong><em>分段过程实现   逻辑地址 —&gt; 线性地址</em></strong></p>
+<p><strong><em>分页过程实现    线性地址—&gt;物理地址</em></strong></p>
+<h1 id="逻辑地址到线性地址（分段）"><a href="#逻辑地址到线性地址（分段）" class="headerlink" title="逻辑地址到线性地址（分段）"></a>逻辑地址到线性地址（分段）</h1><p><em>8086处理器的所有内部寄存器都是16位（AX, BX, CX, DX, SP, BP, SI, <strong>CS</strong>, <strong>DS</strong>）</em></p>
 <p>（CS、DS是段寄存器）</p>
 <p><em>8086处理器支持的存储器寻址方式有哪些？</em></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">寻址方式</th>
-<th align="center">说明</th>
+<th style="text-align:center">寻址方式</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">位移</td>
-<td align="center">EA = A</td>
+<tbody>
+<tr>
+<td style="text-align:center">位移</td>
+<td style="text-align:center">EA = A</td>
 </tr>
 <tr>
-<td align="center">基址寻址</td>
-<td align="center">EA = (B)</td>
+<td style="text-align:center">基址寻址</td>
+<td style="text-align:center">EA = (B)</td>
 </tr>
 <tr>
-<td align="center">基址加位移</td>
-<td align="center">EA = (B) + A</td>
+<td style="text-align:center">基址加位移</td>
+<td style="text-align:center">EA = (B) + A</td>
 </tr>
 <tr>
-<td align="center">比例变址加位移</td>
-<td align="center">EA = (I) * S + A</td>
+<td style="text-align:center">比例变址加位移</td>
+<td style="text-align:center">EA = (I) * S + A</td>
 </tr>
 <tr>
-<td align="center">基址加变址加位移</td>
-<td align="center">EA = (B) + (I) + A</td>
+<td style="text-align:center">基址加变址加位移</td>
+<td style="text-align:center">EA = (B) + (I) + A</td>
 </tr>
 <tr>
-<td align="center">基址加比例变址加位移</td>
-<td align="center">EA = (B) + (I) * S + A</td>
+<td style="text-align:center">基址加比例变址加位移</td>
+<td style="text-align:center">EA = (B) + (I) * S + A</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
-<p>A – 地址段偏移量</p>
-<p>B – 基址寄存器</p>
-<p>I – 变址寄存器（除SP）</p>
-<p>S – 比例因子</p>
-<p>EA – 有效地址</p>
+<p>A — 地址段偏移量</p>
+<p>B — 基址寄存器</p>
+<p>I — 变址寄存器（除SP）</p>
+<p>S — 比例因子</p>
+<p>EA — 有效地址</p>
 </blockquote>
 <p>8086指令（AT&amp;T格式）举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movw 8(%bp, %dx, 4), %ax   &#x2F;&#x2F;R[ax] &lt;-- M[R[bp] + R[dx]*4 + 8]</span><br></pre></td></tr></table></figure>
-
 <p>此时的寻址空间是 2^16B = 64KB，太小了！</p>
 <p>于是8086引入段寄存器开辟更大的寻址空间：</p>
 <blockquote>
@@ -304,42 +307,45 @@
 <p>于是寻址空间变为 1MB了（2^16&lt;&lt; 4 B = 2^20 B = 1MB）</p>
 <p>此时的物理地址称为<strong>线性地址</strong>。</p>
 <p>于是就变成了：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">寻址方式</th>
-<th align="center">说明</th>
+<th style="text-align:center">寻址方式</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + A</td>
+<tbody>
+<tr>
+<td style="text-align:center">位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + A</td>
 </tr>
 <tr>
-<td align="center">基址寻址</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B)</td>
+<td style="text-align:center">基址寻址</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B)</td>
 </tr>
 <tr>
-<td align="center">基址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B) + A</td>
+<td style="text-align:center">基址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B) + A</td>
 </tr>
 <tr>
-<td align="center">比例变址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (I) * S + A</td>
+<td style="text-align:center">比例变址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (I) * S + A</td>
 </tr>
 <tr>
-<td align="center">基址加变址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B) + (I) + A</td>
+<td style="text-align:center">基址加变址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B) + (I) + A</td>
 </tr>
 <tr>
-<td align="center">基址加比例变址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B) + (I) * S + A</td>
+<td style="text-align:center">基址加比例变址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B) + (I) * S + A</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movw [ds:8(%bp, %dx, 4)], %ax   &#x2F;&#x2F;R[ax] &lt;-- M[R[ds]&lt;&lt;4 + R[bp] + R[dx]*4 + 8]</span><br></pre></td></tr></table></figure>
-
 <p>访问数据段就是和DS绑定的，访问代码段就是和CS绑定的。取指令要用到CS和IP，访问堆栈用到SS，等等。</p>
-<p>物理访存地址 = (段寄存器 &lt;&lt; 4) + 有效地址–<strong>这个访问模式称为实模式！</strong></p>
+<p>物理访存地址 = (段寄存器 &lt;&lt; 4) + 有效地址—<strong>这个访问模式称为实模式！</strong></p>
 <h2 id="实模式"><a href="#实模式" class="headerlink" title="实模式"></a>实模式</h2><p>8086处理器在实模式下工作：</p>
 <blockquote>
 <p>物理地址直接访存</p>
@@ -438,7 +444,7 @@
 <p>TI = 0，选择GDT；TI = 1，选择LDT。</p>
 <p>RPL请求特权级。</p>
 <p><strong>高13位索引</strong>用来确定当前使用的段描述符在描述表中的位置。</p>
-<p>—-&gt; <strong>由此可知，GDT中最多可容纳 2^13=8192=8K 个段描述符。</strong></p>
+<p>——&gt; <strong>由此可知，GDT中最多可容纳 2^13=8192=8K 个段描述符。</strong></p>
 <p>那么整个段表多大？（1个段描述符占8个字节）</p>
 <p>8K*8 B = 64KB.</p>
 <p>而段寄存器是16位，2^16 = 64K个字节——刚好相等呀！</p>
@@ -471,7 +477,7 @@
 <li>逻辑地址起作用的<strong>前提</strong>：CR0的PE位为1，进入保护模式，启动分段机制。</li>
 <li>根据<strong>段寄存器中的段选择符</strong>的TI位决定查GDT还是LDT</li>
 <li>在GDTR中读出GDT首地址</li>
-<li>GDT首地址+段选择符中索引*8 – 得到段描述符首地址</li>
+<li>GDT首地址+段选择符中索引*8 — 得到段描述符首地址</li>
 <li>在段描述符中读出段基址，和有效地址（逻辑地址后32位，即段内偏移）相加，得到线性地址</li>
 </ol>
 <p>注意那个前提——否则实模式下有效地址就是线性地址，段寄存器也就用来左移4位加上有效地址得到物理地址了。</p>
@@ -480,45 +486,36 @@
 <p>CPL：表示当前进程的特权级别，一般与CS寄存器指向的段描述符的DPL字段相同。</p>
 <p>同时满足以下两个条件：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target_descriptor.DPL &gt;= requestor.RPL   <span class="comment">//请求者有权访问目标段</span></span><br><span class="line">target_descriptor.DPL &gt;= CPL             <span class="comment">//当前进程有权访问目标段</span></span><br></pre></td></tr></table></figure>
-
 <p>只要OS将GDT、页表等重要信息放在ring0段中，恶意程序将永远无法篡改它们，除非恶意程序获得了OS权限。</p>
 <h2 id="IA-32-Linux中的分段机制"><a href="#IA-32-Linux中的分段机制" class="headerlink" title="IA-32/Linux中的分段机制"></a>IA-32/Linux中的分段机制</h2><p>为能被移植到绝大多数流行处理器平台，Linux简化了分段机制。</p>
 <p>RISC对分段支持非常有限，因此<strong>Linux仅使用IA-32的分页机制</strong>，而对于分段，则通过<strong>在初始化时将所有段描述符的基址设为”0”来简化</strong>。</p>
 <p>每个段都被初始化在 0~4GB 的线性地址空间中。</p>
 <p>PA2中的用户程序都是从 <code>kernel/src/start.S</code> 开始的。PA3也是如此。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;common.h&quot;</span><br><span class="line"></span><br><span class="line">#ifndef IA32_SEG</span><br><span class="line"></span><br><span class="line">	.globl start</span><br><span class="line">	start:</span><br><span class="line">	# Set up a stack for C code.</span><br><span class="line">		movl $0, %ebp</span><br><span class="line">		movl $(128 &lt;&lt; 20), %esp</span><br><span class="line">		jmp init				# never return</span><br><span class="line"></span><br><span class="line">#else</span><br><span class="line"></span><br><span class="line">	# To understand macros here, see i386 manual.</span><br><span class="line">	#define GDT_ENTRY(n) ((n) &lt;&lt; 3)</span><br><span class="line"></span><br><span class="line">	#define MAKE_NULL_SEG_DESC   \</span><br><span class="line">		.word 0, 0;              \</span><br><span class="line">		.byte 0, 0, 0, 0</span><br><span class="line"></span><br><span class="line">	# The 0xC0 means the limit is in 4096-byte units</span><br><span class="line">	# and (for executable segments) 32-bit mode.</span><br><span class="line">	#define MAKE_SEG_DESC(type,base,lim)                        \</span><br><span class="line">		.word (((lim) &gt;&gt; 12) &amp; 0xffff), ((base) &amp; 0xffff);      \</span><br><span class="line">		.byte (((base) &gt;&gt; 16) &amp; 0xff), (0x90 | (type)),         \</span><br><span class="line">		(0xC0 | (((lim) &gt;&gt; 28) &amp; 0xf)), (((base) &gt;&gt; 24) &amp; 0xff)</span><br><span class="line"></span><br><span class="line">	#ifdef IA32_PAGE</span><br><span class="line">	#	define KOFFSET 0xc0000000</span><br><span class="line">	#	define va_to_pa(x) (x - KOFFSET)</span><br><span class="line">	#else</span><br><span class="line">	#	define va_to_pa(x) (x)</span><br><span class="line">	#endif</span><br><span class="line"></span><br><span class="line">	.globl start</span><br><span class="line">	start:</span><br><span class="line">		lgdt    va_to_pa(gdtdesc) # See i386 manual for more information</span><br><span class="line">		movl    %cr0, %eax        # %CR0 |&#x3D; PROTECT_ENABLE_BIT</span><br><span class="line">		orl     $0x1, %eax</span><br><span class="line">		movl    %eax, %cr0</span><br><span class="line"></span><br><span class="line">	# Complete transition to 32-bit protected mode by using long jmp</span><br><span class="line">	# to reload %CS and %EIP.  The segment descriptors are set up with no</span><br><span class="line">	# translation, so that the mapping is still the identity mapping.</span><br><span class="line">		ljmp    $GDT_ENTRY(1), $va_to_pa(start_cond)</span><br><span class="line"></span><br><span class="line">	start_cond:</span><br><span class="line">	# Set up the protected-mode data segment registers</span><br><span class="line">		movw    $GDT_ENTRY(2), %ax</span><br><span class="line">		movw    %ax, %ds          # %DS &#x3D; %AX</span><br><span class="line">		movw    %ax, %es          # %ES &#x3D; %AX</span><br><span class="line">		movw    %ax, %ss          # %SS &#x3D; %AX</span><br><span class="line"></span><br><span class="line">	# Set up a stack for C code.</span><br><span class="line">		movl $0, %ebp</span><br><span class="line">		movl $(128 &lt;&lt; 20), %esp</span><br><span class="line">		jmp init				# never return</span><br><span class="line"></span><br><span class="line">	# GDT</span><br><span class="line">	.p2align 2                    # force 4 byte alignment</span><br><span class="line">	gdt:</span><br><span class="line">		MAKE_NULL_SEG_DESC                   # empty segment</span><br><span class="line">		MAKE_SEG_DESC(0xA, 0x0, 0xffffffff)  # code</span><br><span class="line">		MAKE_SEG_DESC(0x2, 0x0, 0xffffffff)  # data</span><br><span class="line"></span><br><span class="line">	gdtdesc:                      # descriptor</span><br><span class="line">		.word   (gdtdesc - gdt - 1)    # limit &#x3D; sizeof(gdt) - 1</span><br><span class="line">		.long   va_to_pa(gdt)          # address of GDT</span><br><span class="line"></span><br><span class="line"># end of IA32_SEG</span><br><span class="line">#endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>现在来逐段分析：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#ifndef IA32_SEG</span><br></pre></td></tr></table></figure>
-
 <p>这个是分段的宏，PA2里没考虑分段，也就没用到，所以直接跳到内核里去了。但是在PA3中，这个宏就要起作用了。在 <code>kernel/include/common.h</code> 中设置，把 <code>define IA32_SEG</code> 前的注释符号去掉。</p>
 <blockquote>
 <p>除了 <code>#define</code> 中的 <code>#</code> 外，其他的 <code>#</code> 都是注释！</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.globl start</span><br><span class="line">	start:</span><br><span class="line">	# Set up a stack for C code.</span><br><span class="line">		movl $0, %ebp</span><br><span class="line">		movl $(128 &lt;&lt; 20), %esp</span><br><span class="line">		jmp init				# never return</span><br></pre></td></tr></table></figure>
-
 <p>PA2没用分段（即没用 IA32_SEG 宏，not define，满足 <code>#ifndef</code>），就执行上面的部分；</p>
 <p>PA3用了分段，就执行 <code>#else</code> 的部分.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define MAKE_NULL_SEG_DESC   \</span><br><span class="line">		.word 0, 0;              \</span><br><span class="line">		.byte 0, 0, 0, 0</span><br></pre></td></tr></table></figure>
-
 <p>这个宏是将 <code>MAKE_NULL_SEG_DESC</code> 替换为下面那两个东西…</p>
 <p><code>.word</code> 和 <code>.byte</code> 就是汇编里的声明数据。声明为 <code>.word</code> 就是说那两个0都是 <code>.word</code> 类型，也就是16位宽，所以这里声明了两个16位的0。<code>.byte</code> 声明的是字节，相当于C语言中的 <code>char</code> 类型。2个16位的加上4个8位的，一共就是8个字节。所以——</p>
 <p>这就是一个段描述符！只不过这是一个空的段描述符，因为都是0.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#define MAKE_SEG_DESC(type,base,lim)                        \</span><br><span class="line">		.word (((lim) &gt;&gt; 12) &amp; 0xffff), ((base) &amp; 0xffff);      \</span><br><span class="line">		.byte (((base) &gt;&gt; 16) &amp; 0xff), (0x90 | (type)),         \</span><br><span class="line">		(0xC0 | (((lim) &gt;&gt; 28) &amp; 0xf)), (((base) &gt;&gt; 24) &amp; 0xff)</span><br></pre></td></tr></table></figure>
-
 <p>这个宏还带参数的啊—— <code>type</code> ，<code>base</code> ，<code>lim</code> ——这不就是段描述符里的信息吗？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#ifdef IA32_PAGE</span><br><span class="line">	#	define KOFFSET 0xc0000000</span><br><span class="line">	#	define va_to_pa(x) (x - KOFFSET)</span><br><span class="line">	#else</span><br><span class="line">	#	define va_to_pa(x) (x)</span><br><span class="line">	#endif</span><br></pre></td></tr></table></figure>
-
 <p>定没定义PAGE，自己决定用哪个函数。</p>
 <p>最核心的部分：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.globl start</span><br><span class="line">	start:</span><br><span class="line">		lgdt    va_to_pa(gdtdesc) # See i386 manual for more information</span><br><span class="line">		movl    %cr0, %eax        # %CR0 |&#x3D; PROTECT_ENABLE_BIT</span><br><span class="line">		orl     $0x1, %eax</span><br><span class="line">		movl    %eax, %cr0</span><br></pre></td></tr></table></figure>
-
 <p>再来看这个——<code>lgdt</code> ，将全局描述符表的首地址和大小加载到了GDTR里。这里 <code>va_to_pa</code> 只有1个参数 <code>gdtdesc</code> ，这是一个地址，而由 <code>#define va_to_pa(x) (x)</code> 得知，这不就是 <code>gdtdesc</code> 本身吗。那这到底是什么东西呢，看下面：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdtdesc:                      # descriptor</span><br><span class="line">		.word   (gdtdesc - gdt - 1)    # limit &#x3D; sizeof(gdt) - 1</span><br><span class="line">		.long   va_to_pa(gdt)          # address of GDT</span><br></pre></td></tr></table></figure>
-
 <p>嗯，不就是把 <code>gdtdesc</code> 里面的 <code>.word</code> 和 <code>.long</code> 加载过去吗？ <code>.word</code> 是16位的， <code>.long</code> 是32位的。它们是什么注释里都写清楚了，要强调的是 <code>gdtdesc - gdt - 1</code> 的这个减一。</p>
 <p>当然，再看看这个 <code>gdtdesc</code> ，不就刚好是48位吗？没错，<code>lgdt</code> 就是把48位的逻辑地址加载到GDTR中去。</p>
-<p>继续看start的代码。先把CR0的值放到EAX里，然后EAX与1进行OR，再把得到的值放回CR0。我们分析一下，当 “CR0最低位” = 0时，这一番操作使得 “CR0最低位” = 1，这就是实模式 –&gt; 保护模式。</p>
+<p>继续看start的代码。先把CR0的值放到EAX里，然后EAX与1进行OR，再把得到的值放回CR0。我们分析一下，当 “CR0最低位” = 0时，这一番操作使得 “CR0最低位” = 1，这就是实模式 —&gt; 保护模式。</p>
 <h1 id="线性地址到物理地址（分页）"><a href="#线性地址到物理地址（分页）" class="headerlink" title="线性地址到物理地址（分页）"></a>线性地址到物理地址（分页）</h1><h2 id="IA-32中的控制寄存器"><a href="#IA-32中的控制寄存器" class="headerlink" title="IA-32中的控制寄存器"></a>IA-32中的控制寄存器</h2><p>控制寄存器保存机器的各种控制和状态信息，操作系统进行任务控制或存储管理时使用控制寄存器。</p>
 <p><strong>CR0</strong>：PG位：</p>
 <p>1 - 启用分页</p>
@@ -529,7 +526,7 @@
 <p><strong>CR3</strong>：页目录基址寄存器</p>
 <p>保存页目录表的起始地址。</p>
 <p>当然，CR2和CR3有效的前提都是PG = 1。</p>
-<p>Linux中线性地址空间划分：4GB = 1K个子空间 * 1K个页面/子空间 * 4KB/页</p>
+<p>Linux中线性地址空间划分：4GB = 1K个子空间 <em> 1K个页面/子空间 </em> 4KB/页</p>
 <p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20201226101431856.png" alt="image-20201226101431856"></p>
 <p>每一个页表就是一个子空间，页表中有1K项，每一项对应一个物理页；</p>
 <p>页目录表只有1张，里面有1K个页目录项，每一项对应一个页表。</p>
@@ -637,7 +634,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

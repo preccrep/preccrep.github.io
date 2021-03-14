@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"preccrep.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="平面网格数据的生成利用矩阵运算生成1234x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;X &#x3D; ones(size(y))*x;Y &#x3D; y*ones(size(x));  利用meshgrid函数生成[X, Y] &#x3D; meshgrid(x, y); 其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。 123456x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;[X, Y] &#x3D; meshgri">
+  <meta name="description" content="平面网格数据的生成利用矩阵运算生成1234x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;X &#x3D; ones(size(y))*x;Y &#x3D; y*ones(size(x)); 利用meshgrid函数生成[X, Y] &#x3D; meshgrid(x, y); 其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。 123456x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;[X, Y] &#x3D; meshgrid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MATLAB绘制三维图形">
 <meta property="og:url" content="https://preccrep.github.io/2020/07/29/MATLAB%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2/index.html">
 <meta property="og:site_name" content="Serial">
-<meta property="og:description" content="平面网格数据的生成利用矩阵运算生成1234x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;X &#x3D; ones(size(y))*x;Y &#x3D; y*ones(size(x));  利用meshgrid函数生成[X, Y] &#x3D; meshgrid(x, y); 其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。 123456x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;[X, Y] &#x3D; meshgri">
+<meta property="og:description" content="平面网格数据的生成利用矩阵运算生成1234x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;X &#x3D; ones(size(y))*x;Y &#x3D; y*ones(size(x)); 利用meshgrid函数生成[X, Y] &#x3D; meshgrid(x, y); 其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。 123456x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;[X, Y] &#x3D; meshgrid">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-29T13:18:30.000Z">
 <meta property="article:modified_time" content="2020-07-29T14:33:50.000Z">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
 
   </li>
   </ul>
@@ -216,19 +216,16 @@
 
       
         <h1 id="平面网格数据的生成"><a href="#平面网格数据的生成" class="headerlink" title="平面网格数据的生成"></a>平面网格数据的生成</h1><h2 id="利用矩阵运算生成"><a href="#利用矩阵运算生成" class="headerlink" title="利用矩阵运算生成"></a>利用矩阵运算生成</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">X = <span class="built_in">ones</span>(<span class="built_in">size</span>(y))*x;</span><br><span class="line">Y = y*<span class="built_in">ones</span>(<span class="built_in">size</span>(x));</span><br></pre></td></tr></table></figure>
-
 <h2 id="利用meshgrid函数生成"><a href="#利用meshgrid函数生成" class="headerlink" title="利用meshgrid函数生成"></a>利用meshgrid函数生成</h2><p>[X, Y] = meshgrid(x, y);</p>
 <p>其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = <span class="built_in">randn</span>(<span class="built_in">size</span>(X));</span><br><span class="line"><span class="built_in">plot3</span>(X, Y, Z)</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
-
-<h1 id="绘制三维曲面的函数"><a href="#绘制三维曲面的函数" class="headerlink" title="绘制三维曲面的函数"></a>绘制三维曲面的函数</h1><p>**mesh(x, y, z, c)**用于绘制三维网格图</p>
-<p>**surf(x, y, z, c)**用于绘制三维曲面图</p>
+<h1 id="绘制三维曲面的函数"><a href="#绘制三维曲面的函数" class="headerlink" title="绘制三维曲面的函数"></a>绘制三维曲面的函数</h1><p><strong>mesh(x, y, z, c)</strong>用于绘制三维网格图</p>
+<p><strong>surf(x, y, z, c)</strong>用于绘制三维曲面图</p>
 <p>其中，x、y是网格坐标矩阵，z是网格点上的高度矩阵，c用于指定在不同高度下的曲面颜色。</p>
 <p><strong>mesh(z, c)</strong></p>
 <p><strong>surf(z, c)</strong></p>
 <p>当x、y省略时，z矩阵的第2维下标当作x轴坐标，z矩阵的第1维下标当作y轴坐标。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">1</span>:<span class="number">5</span>;</span><br><span class="line">z = [<span class="number">0.5</span>*t; <span class="number">2</span>*t; <span class="number">3</span>*t];</span><br><span class="line">mesh(z);</span><br></pre></td></tr></table></figure>
-
 <p><strong>meshc</strong>带等高线的三维网格曲面函数</p>
 <p><strong>meshz</strong>带底座的三维网格曲面函数</p>
 <p><strong>surfc</strong>带等高线的曲面函数</p>
@@ -335,7 +332,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

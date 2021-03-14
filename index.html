@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,138 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2021/03/14/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/14/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">Java面向对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-14 13:35:57 / Modified: 23:02:27" itemprop="dateCreated datePublished" datetime="2021-03-14T13:35:57+08:00">2021-03-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h1><p>静态变量被类中的所有对象共享。静态方法不能访问类中的实例成员。</p>
+<p>如果想让一个类中的所有实例共享数据，就要使用<em>静态变量</em>（static variable），也称<em>类变量</em>（class variable）。静态变量将变量值存储在一个公共的内存地址。因为是公共的，所以如果某一个对象修改了静态变量的值，那么同一个类的所有对象都会受影响。</p>
+<p>无需创建类的实例就可以调用<em>静态方法</em>（static method）。</p>
+<p>要声明一个静态变量或定义一个静态方法，就需要中声明中加上修饰符static。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> numberOfObjects;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNumberOfObjects</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> numberOfObjects;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Math类中所有的方法都是静态的。main方法也是静态方法。</p>
+<p>类中的常量是被该类的所有对象所共享的。因此，常量应该声明为<code>final static</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">double</span> PI = <span class="number">3.1415</span>;</span><br></pre></td></tr></table></figure>
+<p>实例方法可以调用实例方法和静态方法，访问实例数据域或静态数据域。静态方法只能调用静态方法和访问静态数据域。因为静态方法和静态数据域不属于某个特定的对象。</p>
+<blockquote>
+<p>一个常见的设计错误就是将一个本应该声明为静态的方法声明为实例方法。例如<code>factorial(int n)</code>应该定义为是静态的，因为它不依赖于任何具体的实例。</p>
+</blockquote>
+<h1 id="可见性修饰符"><a href="#可见性修饰符" class="headerlink" title="可见性修饰符"></a>可见性修饰符</h1><p>可见性修饰符可以用于确定一个类以及它的成员的可见性。</p>
+<p>可以在类、方法和数据域前使用public修饰符，表示它们可以被任何其他的类访问。如果没有可见性修饰符，则默认类、方法和数据域是可以被同一个包中的任何一个类访问的。这称作<em>包私有</em>（package-private）或<em>包内访问</em>（package- access）。</p>
+<blockquote>
+<p>包可以用来组织类。用下面的语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> packageName;</span><br></pre></td></tr></table></figure>
+<p>如果定义时没有包，就表示把它放在默认包中。</p>
+<p>Java建议最好把类放入包中，而不要使用默认包。</p>
+</blockquote>
+<p>private修饰符限定方法和数据域只能在它自己的类中被访问。</p>
+<p><img src="/Users/preccrep/Desktop/x.png" alt="x"></p>
+<p>如果一个类没有被定义为公共类，则它只能在同一个包内被访问。</p>
+<h1 id="不可变对象和类"><a href="#不可变对象和类" class="headerlink" title="不可变对象和类"></a>不可变对象和类</h1><blockquote>
+<p>可以定义不可变类来产生不可变对象。不可变对象的内容不能被改变。</p>
+</blockquote>
+<p>通常创建一个对象后，它的内容是允许之后改变的。有时候也需要创建一个一旦创建其内容就不能再改变的对象。我们称这种对象为一个<em>不可变对象</em>（immutable object），而它的类就是<em>不可变类</em>（immutable class）。例如，String类就是不可变的。如果把set方法去掉，也可能变为不可变类。</p>
+<p>如果一个类是不可变的，那么它的所有数据域必须都是私有的，而且没有对任何一个数据域提供公共的set方法。但是这只是充分条件。反例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> java.util.Date dateCreated;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> ssn, String newName)</span></span>&#123;</span><br><span class="line">    id=ssn;</span><br><span class="line">    name=newName;</span><br><span class="line">    dateCreated=<span class="keyword">new</span> java.util.Date();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> java.util.<span class="function">Date <span class="title">getDateCreated</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dateCreated;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>getDateCreated方法返回的是一个引用。通过这个引用可以改变getDateCreated的值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Student student=<span class="keyword">new</span> Student(<span class="number">111222333</span>,<span class="string">&quot;Mika&quot;</span>);</span><br><span class="line">    java.util.Date dateCreated=student.getDateCreated();</span><br><span class="line">    dateCreated.setTime(<span class="number">200000</span>); <span class="comment">//Now dateCreated field is changed!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h1><p><strong>实例变量和静态变量的作用域是整个类，无论变量是在哪里声明的。</strong></p>
+<p>一个类的实例变量和静态变量称为<em>类变量</em>（class’s variables）或<em>数据域</em>（data field）。在方法内部定义的变量是局部变量。</p>
+<p>类变量只能声明一次，但是在一个方法内不同的非嵌套块中，可以多次声明相同的变量名。</p>
+<p>如果一个局部变量和一个类变量具有相同的名字，那么局部变量优先，而同名的类变量被隐藏。</p>
+<h1 id="this引用"><a href="#this引用" class="headerlink" title="this引用"></a>this引用</h1><p>关键字this引用对象自身。它也可以在构造方法内部用于调用同一个类的其他构造方法。</p>
+<p><strong>关键字this是指向调用对象本身的引用名。</strong>可以用this关键字引用对象的实例成员。</p>
+<p>在引用隐藏数据域（例如set方法将数据域名作为参数名）以及调用一个重载的构造方法的时候，this引用是必须的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> radius;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Circle</span><span class="params">(<span class="keyword">double</span> radius)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.radius=radius; <span class="comment">//关键字this可以用于引用隐藏数据域</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Circle</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="number">1.0</span>); <span class="comment">//关键字this可以用于调用同一个类的另一个构造方法</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h1><p>面向对象编程允许从已经存在的类中定义新的类，这称为继承。</p>
+<p>继承能够避免冗余并使系统更易于理解和易于维护。</p>
+<h2 id="父类和子类"><a href="#父类和子类" class="headerlink" title="父类和子类"></a>父类和子类</h2><p>如果类C1扩展自另一个类C2，那么称C1为<em>次类</em>（subclass），C2为<em>超类</em>（superclass）。超类也称<em>父类</em>（parent class）或<em>基类</em>（base class），次类又称<em>子类</em>（child class）、<em>扩展类</em>（extended class）或<em>派生类</em>（derived class）。子类从它的父类中继承可访问的数据域或方法，还可添加新数据域和新方法。</p>
+<p>父类中的私有数据域是不能被子类访问的，但是可以用get和set方法。</p>
+<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>一个Java类只可能直接继承自一个父类，这种限制称为单一继承（single inheritence）。如果使用extends关键字来定义一个子类，它只允许有一个父类。然而，多重继承是可以直接通过接口来实现的。</p>
+<h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>关键字super指代父类，可以用于调用父类中的普通方法和构造方法。</p>
+<h3 id="调用父类的构造方法"><a href="#调用父类的构造方法" class="headerlink" title="调用父类的构造方法"></a>调用父类的构造方法</h3><p>构造方法用于构建一个类的实例。不同于属性和普通方法，父类的构造方法不会被子类继承。它们只能使用关键字super从子类的构造方法中调用。</p>
+<p>调用父类构造方法的语法是：<code>super 或 super(parameters)</code></p>
+<p>语句<code>super()</code>调用父类的无参构造方法，而语句<code>super(arguments)</code>调用与参数匹配的父类的构造方法。它们必须出现在子类构造方法的第一行，这是显示调用父类构造方法的唯一方式。在子类中调用父类构造方法的名字会引起一个语法错误。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CircleFromSimpleGeometricObject</span><span class="params">(<span class="keyword">double</span> radius,String color,<span class="keyword">boolean</span> filled)</span></span>&#123;</span><br><span class="line">  <span class="keyword">super</span>(color,filled);</span><br><span class="line">  <span class="keyword">this</span>.radius=radius;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原来是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CircleFromSimple</span><span class="params">(<span class="keyword">double</span> radius,String color, <span class="keyword">boolean</span> filled)</span></span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.radius=radius;</span><br><span class="line">	setColor(color);</span><br><span class="line">	setFilled(filled);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>构造方法链（IMPORTANT 354 355）</strong></p>
+<h3 id="调用父类的方法"><a href="#调用父类的方法" class="headerlink" title="调用父类的方法"></a>调用父类的方法</h3><p>语法是：<code>super.methodName(parameters)</code></p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">  System.out.println(<span class="keyword">super</span>.getDateCreated());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h2><p>要重写一个方法，需要在子类中使用和父类一样的签名以及一样的返回值类型来对该方法进行定义。</p>
+<p>子类从父类中继承方法，有时子类需要修改父类中定义的方法的实现，这称作<strong>方法重写</strong>（method overriding）。</p>
+<p>例如GeometricObject类中的toString方法返回表示几何对象的字符串。这个方法可以被重写，返回表示圆的字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123; <span class="comment">//toString is originally defined in Father</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.toString()+<span class="string">&quot;\nradius is &quot;</span>+radius;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Son使用super.toString()访问Father中的toString方法，但是GrandSon不能使用super.super.toString()访问Father中的toString方法。这是一个语法错误。</p>
+<blockquote>
+<p><strong>值得注意的是：</strong></p>
+<p>仅当实例方法是可访问时，它才可被覆盖。因为私有方法在它的类本身以外是不能访问的，所以它不能被覆盖。如果子类中定义的方法是父类中私有的，那么这两个方法完全没有关系。</p>
+<p>与实例方法一样，静态方法也能被继承。但是静态方法不能被覆盖。如果父类中定义的静态方法在子类中被重新定义，那么在父类中定义的静态方法将被隐藏。可以使用语法：父类名.静态方法名（SuperClassName.staticMethodName）调用隐藏的静态方法。</p>
+</blockquote>
+<p>重载意味着使用同样的名字但是不同的签名来定义多个方法。</p>
+<p>重写意味着在子类中提供一个对方法的新的实现。</p>
+<ul>
+<li>方法重写发生在通过继承而相关的不同类中；方法重载可以发生在同一个类中，也可以发生在由于继承而相关的不同类中。</li>
+<li>方法重写具有相同的签名和返回值类型；方法重载具有相同的名字，但是不同的参数列表。</li>
+</ul>
+<p>为了避免错误，可以使用一个特殊的Java语法，成为重写标注（override annotation），在子类的方法前面放一个@Override。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123; <span class="comment">//toString is originally defined in Father</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.toString()+<span class="string">&quot;\nradius is &quot;</span>+radius;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该标注表示被标注的方法必须重写父类的一个方法。如果具有该标注的方法没有重写父类的方法，编译器将会报错。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -219,18 +351,12 @@
 <p>例如swap函数：</p>
 <p>方案1：构造一个新类MyInteger</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwapTwoNumbers</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInteger</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyInteger</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.a = a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeValue</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.a = a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(MyInteger a, MyInteger b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t = a.getValue();</span><br><span class="line">        a.changeValue(b.getValue());</span><br><span class="line">        b.changeValue(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MyInteger a = <span class="keyword">new</span> MyInteger(<span class="number">4</span>);</span><br><span class="line">        MyInteger b = <span class="keyword">new</span> MyInteger(<span class="number">10</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;a is &quot;</span>+a.getValue()+<span class="string">&quot; and b is &quot;</span>+b.getValue());</span><br><span class="line">        swap(a, b);</span><br><span class="line">        System.out.println(<span class="string">&quot;a is &quot;</span>+a.getValue()+<span class="string">&quot; and b is &quot;</span>+b.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>方案2：利用main所在的类本身</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">t1</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a, b;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">t1</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.a = a;</span><br><span class="line">		<span class="keyword">this</span>.b = b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> t = a;</span><br><span class="line">		a = b;</span><br><span class="line">		b = t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		t1 x = <span class="keyword">new</span> t1(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;a is &quot;</span>+x.a+<span class="string">&quot; and b is &quot;</span>+x.b);</span><br><span class="line">		x.swap();</span><br><span class="line">		System.out.println(<span class="string">&quot;a is &quot;</span>+x.a+<span class="string">&quot; and b is &quot;</span>+x.b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>方案3：利用数组</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = data[a];</span><br><span class="line">    data[a] = data[b];</span><br><span class="line">    data[b] = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h1 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h1><p>求gcd。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">t1</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//if(a &lt;= 0 || b &lt;= 0) return 0;</span></span><br><span class="line">		<span class="keyword">if</span>(a%b==<span class="number">0</span>) <span class="keyword">return</span> b;</span><br><span class="line">		<span class="keyword">return</span> gcd(b, a%b);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Random r = <span class="keyword">new</span> Random();</span><br><span class="line">		<span class="keyword">int</span> a = r.nextInt(), b = r.nextInt();</span><br><span class="line">		a=Math.abs(a); b=Math.abs(b);</span><br><span class="line">		System.out.println(a+<span class="string">&quot; &quot;</span>+b);</span><br><span class="line">		<span class="keyword">if</span>(a&lt;b) System.out.println(gcd(b,a));</span><br><span class="line">		<span class="keyword">else</span> System.out.println(gcd(a,b));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>求素数。</p>
 
       
@@ -372,16 +498,16 @@
 <p>项（literal）：变量或它的反变量.</p>
 <p>布尔表达式适用于描述<strong>组合逻辑电路</strong>中输入与输出间的功能规范。（因为组合逻辑电路的输出只与输入有关）</p>
 <p>对偶（duality）：</p>
-<p>设F为任意逻辑表达式，若将F中所有运算符和常量作如下变换：<br>$$<br>. \rightarrow +<br>$$</p>
-<p>$$</p>
-<ul>
-<li>\rightarrow .<br>$$</li>
-</ul>
-<p>$$<br>0 \rightarrow 1<br>$$</p>
-<p>$$<br>1 \rightarrow 0<br>$$</p>
-<p>则变换后得到的是F的对偶式F‘。</p>
+<p>设F为任意逻辑表达式，若将F中所有运算符和常量作如下变换：</p>
+<script type="math/tex; mode=display">
+. \rightarrow +</script><script type="math/tex; mode=display">
++ \rightarrow .</script><script type="math/tex; mode=display">
+0 \rightarrow 1</script><script type="math/tex; mode=display">
+1 \rightarrow 0</script><p>则变换后得到的是F的对偶式F‘。</p>
 <p>对偶是相互的，F和F’互为对偶式。</p>
-<p>对偶规则：两个逻辑表达式F和G相等，则对偶式F’和G’也相等。例如：<br>$$<br>A(B+C)=AB+AC \rightarrow A+BC=(A+B)(A+C)<br>$$<br><img src="https://i.loli.net/2021/03/05/eVtTS4E3BWoZ6KO.png" alt="德摩根定律.png"></p>
+<p>对偶规则：两个逻辑表达式F和G相等，则对偶式F’和G’也相等。例如：</p>
+<script type="math/tex; mode=display">
+A(B+C)=AB+AC \rightarrow A+BC=(A+B)(A+C)</script><p><img src="https://i.loli.net/2021/03/05/eVtTS4E3BWoZ6KO.png" alt="德摩根定律.png"></p>
 <p>蕴含项（implicant）：项的乘积</p>
 <blockquote>
 <p>如 $AB\overline{C}$, $AC$</p>
@@ -437,7 +563,10 @@
 </ol>
 <p><strong>相同编号的最小项和最大项互为反函数。</strong></p>
 <h1 id="标准与或式和标准或与式"><a href="#标准与或式和标准或与式" class="headerlink" title="标准与或式和标准或与式"></a>标准与或式和标准或与式</h1><h2 id="标准与或式（sum-of-products）"><a href="#标准与或式（sum-of-products）" class="headerlink" title="标准与或式（sum-of-products）"></a>标准与或式（sum-of-products）</h2><p>由最小项之和构成的逻辑表达式。</p>
-<p>例如：<br>$$<br>F(A,B,C)=\overline{A}B\overline{C}+A\overline{B}\overline{C}+AB\overline{C}=\Sigma(m_2,m_4,m_6)=\Sigma(2,4,6)<br>$$<br>每个最小项都对应真值表中值为1的一行。</p>
+<p>例如：</p>
+<script type="math/tex; mode=display">
+F(A,B,C)=\overline{A}B\overline{C}+A\overline{B}\overline{C}+AB\overline{C}=\Sigma(m_2,m_4,m_6)=\Sigma(2,4,6)</script><p>每个最小项都对应真值表中值为1的一行。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -447,7 +576,8 @@
 <th>F(A, B, C)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -495,19 +625,27 @@
 <td>1</td>
 <td>0</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>标准与或式是最小项之间的或运算，与真值表间一一对应。</p>
 <p>可以有多个逻辑表达式对应相同的真值表，但是只有一个标准与或式与该真值表对应。</p>
 <p><strong>标准与或式具有唯一性。</strong></p>
 <p><strong>任一逻辑函数都可以表达为最小项之和的形式，而且是唯一的。</strong></p>
-<p>例如：（通常把缺的那一项配上）<br>$$<br>F(A,B,C)=AB+\overline{A}C=AB(C+\overline{C})+\overline{A}C(B+\overline{B})=ABC+AB\overline{C}+\overline{A}BC+\overline{A}\overline{B}C=\Sigma(1,3,6,7)<br>$$</p>
-<h2 id="标准或与式（product-of-sum）"><a href="#标准或与式（product-of-sum）" class="headerlink" title="标准或与式（product-of-sum）"></a>标准或与式（product-of-sum）</h2><p>最大项之积构成的逻辑表达式。</p>
-<p>例如：<br>$$<br>F(A,B,C)=(A+B+C)(A+\overline{B}+C)(\overline{A}+B+C)=\prod(M_0,M_2,M_4)=\prod(0,2,4)<br>$$<br><strong>任何一个逻辑函数也可以写成最大项之积的形式，并且是唯一的。</strong></p>
-<h2 id="标准与或式和标准或与式的关系"><a href="#标准与或式和标准或与式的关系" class="headerlink" title="标准与或式和标准或与式的关系"></a>标准与或式和标准或与式的关系</h2><p>$$<br>F(A,B,C)=\Sigma(2,4,6)<br>$$</p>
-<p>$$<br>\overline{F}(A,B,C)=\Sigma(0,1,3,5,7)<br>$$</p>
-<p>$$<br>F=\overline{\overline{F}}=\overline{m_0+m_1+m_3+m_5+m_7}=\overline{m_0}\cdot\overline{m_1}\cdot\overline{m_3}\cdot\overline{m_5}\cdot\overline{m_7}=M_0M_1M_3M_5M_7<br>$$</p>
-<p>于是有<br>$$<br>F=\sum_i m_i=\prod_{j\neq i}M_j<br>$$<br>推导：<br>$$<br>F=\sum_i m_i=\overline{\sum_{j\neq i} m_j}=\prod_{j\neq i}\overline{m_j}=\prod_{j\neq i}M_j<br>$$</p>
-<h2 id="布尔表达式与真值表的转换"><a href="#布尔表达式与真值表的转换" class="headerlink" title="布尔表达式与真值表的转换"></a>布尔表达式与真值表的转换</h2><ol>
+<p>例如：（通常把缺的那一项配上）</p>
+<script type="math/tex; mode=display">
+F(A,B,C)=AB+\overline{A}C=AB(C+\overline{C})+\overline{A}C(B+\overline{B})=ABC+AB\overline{C}+\overline{A}BC+\overline{A}\overline{B}C=\Sigma(1,3,6,7)</script><h2 id="标准或与式（product-of-sum）"><a href="#标准或与式（product-of-sum）" class="headerlink" title="标准或与式（product-of-sum）"></a>标准或与式（product-of-sum）</h2><p>最大项之积构成的逻辑表达式。</p>
+<p>例如：</p>
+<script type="math/tex; mode=display">
+F(A,B,C)=(A+B+C)(A+\overline{B}+C)(\overline{A}+B+C)=\prod(M_0,M_2,M_4)=\prod(0,2,4)</script><p><strong>任何一个逻辑函数也可以写成最大项之积的形式，并且是唯一的。</strong></p>
+<h2 id="标准与或式和标准或与式的关系"><a href="#标准与或式和标准或与式的关系" class="headerlink" title="标准与或式和标准或与式的关系"></a>标准与或式和标准或与式的关系</h2><script type="math/tex; mode=display">
+F(A,B,C)=\Sigma(2,4,6)</script><script type="math/tex; mode=display">
+\overline{F}(A,B,C)=\Sigma(0,1,3,5,7)</script><script type="math/tex; mode=display">
+F=\overline{\overline{F}}=\overline{m_0+m_1+m_3+m_5+m_7}=\overline{m_0}\cdot\overline{m_1}\cdot\overline{m_3}\cdot\overline{m_5}\cdot\overline{m_7}=M_0M_1M_3M_5M_7</script><p>于是有</p>
+<script type="math/tex; mode=display">
+F=\sum_i m_i=\prod_{j\neq i}M_j</script><p>推导：</p>
+<script type="math/tex; mode=display">
+F=\sum_i m_i=\overline{\sum_{j\neq i} m_j}=\prod_{j\neq i}\overline{m_j}=\prod_{j\neq i}M_j</script><h2 id="布尔表达式与真值表的转换"><a href="#布尔表达式与真值表的转换" class="headerlink" title="布尔表达式与真值表的转换"></a>布尔表达式与真值表的转换</h2><ol>
 <li><p>代入法</p>
 </li>
 <li><p>将表达式转化为标准与或式</p>
@@ -525,8 +663,9 @@
 <p>于是只有(0,1,1), (1,1,0), (1,1,1)满足条件。</p>
 </li>
 </ol>
-<h2 id="使用定理化简表达式"><a href="#使用定理化简表达式" class="headerlink" title="使用定理化简表达式"></a>使用定理化简表达式</h2><p>使与或式中的与项最少，与项中出现的变量最少。<br>$$<br>例如，A(A+B)=A<br>$$</p>
-<h1 id="从逻辑到门"><a href="#从逻辑到门" class="headerlink" title="从逻辑到门"></a>从逻辑到门</h1><p><img src="https://i.loli.net/2021/03/05/MUnShzXARHamIcE.png" alt="原理图.png"></p>
+<h2 id="使用定理化简表达式"><a href="#使用定理化简表达式" class="headerlink" title="使用定理化简表达式"></a>使用定理化简表达式</h2><p>使与或式中的与项最少，与项中出现的变量最少。</p>
+<script type="math/tex; mode=display">
+例如，A(A+B)=A</script><h1 id="从逻辑到门"><a href="#从逻辑到门" class="headerlink" title="从逻辑到门"></a>从逻辑到门</h1><p><img src="https://i.loli.net/2021/03/05/MUnShzXARHamIcE.png" alt="原理图.png"></p>
 <h1 id="X和Z"><a href="#X和Z" class="headerlink" title="X和Z"></a>X和Z</h1><h2 id="非法值"><a href="#非法值" class="headerlink" title="非法值"></a>非法值</h2><p>竞争（contention）：电路结点同时被0和1驱动</p>
 <ul>
 <li>电压值可能介于 $0~V_{DD}$ 之间</li>
@@ -650,7 +789,7 @@
 <p>P2P体系结构<br>在一个P2P体系结构中，对位于数据中心的专用服务器有最小的（或者没有）依赖。相反，应用程序在间断连接的主机对之间使用直接通信，这些主机对被称为对等方。</p>
 <p>进程通信</p>
 <h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>应用层的大多数协议都是基于客户服务器方式。客户和服务器都是指通信中所涉及的两个应用进程。客户服务器方式所描述的进程之间服务和被服务的关系。</p>
-<p>**域名系统(Domain Name System, 简称DNS)**，主要是解决Internet网上机器或设备命名的一种系统。它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。</p>
+<p><strong>域名系统(Domain Name System, 简称DNS)</strong>，主要是解决Internet网上机器或设备命名的一种系统。它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。</p>
 <p>DNS使用TCP和UDP端口53.</p>
 <p>对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p>
 <p>域名系统是一种服务器资源，许多应用层软件经常直接使用域名系统DNS，但计算机的用户只是间接而不是直接使用域名系统。</p>
@@ -673,8 +812,7 @@
 <p><strong>递归查询</strong>：如果想知道一个域名对应的IP地址，但在访问本地域名服务器时，可能该域名查询不到，此时该本地域名服务器就会请求它的上级支援，直到查到所查询的IP地址。</p>
 <p>递归解析（递归查询）过程中，一直是以本地名称服务器为中心的，DNS客户端只是发出原始的域名查询请求报文，然后就一直处于等待状态，直到本地域名服务器发来最终的查询结果。此时的本地域名服务器只是起到了中介代理的作用。</p>
 <p>本地名称服务器也有缓存技术。</p>
-<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210223152830400.png" alt="image-20210223152830400"  />
-
+<p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210223152830400.png" alt="image-20210223152830400"  /></p>
 <p><strong>域名解析过程加快的途径</strong>：</p>
 <ul>
 <li>物理配置上，配一台运行速度高（CPU主频高、计算机内存大）的域名服务器；</li>
@@ -711,38 +849,9 @@
 <p>TCP的端口号可分为两大类:</p>
 <ol>
 <li><p>服务器端使用的端口号(又可分为两类):</p>
-<ol>
-<li>熟知端口号/系统端口号(well known port number): 数值为0-1023.可在<a target="_blank" rel="noopener" href="http://www.iana.org查到,iana把这些端口号指派给tcp/IP%E4%B8%AD%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%EF%BC%8C%E8%AE%A9%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7%E9%83%BD%E7%9F%A5%E9%81%93%E3%80%82%E5%BD%93%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%87%BA%E7%8E%B0%E5%90%8E%EF%BC%8CIANA%E5%BF%85%E9%A1%BB%E4%B8%BA%E5%AE%83%E6%8C%87%E6%B4%BE%E4%B8%80%E4%B8%AA%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%EF%BC%8C%E5%90%A6%E5%88%99%E5%9B%A0%E7%89%B9%E7%BD%91%E4%B8%8A%E7%9A%84%E5%85%B6%E4%BB%96%E5%BA%94%E7%94%A8%E8%BF%9B%E7%A8%8B%E5%B0%B1%E6%97%A0%E6%B3%95%E5%92%8C%E5%AE%83%E8%BF%9B%E8%A1%8C%E9%80%9A%E4%BF%A1%E3%80%82%E5%A6%82%E4%B8%8B%E6%98%AF%E4%B8%80%E4%BA%9B%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7%EF%BC%9A">www.iana.org查到，IANA把这些端口号指派给TCP/IP中最重要的一些应用程序，让所有用户都知道。当一种新的应用程序出现后，IANA必须为它指派一个熟知端口，否则因特网上的其他应用进程就无法和它进行通信。如下是一些熟知端口号：</a></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>应用程序</th>
-<th>FTP</th>
-<th>TELNET</th>
-<th>SMTP</th>
-<th>DNS</th>
-<th>TFTP</th>
-<th>HTTP</th>
-<th>SNMP</th>
-<th>SNMP(trap)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>熟知端口号</td>
-<td>21</td>
-<td>23</td>
-<td>25</td>
-<td>53</td>
-<td>69</td>
-<td>80</td>
-<td>161</td>
-<td>162</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li>注册端口号: 数值为1024-49151.为没有熟知端口号的应用程序使用的。使用这类端口号必须按照IANA的规定手续登记，以防止重复。</li>
-</ol>
+<p>1) 熟知端口号/系统端口号(well known port number): 数值为0-1023.可在www.iana.org查到，IANA把这些端口号指派给TCP/IP中最重要的一些应用程序，让所有用户都知道。当一种新的应用程序出现后，IANA必须为它指派一个熟知端口，否则因特网上的其他应用进程就无法和它进行通信。如下是一些熟知端口号：</p>
+<p>| 应用程序   | FTP  | TELNET | SMTP | DNS  | TFTP | HTTP | SNMP | SNMP(trap) |<br>| ————— | —— | ——— | —— | —— | —— | —— | —— | ————— |<br>| 熟知端口号 | 21   | 23     | 25   | 53   | 69   | 80   | 161  | 162        |</p>
+<p>2) 注册端口号: 数值为1024-49151.为没有熟知端口号的应用程序使用的。使用这类端口号必须按照IANA的规定手续登记，以防止重复。</p>
 </li>
 <li><p>客户端使用的端口号</p>
 <p>数值为49152-65535。由于这类端口号仅在客户进程运行时才动态的选择，因此又称短暂端口号(临时端口号)。是留给客户进程选择暂时使用，当服务器进程收到客户进程的报文，就知道了客户进程所使用的端口号，因而可以把数据发送给客户进程。通信结束后，这个端口号就不存在了，就可以供给其他客户进程以后使用。</p>
@@ -805,28 +914,28 @@
 </ul>
 <blockquote>
 <p><strong>协议数据单元</strong>（英语：Protocol Data Unit，缩写为<strong>PDU</strong>）:</p>
-<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">OSI模型</a>系统里，PDU和最下面四层相关。</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI模型">OSI模型</a>系统里，PDU和最下面四层相关。</p>
 <ol>
-<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>（一层）PDU指<strong>数据位</strong>（<strong>Bit</strong>）。</p>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/物理层">物理层</a>（一层）PDU指<strong>数据位</strong>（<strong>Bit</strong>）。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a>（二层）PDU指<strong>数据帧</strong>（<strong>Frame</strong>）。</p>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据链路层">数据链路层</a>（二层）PDU指<strong>数据帧</strong>（<strong>Frame</strong>）。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a>（三层）PDU指<strong>数据包</strong>（<strong>Packet</strong>）。</p>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/网络层">网络层</a>（三层）PDU指<strong>数据包</strong>（<strong>Packet</strong>）。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82">传输层</a>（四层）PDU指<strong>数据段</strong>（<strong>Segment</strong>）。</p>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/传输层">传输层</a>（四层）PDU指<strong>数据段</strong>（<strong>Segment</strong>）。</p>
 </li>
 </ol>
 <p>第五层或以上为<strong>数据</strong>（<strong>data</strong>）。在特定的上下文情况下，一个特定层的PDU有时可以代表这个层。</p>
 </blockquote>
 <p>关于UDP：</p>
 <blockquote>
-<p><strong>用户数据报协议</strong>（英语：<strong>U</strong>ser <strong>D</strong>atagram <strong>P</strong>rotocol，缩写：<strong>UDP</strong>；又称<strong>用户数据包协议</strong>）是一个简单的面向<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E6%8A%A5">数据报</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE">通信协议</a>，位于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">OSI模型</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82">传输层</a>。</p>
-<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/TCP/IP">TCP/IP</a>模型中，UDP为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a>以上和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>以下提供了一个简单的接口。UDP只提供<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE">数据</a>的不可靠传递，它一旦把应用程序发给网络层的数据发送出去，就不保留数据备份（所以UDP有时候也被认为是不可靠的数据报协议）。UDP在IP数据报的头部仅仅加入了复用和数据校验字段。</p>
-<p>UDP适用于不需要或在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F">程序</a>中执行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B%E4%B8%8E%E7%BA%A0%E6%AD%A3">错误检查和纠正</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F">应用</a>，它避免了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%8F%E8%AE%AE%E6%A0%88">协议栈</a>中此类处理的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%BC%80%E9%94%80&action=edit&redlink=1">开销</a>。对时间有较高要求的应用程序通常使用UDP，因为丢弃数据包比等待或重传导致延迟更可取。</p>
+<p><strong>用户数据报协议</strong>（英语：<strong>U</strong>ser <strong>D</strong>atagram <strong>P</strong>rotocol，缩写：<strong>UDP</strong>；又称<strong>用户数据包协议</strong>）是一个简单的面向<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据报">数据报</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/通信协议">通信协议</a>，位于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI模型">OSI模型</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/传输层">传输层</a>。</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/TCP/IP">TCP/IP</a>模型中，UDP为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/网络层">网络层</a>以上和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/应用层">应用层</a>以下提供了一个简单的接口。UDP只提供<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据">数据</a>的不可靠传递，它一旦把应用程序发给网络层的数据发送出去，就不保留数据备份（所以UDP有时候也被认为是不可靠的数据报协议）。UDP在IP数据报的头部仅仅加入了复用和数据校验字段。</p>
+<p>UDP适用于不需要或在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/计算机程序">程序</a>中执行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/错误检测与纠正">错误检查和纠正</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/应用程序">应用</a>，它避免了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/协议栈">协议栈</a>中此类处理的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=开销&amp;action=edit&amp;redlink=1">开销</a>。对时间有较高要求的应用程序通常使用UDP，因为丢弃数据包比等待或重传导致延迟更可取。</p>
 </blockquote>
 <p>数据报（Datagram）：</p>
 <blockquote>
-<p>是在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%81%E5%8C%85%E4%BA%A4%E6%8F%9B%E7%B6%B2%E8%B7%AF">分组交换网络</a>中的最小传输资料单元。是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%84%A1%E9%80%A3%E6%8E%A5%E5%BC%8F%E9%80%9A%E8%A8%8A">无连接式通信</a>方法，它与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E9%9B%BB%E8%B7%AF">虚拟电路</a>构成了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2">分组交换</a>的两种主要传输方式。</p>
+<p>是在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/封包交換網路">分组交换网络</a>中的最小传输资料单元。是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/無連接式通訊">无连接式通信</a>方法，它与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/虛擬電路">虚拟电路</a>构成了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/分组交换">分组交换</a>的两种主要传输方式。</p>
 </blockquote>
 <p>TFTP工作原理：</p>
 <ul>
@@ -960,8 +1069,8 @@
 </ul>
 <p><strong>终端</strong>：用户访问网络的设备。终端的主要功能：</p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> 把用户输入的信息转变为适合传送的信息送到网络上</li>
-<li><input checked="" disabled="" type="checkbox"> 把网络上其他节点输出并经过通信线路接收的数据转变为用户所能识别的信息</li>
+<li>[x] 把用户输入的信息转变为适合传送的信息送到网络上</li>
+<li>[x] 把网络上其他节点输出并经过通信线路接收的数据转变为用户所能识别的信息</li>
 </ul>
 <p><strong>通信控制处理机（CCP）</strong>：也称通信控制器，在某些网络中也叫前端处理机（FEP）、接口信息处理机（IMP）等。</p>
 <p><strong>CCP主要作用</strong>：承担通信控制和管理工作，减轻主机负担。</p>
@@ -986,14 +1095,14 @@
 </ul>
 <p><strong>计算机网络的分类</strong>：</p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> 按照覆盖范围划分：广域网、局域网、城域网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照逻辑功能划分：资源子网、通信子网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照传输介质划分：有线网、无线网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照拓扑结构划分：星型网、总线型网、环形网、树形网、网型网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照传输介质种类划分：双绞线网、同轴电缆网、光纤网、卫星网、微波网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照应用范围和管理性质划分：公用网和专用网</li>
-<li><input checked="" disabled="" type="checkbox"> 按照交换方式划分：电路交换网、分组交换网、ATM交换网等</li>
-<li><input checked="" disabled="" type="checkbox"> 按照连接方式划分：全连通式网络、交换式网络、广播式网络</li>
+<li>[x] 按照覆盖范围划分：广域网、局域网、城域网</li>
+<li>[x] 按照逻辑功能划分：资源子网、通信子网</li>
+<li>[x] 按照传输介质划分：有线网、无线网</li>
+<li>[x] 按照拓扑结构划分：星型网、总线型网、环形网、树形网、网型网</li>
+<li>[x] 按照传输介质种类划分：双绞线网、同轴电缆网、光纤网、卫星网、微波网</li>
+<li>[x] 按照应用范围和管理性质划分：公用网和专用网</li>
+<li>[x] 按照交换方式划分：电路交换网、分组交换网、ATM交换网等</li>
+<li>[x] 按照连接方式划分：全连通式网络、交换式网络、广播式网络</li>
 </ul>
 <p>网络体系结构是针对计算机网络所执行的各种功能而设计出的一种<strong>层次结构模型</strong>。</p>
 <p>网络协议组成的三要素：</p>
@@ -1117,21 +1226,29 @@
 <li>把数字输出变换为模拟输出。</li>
 </ol>
 <p>原则：随着信号在系统中的流动，在输入通道中尽可能早地把信号数字化，在输出通道中尽可能晚地把信号转换为模拟信号。</p>
-<h1 id="数的表示"><a href="#数的表示" class="headerlink" title="数的表示"></a>数的表示</h1><h2 id="进制表示"><a href="#进制表示" class="headerlink" title="进制表示"></a>进制表示</h2><p>不同进位计数制的数值具有等值关系：<br>$$<br>N=N_{10}=(N)_{10}=N_S=(M)_S=N_T=(K)_T<br>$$<br>其中M是十进制数N的S进制形式，K是N的T进制形式。</p>
-<p>也就是说，加了括号的括号内一定是转换数制后的数，不加括号就是原来的十进制数。例如：<br>$$<br>13=(13)_{10}=13_8=(15)<em>8=(1101)<em>2<br>$$<br>数值转换时小数位数的确定：<br>$$<br>\alpha 进制的小数有k位，转换为\beta进制后，至少具有相同精度的小数是j位，则<br>(0.1)</em>{\alpha}^k \geq (0.1)</em>{\beta}^j.<br>$$</p>
-<p>$$<br>在十进制中可表示为：(\frac{1}{\alpha})^k \geq (\frac{1}{\beta})^j.<br>$$</p>
-<p>$$<br>即：\alpha^k \leq \beta^j<br>$$</p>
-<p>$$<br>两边取对数：\log\alpha^k \leq \log\beta^j，即k\log\alpha \leq j\log\beta<br>$$</p>
-<p>$$<br>得到：j \geq k\frac{\log\alpha}{\log\beta}<br>$$</p>
-<p>$$<br>则j满足的不等式条件为：k\frac{\log\alpha}{\log\beta} \leq j &lt; k\frac{\log\alpha}{\log\beta}+1<br>$$</p>
-<h2 id="数的表示和运算"><a href="#数的表示和运算" class="headerlink" title="数的表示和运算"></a>数的表示和运算</h2><p>计算机中表示小数点位置的方法通常有两种：定点表示法和浮点表示法。</p>
+<h1 id="数的表示"><a href="#数的表示" class="headerlink" title="数的表示"></a>数的表示</h1><h2 id="进制表示"><a href="#进制表示" class="headerlink" title="进制表示"></a>进制表示</h2><p>不同进位计数制的数值具有等值关系：</p>
+<script type="math/tex; mode=display">
+N=N_{10}=(N)_{10}=N_S=(M)_S=N_T=(K)_T</script><p>其中M是十进制数N的S进制形式，K是N的T进制形式。</p>
+<p>也就是说，加了括号的括号内一定是转换数制后的数，不加括号就是原来的十进制数。例如：</p>
+<script type="math/tex; mode=display">
+13=(13)_{10}=13_8=(15)_8=(1101)_2</script><p>数值转换时小数位数的确定：</p>
+<script type="math/tex; mode=display">
+\alpha 进制的小数有k位，转换为\beta进制后，至少具有相同精度的小数是j位，则
+(0.1)_{\alpha}^k \geq (0.1)_{\beta}^j.</script><script type="math/tex; mode=display">
+在十进制中可表示为：(\frac{1}{\alpha})^k \geq (\frac{1}{\beta})^j.</script><script type="math/tex; mode=display">
+即：\alpha^k \leq \beta^j</script><script type="math/tex; mode=display">
+两边取对数：\log\alpha^k \leq \log\beta^j，即k\log\alpha \leq j\log\beta</script><script type="math/tex; mode=display">
+得到：j \geq k\frac{\log\alpha}{\log\beta}</script><script type="math/tex; mode=display">
+则j满足的不等式条件为：k\frac{\log\alpha}{\log\beta} \leq j < k\frac{\log\alpha}{\log\beta}+1</script><h2 id="数的表示和运算"><a href="#数的表示和运算" class="headerlink" title="数的表示和运算"></a>数的表示和运算</h2><p>计算机中表示小数点位置的方法通常有两种：定点表示法和浮点表示法。</p>
 <h3 id="定点表示法"><a href="#定点表示法" class="headerlink" title="定点表示法"></a>定点表示法</h3><p>小数点位置固定，一般固定在数的最高位之前或最低位之后。</p>
-<h3 id="浮点表示法"><a href="#浮点表示法" class="headerlink" title="浮点表示法"></a>浮点表示法</h3><p>例如，二进制数101.1和10.11可表示为：<br>$$<br>101.1=(10)^{11}\times0.1011<br>$$</p>
-<p>$$<br>10.11=(10)^{10}\times0.1011<br>$$</p>
-<p>其中10和11是二进制数，转换为十进制就是2和3.</p>
-<p>因此，这两个二进制数可以用<strong>阶码</strong>和<strong>尾数</strong>表示：<br>$$<br>101.1\rightarrow11, 0.1011<br>$$</p>
-<p>$$<br>10.11\rightarrow10, 0.1011<br>$$</p>
-<p>这就是浮点表示法。表示时需要将一个字长划分为两部分，分别用来表示阶码和尾数，<strong>两个部分的最高位分别为各自的符号位</strong>。</p>
+<h3 id="浮点表示法"><a href="#浮点表示法" class="headerlink" title="浮点表示法"></a>浮点表示法</h3><p>例如，二进制数101.1和10.11可表示为：</p>
+<script type="math/tex; mode=display">
+101.1=(10)^{11}\times0.1011</script><script type="math/tex; mode=display">
+10.11=(10)^{10}\times0.1011</script><p>其中10和11是二进制数，转换为十进制就是2和3.</p>
+<p>因此，这两个二进制数可以用<strong>阶码</strong>和<strong>尾数</strong>表示：</p>
+<script type="math/tex; mode=display">
+101.1\rightarrow11, 0.1011</script><script type="math/tex; mode=display">
+10.11\rightarrow10, 0.1011</script><p>这就是浮点表示法。表示时需要将一个字长划分为两部分，分别用来表示阶码和尾数，<strong>两个部分的最高位分别为各自的符号位</strong>。</p>
 <p>例如，规定一个16位字长的前5位表示阶码，后11位表示尾数：</p>
 <p><code>0    0011        0    1011000000</code></p>
 <p><code>0    0010        0    1011000000</code></p>
@@ -1198,9 +1315,7 @@
 <p>其他各位：<code>B[i-1] = G[i-1] xor B[i]. (i = 1, 2, ..., n-1)</code></p>
 <p>算法实现：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/0201zcr/p/4796950.html">参考链接</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] GrayCode(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    String[] arr = <span class="keyword">new</span> String[(<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n)];</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>)</span><br><span class="line">        System.out.println(<span class="string">&quot;Input Error!&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        arr[<span class="number">0</span>] = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">        arr[<span class="number">1</span>] = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    String[] b = GrayCode(n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">        arr[i] = <span class="string">&quot;0&quot;</span> + b[i];</span><br><span class="line">        arr[arr.length - <span class="number">1</span> - i] = <span class="string">&quot;1&quot;</span> + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//非递归</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] GrayCode(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    <span class="keyword">int</span> num = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n);</span><br><span class="line">    String[] s1 = &#123;<span class="string">&quot;0&quot;</span>, <span class="string">&quot;1&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>)</span><br><span class="line">        System.out.println(<span class="string">&quot;Input Error!&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, i);</span><br><span class="line">        String[] si = <span class="keyword">new</span> String[p];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j &lt; p/<span class="number">2</span>)</span><br><span class="line">                si[j] = <span class="string">&quot;0&quot;</span> + s1[j];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                si[j] = <span class="string">&quot;1&quot;</span> + s1[p - j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        s1 = si;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>对于<strong>典型格雷码</strong>（0~15）还有一个特点：所有对应于十进制数$2^m-1$的格雷码，都仅在m位上有1，其余位都为0.</p>
 <p>例如：m=1，1的典型格雷码为0001；m=2，3的典型格雷码为0010；m=3，7的典型格雷码为0100；m=4，15的典型格雷码为1000.</p>
 <p>15与0的格雷码仍能保持一位差别，所以这种典型格雷码也称作循环码，适用于做二进制码计数器。</p>
@@ -1209,7 +1324,7 @@
 <p><strong>奇偶校验码</strong></p>
 <p>参考博客1：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dushikang/p/8334776.html">戳这</a></p>
 <p>参考博客2：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44574333/article/details/108927425">戳这</a></p>
-<p>视频链接地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BE411D7ii?from=search&seid=6420326887479343502">戳这</a></p>
+<p>视频链接地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BE411D7ii?from=search&amp;seid=6420326887479343502">戳这</a></p>
 <blockquote>
 <p>问题：</p>
 <ul>
@@ -1249,6 +1364,7 @@
 </li>
 </ol>
 <h2 id="逻辑代数的运算"><a href="#逻辑代数的运算" class="headerlink" title="逻辑代数的运算"></a>逻辑代数的运算</h2><h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><p>”与“运算（逻辑乘，Logic Multiplication），运算结果是逻辑积（Logic Product）</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1258,7 +1374,8 @@
 <th>”非“运算（逻辑乘, Logic Negation）</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>运算结果</td>
 <td>逻辑积(Logic Product)</td>
 <td>逻辑和(Logic Sum)</td>
@@ -1270,7 +1387,9 @@
 <td>$F=A+B$</td>
 <td>$F=\overline{A}$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="逻辑代数的基本公理"><a href="#逻辑代数的基本公理" class="headerlink" title="逻辑代数的基本公理"></a>逻辑代数的基本公理</h3><p><strong>0-1律</strong></p>
 <blockquote>
 <p>$A+0=A$</p>
@@ -1296,17 +1415,20 @@
 <p>$\overline{A_1+A_2+\dots +A_n}=\overline{A_1}\cdot \overline{A_2}\cdot \dots \overline{A_n}$</p>
 <p>$\overline{A_1\cdot A_2\cdot \dots \cdot A_n}=\overline{A_1}+ \overline{A_2}+ \dots \overline{A_n}$</p>
 </blockquote>
-<p><strong>包含定理(多余项定理)</strong><br>$$<br>AB+\overline{A} C+BC=AB+\overline{A} C<br>$$</p>
-<p>$$<br>(A+B)(\overline{A}+C)(B+C)=(A+B)(\overline{A}+C)<br>$$</p>
-<blockquote>
-<p>证明：$AB+\overline{A} C+BC=AB+\overline{A} C$<br>$$<br>AB+\overline{A} C+BC=(A+C)B+\overline{A}C=(A+\overline{A}C)B+\overline{A}C=AB+\overline{A}C(B+1)=AB+\overline{A}C\cdot 1=AB+\overline{A}C<br>$$</p>
-</blockquote>
+<p><strong>包含定理(多余项定理)</strong></p>
+<script type="math/tex; mode=display">
+AB+\overline{A} C+BC=AB+\overline{A} C</script><script type="math/tex; mode=display">
+(A+B)(\overline{A}+C)(B+C)=(A+B)(\overline{A}+C)</script><blockquote>
+<p>证明：$AB+\overline{A} C+BC=AB+\overline{A} C$</p>
+<script type="math/tex; mode=display">
+AB+\overline{A} C+BC=(A+C)B+\overline{A}C=(A+\overline{A}C)B+\overline{A}C=AB+\overline{A}C(B+1)=AB+\overline{A}C\cdot 1=AB+\overline{A}C</script></blockquote>
 <h3 id="逻辑代数的基本规则"><a href="#逻辑代数的基本规则" class="headerlink" title="逻辑代数的基本规则"></a>逻辑代数的基本规则</h3><p><strong>代入规则</strong></p>
 <p>已知 $f(x_1,x_2,\dots ,x_i,\dots ,x_n)=g(x_1,x_2,\dots ,x_i,\dots ,x_n)$，有任意函数h，令$x_i=h$，则 $f(x_1,x_2,\dots ,h,\dots ,x_n)=g(x_1,x_2,\dots ,h,\dots ,x_n)$依然成立。</p>
 <blockquote>
-<p>证明：<br>$$<br>\because x_i\in {0,1}且逻辑函数h取值仅有0或1<br>$$</p>
-<p>$$<br>\therefore 带入规则成立<br>$$</p>
-</blockquote>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+\because x_i\in \{0,1\}且逻辑函数h取值仅有0或1</script><script type="math/tex; mode=display">
+\therefore 带入规则成立</script></blockquote>
 <p>可以用带入规则证明N变量的德摩根定理。</p>
 <p><strong>反演规则</strong></p>
 <p>已知原函数 $f(x_1,x_2,\dots ,x_n,0,1,+,\cdot)$，则反函数 $\overline{f}(x_1,x_2,\dots ,x_n,0,1,+,\cdot)=f(\overline{x_1},\overline{x_2},\dots ,\overline{x_n},1,0,\cdot ,+)$</p>
@@ -1331,11 +1453,15 @@
 <p>$\overline{A\oplus B}=A\odot B$        $\overline{A\odot B}=A\oplus B$</p>
 <p>$(A\oplus B)‘=A\odot B$        $(A\odot B)‘=A\oplus B$（用对偶函数的运算性质证明）</p>
 <p>$A\oplus B\oplus C=A\odot B\odot C$</p>
-<p>证明  $(A\oplus B)‘=A\odot B$<br>$$<br>(A\oplus B)’=(\overline{A}\cdot B+A\cdot\overline{B})’=(\overline{A}+B)\cdot(A+\overline{B})=AB+\overline{A}\overline{B}=A\odot B<br>$$</p>
-</blockquote>
+<p>证明  $(A\oplus B)‘=A\odot B$</p>
+<script type="math/tex; mode=display">
+(A\oplus B)'=(\overline{A}\cdot B+A\cdot\overline{B})'=(\overline{A}+B)\cdot(A+\overline{B})=AB+\overline{A}\overline{B}=A\odot B</script></blockquote>
 <p>由带入规则可以证明：</p>
-<p>当变量<strong>n为偶数</strong>时，XOR和XNOR具有互补关系：<br>$$<br>A_1\oplus A_2\oplus\dots\oplus A_n=\overline{A_1\odot A_2\odot\dots\odot A_n}<br>$$<br>当变量<strong>n为奇数</strong>时，XOR和XNOR具有相等关系：<br>$$<br>A_1\oplus A_2\oplus\dots\oplus A_n=A_1\odot A_2\odot\dots\odot A_n<br>$$</p>
-<h2 id="逻辑函数的标准形式"><a href="#逻辑函数的标准形式" class="headerlink" title="逻辑函数的标准形式"></a>逻辑函数的标准形式</h2><p><strong>最小项之和</strong>：乘积项之和称为<em>积之和表达式（SOP）</em>，或称<em>与或表达式</em>。如果构成函数的积之和表达式中每一个与项均为最小项时，称为最小项标准式，且这种表示是唯一的。</p>
+<p>当变量<strong>n为偶数</strong>时，XOR和XNOR具有互补关系：</p>
+<script type="math/tex; mode=display">
+A_1\oplus A_2\oplus\dots\oplus A_n=\overline{A_1\odot A_2\odot\dots\odot A_n}</script><p>当变量<strong>n为奇数</strong>时，XOR和XNOR具有相等关系：</p>
+<script type="math/tex; mode=display">
+A_1\oplus A_2\oplus\dots\oplus A_n=A_1\odot A_2\odot\dots\odot A_n</script><h2 id="逻辑函数的标准形式"><a href="#逻辑函数的标准形式" class="headerlink" title="逻辑函数的标准形式"></a>逻辑函数的标准形式</h2><p><strong>最小项之和</strong>：乘积项之和称为<em>积之和表达式（SOP）</em>，或称<em>与或表达式</em>。如果构成函数的积之和表达式中每一个与项均为最小项时，称为最小项标准式，且这种表示是唯一的。</p>
 <p><strong>最大项之积</strong>：和项之积称为<em>和之积表达式（POS）</em>，或称<em>或与表达式</em>。如果构成函数的和之积表达式中每一个和项均为最大值，称为最大项标准式，且这种表示是唯一的。</p>
 <p><strong>最小项minterm</strong>：设有n个变量，它们组成的与项中每个变量或以原变量或以反变量形式出现一次，且仅出现一次，此与项称之为n个变量的最小项。对于n个变量就可构成 $2^n$ 个最小项，记为 $m_i$.<br>其中下标值i：当各最小项变量按一定顺序排好后，用1代替其中的原变量，0代替其中的反变量，便得一个二进制数，该二进制数的等值十进制即为i的值。</p>
 <p>例如$\overline{A}B\overline{C}=m_{(010)_2}=m_2$</p>
@@ -1345,9 +1471,9 @@
 <ol>
 <li><p>对于任意最小项，只有一组变量组合取值可使其值为1；对于任意最大项，只有一组变量组合取值可使其值为0.</p>
 </li>
-<li><p>$$<br>n变量的所有最小项的和必为1，记为\sum_{i=0}^{2^n-1} m_i=1.<br>$$</p>
-<p>$$<br>n变量的所有最大项的积必为0，记为\prod_{i=0}^{2^n-1} M_i=0.<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+n变量的所有最小项的和必为1，记为\sum_{i=0}^{2^n-1} m_i=1.</script><script type="math/tex; mode=display">
+n变量的所有最大项的积必为0，记为\prod_{i=0}^{2^n-1} M_i=0.</script></li>
 <li><p>任意两个最小项之积必为0，即：$m_i\cdot m_j=0, i\neq j$.</p>
 <p>任意两个最大项之和必为1，即：$M_i+M_j=1, i\neq j$.</p>
 </li>
@@ -1357,11 +1483,13 @@
 </ol>
 <p><strong>最小项与原、反函数的关系</strong>：对于n个变量的函数F，它共有 $2^n$ 个最小项，这些最小项不是包含在原函数 $F$ 的最小项表达式中，就是包含在反函数 $\overline{F}$ 的最小项表达式中。</p>
 <p><strong>最大项与原、反函数的关系</strong>：对于n个变量的函数F，它共有 $2^n$ 个最大项，这些最大项不是包含在原函数 $F$ 的最大项表达式中，就是包含在反函数 $\overline{F}$ 的最大项表达式中。</p>
-<p><strong>同一函数的最小项标准式与其最大项标准式的关系</strong>：<br>$$<br>F=\sum m^3(0,2,3)=\prod M^3(1,4,5,6,7)<br>$$</p>
-<blockquote>
-<p>证明：设 $F=\sum m^3(0,2,3)$，则<br>$$<br>\overline{F}=\sum m^3(1,4,5,6,7)=m_1+m_4+m_5+m_6+m_7<br>$$</p>
-<p>$$<br>F=\overline{\overline{F}}=\overline{m_1+m_4+m_5+m_6+m_7}=M_1\cdot M_4\cdot M_5\cdot M_6\cdot M_7=\prod M^3(1,4,5,6,7)<br>$$</p>
-</blockquote>
+<p><strong>同一函数的最小项标准式与其最大项标准式的关系</strong>：</p>
+<script type="math/tex; mode=display">
+F=\sum m^3(0,2,3)=\prod M^3(1,4,5,6,7)</script><blockquote>
+<p>证明：设 $F=\sum m^3(0,2,3)$，则</p>
+<script type="math/tex; mode=display">
+\overline{F}=\sum m^3(1,4,5,6,7)=m_1+m_4+m_5+m_6+m_7</script><script type="math/tex; mode=display">
+F=\overline{\overline{F}}=\overline{m_1+m_4+m_5+m_6+m_7}=M_1\cdot M_4\cdot M_5\cdot M_6\cdot M_7=\prod M^3(1,4,5,6,7)</script></blockquote>
 <p><strong>卡诺图</strong></p>
 <p>卡诺图是一种<em>平面方格阵列图</em>：</p>
 <p>行和列按变量的组合标注，其变量顺序按真值表中输入变量从左至右的顺序，并且行与列坐标按变量组合的二进制格雷码的顺序而小方格左上角标注可用十进制数表示，该数对应最小项。</p>
@@ -1451,8 +1579,6 @@
 <h2 id="从为应用程序提供服务的基础设施的角度描述因特网"><a href="#从为应用程序提供服务的基础设施的角度描述因特网" class="headerlink" title="从为应用程序提供服务的基础设施的角度描述因特网"></a>从为应用程序提供服务的基础设施的角度描述因特网</h2><blockquote>
 <p>涉及多个相互交换数据的端系统的的应用程序称为<strong>分布式应用程序</strong>（distributed application）。</p>
 <p>因特网应用程序运行在端系统上，即它们并不运行在网络核心中的分组交换机中。分组交换机能够加速端系统之间的数据交换，并不在意应用程序。</p>
-</blockquote>
-<blockquote>
 <p>运行在一个端系统上的应用程序如何让因特网向运行在另一个端系统上的软件发送数据？</p>
 <p>与因特网相连的端系统提供了一个<strong>套接字接口</strong>（socket interface），该接口规定了运行在一个端系统上的程序请求因特网基础设施向运行在另一个端系统上的特定目的地程序交付数据的方式。因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
 </blockquote>
@@ -1643,69 +1769,8 @@
       
           <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/rotate-array/">source</a></p>
 <p>题目不难，但是我觉得很有用。</p>
-<p><strong>方法1 – 使用额外数组</strong></p>
+<p><strong>方法1 — 使用额外数组</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       
     </div>
@@ -1801,53 +1866,56 @@
 <p>对于物理地址：（实际的不知道）假设就是32位，那外面的物理存储器可能就是4GB(2^32B=4GB)</p>
 </blockquote>
 </blockquote>
-<p><em><strong>分段过程实现   逻辑地址 –&gt; 线性地址</strong></em></p>
-<p><em><strong>分页过程实现    线性地址–&gt;物理地址</strong></em></p>
-<h1 id="逻辑地址到线性地址（分段）"><a href="#逻辑地址到线性地址（分段）" class="headerlink" title="逻辑地址到线性地址（分段）"></a>逻辑地址到线性地址（分段）</h1><p>*8086处理器的所有内部寄存器都是16位（AX, BX, CX, DX, SP, BP, SI, <strong>CS</strong>, <strong>DS</strong>）*</p>
+<p><strong><em>分段过程实现   逻辑地址 —&gt; 线性地址</em></strong></p>
+<p><strong><em>分页过程实现    线性地址—&gt;物理地址</em></strong></p>
+<h1 id="逻辑地址到线性地址（分段）"><a href="#逻辑地址到线性地址（分段）" class="headerlink" title="逻辑地址到线性地址（分段）"></a>逻辑地址到线性地址（分段）</h1><p><em>8086处理器的所有内部寄存器都是16位（AX, BX, CX, DX, SP, BP, SI, <strong>CS</strong>, <strong>DS</strong>）</em></p>
 <p>（CS、DS是段寄存器）</p>
 <p><em>8086处理器支持的存储器寻址方式有哪些？</em></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">寻址方式</th>
-<th align="center">说明</th>
+<th style="text-align:center">寻址方式</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">位移</td>
-<td align="center">EA = A</td>
+<tbody>
+<tr>
+<td style="text-align:center">位移</td>
+<td style="text-align:center">EA = A</td>
 </tr>
 <tr>
-<td align="center">基址寻址</td>
-<td align="center">EA = (B)</td>
+<td style="text-align:center">基址寻址</td>
+<td style="text-align:center">EA = (B)</td>
 </tr>
 <tr>
-<td align="center">基址加位移</td>
-<td align="center">EA = (B) + A</td>
+<td style="text-align:center">基址加位移</td>
+<td style="text-align:center">EA = (B) + A</td>
 </tr>
 <tr>
-<td align="center">比例变址加位移</td>
-<td align="center">EA = (I) * S + A</td>
+<td style="text-align:center">比例变址加位移</td>
+<td style="text-align:center">EA = (I) * S + A</td>
 </tr>
 <tr>
-<td align="center">基址加变址加位移</td>
-<td align="center">EA = (B) + (I) + A</td>
+<td style="text-align:center">基址加变址加位移</td>
+<td style="text-align:center">EA = (B) + (I) + A</td>
 </tr>
 <tr>
-<td align="center">基址加比例变址加位移</td>
-<td align="center">EA = (B) + (I) * S + A</td>
+<td style="text-align:center">基址加比例变址加位移</td>
+<td style="text-align:center">EA = (B) + (I) * S + A</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
-<p>A – 地址段偏移量</p>
-<p>B – 基址寄存器</p>
-<p>I – 变址寄存器（除SP）</p>
-<p>S – 比例因子</p>
-<p>EA – 有效地址</p>
+<p>A — 地址段偏移量</p>
+<p>B — 基址寄存器</p>
+<p>I — 变址寄存器（除SP）</p>
+<p>S — 比例因子</p>
+<p>EA — 有效地址</p>
 </blockquote>
 <p>8086指令（AT&amp;T格式）举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movw 8(%bp, %dx, 4), %ax   &#x2F;&#x2F;R[ax] &lt;-- M[R[bp] + R[dx]*4 + 8]</span><br></pre></td></tr></table></figure>
-
 <p>此时的寻址空间是 2^16B = 64KB，太小了！</p>
 <p>于是8086引入段寄存器开辟更大的寻址空间：</p>
 <blockquote>
@@ -1857,42 +1925,45 @@
 <p>于是寻址空间变为 1MB了（2^16&lt;&lt; 4 B = 2^20 B = 1MB）</p>
 <p>此时的物理地址称为<strong>线性地址</strong>。</p>
 <p>于是就变成了：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">寻址方式</th>
-<th align="center">说明</th>
+<th style="text-align:center">寻址方式</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + A</td>
+<tbody>
+<tr>
+<td style="text-align:center">位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + A</td>
 </tr>
 <tr>
-<td align="center">基址寻址</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B)</td>
+<td style="text-align:center">基址寻址</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B)</td>
 </tr>
 <tr>
-<td align="center">基址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B) + A</td>
+<td style="text-align:center">基址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B) + A</td>
 </tr>
 <tr>
-<td align="center">比例变址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (I) * S + A</td>
+<td style="text-align:center">比例变址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (I) * S + A</td>
 </tr>
 <tr>
-<td align="center">基址加变址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B) + (I) + A</td>
+<td style="text-align:center">基址加变址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B) + (I) + A</td>
 </tr>
 <tr>
-<td align="center">基址加比例变址加位移</td>
-<td align="center">LA = (SR &lt;&lt; 4) + (B) + (I) * S + A</td>
+<td style="text-align:center">基址加比例变址加位移</td>
+<td style="text-align:center">LA = (SR &lt;&lt; 4) + (B) + (I) * S + A</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movw [ds:8(%bp, %dx, 4)], %ax   &#x2F;&#x2F;R[ax] &lt;-- M[R[ds]&lt;&lt;4 + R[bp] + R[dx]*4 + 8]</span><br></pre></td></tr></table></figure>
-
 <p>访问数据段就是和DS绑定的，访问代码段就是和CS绑定的。取指令要用到CS和IP，访问堆栈用到SS，等等。</p>
-<p>物理访存地址 = (段寄存器 &lt;&lt; 4) + 有效地址–<strong>这个访问模式称为实模式！</strong></p>
+<p>物理访存地址 = (段寄存器 &lt;&lt; 4) + 有效地址—<strong>这个访问模式称为实模式！</strong></p>
 <h2 id="实模式"><a href="#实模式" class="headerlink" title="实模式"></a>实模式</h2><p>8086处理器在实模式下工作：</p>
 <blockquote>
 <p>物理地址直接访存</p>
@@ -1991,7 +2062,7 @@
 <p>TI = 0，选择GDT；TI = 1，选择LDT。</p>
 <p>RPL请求特权级。</p>
 <p><strong>高13位索引</strong>用来确定当前使用的段描述符在描述表中的位置。</p>
-<p>—-&gt; <strong>由此可知，GDT中最多可容纳 2^13=8192=8K 个段描述符。</strong></p>
+<p>——&gt; <strong>由此可知，GDT中最多可容纳 2^13=8192=8K 个段描述符。</strong></p>
 <p>那么整个段表多大？（1个段描述符占8个字节）</p>
 <p>8K*8 B = 64KB.</p>
 <p>而段寄存器是16位，2^16 = 64K个字节——刚好相等呀！</p>
@@ -2024,7 +2095,7 @@
 <li>逻辑地址起作用的<strong>前提</strong>：CR0的PE位为1，进入保护模式，启动分段机制。</li>
 <li>根据<strong>段寄存器中的段选择符</strong>的TI位决定查GDT还是LDT</li>
 <li>在GDTR中读出GDT首地址</li>
-<li>GDT首地址+段选择符中索引*8 – 得到段描述符首地址</li>
+<li>GDT首地址+段选择符中索引*8 — 得到段描述符首地址</li>
 <li>在段描述符中读出段基址，和有效地址（逻辑地址后32位，即段内偏移）相加，得到线性地址</li>
 </ol>
 <p>注意那个前提——否则实模式下有效地址就是线性地址，段寄存器也就用来左移4位加上有效地址得到物理地址了。</p>
@@ -2033,45 +2104,36 @@
 <p>CPL：表示当前进程的特权级别，一般与CS寄存器指向的段描述符的DPL字段相同。</p>
 <p>同时满足以下两个条件：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target_descriptor.DPL &gt;= requestor.RPL   <span class="comment">//请求者有权访问目标段</span></span><br><span class="line">target_descriptor.DPL &gt;= CPL             <span class="comment">//当前进程有权访问目标段</span></span><br></pre></td></tr></table></figure>
-
 <p>只要OS将GDT、页表等重要信息放在ring0段中，恶意程序将永远无法篡改它们，除非恶意程序获得了OS权限。</p>
 <h2 id="IA-32-Linux中的分段机制"><a href="#IA-32-Linux中的分段机制" class="headerlink" title="IA-32/Linux中的分段机制"></a>IA-32/Linux中的分段机制</h2><p>为能被移植到绝大多数流行处理器平台，Linux简化了分段机制。</p>
 <p>RISC对分段支持非常有限，因此<strong>Linux仅使用IA-32的分页机制</strong>，而对于分段，则通过<strong>在初始化时将所有段描述符的基址设为”0”来简化</strong>。</p>
 <p>每个段都被初始化在 0~4GB 的线性地址空间中。</p>
 <p>PA2中的用户程序都是从 <code>kernel/src/start.S</code> 开始的。PA3也是如此。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;common.h&quot;</span><br><span class="line"></span><br><span class="line">#ifndef IA32_SEG</span><br><span class="line"></span><br><span class="line">	.globl start</span><br><span class="line">	start:</span><br><span class="line">	# Set up a stack for C code.</span><br><span class="line">		movl $0, %ebp</span><br><span class="line">		movl $(128 &lt;&lt; 20), %esp</span><br><span class="line">		jmp init				# never return</span><br><span class="line"></span><br><span class="line">#else</span><br><span class="line"></span><br><span class="line">	# To understand macros here, see i386 manual.</span><br><span class="line">	#define GDT_ENTRY(n) ((n) &lt;&lt; 3)</span><br><span class="line"></span><br><span class="line">	#define MAKE_NULL_SEG_DESC   \</span><br><span class="line">		.word 0, 0;              \</span><br><span class="line">		.byte 0, 0, 0, 0</span><br><span class="line"></span><br><span class="line">	# The 0xC0 means the limit is in 4096-byte units</span><br><span class="line">	# and (for executable segments) 32-bit mode.</span><br><span class="line">	#define MAKE_SEG_DESC(type,base,lim)                        \</span><br><span class="line">		.word (((lim) &gt;&gt; 12) &amp; 0xffff), ((base) &amp; 0xffff);      \</span><br><span class="line">		.byte (((base) &gt;&gt; 16) &amp; 0xff), (0x90 | (type)),         \</span><br><span class="line">		(0xC0 | (((lim) &gt;&gt; 28) &amp; 0xf)), (((base) &gt;&gt; 24) &amp; 0xff)</span><br><span class="line"></span><br><span class="line">	#ifdef IA32_PAGE</span><br><span class="line">	#	define KOFFSET 0xc0000000</span><br><span class="line">	#	define va_to_pa(x) (x - KOFFSET)</span><br><span class="line">	#else</span><br><span class="line">	#	define va_to_pa(x) (x)</span><br><span class="line">	#endif</span><br><span class="line"></span><br><span class="line">	.globl start</span><br><span class="line">	start:</span><br><span class="line">		lgdt    va_to_pa(gdtdesc) # See i386 manual for more information</span><br><span class="line">		movl    %cr0, %eax        # %CR0 |&#x3D; PROTECT_ENABLE_BIT</span><br><span class="line">		orl     $0x1, %eax</span><br><span class="line">		movl    %eax, %cr0</span><br><span class="line"></span><br><span class="line">	# Complete transition to 32-bit protected mode by using long jmp</span><br><span class="line">	# to reload %CS and %EIP.  The segment descriptors are set up with no</span><br><span class="line">	# translation, so that the mapping is still the identity mapping.</span><br><span class="line">		ljmp    $GDT_ENTRY(1), $va_to_pa(start_cond)</span><br><span class="line"></span><br><span class="line">	start_cond:</span><br><span class="line">	# Set up the protected-mode data segment registers</span><br><span class="line">		movw    $GDT_ENTRY(2), %ax</span><br><span class="line">		movw    %ax, %ds          # %DS &#x3D; %AX</span><br><span class="line">		movw    %ax, %es          # %ES &#x3D; %AX</span><br><span class="line">		movw    %ax, %ss          # %SS &#x3D; %AX</span><br><span class="line"></span><br><span class="line">	# Set up a stack for C code.</span><br><span class="line">		movl $0, %ebp</span><br><span class="line">		movl $(128 &lt;&lt; 20), %esp</span><br><span class="line">		jmp init				# never return</span><br><span class="line"></span><br><span class="line">	# GDT</span><br><span class="line">	.p2align 2                    # force 4 byte alignment</span><br><span class="line">	gdt:</span><br><span class="line">		MAKE_NULL_SEG_DESC                   # empty segment</span><br><span class="line">		MAKE_SEG_DESC(0xA, 0x0, 0xffffffff)  # code</span><br><span class="line">		MAKE_SEG_DESC(0x2, 0x0, 0xffffffff)  # data</span><br><span class="line"></span><br><span class="line">	gdtdesc:                      # descriptor</span><br><span class="line">		.word   (gdtdesc - gdt - 1)    # limit &#x3D; sizeof(gdt) - 1</span><br><span class="line">		.long   va_to_pa(gdt)          # address of GDT</span><br><span class="line"></span><br><span class="line"># end of IA32_SEG</span><br><span class="line">#endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>现在来逐段分析：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#ifndef IA32_SEG</span><br></pre></td></tr></table></figure>
-
 <p>这个是分段的宏，PA2里没考虑分段，也就没用到，所以直接跳到内核里去了。但是在PA3中，这个宏就要起作用了。在 <code>kernel/include/common.h</code> 中设置，把 <code>define IA32_SEG</code> 前的注释符号去掉。</p>
 <blockquote>
 <p>除了 <code>#define</code> 中的 <code>#</code> 外，其他的 <code>#</code> 都是注释！</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.globl start</span><br><span class="line">	start:</span><br><span class="line">	# Set up a stack for C code.</span><br><span class="line">		movl $0, %ebp</span><br><span class="line">		movl $(128 &lt;&lt; 20), %esp</span><br><span class="line">		jmp init				# never return</span><br></pre></td></tr></table></figure>
-
 <p>PA2没用分段（即没用 IA32_SEG 宏，not define，满足 <code>#ifndef</code>），就执行上面的部分；</p>
 <p>PA3用了分段，就执行 <code>#else</code> 的部分.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define MAKE_NULL_SEG_DESC   \</span><br><span class="line">		.word 0, 0;              \</span><br><span class="line">		.byte 0, 0, 0, 0</span><br></pre></td></tr></table></figure>
-
 <p>这个宏是将 <code>MAKE_NULL_SEG_DESC</code> 替换为下面那两个东西…</p>
 <p><code>.word</code> 和 <code>.byte</code> 就是汇编里的声明数据。声明为 <code>.word</code> 就是说那两个0都是 <code>.word</code> 类型，也就是16位宽，所以这里声明了两个16位的0。<code>.byte</code> 声明的是字节，相当于C语言中的 <code>char</code> 类型。2个16位的加上4个8位的，一共就是8个字节。所以——</p>
 <p>这就是一个段描述符！只不过这是一个空的段描述符，因为都是0.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#define MAKE_SEG_DESC(type,base,lim)                        \</span><br><span class="line">		.word (((lim) &gt;&gt; 12) &amp; 0xffff), ((base) &amp; 0xffff);      \</span><br><span class="line">		.byte (((base) &gt;&gt; 16) &amp; 0xff), (0x90 | (type)),         \</span><br><span class="line">		(0xC0 | (((lim) &gt;&gt; 28) &amp; 0xf)), (((base) &gt;&gt; 24) &amp; 0xff)</span><br></pre></td></tr></table></figure>
-
 <p>这个宏还带参数的啊—— <code>type</code> ，<code>base</code> ，<code>lim</code> ——这不就是段描述符里的信息吗？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#ifdef IA32_PAGE</span><br><span class="line">	#	define KOFFSET 0xc0000000</span><br><span class="line">	#	define va_to_pa(x) (x - KOFFSET)</span><br><span class="line">	#else</span><br><span class="line">	#	define va_to_pa(x) (x)</span><br><span class="line">	#endif</span><br></pre></td></tr></table></figure>
-
 <p>定没定义PAGE，自己决定用哪个函数。</p>
 <p>最核心的部分：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.globl start</span><br><span class="line">	start:</span><br><span class="line">		lgdt    va_to_pa(gdtdesc) # See i386 manual for more information</span><br><span class="line">		movl    %cr0, %eax        # %CR0 |&#x3D; PROTECT_ENABLE_BIT</span><br><span class="line">		orl     $0x1, %eax</span><br><span class="line">		movl    %eax, %cr0</span><br></pre></td></tr></table></figure>
-
 <p>再来看这个——<code>lgdt</code> ，将全局描述符表的首地址和大小加载到了GDTR里。这里 <code>va_to_pa</code> 只有1个参数 <code>gdtdesc</code> ，这是一个地址，而由 <code>#define va_to_pa(x) (x)</code> 得知，这不就是 <code>gdtdesc</code> 本身吗。那这到底是什么东西呢，看下面：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdtdesc:                      # descriptor</span><br><span class="line">		.word   (gdtdesc - gdt - 1)    # limit &#x3D; sizeof(gdt) - 1</span><br><span class="line">		.long   va_to_pa(gdt)          # address of GDT</span><br></pre></td></tr></table></figure>
-
 <p>嗯，不就是把 <code>gdtdesc</code> 里面的 <code>.word</code> 和 <code>.long</code> 加载过去吗？ <code>.word</code> 是16位的， <code>.long</code> 是32位的。它们是什么注释里都写清楚了，要强调的是 <code>gdtdesc - gdt - 1</code> 的这个减一。</p>
 <p>当然，再看看这个 <code>gdtdesc</code> ，不就刚好是48位吗？没错，<code>lgdt</code> 就是把48位的逻辑地址加载到GDTR中去。</p>
-<p>继续看start的代码。先把CR0的值放到EAX里，然后EAX与1进行OR，再把得到的值放回CR0。我们分析一下，当 “CR0最低位” = 0时，这一番操作使得 “CR0最低位” = 1，这就是实模式 –&gt; 保护模式。</p>
+<p>继续看start的代码。先把CR0的值放到EAX里，然后EAX与1进行OR，再把得到的值放回CR0。我们分析一下，当 “CR0最低位” = 0时，这一番操作使得 “CR0最低位” = 1，这就是实模式 —&gt; 保护模式。</p>
 <h1 id="线性地址到物理地址（分页）"><a href="#线性地址到物理地址（分页）" class="headerlink" title="线性地址到物理地址（分页）"></a>线性地址到物理地址（分页）</h1><h2 id="IA-32中的控制寄存器"><a href="#IA-32中的控制寄存器" class="headerlink" title="IA-32中的控制寄存器"></a>IA-32中的控制寄存器</h2><p>控制寄存器保存机器的各种控制和状态信息，操作系统进行任务控制或存储管理时使用控制寄存器。</p>
 <p><strong>CR0</strong>：PG位：</p>
 <p>1 - 启用分页</p>
@@ -2082,7 +2144,7 @@
 <p><strong>CR3</strong>：页目录基址寄存器</p>
 <p>保存页目录表的起始地址。</p>
 <p>当然，CR2和CR3有效的前提都是PG = 1。</p>
-<p>Linux中线性地址空间划分：4GB = 1K个子空间 * 1K个页面/子空间 * 4KB/页</p>
+<p>Linux中线性地址空间划分：4GB = 1K个子空间 <em> 1K个页面/子空间 </em> 4KB/页</p>
 <p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20201226101431856.png" alt="image-20201226101431856"></p>
 <p>每一个页表就是一个子空间，页表中有1K项，每一项对应一个物理页；</p>
 <p>页目录表只有1张，里面有1K个页目录项，每一项对应一个页表。</p>
@@ -2093,110 +2155,6 @@
 <p>CR3中存放的就是页目录表的基地址，拿到基地址后加上DIR*4（为什么乘以4？因为一个页目录项是32位，即4字节），得到相应页表项的首地址。再加上PAGE*4，得到物理页的首地址。物理页首地址再加上页内偏移量，就是真正的物理地址。</p>
 <h2 id="页目录项和页表项的格式"><a href="#页目录项和页表项的格式" class="headerlink" title="页目录项和页表项的格式"></a>页目录项和页表项的格式</h2><p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20201226105427190.png" alt="image-20201226105427190"></p>
 <p>CPU发出地址先送到MMU，MMU完成分段和分页再送到cache。MMU中的分段解决逻辑地址到物理地址的变换，分页解决线性地址到物理地址的变换。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/12/23/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/23/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">分治算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-12-23 22:19:38" itemprop="dateCreated datePublished" datetime="2020-12-23T22:19:38+08:00">2020-12-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-24 13:19:02" itemprop="dateModified" datetime="2020-12-24T13:19:02+08:00">2020-12-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="棋盘覆盖问题"><a href="#棋盘覆盖问题" class="headerlink" title="棋盘覆盖问题"></a>棋盘覆盖问题</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">(tr,tc)是棋盘左上角的方格坐标</span></span><br><span class="line"><span class="comment">(dr,dc)是特殊方格所在坐标</span></span><br><span class="line"><span class="comment">size是棋盘的行数和列数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1025</span></span><br><span class="line"><span class="keyword">int</span> board[N][N];</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> tile = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ChessBoard</span><span class="params">(<span class="keyword">int</span> tr, <span class="keyword">int</span> tc, <span class="keyword">int</span> dr, <span class="keyword">int</span> dc, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size == <span class="number">1</span>) <span class="keyword">return</span>; <span class="comment">//递归边界</span></span><br><span class="line">    <span class="keyword">int</span> t = tile++; <span class="comment">//L型骨牌号</span></span><br><span class="line">    <span class="keyword">int</span> s = size/<span class="number">2</span>; <span class="comment">//分割棋盘</span></span><br><span class="line">    <span class="comment">//覆盖左上角子棋盘</span></span><br><span class="line">    <span class="keyword">if</span>(dr &lt; tr + s &amp;&amp; dc &lt; tc + s)</span><br><span class="line">        ChessBoard(tr, tc, dr, dc, s);</span><br><span class="line">    <span class="keyword">else</span> &#123;  <span class="comment">//此棋盘中无特殊方格，用t号L型骨牌覆盖右下角</span></span><br><span class="line">        board[tr + s - <span class="number">1</span>][tc + s - <span class="number">1</span>] = t;</span><br><span class="line">        <span class="comment">//覆盖其余方格</span></span><br><span class="line">        ChessBoard(tr, tc, tr + s - <span class="number">1</span>, tc + s - <span class="number">1</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//覆盖右上角子棋盘</span></span><br><span class="line">    <span class="keyword">if</span>(dr &lt; tr + s &amp;&amp; dc &gt;= tc + s)</span><br><span class="line">        Chessboard(tr, tc + s, dr, dc, s);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        board[tr + s - <span class="number">1</span>][tc + s] = t;</span><br><span class="line">        ChessBoard(tr, tc + s, tr + s - <span class="number">1</span>, tc + s, s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//覆盖左下角子棋盘 </span></span><br><span class="line">	<span class="keyword">if</span>(dr &gt;= tr + s &amp;&amp; dc &lt; tc + s) <span class="comment">//特殊方格在此棋盘中</span></span><br><span class="line">		ChessBoard(tr + s, tc, dr, dc, s);</span><br><span class="line">	<span class="keyword">else</span> &#123; <span class="comment">//此棋盘中无特殊方格，用t号L型骨牌覆盖右上角</span></span><br><span class="line">		board[tr + s][tc + s - <span class="number">1</span>] = t;</span><br><span class="line">		<span class="comment">//覆盖其余方格 </span></span><br><span class="line">		ChessBoard(tr + s, tc, tr + s, tc + s - <span class="number">1</span>, s);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//覆盖右下角子棋盘 </span></span><br><span class="line">	<span class="keyword">if</span>(dr &gt;= tr + s &amp;&amp; dc &gt;= t c+ s) <span class="comment">//特殊方格在此棋盘中</span></span><br><span class="line">		ChessBoard(tr + s, tc + s, dr, dc, s);</span><br><span class="line">	<span class="keyword">else</span> &#123; <span class="comment">//此棋盘中无特殊方格，用t号L型骨牌覆盖左上角 </span></span><br><span class="line">		board[tr + s][tc + s] = t;</span><br><span class="line">		<span class="comment">//覆盖其余方格 </span></span><br><span class="line">		ChessBoard(tr + s, tc + s, tr + s, tc + s, s);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, k, x, y;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; k) &#123;  <span class="comment">//k cases</span></span><br><span class="line">        <span class="keyword">int</span> size = <span class="number">1</span> &lt;&lt; k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        board[x][y] = <span class="number">0</span>;</span><br><span class="line">        ChessBoard(<span class="number">0</span>, <span class="number">0</span>, x, y, size);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; size; j++)</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; board[i][j] &lt;&lt; <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">4</span>^k</span><br><span class="line">需(n-<span class="number">1</span>)/<span class="number">3</span>个L型骨牌填满</span><br><span class="line">算法的时间复杂度: t(n)=<span class="number">4</span>t(n/<span class="number">4</span>)+c</span><br><span class="line">Master <span class="function"><span class="keyword">Method</span>求解得到:</span> t(n)=Theta(n)</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h1><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/merge-sort/">source</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++ program for Merge Sort</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Merges two subarrays of arr[].</span></span><br><span class="line"><span class="comment">// First subarray is arr[l..m]</span></span><br><span class="line"><span class="comment">// Second subarray is arr[m+1..r]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> l, <span class="keyword">int</span> m, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n1 = m - l + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> n2 = r - m;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Create temp arrays</span></span><br><span class="line">	<span class="keyword">int</span> L[n1], R[n2];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Copy data to temp arrays L[] and R[]</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n1; i++)</span><br><span class="line">		L[i] = arr[l + i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n2; j++)</span><br><span class="line">		R[j] = arr[m + <span class="number">1</span> + j];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Merge the temp arrays back into arr[l..r]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Initial index of first subarray</span></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Initial index of second subarray</span></span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Initial index of merged subarray</span></span><br><span class="line">	<span class="keyword">int</span> k = l;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (i &lt; n1 &amp;&amp; j &lt; n2) &#123;</span><br><span class="line">		<span class="keyword">if</span> (L[i] &lt;= R[j]) &#123;</span><br><span class="line">			arr[k] = L[i];</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			arr[k] = R[j];</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		k++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Copy the remaining elements of</span></span><br><span class="line">	<span class="comment">// L[], if there are any</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt; n1) &#123;</span><br><span class="line">		arr[k] = L[i];</span><br><span class="line">		i++;</span><br><span class="line">		k++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Copy the remaining elements of</span></span><br><span class="line">	<span class="comment">// R[], if there are any</span></span><br><span class="line">	<span class="keyword">while</span> (j &lt; n2) &#123;</span><br><span class="line">		arr[k] = R[j];</span><br><span class="line">		j++;</span><br><span class="line">		k++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// l is for left index and r is</span></span><br><span class="line"><span class="comment">// right index of the sub-array</span></span><br><span class="line"><span class="comment">// of arr to be sorted */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l&gt;=r)&#123;</span><br><span class="line">		<span class="keyword">return</span>;<span class="comment">//returns recursively</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> m = (l+r<span class="number">-1</span>)/<span class="number">2</span>;</span><br><span class="line">	mergeSort(arr,l,m);</span><br><span class="line">	mergeSort(arr,m+<span class="number">1</span>,r);</span><br><span class="line">	merge(arr,l,m,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// UTILITY FUNCTIONS</span></span><br><span class="line"><span class="comment">// Function to print an array</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printArray</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; A[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Driver code</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> arr[] = &#123; <span class="number">12</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> arr_size = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Given array is \n&quot;</span>;</span><br><span class="line">	printArray(arr, arr_size);</span><br><span class="line"></span><br><span class="line">	mergeSort(arr, <span class="number">0</span>, arr_size - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\nSorted array is \n&quot;</span>;</span><br><span class="line">	printArray(arr, arr_size);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This code is contributed by Mayank Tyagi</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(T a[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> i = l, j = r + <span class="number">1</span>;</span><br><span class="line">    T pivot = a[l];</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123; i++; &#125; <span class="keyword">while</span>(a[i] &lt; pivot);</span><br><span class="line">        <span class="keyword">do</span> &#123; j--; &#125; <span class="keyword">while</span>(a[j] &gt; pivot);</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= j) <span class="keyword">break</span>;</span><br><span class="line">        swap(a[i], a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    a[l] = a[j];</span><br><span class="line">    a[j] = pivot;</span><br><span class="line">    QuickSort(a, l, j - <span class="number">1</span>);</span><br><span class="line">    QuickSort(a, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="寻找第-k-小的元素"><a href="#寻找第-k-小的元素" class="headerlink" title="寻找第 k 小的元素"></a>寻找第 k 小的元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function">T <span class="title">select</span><span class="params">(T a[], <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> a[l];</span><br><span class="line">    <span class="keyword">int</span> i = l, j = r + <span class="number">1</span>;</span><br><span class="line">    T pivot = a[l];</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123; i++; &#125; <span class="keyword">while</span>(a[i] &lt; pivot);</span><br><span class="line">        <span class="keyword">do</span> &#123; j--; &#125; <span class="keyword">while</span>(a[j] &gt; pivot);</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= j) <span class="keyword">break</span>;</span><br><span class="line">        swap(a[i], a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j - i + <span class="number">1</span> == k) <span class="keyword">return</span> pivot;</span><br><span class="line">    a[l] = a[j];</span><br><span class="line">    a[j] = pivot;</span><br><span class="line">    <span class="keyword">if</span>(j - i + <span class="number">1</span> &lt; k)</span><br><span class="line">        select(a, j + <span class="number">1</span>, r, k - j + l - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> select(a, l, j - <span class="number">1</span>, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="距离最接近的点对"><a href="#距离最接近的点对" class="headerlink" title="距离最接近的点对"></a>距离最接近的点对</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_35678407/article/details/82874216">source</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x;</span><br><span class="line">    <span class="keyword">double</span> y;</span><br><span class="line">    point(<span class="keyword">double</span> x, <span class="keyword">double</span> y) : x(x), y(y) &#123;&#125;</span><br><span class="line">    point() &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp_x</span><span class="params">(<span class="keyword">const</span> point&amp; A, <span class="keyword">const</span> point&amp; B)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> A.x &lt; B.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp_y</span><span class="params">(<span class="keyword">const</span> point&amp; A, <span class="keyword">const</span> point&amp; B)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> A.y &lt; B.y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">distance</span><span class="params">(<span class="keyword">const</span> point&amp; A, <span class="keyword">const</span> point&amp; B)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(<span class="built_in">pow</span>(A.x - B.x, <span class="number">2</span>) + <span class="built_in">pow</span>(A.y - B.y, <span class="number">2</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* function: 合并，同第三区域最近点距离比较</span></span><br><span class="line"><span class="comment">* param: points 点的集合</span></span><br><span class="line"><span class="comment">*        dis 左右两边集合的最近点距离</span></span><br><span class="line"><span class="comment">*        mid x坐标排序后，点集合中中间点的索引值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;point&gt;&amp; points, <span class="keyword">double</span> dis, <span class="keyword">int</span> mid)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;point&gt; left, right;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; points.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(points[i].x - points[mid].x &lt;= <span class="number">0</span> &amp;&amp; points[i].x - points[mid].x &gt; -dis)</span><br><span class="line">            left.push_back(points[i]);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(points[i].x - points[mid].x &gt; <span class="number">0</span> &amp;&amp; points[i].x - points[mid].x &lt; dis)</span><br><span class="line">            right.push_back(points[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(right.begin(), right.end(), cmp_y);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, index; i &lt; left.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(index = <span class="number">0</span>; index &lt; right.size() &amp;&amp; left[i].y &lt; right[index].y; index++);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">7</span> &amp;&amp; index + j &lt; right.size(); j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(distance(left[i], right[j + index]) &lt; dis)</span><br><span class="line">                dis = distance(left[i], right[j + index]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dis;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">closest</span><span class="params">(<span class="built_in">vector</span>&lt;point&gt;&amp; points)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(points.size() == <span class="number">2</span>) <span class="keyword">return</span> distance(points[<span class="number">0</span>], points[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">if</span>(points.size() == <span class="number">3</span>) <span class="keyword">return</span> min(distance(points[<span class="number">0</span>], points[<span class="number">1</span>]), min(distance(points[<span class="number">0</span>], points[<span class="number">2</span>]), distance(points[<span class="number">1</span>], points[<span class="number">2</span>])));</span><br><span class="line">    <span class="keyword">int</span> mid = (points.size() &gt;&gt; <span class="number">1</span>) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">double</span> d1, d2, d;</span><br><span class="line">    vector&lt;point&gt; left(mid + 1), right(points.size() - mid - 1);</span><br><span class="line">    copy(points.begin(), points.begin() + mid + <span class="number">1</span>, left.begin()); <span class="comment">//左边区域点集合</span></span><br><span class="line">    copy(points.begin() + mid + <span class="number">1</span>, points.end(), right.begin()); <span class="comment">//右边区域点集合</span></span><br><span class="line">    d1 = closest(left);</span><br><span class="line">    d2 = closest(right);</span><br><span class="line">    d = min(d1, d2);</span><br><span class="line">    <span class="keyword">return</span> merge(points, d, mid);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;点个数：&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;cnt);</span><br><span class="line">    <span class="built_in">vector</span>&lt;point&gt; points;</span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第%d个点&quot;</span>, i);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lf%lf&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">        <span class="function">point <span class="title">p</span><span class="params">(x, y)</span></span>;</span><br><span class="line">        points.push_back(p);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(points.begin(), points.end(), cmp_x);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;最近点对值：%lf&quot;</span>, closest(points));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>两个 <code>n*n</code> 的矩阵 A 与 B 的乘积是另一个 <code>n*n</code> 的矩阵 C，则：进行了 n^3 次乘法和 n^2(n-1) 次加法。</p>
 
       
     </div>
@@ -2281,7 +2239,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

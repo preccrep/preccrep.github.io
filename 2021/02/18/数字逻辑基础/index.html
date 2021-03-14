@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
 
   </li>
   </ul>
@@ -243,21 +243,29 @@
 <li>把数字输出变换为模拟输出。</li>
 </ol>
 <p>原则：随着信号在系统中的流动，在输入通道中尽可能早地把信号数字化，在输出通道中尽可能晚地把信号转换为模拟信号。</p>
-<h1 id="数的表示"><a href="#数的表示" class="headerlink" title="数的表示"></a>数的表示</h1><h2 id="进制表示"><a href="#进制表示" class="headerlink" title="进制表示"></a>进制表示</h2><p>不同进位计数制的数值具有等值关系：<br>$$<br>N=N_{10}=(N)_{10}=N_S=(M)_S=N_T=(K)_T<br>$$<br>其中M是十进制数N的S进制形式，K是N的T进制形式。</p>
-<p>也就是说，加了括号的括号内一定是转换数制后的数，不加括号就是原来的十进制数。例如：<br>$$<br>13=(13)_{10}=13_8=(15)<em>8=(1101)<em>2<br>$$<br>数值转换时小数位数的确定：<br>$$<br>\alpha 进制的小数有k位，转换为\beta进制后，至少具有相同精度的小数是j位，则<br>(0.1)</em>{\alpha}^k \geq (0.1)</em>{\beta}^j.<br>$$</p>
-<p>$$<br>在十进制中可表示为：(\frac{1}{\alpha})^k \geq (\frac{1}{\beta})^j.<br>$$</p>
-<p>$$<br>即：\alpha^k \leq \beta^j<br>$$</p>
-<p>$$<br>两边取对数：\log\alpha^k \leq \log\beta^j，即k\log\alpha \leq j\log\beta<br>$$</p>
-<p>$$<br>得到：j \geq k\frac{\log\alpha}{\log\beta}<br>$$</p>
-<p>$$<br>则j满足的不等式条件为：k\frac{\log\alpha}{\log\beta} \leq j &lt; k\frac{\log\alpha}{\log\beta}+1<br>$$</p>
-<h2 id="数的表示和运算"><a href="#数的表示和运算" class="headerlink" title="数的表示和运算"></a>数的表示和运算</h2><p>计算机中表示小数点位置的方法通常有两种：定点表示法和浮点表示法。</p>
+<h1 id="数的表示"><a href="#数的表示" class="headerlink" title="数的表示"></a>数的表示</h1><h2 id="进制表示"><a href="#进制表示" class="headerlink" title="进制表示"></a>进制表示</h2><p>不同进位计数制的数值具有等值关系：</p>
+<script type="math/tex; mode=display">
+N=N_{10}=(N)_{10}=N_S=(M)_S=N_T=(K)_T</script><p>其中M是十进制数N的S进制形式，K是N的T进制形式。</p>
+<p>也就是说，加了括号的括号内一定是转换数制后的数，不加括号就是原来的十进制数。例如：</p>
+<script type="math/tex; mode=display">
+13=(13)_{10}=13_8=(15)_8=(1101)_2</script><p>数值转换时小数位数的确定：</p>
+<script type="math/tex; mode=display">
+\alpha 进制的小数有k位，转换为\beta进制后，至少具有相同精度的小数是j位，则
+(0.1)_{\alpha}^k \geq (0.1)_{\beta}^j.</script><script type="math/tex; mode=display">
+在十进制中可表示为：(\frac{1}{\alpha})^k \geq (\frac{1}{\beta})^j.</script><script type="math/tex; mode=display">
+即：\alpha^k \leq \beta^j</script><script type="math/tex; mode=display">
+两边取对数：\log\alpha^k \leq \log\beta^j，即k\log\alpha \leq j\log\beta</script><script type="math/tex; mode=display">
+得到：j \geq k\frac{\log\alpha}{\log\beta}</script><script type="math/tex; mode=display">
+则j满足的不等式条件为：k\frac{\log\alpha}{\log\beta} \leq j < k\frac{\log\alpha}{\log\beta}+1</script><h2 id="数的表示和运算"><a href="#数的表示和运算" class="headerlink" title="数的表示和运算"></a>数的表示和运算</h2><p>计算机中表示小数点位置的方法通常有两种：定点表示法和浮点表示法。</p>
 <h3 id="定点表示法"><a href="#定点表示法" class="headerlink" title="定点表示法"></a>定点表示法</h3><p>小数点位置固定，一般固定在数的最高位之前或最低位之后。</p>
-<h3 id="浮点表示法"><a href="#浮点表示法" class="headerlink" title="浮点表示法"></a>浮点表示法</h3><p>例如，二进制数101.1和10.11可表示为：<br>$$<br>101.1=(10)^{11}\times0.1011<br>$$</p>
-<p>$$<br>10.11=(10)^{10}\times0.1011<br>$$</p>
-<p>其中10和11是二进制数，转换为十进制就是2和3.</p>
-<p>因此，这两个二进制数可以用<strong>阶码</strong>和<strong>尾数</strong>表示：<br>$$<br>101.1\rightarrow11, 0.1011<br>$$</p>
-<p>$$<br>10.11\rightarrow10, 0.1011<br>$$</p>
-<p>这就是浮点表示法。表示时需要将一个字长划分为两部分，分别用来表示阶码和尾数，<strong>两个部分的最高位分别为各自的符号位</strong>。</p>
+<h3 id="浮点表示法"><a href="#浮点表示法" class="headerlink" title="浮点表示法"></a>浮点表示法</h3><p>例如，二进制数101.1和10.11可表示为：</p>
+<script type="math/tex; mode=display">
+101.1=(10)^{11}\times0.1011</script><script type="math/tex; mode=display">
+10.11=(10)^{10}\times0.1011</script><p>其中10和11是二进制数，转换为十进制就是2和3.</p>
+<p>因此，这两个二进制数可以用<strong>阶码</strong>和<strong>尾数</strong>表示：</p>
+<script type="math/tex; mode=display">
+101.1\rightarrow11, 0.1011</script><script type="math/tex; mode=display">
+10.11\rightarrow10, 0.1011</script><p>这就是浮点表示法。表示时需要将一个字长划分为两部分，分别用来表示阶码和尾数，<strong>两个部分的最高位分别为各自的符号位</strong>。</p>
 <p>例如，规定一个16位字长的前5位表示阶码，后11位表示尾数：</p>
 <p><code>0    0011        0    1011000000</code></p>
 <p><code>0    0010        0    1011000000</code></p>
@@ -324,9 +332,7 @@
 <p>其他各位：<code>B[i-1] = G[i-1] xor B[i]. (i = 1, 2, ..., n-1)</code></p>
 <p>算法实现：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/0201zcr/p/4796950.html">参考链接</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] GrayCode(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    String[] arr = <span class="keyword">new</span> String[(<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n)];</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>)</span><br><span class="line">        System.out.println(<span class="string">&quot;Input Error!&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        arr[<span class="number">0</span>] = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">        arr[<span class="number">1</span>] = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    String[] b = GrayCode(n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">        arr[i] = <span class="string">&quot;0&quot;</span> + b[i];</span><br><span class="line">        arr[arr.length - <span class="number">1</span> - i] = <span class="string">&quot;1&quot;</span> + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//非递归</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] GrayCode(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    <span class="keyword">int</span> num = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n);</span><br><span class="line">    String[] s1 = &#123;<span class="string">&quot;0&quot;</span>, <span class="string">&quot;1&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>)</span><br><span class="line">        System.out.println(<span class="string">&quot;Input Error!&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, i);</span><br><span class="line">        String[] si = <span class="keyword">new</span> String[p];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j &lt; p/<span class="number">2</span>)</span><br><span class="line">                si[j] = <span class="string">&quot;0&quot;</span> + s1[j];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                si[j] = <span class="string">&quot;1&quot;</span> + s1[p - j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        s1 = si;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>对于<strong>典型格雷码</strong>（0~15）还有一个特点：所有对应于十进制数$2^m-1$的格雷码，都仅在m位上有1，其余位都为0.</p>
 <p>例如：m=1，1的典型格雷码为0001；m=2，3的典型格雷码为0010；m=3，7的典型格雷码为0100；m=4，15的典型格雷码为1000.</p>
 <p>15与0的格雷码仍能保持一位差别，所以这种典型格雷码也称作循环码，适用于做二进制码计数器。</p>
@@ -335,7 +341,7 @@
 <p><strong>奇偶校验码</strong></p>
 <p>参考博客1：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dushikang/p/8334776.html">戳这</a></p>
 <p>参考博客2：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44574333/article/details/108927425">戳这</a></p>
-<p>视频链接地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BE411D7ii?from=search&seid=6420326887479343502">戳这</a></p>
+<p>视频链接地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BE411D7ii?from=search&amp;seid=6420326887479343502">戳这</a></p>
 <blockquote>
 <p>问题：</p>
 <ul>
@@ -375,6 +381,7 @@
 </li>
 </ol>
 <h2 id="逻辑代数的运算"><a href="#逻辑代数的运算" class="headerlink" title="逻辑代数的运算"></a>逻辑代数的运算</h2><h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><p>”与“运算（逻辑乘，Logic Multiplication），运算结果是逻辑积（Logic Product）</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -384,7 +391,8 @@
 <th>”非“运算（逻辑乘, Logic Negation）</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>运算结果</td>
 <td>逻辑积(Logic Product)</td>
 <td>逻辑和(Logic Sum)</td>
@@ -396,7 +404,9 @@
 <td>$F=A+B$</td>
 <td>$F=\overline{A}$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="逻辑代数的基本公理"><a href="#逻辑代数的基本公理" class="headerlink" title="逻辑代数的基本公理"></a>逻辑代数的基本公理</h3><p><strong>0-1律</strong></p>
 <blockquote>
 <p>$A+0=A$</p>
@@ -422,17 +432,20 @@
 <p>$\overline{A_1+A_2+\dots +A_n}=\overline{A_1}\cdot \overline{A_2}\cdot \dots \overline{A_n}$</p>
 <p>$\overline{A_1\cdot A_2\cdot \dots \cdot A_n}=\overline{A_1}+ \overline{A_2}+ \dots \overline{A_n}$</p>
 </blockquote>
-<p><strong>包含定理(多余项定理)</strong><br>$$<br>AB+\overline{A} C+BC=AB+\overline{A} C<br>$$</p>
-<p>$$<br>(A+B)(\overline{A}+C)(B+C)=(A+B)(\overline{A}+C)<br>$$</p>
-<blockquote>
-<p>证明：$AB+\overline{A} C+BC=AB+\overline{A} C$<br>$$<br>AB+\overline{A} C+BC=(A+C)B+\overline{A}C=(A+\overline{A}C)B+\overline{A}C=AB+\overline{A}C(B+1)=AB+\overline{A}C\cdot 1=AB+\overline{A}C<br>$$</p>
-</blockquote>
+<p><strong>包含定理(多余项定理)</strong></p>
+<script type="math/tex; mode=display">
+AB+\overline{A} C+BC=AB+\overline{A} C</script><script type="math/tex; mode=display">
+(A+B)(\overline{A}+C)(B+C)=(A+B)(\overline{A}+C)</script><blockquote>
+<p>证明：$AB+\overline{A} C+BC=AB+\overline{A} C$</p>
+<script type="math/tex; mode=display">
+AB+\overline{A} C+BC=(A+C)B+\overline{A}C=(A+\overline{A}C)B+\overline{A}C=AB+\overline{A}C(B+1)=AB+\overline{A}C\cdot 1=AB+\overline{A}C</script></blockquote>
 <h3 id="逻辑代数的基本规则"><a href="#逻辑代数的基本规则" class="headerlink" title="逻辑代数的基本规则"></a>逻辑代数的基本规则</h3><p><strong>代入规则</strong></p>
 <p>已知 $f(x_1,x_2,\dots ,x_i,\dots ,x_n)=g(x_1,x_2,\dots ,x_i,\dots ,x_n)$，有任意函数h，令$x_i=h$，则 $f(x_1,x_2,\dots ,h,\dots ,x_n)=g(x_1,x_2,\dots ,h,\dots ,x_n)$依然成立。</p>
 <blockquote>
-<p>证明：<br>$$<br>\because x_i\in {0,1}且逻辑函数h取值仅有0或1<br>$$</p>
-<p>$$<br>\therefore 带入规则成立<br>$$</p>
-</blockquote>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+\because x_i\in \{0,1\}且逻辑函数h取值仅有0或1</script><script type="math/tex; mode=display">
+\therefore 带入规则成立</script></blockquote>
 <p>可以用带入规则证明N变量的德摩根定理。</p>
 <p><strong>反演规则</strong></p>
 <p>已知原函数 $f(x_1,x_2,\dots ,x_n,0,1,+,\cdot)$，则反函数 $\overline{f}(x_1,x_2,\dots ,x_n,0,1,+,\cdot)=f(\overline{x_1},\overline{x_2},\dots ,\overline{x_n},1,0,\cdot ,+)$</p>
@@ -457,11 +470,15 @@
 <p>$\overline{A\oplus B}=A\odot B$        $\overline{A\odot B}=A\oplus B$</p>
 <p>$(A\oplus B)‘=A\odot B$        $(A\odot B)‘=A\oplus B$（用对偶函数的运算性质证明）</p>
 <p>$A\oplus B\oplus C=A\odot B\odot C$</p>
-<p>证明  $(A\oplus B)‘=A\odot B$<br>$$<br>(A\oplus B)’=(\overline{A}\cdot B+A\cdot\overline{B})’=(\overline{A}+B)\cdot(A+\overline{B})=AB+\overline{A}\overline{B}=A\odot B<br>$$</p>
-</blockquote>
+<p>证明  $(A\oplus B)‘=A\odot B$</p>
+<script type="math/tex; mode=display">
+(A\oplus B)'=(\overline{A}\cdot B+A\cdot\overline{B})'=(\overline{A}+B)\cdot(A+\overline{B})=AB+\overline{A}\overline{B}=A\odot B</script></blockquote>
 <p>由带入规则可以证明：</p>
-<p>当变量<strong>n为偶数</strong>时，XOR和XNOR具有互补关系：<br>$$<br>A_1\oplus A_2\oplus\dots\oplus A_n=\overline{A_1\odot A_2\odot\dots\odot A_n}<br>$$<br>当变量<strong>n为奇数</strong>时，XOR和XNOR具有相等关系：<br>$$<br>A_1\oplus A_2\oplus\dots\oplus A_n=A_1\odot A_2\odot\dots\odot A_n<br>$$</p>
-<h2 id="逻辑函数的标准形式"><a href="#逻辑函数的标准形式" class="headerlink" title="逻辑函数的标准形式"></a>逻辑函数的标准形式</h2><p><strong>最小项之和</strong>：乘积项之和称为<em>积之和表达式（SOP）</em>，或称<em>与或表达式</em>。如果构成函数的积之和表达式中每一个与项均为最小项时，称为最小项标准式，且这种表示是唯一的。</p>
+<p>当变量<strong>n为偶数</strong>时，XOR和XNOR具有互补关系：</p>
+<script type="math/tex; mode=display">
+A_1\oplus A_2\oplus\dots\oplus A_n=\overline{A_1\odot A_2\odot\dots\odot A_n}</script><p>当变量<strong>n为奇数</strong>时，XOR和XNOR具有相等关系：</p>
+<script type="math/tex; mode=display">
+A_1\oplus A_2\oplus\dots\oplus A_n=A_1\odot A_2\odot\dots\odot A_n</script><h2 id="逻辑函数的标准形式"><a href="#逻辑函数的标准形式" class="headerlink" title="逻辑函数的标准形式"></a>逻辑函数的标准形式</h2><p><strong>最小项之和</strong>：乘积项之和称为<em>积之和表达式（SOP）</em>，或称<em>与或表达式</em>。如果构成函数的积之和表达式中每一个与项均为最小项时，称为最小项标准式，且这种表示是唯一的。</p>
 <p><strong>最大项之积</strong>：和项之积称为<em>和之积表达式（POS）</em>，或称<em>或与表达式</em>。如果构成函数的和之积表达式中每一个和项均为最大值，称为最大项标准式，且这种表示是唯一的。</p>
 <p><strong>最小项minterm</strong>：设有n个变量，它们组成的与项中每个变量或以原变量或以反变量形式出现一次，且仅出现一次，此与项称之为n个变量的最小项。对于n个变量就可构成 $2^n$ 个最小项，记为 $m_i$.<br>其中下标值i：当各最小项变量按一定顺序排好后，用1代替其中的原变量，0代替其中的反变量，便得一个二进制数，该二进制数的等值十进制即为i的值。</p>
 <p>例如$\overline{A}B\overline{C}=m_{(010)_2}=m_2$</p>
@@ -471,9 +488,9 @@
 <ol>
 <li><p>对于任意最小项，只有一组变量组合取值可使其值为1；对于任意最大项，只有一组变量组合取值可使其值为0.</p>
 </li>
-<li><p>$$<br>n变量的所有最小项的和必为1，记为\sum_{i=0}^{2^n-1} m_i=1.<br>$$</p>
-<p>$$<br>n变量的所有最大项的积必为0，记为\prod_{i=0}^{2^n-1} M_i=0.<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+n变量的所有最小项的和必为1，记为\sum_{i=0}^{2^n-1} m_i=1.</script><script type="math/tex; mode=display">
+n变量的所有最大项的积必为0，记为\prod_{i=0}^{2^n-1} M_i=0.</script></li>
 <li><p>任意两个最小项之积必为0，即：$m_i\cdot m_j=0, i\neq j$.</p>
 <p>任意两个最大项之和必为1，即：$M_i+M_j=1, i\neq j$.</p>
 </li>
@@ -483,11 +500,13 @@
 </ol>
 <p><strong>最小项与原、反函数的关系</strong>：对于n个变量的函数F，它共有 $2^n$ 个最小项，这些最小项不是包含在原函数 $F$ 的最小项表达式中，就是包含在反函数 $\overline{F}$ 的最小项表达式中。</p>
 <p><strong>最大项与原、反函数的关系</strong>：对于n个变量的函数F，它共有 $2^n$ 个最大项，这些最大项不是包含在原函数 $F$ 的最大项表达式中，就是包含在反函数 $\overline{F}$ 的最大项表达式中。</p>
-<p><strong>同一函数的最小项标准式与其最大项标准式的关系</strong>：<br>$$<br>F=\sum m^3(0,2,3)=\prod M^3(1,4,5,6,7)<br>$$</p>
-<blockquote>
-<p>证明：设 $F=\sum m^3(0,2,3)$，则<br>$$<br>\overline{F}=\sum m^3(1,4,5,6,7)=m_1+m_4+m_5+m_6+m_7<br>$$</p>
-<p>$$<br>F=\overline{\overline{F}}=\overline{m_1+m_4+m_5+m_6+m_7}=M_1\cdot M_4\cdot M_5\cdot M_6\cdot M_7=\prod M^3(1,4,5,6,7)<br>$$</p>
-</blockquote>
+<p><strong>同一函数的最小项标准式与其最大项标准式的关系</strong>：</p>
+<script type="math/tex; mode=display">
+F=\sum m^3(0,2,3)=\prod M^3(1,4,5,6,7)</script><blockquote>
+<p>证明：设 $F=\sum m^3(0,2,3)$，则</p>
+<script type="math/tex; mode=display">
+\overline{F}=\sum m^3(1,4,5,6,7)=m_1+m_4+m_5+m_6+m_7</script><script type="math/tex; mode=display">
+F=\overline{\overline{F}}=\overline{m_1+m_4+m_5+m_6+m_7}=M_1\cdot M_4\cdot M_5\cdot M_6\cdot M_7=\prod M^3(1,4,5,6,7)</script></blockquote>
 <p><strong>卡诺图</strong></p>
 <p>卡诺图是一种<em>平面方格阵列图</em>：</p>
 <p>行和列按变量的组合标注，其变量顺序按真值表中输入变量从左至右的顺序，并且行与列坐标按变量组合的二进制格雷码的顺序而小方格左上角标注可用十进制数表示，该数对应最小项。</p>
@@ -589,7 +608,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

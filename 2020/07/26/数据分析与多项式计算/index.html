@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
 
   </li>
   </ul>
@@ -226,9 +226,7 @@
 <p>max(A, [], dim)：dim 取 1 或 2。dim 取 1 时，该函数的功能与 max(A) 完全相同；dim 取 2 时，该函数返回一个列向量，其第 i 个元素是 A 矩阵的第 i 行上的最大值。</p>
 <p>求矩阵的最大值：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(<span class="built_in">max</span>(A))</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(A(:))</span><br></pre></td></tr></table></figure>
-
 <p>mean()：求算术平均值。</p>
 <p>median()：求中值。</p>
 <p>sum()：求和函数。</p>
@@ -243,7 +241,6 @@
 <p>std(A, flag, dim)：flag 取 0 或 1，当 flag = 0 时，按 S1 公式计算样本标准差；当 flag = 1 时，按 S2 公式计算总体标准差。默认情况下，flag = 0，dim = 1。</p>
 <p>生成满足正态分布的 50000 * 4 随机矩阵，用不同的形式求其各列之间的标准差。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">randn</span>(<span class="number">50000</span>, <span class="number">4</span>);</span><br><span class="line">y1 = std(x, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">y2 = std(x, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">x1 = x&#x27;;</span><br><span class="line">y3 = std(x1, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">y3 = y3&#x27;;</span><br><span class="line">y4 = std(x1, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">y4 = y4&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p><em>相关系数：</em></p>
 <p>corrcoef()</p>
 <p>调用格式：</p>
@@ -269,29 +266,24 @@
 <p><em>多项式求根</em></p>
 <p>roots(p)：p 为多项式系数向量。</p>
 <p>若已知多项式的全部根，则可以用 poly 函数建立起该多项式：p = poly(x)。</p>
-<p>求多项式 - 38.89 * t^2 + 126.11 * t - 3.42 的极大值：</p>
+<p>求多项式 - 38.89 <em> t^2 + 126.11 </em> t - 3.42 的极大值：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = [<span class="number">-38.89</span>, <span class="number">126.11</span>, <span class="number">-3.42</span>];</span><br><span class="line">q = polyder(p);</span><br><span class="line">a = roots(q);</span><br><span class="line">b = polyval(p, a);</span><br><span class="line">x = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">2</span>;</span><br><span class="line"><span class="built_in">plot</span>(x, polyval(p, x), a, b, <span class="string">&#x27;rp&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
 <h1 id="数据插值"><a href="#数据插值" class="headerlink" title="数据插值"></a>数据插值</h1><p>数据插值可以根据有限个点的取值状况，合理估算出附近其他点的取值，从而节约大量的实验和测试资源。数据插值是一种函数逼近的方法。</p>
-<p><em><strong>interp1()：一维插值函数。</strong></em></p>
+<p><strong><em>interp1()：一维插值函数。</em></strong></p>
 <p><strong>Y1 = interp1(X, Y, X1, method)</strong></p>
 <p>根据 X，Y 的值，计算函数在 X1 处的值。其中，X，Y是两个等长的已知向量，分别表示采样点和采样值。X1 是一个向量或标量，表示要插值的点。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>];</span><br><span class="line">y = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1.7</span>,<span class="number">2.0</span>,<span class="number">2.1</span>,<span class="number">2.0</span>,<span class="number">1.8</span>,<span class="number">1.2</span>,<span class="number">1.0</span>,<span class="number">1.6</span>];</span><br><span class="line">x1 = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">15</span>;</span><br><span class="line">y1 = interp1(x, y, x1, <span class="string">&#x27;spline&#x27;</span>);</span><br><span class="line"><span class="built_in">plot</span>(x1, y1)</span><br></pre></td></tr></table></figure>
-
 <p><strong>method</strong> 用于指定插值方法，常用的取值有以下四种：</p>
 <p><em>linear</em>：线性插值，默认方法。将插值点与靠近的两个数据点用直线连接，然后在直线上选取对应插值点的数据。</p>
 <p><em>nearest</em>：最近插值点。选择最近样本点的值作为插值数据。(如果是中间点，则取后一个数据点的值)</p>
 <p><em>pchip</em>：分段 3 次埃尔米特插值。采用分段三次多项式，除满足插值条件，还需满足在若干节点处相邻段插值函数的一阶导数相等，使得曲线光滑的同时，还具有保形性。</p>
 <p><em>spline</em>：3 次样条插值。每个分段内构造一个三次多项式，使其插值函数除满足插值条件外，还要求在各节点处具有连续的一阶和二阶导数。</p>
-<p><em><strong>为什么这两种插值方法都用 3 次多项式而不用更高次的？</strong></em></p>
+<p><strong><em>为什么这两种插值方法都用 3 次多项式而不用更高次的？</em></strong></p>
 <p><em>多项式次数并非越高越好。次数越高，越容易产生震荡而偏离原函数，这种现象称为龙格(Runge)现象。</em></p>
-<p><em><strong>interp2()：二维插值函数</strong></em></p>
+<p><strong><em>interp2()：二维插值函数</em></strong></p>
 <p><strong>Z1 = interp2(X, Y, Z, X1, Y1, method)</strong></p>
 <p>其中，X，Y 是两个向量，表示两个参数的采样点，Z 是采样点对应的函数值。X1，Y1 是两个标量或向量，表示要插值的点。</p>
 <h1 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h1><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1790</span>:<span class="number">10</span>:<span class="number">2020</span>;</span><br><span class="line">y = [...];    # 此处数据省略。。。</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">p = polyfit(x, y, <span class="number">3</span>);</span><br><span class="line">polyval(p, <span class="number">2020</span>)</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>, polyval(p, x))</span><br></pre></td></tr></table></figure>
-
 <p>与数据插值类似，曲线拟合也是一种函数逼近的方法，但是拟合出的曲线不一定经过所有样本点。</p>
 <p>曲线拟合的原理：最小二乘法</p>
 <p>polyfit()：多项式拟合函数。可求得最小二乘拟合多项式系数。</p>
@@ -397,7 +389,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

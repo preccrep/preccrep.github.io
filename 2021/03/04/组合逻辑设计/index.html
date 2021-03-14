@@ -147,7 +147,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
 
   </li>
   </ul>
@@ -298,16 +298,16 @@
 <p>项（literal）：变量或它的反变量.</p>
 <p>布尔表达式适用于描述<strong>组合逻辑电路</strong>中输入与输出间的功能规范。（因为组合逻辑电路的输出只与输入有关）</p>
 <p>对偶（duality）：</p>
-<p>设F为任意逻辑表达式，若将F中所有运算符和常量作如下变换：<br>$$<br>. \rightarrow +<br>$$</p>
-<p>$$</p>
-<ul>
-<li>\rightarrow .<br>$$</li>
-</ul>
-<p>$$<br>0 \rightarrow 1<br>$$</p>
-<p>$$<br>1 \rightarrow 0<br>$$</p>
-<p>则变换后得到的是F的对偶式F‘。</p>
+<p>设F为任意逻辑表达式，若将F中所有运算符和常量作如下变换：</p>
+<script type="math/tex; mode=display">
+. \rightarrow +</script><script type="math/tex; mode=display">
++ \rightarrow .</script><script type="math/tex; mode=display">
+0 \rightarrow 1</script><script type="math/tex; mode=display">
+1 \rightarrow 0</script><p>则变换后得到的是F的对偶式F‘。</p>
 <p>对偶是相互的，F和F’互为对偶式。</p>
-<p>对偶规则：两个逻辑表达式F和G相等，则对偶式F’和G’也相等。例如：<br>$$<br>A(B+C)=AB+AC \rightarrow A+BC=(A+B)(A+C)<br>$$<br><img src="https://i.loli.net/2021/03/05/eVtTS4E3BWoZ6KO.png" alt="德摩根定律.png"></p>
+<p>对偶规则：两个逻辑表达式F和G相等，则对偶式F’和G’也相等。例如：</p>
+<script type="math/tex; mode=display">
+A(B+C)=AB+AC \rightarrow A+BC=(A+B)(A+C)</script><p><img src="https://i.loli.net/2021/03/05/eVtTS4E3BWoZ6KO.png" alt="德摩根定律.png"></p>
 <p>蕴含项（implicant）：项的乘积</p>
 <blockquote>
 <p>如 $AB\overline{C}$, $AC$</p>
@@ -363,7 +363,10 @@
 </ol>
 <p><strong>相同编号的最小项和最大项互为反函数。</strong></p>
 <h1 id="标准与或式和标准或与式"><a href="#标准与或式和标准或与式" class="headerlink" title="标准与或式和标准或与式"></a>标准与或式和标准或与式</h1><h2 id="标准与或式（sum-of-products）"><a href="#标准与或式（sum-of-products）" class="headerlink" title="标准与或式（sum-of-products）"></a>标准与或式（sum-of-products）</h2><p>由最小项之和构成的逻辑表达式。</p>
-<p>例如：<br>$$<br>F(A,B,C)=\overline{A}B\overline{C}+A\overline{B}\overline{C}+AB\overline{C}=\Sigma(m_2,m_4,m_6)=\Sigma(2,4,6)<br>$$<br>每个最小项都对应真值表中值为1的一行。</p>
+<p>例如：</p>
+<script type="math/tex; mode=display">
+F(A,B,C)=\overline{A}B\overline{C}+A\overline{B}\overline{C}+AB\overline{C}=\Sigma(m_2,m_4,m_6)=\Sigma(2,4,6)</script><p>每个最小项都对应真值表中值为1的一行。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -373,7 +376,8 @@
 <th>F(A, B, C)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -421,19 +425,27 @@
 <td>1</td>
 <td>0</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>标准与或式是最小项之间的或运算，与真值表间一一对应。</p>
 <p>可以有多个逻辑表达式对应相同的真值表，但是只有一个标准与或式与该真值表对应。</p>
 <p><strong>标准与或式具有唯一性。</strong></p>
 <p><strong>任一逻辑函数都可以表达为最小项之和的形式，而且是唯一的。</strong></p>
-<p>例如：（通常把缺的那一项配上）<br>$$<br>F(A,B,C)=AB+\overline{A}C=AB(C+\overline{C})+\overline{A}C(B+\overline{B})=ABC+AB\overline{C}+\overline{A}BC+\overline{A}\overline{B}C=\Sigma(1,3,6,7)<br>$$</p>
-<h2 id="标准或与式（product-of-sum）"><a href="#标准或与式（product-of-sum）" class="headerlink" title="标准或与式（product-of-sum）"></a>标准或与式（product-of-sum）</h2><p>最大项之积构成的逻辑表达式。</p>
-<p>例如：<br>$$<br>F(A,B,C)=(A+B+C)(A+\overline{B}+C)(\overline{A}+B+C)=\prod(M_0,M_2,M_4)=\prod(0,2,4)<br>$$<br><strong>任何一个逻辑函数也可以写成最大项之积的形式，并且是唯一的。</strong></p>
-<h2 id="标准与或式和标准或与式的关系"><a href="#标准与或式和标准或与式的关系" class="headerlink" title="标准与或式和标准或与式的关系"></a>标准与或式和标准或与式的关系</h2><p>$$<br>F(A,B,C)=\Sigma(2,4,6)<br>$$</p>
-<p>$$<br>\overline{F}(A,B,C)=\Sigma(0,1,3,5,7)<br>$$</p>
-<p>$$<br>F=\overline{\overline{F}}=\overline{m_0+m_1+m_3+m_5+m_7}=\overline{m_0}\cdot\overline{m_1}\cdot\overline{m_3}\cdot\overline{m_5}\cdot\overline{m_7}=M_0M_1M_3M_5M_7<br>$$</p>
-<p>于是有<br>$$<br>F=\sum_i m_i=\prod_{j\neq i}M_j<br>$$<br>推导：<br>$$<br>F=\sum_i m_i=\overline{\sum_{j\neq i} m_j}=\prod_{j\neq i}\overline{m_j}=\prod_{j\neq i}M_j<br>$$</p>
-<h2 id="布尔表达式与真值表的转换"><a href="#布尔表达式与真值表的转换" class="headerlink" title="布尔表达式与真值表的转换"></a>布尔表达式与真值表的转换</h2><ol>
+<p>例如：（通常把缺的那一项配上）</p>
+<script type="math/tex; mode=display">
+F(A,B,C)=AB+\overline{A}C=AB(C+\overline{C})+\overline{A}C(B+\overline{B})=ABC+AB\overline{C}+\overline{A}BC+\overline{A}\overline{B}C=\Sigma(1,3,6,7)</script><h2 id="标准或与式（product-of-sum）"><a href="#标准或与式（product-of-sum）" class="headerlink" title="标准或与式（product-of-sum）"></a>标准或与式（product-of-sum）</h2><p>最大项之积构成的逻辑表达式。</p>
+<p>例如：</p>
+<script type="math/tex; mode=display">
+F(A,B,C)=(A+B+C)(A+\overline{B}+C)(\overline{A}+B+C)=\prod(M_0,M_2,M_4)=\prod(0,2,4)</script><p><strong>任何一个逻辑函数也可以写成最大项之积的形式，并且是唯一的。</strong></p>
+<h2 id="标准与或式和标准或与式的关系"><a href="#标准与或式和标准或与式的关系" class="headerlink" title="标准与或式和标准或与式的关系"></a>标准与或式和标准或与式的关系</h2><script type="math/tex; mode=display">
+F(A,B,C)=\Sigma(2,4,6)</script><script type="math/tex; mode=display">
+\overline{F}(A,B,C)=\Sigma(0,1,3,5,7)</script><script type="math/tex; mode=display">
+F=\overline{\overline{F}}=\overline{m_0+m_1+m_3+m_5+m_7}=\overline{m_0}\cdot\overline{m_1}\cdot\overline{m_3}\cdot\overline{m_5}\cdot\overline{m_7}=M_0M_1M_3M_5M_7</script><p>于是有</p>
+<script type="math/tex; mode=display">
+F=\sum_i m_i=\prod_{j\neq i}M_j</script><p>推导：</p>
+<script type="math/tex; mode=display">
+F=\sum_i m_i=\overline{\sum_{j\neq i} m_j}=\prod_{j\neq i}\overline{m_j}=\prod_{j\neq i}M_j</script><h2 id="布尔表达式与真值表的转换"><a href="#布尔表达式与真值表的转换" class="headerlink" title="布尔表达式与真值表的转换"></a>布尔表达式与真值表的转换</h2><ol>
 <li><p>代入法</p>
 </li>
 <li><p>将表达式转化为标准与或式</p>
@@ -451,8 +463,9 @@
 <p>于是只有(0,1,1), (1,1,0), (1,1,1)满足条件。</p>
 </li>
 </ol>
-<h2 id="使用定理化简表达式"><a href="#使用定理化简表达式" class="headerlink" title="使用定理化简表达式"></a>使用定理化简表达式</h2><p>使与或式中的与项最少，与项中出现的变量最少。<br>$$<br>例如，A(A+B)=A<br>$$</p>
-<h1 id="从逻辑到门"><a href="#从逻辑到门" class="headerlink" title="从逻辑到门"></a>从逻辑到门</h1><p><img src="https://i.loli.net/2021/03/05/MUnShzXARHamIcE.png" alt="原理图.png"></p>
+<h2 id="使用定理化简表达式"><a href="#使用定理化简表达式" class="headerlink" title="使用定理化简表达式"></a>使用定理化简表达式</h2><p>使与或式中的与项最少，与项中出现的变量最少。</p>
+<script type="math/tex; mode=display">
+例如，A(A+B)=A</script><h1 id="从逻辑到门"><a href="#从逻辑到门" class="headerlink" title="从逻辑到门"></a>从逻辑到门</h1><p><img src="https://i.loli.net/2021/03/05/MUnShzXARHamIcE.png" alt="原理图.png"></p>
 <h1 id="X和Z"><a href="#X和Z" class="headerlink" title="X和Z"></a>X和Z</h1><h2 id="非法值"><a href="#非法值" class="headerlink" title="非法值"></a>非法值</h2><p>竞争（contention）：电路结点同时被0和1驱动</p>
 <ul>
 <li>电压值可能介于 $0~V_{DD}$ 之间</li>
@@ -594,7 +607,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

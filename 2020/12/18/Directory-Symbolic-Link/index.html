@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
 
   </li>
   </ul>
@@ -230,8 +230,7 @@
     Link    指定新的符号链接名称。
     Target  指定新链接引用的路径
             (相对或绝对)。
-</code></pre>
-<ol>
+</code></pre><ol>
 <li><p>Isn’t a <strong>directory junction</strong> the exact same thing as a <strong>directory symbolic link</strong>?</p>
 <p>What’s the difference between <code>mklink /D f1 f2</code> and <code>mklink /J f1 f2</code> ?</p>
 </li>
@@ -241,10 +240,8 @@
 <p>A junction is definitely not the same thing as a directory symbolic link, although they behave similarly. The main difference is that, if you are looking at a remote server, <strong>junctions are processed at the server</strong> and <strong>directory symbolic links are processed at the client</strong>. Also see Matthew’s comment on the fact that this means symbolic links on the local file system can point to remote file systems.</p>
 <p>Suppose that on a machine named Alice you were to put a junction point <code>c:\myjp</code> and a directory symbolic link <code>c:\mysymlink</code>, both pointing to <code>c:\targetfolder</code>. While you’re using Alice you won’t notice much difference between them. But if you’re using another machine named Bob, then the junction point</p>
 <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\m</span>yjp` will point to `<span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\t</span>argetfolder</span><br></pre></td></tr></table></figure>
-
 <p>but the symbolic link</p>
 <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\m</span>ysymlink` will point to `<span class="symbol">\\</span>Bob<span class="symbol">\c</span>$<span class="symbol">\t</span>argetfolder</span><br></pre></td></tr></table></figure>
-
 <p>(Caveat: by default, the system doesn’t follow symlinks on remote volumes, so in most cases the second example will actually result in either <em>“File Not Found”</em> or <em>“The symbolic link cannot be followed because its type is disabled.”</em>)</p>
 <p>The difference between a directory symbolic link and a file symbolic link is simply that one represents a directory and one represents a file. Since the target of the link doesn’t need to exist when the link is created, the file system needs to know whether to tell applications that it is a directory or not.</p>
 <p>It should also be noted that creating a symbolic link requires special privilege (by default, only available to elevated processes) whereas creating a junction only requires access to the file system.</p>
@@ -345,7 +342,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

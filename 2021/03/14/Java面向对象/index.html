@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"preccrep.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="静态变量静态变量被类中的所有对象共享。静态方法不能访问类中的实例成员。 如果想让一个类中的所有实例共享数据，就要使用静态变量（static variable），也称类变量（class variable）。静态变量将变量值存储在一个公共的内存地址。因为是公共的，所以如果某一个对象修改了静态变量的值，那么同一个类的所有对象都会受影响。 无需创建类的实例就可以调用静态方法（static method）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面向对象">
+<meta property="og:url" content="https://preccrep.github.io/2021/03/14/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:site_name" content="Serial">
+<meta property="og:description" content="静态变量静态变量被类中的所有对象共享。静态方法不能访问类中的实例成员。 如果想让一个类中的所有实例共享数据，就要使用静态变量（static variable），也称类变量（class variable）。静态变量将变量值存储在一个公共的内存地址。因为是公共的，所以如果某一个对象修改了静态变量的值，那么同一个类的所有对象都会受影响。 无需创建类的实例就可以调用静态方法（static method）。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://preccrep.github.io/Users/preccrep/Desktop/x.png">
+<meta property="article:published_time" content="2021-03-14T05:35:57.000Z">
+<meta property="article:modified_time" content="2021-03-14T15:02:27.551Z">
+<meta property="article:author" content="preccrep">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://preccrep.github.io/Users/preccrep/Desktop/x.png">
+
+<link rel="canonical" href="https://preccrep.github.io/2021/03/14/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Java面向对象 | Serial</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Serial</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2021/03/14/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java面向对象
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-14 13:35:57 / Modified: 23:02:27" itemprop="dateCreated datePublished" datetime="2021-03-14T13:35:57+08:00">2021-03-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h1><p>静态变量被类中的所有对象共享。静态方法不能访问类中的实例成员。</p>
+<p>如果想让一个类中的所有实例共享数据，就要使用<em>静态变量</em>（static variable），也称<em>类变量</em>（class variable）。静态变量将变量值存储在一个公共的内存地址。因为是公共的，所以如果某一个对象修改了静态变量的值，那么同一个类的所有对象都会受影响。</p>
+<p>无需创建类的实例就可以调用<em>静态方法</em>（static method）。</p>
+<p>要声明一个静态变量或定义一个静态方法，就需要中声明中加上修饰符static。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> numberOfObjects;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNumberOfObjects</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> numberOfObjects;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Math类中所有的方法都是静态的。main方法也是静态方法。</p>
+<p>类中的常量是被该类的所有对象所共享的。因此，常量应该声明为<code>final static</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">double</span> PI = <span class="number">3.1415</span>;</span><br></pre></td></tr></table></figure>
+<p>实例方法可以调用实例方法和静态方法，访问实例数据域或静态数据域。静态方法只能调用静态方法和访问静态数据域。因为静态方法和静态数据域不属于某个特定的对象。</p>
+<blockquote>
+<p>一个常见的设计错误就是将一个本应该声明为静态的方法声明为实例方法。例如<code>factorial(int n)</code>应该定义为是静态的，因为它不依赖于任何具体的实例。</p>
+</blockquote>
+<h1 id="可见性修饰符"><a href="#可见性修饰符" class="headerlink" title="可见性修饰符"></a>可见性修饰符</h1><p>可见性修饰符可以用于确定一个类以及它的成员的可见性。</p>
+<p>可以在类、方法和数据域前使用public修饰符，表示它们可以被任何其他的类访问。如果没有可见性修饰符，则默认类、方法和数据域是可以被同一个包中的任何一个类访问的。这称作<em>包私有</em>（package-private）或<em>包内访问</em>（package- access）。</p>
+<blockquote>
+<p>包可以用来组织类。用下面的语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> packageName;</span><br></pre></td></tr></table></figure>
+<p>如果定义时没有包，就表示把它放在默认包中。</p>
+<p>Java建议最好把类放入包中，而不要使用默认包。</p>
+</blockquote>
+<p>private修饰符限定方法和数据域只能在它自己的类中被访问。</p>
+<p><img src="/Users/preccrep/Desktop/x.png" alt="x"></p>
+<p>如果一个类没有被定义为公共类，则它只能在同一个包内被访问。</p>
+<h1 id="不可变对象和类"><a href="#不可变对象和类" class="headerlink" title="不可变对象和类"></a>不可变对象和类</h1><blockquote>
+<p>可以定义不可变类来产生不可变对象。不可变对象的内容不能被改变。</p>
+</blockquote>
+<p>通常创建一个对象后，它的内容是允许之后改变的。有时候也需要创建一个一旦创建其内容就不能再改变的对象。我们称这种对象为一个<em>不可变对象</em>（immutable object），而它的类就是<em>不可变类</em>（immutable class）。例如，String类就是不可变的。如果把set方法去掉，也可能变为不可变类。</p>
+<p>如果一个类是不可变的，那么它的所有数据域必须都是私有的，而且没有对任何一个数据域提供公共的set方法。但是这只是充分条件。反例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> java.util.Date dateCreated;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> ssn, String newName)</span></span>&#123;</span><br><span class="line">    id=ssn;</span><br><span class="line">    name=newName;</span><br><span class="line">    dateCreated=<span class="keyword">new</span> java.util.Date();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> java.util.<span class="function">Date <span class="title">getDateCreated</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dateCreated;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>getDateCreated方法返回的是一个引用。通过这个引用可以改变getDateCreated的值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Student student=<span class="keyword">new</span> Student(<span class="number">111222333</span>,<span class="string">&quot;Mika&quot;</span>);</span><br><span class="line">    java.util.Date dateCreated=student.getDateCreated();</span><br><span class="line">    dateCreated.setTime(<span class="number">200000</span>); <span class="comment">//Now dateCreated field is changed!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h1><p><strong>实例变量和静态变量的作用域是整个类，无论变量是在哪里声明的。</strong></p>
+<p>一个类的实例变量和静态变量称为<em>类变量</em>（class’s variables）或<em>数据域</em>（data field）。在方法内部定义的变量是局部变量。</p>
+<p>类变量只能声明一次，但是在一个方法内不同的非嵌套块中，可以多次声明相同的变量名。</p>
+<p>如果一个局部变量和一个类变量具有相同的名字，那么局部变量优先，而同名的类变量被隐藏。</p>
+<h1 id="this引用"><a href="#this引用" class="headerlink" title="this引用"></a>this引用</h1><p>关键字this引用对象自身。它也可以在构造方法内部用于调用同一个类的其他构造方法。</p>
+<p><strong>关键字this是指向调用对象本身的引用名。</strong>可以用this关键字引用对象的实例成员。</p>
+<p>在引用隐藏数据域（例如set方法将数据域名作为参数名）以及调用一个重载的构造方法的时候，this引用是必须的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> radius;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Circle</span><span class="params">(<span class="keyword">double</span> radius)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.radius=radius; <span class="comment">//关键字this可以用于引用隐藏数据域</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Circle</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="number">1.0</span>); <span class="comment">//关键字this可以用于调用同一个类的另一个构造方法</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h1><p>面向对象编程允许从已经存在的类中定义新的类，这称为继承。</p>
+<p>继承能够避免冗余并使系统更易于理解和易于维护。</p>
+<h2 id="父类和子类"><a href="#父类和子类" class="headerlink" title="父类和子类"></a>父类和子类</h2><p>如果类C1扩展自另一个类C2，那么称C1为<em>次类</em>（subclass），C2为<em>超类</em>（superclass）。超类也称<em>父类</em>（parent class）或<em>基类</em>（base class），次类又称<em>子类</em>（child class）、<em>扩展类</em>（extended class）或<em>派生类</em>（derived class）。子类从它的父类中继承可访问的数据域或方法，还可添加新数据域和新方法。</p>
+<p>父类中的私有数据域是不能被子类访问的，但是可以用get和set方法。</p>
+<h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>一个Java类只可能直接继承自一个父类，这种限制称为单一继承（single inheritence）。如果使用extends关键字来定义一个子类，它只允许有一个父类。然而，多重继承是可以直接通过接口来实现的。</p>
+<h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>关键字super指代父类，可以用于调用父类中的普通方法和构造方法。</p>
+<h3 id="调用父类的构造方法"><a href="#调用父类的构造方法" class="headerlink" title="调用父类的构造方法"></a>调用父类的构造方法</h3><p>构造方法用于构建一个类的实例。不同于属性和普通方法，父类的构造方法不会被子类继承。它们只能使用关键字super从子类的构造方法中调用。</p>
+<p>调用父类构造方法的语法是：<code>super 或 super(parameters)</code></p>
+<p>语句<code>super()</code>调用父类的无参构造方法，而语句<code>super(arguments)</code>调用与参数匹配的父类的构造方法。它们必须出现在子类构造方法的第一行，这是显示调用父类构造方法的唯一方式。在子类中调用父类构造方法的名字会引起一个语法错误。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CircleFromSimpleGeometricObject</span><span class="params">(<span class="keyword">double</span> radius,String color,<span class="keyword">boolean</span> filled)</span></span>&#123;</span><br><span class="line">  <span class="keyword">super</span>(color,filled);</span><br><span class="line">  <span class="keyword">this</span>.radius=radius;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原来是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CircleFromSimple</span><span class="params">(<span class="keyword">double</span> radius,String color, <span class="keyword">boolean</span> filled)</span></span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.radius=radius;</span><br><span class="line">	setColor(color);</span><br><span class="line">	setFilled(filled);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>构造方法链（IMPORTANT 354 355）</strong></p>
+<h3 id="调用父类的方法"><a href="#调用父类的方法" class="headerlink" title="调用父类的方法"></a>调用父类的方法</h3><p>语法是：<code>super.methodName(parameters)</code></p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">  System.out.println(<span class="keyword">super</span>.getDateCreated());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h2><p>要重写一个方法，需要在子类中使用和父类一样的签名以及一样的返回值类型来对该方法进行定义。</p>
+<p>子类从父类中继承方法，有时子类需要修改父类中定义的方法的实现，这称作<strong>方法重写</strong>（method overriding）。</p>
+<p>例如GeometricObject类中的toString方法返回表示几何对象的字符串。这个方法可以被重写，返回表示圆的字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123; <span class="comment">//toString is originally defined in Father</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.toString()+<span class="string">&quot;\nradius is &quot;</span>+radius;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Son使用super.toString()访问Father中的toString方法，但是GrandSon不能使用super.super.toString()访问Father中的toString方法。这是一个语法错误。</p>
+<blockquote>
+<p><strong>值得注意的是：</strong></p>
+<p>仅当实例方法是可访问时，它才可被覆盖。因为私有方法在它的类本身以外是不能访问的，所以它不能被覆盖。如果子类中定义的方法是父类中私有的，那么这两个方法完全没有关系。</p>
+<p>与实例方法一样，静态方法也能被继承。但是静态方法不能被覆盖。如果父类中定义的静态方法在子类中被重新定义，那么在父类中定义的静态方法将被隐藏。可以使用语法：父类名.静态方法名（SuperClassName.staticMethodName）调用隐藏的静态方法。</p>
+</blockquote>
+<p>重载意味着使用同样的名字但是不同的签名来定义多个方法。</p>
+<p>重写意味着在子类中提供一个对方法的新的实现。</p>
+<ul>
+<li>方法重写发生在通过继承而相关的不同类中；方法重载可以发生在同一个类中，也可以发生在由于继承而相关的不同类中。</li>
+<li>方法重写具有相同的签名和返回值类型；方法重载具有相同的名字，但是不同的参数列表。</li>
+</ul>
+<p>为了避免错误，可以使用一个特殊的Java语法，成为重写标注（override annotation），在子类的方法前面放一个@Override。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123; <span class="comment">//toString is originally defined in Father</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.toString()+<span class="string">&quot;\nradius is &quot;</span>+radius;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该标注表示被标注的方法必须重写父类的一个方法。如果具有该标注的方法没有重写父类的方法，编译器将会报错。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/07/Java%E7%AC%94%E8%AE%B0/" rel="prev" title="Java笔记">
+      <i class="fa fa-chevron-left"></i> Java笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">静态变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">2.</span> <span class="nav-text">可见性修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">不可变对象和类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">4.</span> <span class="nav-text">变量的作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this%E5%BC%95%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">this引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81"><span class="nav-number">6.</span> <span class="nav-text">继承和多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%B6%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB"><span class="nav-number">6.1.</span> <span class="nav-text">父类和子类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extends"><span class="nav-number">6.2.</span> <span class="nav-text">extends</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#super"><span class="nav-number">6.3.</span> <span class="nav-text">super</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">6.3.1.</span> <span class="nav-text">调用父类的构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">6.3.2.</span> <span class="nav-text">调用父类的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="nav-number">6.4.</span> <span class="nav-text">方法重写</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">preccrep</p>
+  <div class="site-description" itemprop="description">serial processing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">preccrep</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
