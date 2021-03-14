@@ -1,37 +1,460 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-{% block page_class %}page-post-detail{% endblock %}
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"preccrep.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="动态规划算法1. 背包问题1.1    01背包问题约束条件是：给定几种物品，每种物品有且只有一个，并且有权值和体积两个属性。 题目链接 典型的01背包问题。骨头的数量已知，接下来又知道了每个骨头的价值和体积，这就相当于每种物品只有一个，对每种物品只需考虑选与不选两种情况。并且，体积的限制是不能超过背包的容积V。很容易想到以下做法： 12345678910111213141516171819202">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划算法">
+<meta property="og:url" content="https://preccrep.github.io/2020/06/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Serial">
+<meta property="og:description" content="动态规划算法1. 背包问题1.1    01背包问题约束条件是：给定几种物品，每种物品有且只有一个，并且有权值和体积两个属性。 题目链接 典型的01背包问题。骨头的数量已知，接下来又知道了每个骨头的价值和体积，这就相当于每种物品只有一个，对每种物品只需考虑选与不选两种情况。并且，体积的限制是不能超过背包的容积V。很容易想到以下做法： 12345678910111213141516171819202">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-16T01:37:28.000Z">
+<meta property="article:modified_time" content="2020-06-29T09:13:36.000Z">
+<meta property="article:author" content="preccrep">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://preccrep.github.io/2020/06/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/">
 
 
-{% block content %}
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+  <title>动态规划算法 | Serial</title>
+  
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Serial</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">of or relating to the sequential performance of multiple operations</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          动态规划算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-16 09:37:28" itemprop="dateCreated datePublished" datetime="2020-06-16T09:37:28+08:00">2020-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-29 17:13:36" itemprop="dateModified" datetime="2020-06-29T17:13:36+08:00">2020-06-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">动态规划</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="动态规划算法"><a href="#动态规划算法" class="headerlink" title="动态规划算法"></a>动态规划算法</h1><h2 id="1-背包问题"><a href="#1-背包问题" class="headerlink" title="1. 背包问题"></a>1. 背包问题</h2><h3 id="1-1-01背包问题"><a href="#1-1-01背包问题" class="headerlink" title="1.1    01背包问题"></a>1.1    01背包问题</h3><p>约束条件是：给定几种物品，每种物品有且只有一个，并且有权值和体积两个属性。</p>
+<p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2602"><strong>题目链接</strong></a></p>
+<p>典型的01背包问题。骨头的数量已知，接下来又知道了每个骨头的价值和体积，这就相当于每种物品只有一个，对每种物品只需考虑选与不选两种情况。并且，体积的限制是不能超过背包的容积V。很容易想到以下做法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义状态dp[i][j]表示前i个物品所占的体积为j，dp[i][j]中记录这个状态能够取得的最大值。</span></span><br><span class="line"><span class="comment">//w[i]表示物品价值，v[i]表示物品体积</span></span><br><span class="line"><span class="comment">//状态转移方程为：dp[i][j] = max(dp[i-1][j], dp[i-1][j-v[i]] + w[i])</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="keyword">int</span> w[maxn], v[maxn], dp[maxn][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T, N, V;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; V;</span><br><span class="line">		<span class="keyword">int</span> i, j;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N; i++) <span class="built_in">cin</span> &gt;&gt; w[i];</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N; i++) <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">		<span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt;= V; j++)&#123;  <span class="comment">//注意：V可以为0。</span></span><br><span class="line">				<span class="keyword">if</span>(j &gt;= v[i])</span><br><span class="line">					dp[i][j] = max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - v[i]] + w[i]);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; dp[N][V] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上述做法的确AC了。但是，这里的N，V最大只有1000，一旦变得更大了，开一个dp的二维数组显然是行不通的。是时候上滚动数组了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">首先，我们发现dp[i][j]只与dp[i-1][j]和dp[i-1][j-v[i]]有关。也就是说，前i个物品所占体积只与前i-1个物品有关。而一旦计算了第i行所有的dp[i][j]，那么第i-1行就没有作用了，因为每一行只会参考其上一行的dp[i][j]。</span></span><br><span class="line"><span class="comment">于是，对于dp[i-1][j]，如果能够通过dp[i][k](k&gt;=j)已经被计算就可知dp[i-1][j]的值将不再被使用，那么就将dp[i][j]存在</span></span><br><span class="line"><span class="comment">dp[i-1][j]中。这时令j从V到0递减，将dp[i][j]的值覆盖dp[i-1][j]即可。</span></span><br><span class="line"><span class="comment">所以，dp转化为了一维数组。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1005</span>;</span><br><span class="line"><span class="keyword">int</span> w[maxn], v[maxn], dp[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T, N, V;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; V;</span><br><span class="line">		<span class="keyword">int</span> i, j;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N; i++) <span class="built_in">cin</span> &gt;&gt; w[i];</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N; i++) <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">		<span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">			<span class="keyword">for</span>(j = V; j &gt;= v[i]; j--)</span><br><span class="line">				dp[j] = max(dp[j], dp[j - v[i]] + w[i]);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; dp[V] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2-完全背包问题"><a href="#1-2-完全背包问题" class="headerlink" title="1.2    完全背包问题"></a>1.2    完全背包问题</h3><p>基本概念：与01背包不同的是，完全背包中每种物品的数量没有限制，可以无限使用。状态定义与01背包一致。</p>
+<p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1114"><strong>题目链接</strong></a></p>
+<p>已知硬币总重量，每种硬币的重量和面值，求硬币面值之和最小的可能值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">状态转移方程：dp[i][j] = min(dp[i-1][j-n*v[i]] + n*w[i]), 0 &lt;= n*v[i] &lt;= j.</span></span><br><span class="line"><span class="comment">空间优化后：dp[j] = min(dp[j-n*v[i]] + n*w[i]), 0 &lt;= n*v[i] &lt;= j.</span></span><br><span class="line"><span class="comment">改进后：d[j] = min(dp[j], dp[j-v[i]] + w[i]), j &gt;= v[i].</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">10005</span>;</span><br><span class="line"><span class="keyword">int</span> dp[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T, P, W, E, F, N;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; E &gt;&gt; F;</span><br><span class="line">		<span class="keyword">int</span> V = F - E;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">		<span class="built_in">memset</span>(dp, <span class="number">-1</span>, <span class="keyword">sizeof</span>(dp));  <span class="comment">//初始化为-1，-1表示状态未到达</span></span><br><span class="line">		dp[<span class="number">0</span>] = <span class="number">0</span>;  <span class="comment">//当下面循环中j = 0时，可以使得dp[W] = P。</span></span><br><span class="line">		<span class="keyword">int</span> i, j;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; P &gt;&gt; W;</span><br><span class="line">			<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt;= V - W; j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(dp[j] == <span class="number">-1</span>) <span class="keyword">continue</span>;  <span class="comment">//状态未达到，不能参考这个状态</span></span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(dp[j + W] == <span class="number">-1</span>) dp[j + W] = dp[j] + P;  <span class="comment">//加上&#123;P, W&#125;这种情况的状态还未达到，就进行转移</span></span><br><span class="line">				<span class="keyword">else</span> dp[j + W] = min(dp[j + W], dp[j] + P);  <span class="comment">//这种状态已经达到了，就取较小的</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(dp[V] == <span class="number">-1</span>)  <span class="comment">//说明任何硬币组合都不能达到V的状态</span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;This is impossible.&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The minimum amount of money in the piggy-bank is &quot;</span> &lt;&lt; dp[V] &lt;&lt; <span class="string">&quot;.&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-多重背包问题"><a href="#1-3-多重背包问题" class="headerlink" title="1.3    多重背包问题"></a>1.3    多重背包问题</h3><p>基本概念：多重背包的特点是物品的数量可以大于1但有限制。状态定义与01背包一致。</p>
+<p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2844"><strong>题目链接</strong></a></p>
+<p>已知手表价格大于0且不超过M，有N种硬币，已知每种硬币的价值和数量，求能用硬币支付的手表价格的情况有多少种。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义dp[i]为是否可以使面值之和为i。</span></span><br><span class="line"><span class="comment">//处理每种硬币时，转移次数与Ci有关，使得处理第i种硬币的复杂度是O(M*Ci)，而当Ci较大时，复杂度较高。</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">可以用二进制的方法优化，使得每种物品的转移次数变为O(M*log(Ci))，方法是将i种硬币分组，分别以1,2,4,...,2的n次方个硬币为一组，这些数相加等于Ci。可知，任意小于等于Ci的数都可以用这些数中的一部分(或全部)之和表示出来。将每一组的硬币面值相加作为一个硬币来处理，就可以转化为01背包问题来解决了。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">100005</span>], a[<span class="number">105</span>], c[<span class="number">105</span>], w[<span class="number">1005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &amp;&amp; (n || m))&#123;</span><br><span class="line">		<span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp)); dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> i, j;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; c[i];</span><br><span class="line">		<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">			<span class="keyword">for</span>(j = <span class="number">1</span>; c[i] &gt; <span class="number">0</span>; j *= <span class="number">2</span>)&#123;  <span class="comment">//对每种硬币进行分组，用j模拟2的幂(也可用移位，j &lt;&lt;= 1)</span></span><br><span class="line">				<span class="keyword">int</span> t = min(j, c[i]);  <span class="comment">//若c[i]并不刚好是等比数列之和，那么多出来的部分小于j，这里考虑的是最后的情况</span></span><br><span class="line">				c[i] -= t;</span><br><span class="line">				w[cnt++] = a[i]*t;  <span class="comment">//记录该分组的硬币价值之和</span></span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; cnt; i++)</span><br><span class="line">			<span class="keyword">for</span>(j = m; j &gt;= w[i]; j--)</span><br><span class="line">				<span class="keyword">if</span>(dp[j-w[i]])</span><br><span class="line">					dp[j] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">			ans += dp[i];</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-状态压缩"><a href="#2-状态压缩" class="headerlink" title="2. 状态压缩"></a>2. 状态压缩</h2><h3 id="2-1-旅行商问题"><a href="#2-1-旅行商问题" class="headerlink" title="2.1    旅行商问题"></a>2.1    旅行商问题</h3><p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=3001"><strong>题目链接</strong></a></p>
+<p>访问N座城市，共有M条路，必须访问所有的城市至少一次，并且访问次数不能超过两次(也就是1次或2次)。已知每条道路的费用，求最小费用，若不能完成就返回-1.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">60000</span>][<span class="number">11</span>], c[<span class="number">20</span>][<span class="number">20</span>], len[<span class="number">11</span>];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Gets(i, j) (i/len[j])%3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	len[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)</span><br><span class="line">		len[i] = len[i<span class="number">-1</span>] * <span class="number">3</span>;</span><br><span class="line">	<span class="keyword">int</span> n, m, f, a, b, w, u, v, ans;</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m))&#123;</span><br><span class="line">		<span class="built_in">memset</span>(c, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(c));</span><br><span class="line">		<span class="built_in">memset</span>(dp, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;w);</span><br><span class="line">			a--; b--;</span><br><span class="line">			c[a][b] = c[b][a] = min(c[a][b], w);</span><br><span class="line">		&#125;</span><br><span class="line">		ans = dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> i, j;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">			dp[len[i]][i] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; len[n]; i++)&#123;</span><br><span class="line">			f = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(Gets(i, j)==<span class="number">0</span>)&#123;</span><br><span class="line">					f = <span class="number">0</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; n; v++)&#123;</span><br><span class="line">					<span class="keyword">if</span>(Gets(i, v)==<span class="number">2</span>)</span><br><span class="line">						<span class="keyword">continue</span>;</span><br><span class="line">					u = i + len[v];</span><br><span class="line">					dp[u][v] = min(dp[u][v], dp[i][j] + c[j][v]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(f)&#123;</span><br><span class="line">				<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">					ans = min(ans, dp[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(dp[<span class="number">0</span>][<span class="number">0</span>]==ans) ans = <span class="number">-1</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-插头dp"><a href="#2-2-插头dp" class="headerlink" title="2.2    插头dp"></a>2.2    插头dp</h3><p>基本概念：插头dp也是状态压缩dp的一种，成为轮廓线dp。通常用于解决二维空间上的状态压缩问题，且约束条件是每个位置只需要关心与自己邻近的几个点。所以，应该按顺序逐个位置进行处理。</p>
+<p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=4949"><strong>题目链接</strong></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="3-动态规划优化"><a href="#3-动态规划优化" class="headerlink" title="3. 动态规划优化"></a>3. 动态规划优化</h2><h3 id="3-1-数据结构优化"><a href="#3-1-数据结构优化" class="headerlink" title="3.1    数据结构优化"></a>3.1    数据结构优化</h3><h3 id="3-2-斜率优化"><a href="#3-2-斜率优化" class="headerlink" title="3.2    斜率优化"></a>3.2    斜率优化</h3><h3 id="3-3-四边形不等式优化"><a href="#3-3-四边形不等式优化" class="headerlink" title="3.3    四边形不等式优化"></a>3.3    四边形不等式优化</h3><h2 id="4-常见动态规划题目类型"><a href="#4-常见动态规划题目类型" class="headerlink" title="4. 常见动态规划题目类型"></a>4. 常见动态规划题目类型</h2><h3 id="4-1-树形dp"><a href="#4-1-树形dp" class="headerlink" title="4.1    树形dp"></a>4.1    树形dp</h3><h3 id="4-2-RMQ问题"><a href="#4-2-RMQ问题" class="headerlink" title="4.2    RMQ问题"></a>4.2    RMQ问题</h3><h3 id="4-3-有向图最短路"><a href="#4-3-有向图最短路" class="headerlink" title="4.3    有向图最短路"></a>4.3    有向图最短路</h3><h3 id="4-4-最长上升子序列"><a href="#4-4-最长上升子序列" class="headerlink" title="4.4    最长上升子序列"></a>4.4    最长上升子序列</h3><h2 id="5-习题解析的博客链接"><a href="#5-习题解析的博客链接" class="headerlink" title="5. 习题解析的博客链接"></a>5. 习题解析的博客链接</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/15/random-shuffle%E5%8E%9F%E7%90%86/" rel="prev" title="random_shuffle原理">
+      <i class="fa fa-chevron-left"></i> random_shuffle原理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/18/Prim%E7%AE%97%E6%B3%95/" rel="next" title="Prim算法">
+      Prim算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">动态规划算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">1. 背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1    01背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2    完全背包问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3    多重背包问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.2.</span> <span class="nav-text">2. 状态压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1    旅行商问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%8F%92%E5%A4%B4dp"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2    插头dp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">3. 动态规划优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1    数据结构优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2    斜率优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3    四边形不等式优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%B8%B8%E8%A7%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E7%9B%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">4. 常见动态规划题目类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%A0%91%E5%BD%A2dp"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1    树形dp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-RMQ%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2    RMQ问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%9C%89%E5%90%91%E5%9B%BE%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3    有向图最短路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4    最长上升子序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%B9%A0%E9%A2%98%E8%A7%A3%E6%9E%90%E7%9A%84%E5%8D%9A%E5%AE%A2%E9%93%BE%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">5. 习题解析的博客链接</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">preccrep</p>
+  <div class="site-description" itemprop="description">serial processing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">preccrep</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

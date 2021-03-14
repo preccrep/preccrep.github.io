@@ -1,37 +1,439 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-{% block page_class %}page-post-detail{% endblock %}
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"preccrep.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="平面网格数据的生成利用矩阵运算生成1234x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;X &#x3D; ones(size(y))*x;Y &#x3D; y*ones(size(x));  利用meshgrid函数生成[X, Y] &#x3D; meshgrid(x, y); 其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。 123456x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;[X, Y] &#x3D; meshgri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB绘制三维图形">
+<meta property="og:url" content="https://preccrep.github.io/2020/07/29/MATLAB%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2/index.html">
+<meta property="og:site_name" content="Serial">
+<meta property="og:description" content="平面网格数据的生成利用矩阵运算生成1234x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;X &#x3D; ones(size(y))*x;Y &#x3D; y*ones(size(x));  利用meshgrid函数生成[X, Y] &#x3D; meshgrid(x, y); 其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。 123456x &#x3D; 2:6;y &#x3D; (3:8)&amp;#x27;;[X, Y] &#x3D; meshgri">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-29T13:18:30.000Z">
+<meta property="article:modified_time" content="2020-07-29T14:33:50.000Z">
+<meta property="article:author" content="preccrep">
+<meta property="article:tag" content="MATLAB">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://preccrep.github.io/2020/07/29/MATLAB%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2/">
 
 
-{% block content %}
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+  <title>MATLAB绘制三维图形 | Serial</title>
+  
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Serial</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">of or relating to the sequential performance of multiple operations</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">75</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/29/MATLAB%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MATLAB绘制三维图形
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-29 21:18:30 / Modified: 22:33:50" itemprop="dateCreated datePublished" datetime="2020-07-29T21:18:30+08:00">2020-07-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="平面网格数据的生成"><a href="#平面网格数据的生成" class="headerlink" title="平面网格数据的生成"></a>平面网格数据的生成</h1><h2 id="利用矩阵运算生成"><a href="#利用矩阵运算生成" class="headerlink" title="利用矩阵运算生成"></a>利用矩阵运算生成</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">X = <span class="built_in">ones</span>(<span class="built_in">size</span>(y))*x;</span><br><span class="line">Y = y*<span class="built_in">ones</span>(<span class="built_in">size</span>(x));</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用meshgrid函数生成"><a href="#利用meshgrid函数生成" class="headerlink" title="利用meshgrid函数生成"></a>利用meshgrid函数生成</h2><p>[X, Y] = meshgrid(x, y);</p>
+<p>其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = <span class="built_in">randn</span>(<span class="built_in">size</span>(X));</span><br><span class="line"><span class="built_in">plot3</span>(X, Y, Z)</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
+
+<h1 id="绘制三维曲面的函数"><a href="#绘制三维曲面的函数" class="headerlink" title="绘制三维曲面的函数"></a>绘制三维曲面的函数</h1><p>**mesh(x, y, z, c)**用于绘制三维网格图</p>
+<p>**surf(x, y, z, c)**用于绘制三维曲面图</p>
+<p>其中，x、y是网格坐标矩阵，z是网格点上的高度矩阵，c用于指定在不同高度下的曲面颜色。</p>
+<p><strong>mesh(z, c)</strong></p>
+<p><strong>surf(z, c)</strong></p>
+<p>当x、y省略时，z矩阵的第2维下标当作x轴坐标，z矩阵的第1维下标当作y轴坐标。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">1</span>:<span class="number">5</span>;</span><br><span class="line">z = [<span class="number">0.5</span>*t; <span class="number">2</span>*t; <span class="number">3</span>*t];</span><br><span class="line">mesh(z);</span><br></pre></td></tr></table></figure>
+
+<p><strong>meshc</strong>带等高线的三维网格曲面函数</p>
+<p><strong>meshz</strong>带底座的三维网格曲面函数</p>
+<p><strong>surfc</strong>带等高线的曲面函数</p>
+<p><strong>surfl</strong>带光照效果的曲面函数</p>
+<h1 id="标准三维曲面"><a href="#标准三维曲面" class="headerlink" title="标准三维曲面"></a>标准三维曲面</h1><p><strong>sphere</strong></p>
+<p>[x, y, z] = sphere(n)</p>
+<p><strong>cylinder</strong></p>
+<p>[x, y, z] = cylinder(R, n)</p>
+<p>参数n决定曲面的圆滑程度，默认为20。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/26/Windows%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8/" rel="prev" title="Windows任务管理器">
+      <i class="fa fa-chevron-left"></i> Windows任务管理器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/08/TensorNetwork-1/" rel="next" title="TensorNetwork_1">
+      TensorNetwork_1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E9%9D%A2%E7%BD%91%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E7%94%9F%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">平面网格数据的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97%E7%94%9F%E6%88%90"><span class="nav-number">1.1.</span> <span class="nav-text">利用矩阵运算生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8meshgrid%E5%87%BD%E6%95%B0%E7%94%9F%E6%88%90"><span class="nav-number">1.2.</span> <span class="nav-text">利用meshgrid函数生成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%9B%B2%E9%9D%A2%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">绘制三维曲面的函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E4%B8%89%E7%BB%B4%E6%9B%B2%E9%9D%A2"><span class="nav-number">3.</span> <span class="nav-text">标准三维曲面</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">preccrep</p>
+  <div class="site-description" itemprop="description">serial processing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">preccrep</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
