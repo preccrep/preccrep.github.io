@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://preccrep.github.io/2021/03/14/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
+    <loc>https://preccrep.github.io/2021/03/04/%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/</loc>
     
-    <lastmod>2021-03-14</lastmod>
+    <lastmod>2021-03-15</lastmod>
     
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/2021/03/04/%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>https://preccrep.github.io/2021/03/14/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
     
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-14</lastmod>
     
   </url>
   
@@ -690,14 +690,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://preccrep.github.io/tags/tensorflow/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/tensorflow/</loc>
+    <loc>https://preccrep.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -846,14 +846,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>https://preccrep.github.io/categories/Floyd/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Floyd/</loc>
+    <loc>https://preccrep.github.io/categories/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -895,6 +895,13 @@
   </url>
   
   <url>
+    <loc>https://preccrep.github.io/categories/Prim/</loc>
+    <lastmod>2021-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://preccrep.github.io/categories/Tarjan/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
@@ -909,13 +916,6 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Trie/</loc>
-    <lastmod>2021-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://preccrep.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
@@ -923,14 +923,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Windows/</loc>
+    <loc>https://preccrep.github.io/categories/Trie/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Prim/</loc>
+    <loc>https://preccrep.github.io/categories/Windows/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
