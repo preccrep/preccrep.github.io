@@ -408,7 +408,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-15 16:39:50" itemprop="dateModified" datetime="2021-03-15T16:39:50+08:00">2021-03-15</time>
+                <time title="Modified: 2021-03-15 20:40:05" itemprop="dateModified" datetime="2021-03-15T20:40:05+08:00">2021-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -715,6 +715,146 @@ F=\sum_i m_i=\overline{\sum_{j\neq i} m_j}=\prod_{j\neq i}\overline{m_j}=\prod_{
 <blockquote>
 <p>扇入（fan-in）：单个逻辑门能够接受的数字信号最大输入数。</p>
 </blockquote>
+<p>可以将一个三输入与或门转化成两个二输入与或门：</p>
+<script type="math/tex; mode=display">
+Y=A\oplus B\oplus C=(A\oplus B)\oplus C</script><p>将二级门电路转成多级门电路来实现时，输出信号的延迟会增大。</p>
+<p><strong>与非和或非运算都是完备的，利用与非门和或非门可以实现任何表达式。</strong></p>
+<p><img src="https://i.loli.net/2021/03/15/c23Cr8hXqWePdDO.png" alt="推气泡.png"></p>
+<p>（由于德摩根定律）</p>
+<p>推气泡：将与非门和或非门转换成与/或门电路用于读取BOOL表达式；将与/非门的电路转换为与/或非门电路用于CMOS实现。</p>
+<h1 id="组合逻辑电路设计方法"><a href="#组合逻辑电路设计方法" class="headerlink" title="组合逻辑电路设计方法"></a>组合逻辑电路设计方法</h1><p>七段数码管驱动电路：4位输入数据，输入一个十进制数字（4位二进制数可表示一位十进制数）；7位输出控制发光管显示数字0-9.</p>
+<p>七段数码管（由7个发光二极管构成）的连接方式有共阴极和共阳极两种方式。共阴极连接时，对应字段高电平时被点亮；共阳极连接时，对应字段低电平时被点亮。</p>
+<h1 id="组合逻辑模块"><a href="#组合逻辑模块" class="headerlink" title="组合逻辑模块"></a>组合逻辑模块</h1><h2 id="编码器"><a href="#编码器" class="headerlink" title="编码器"></a>编码器</h2><p>用n位二进制代码对$N=2^n$个特定信息进行编码的逻辑电路。</p>
+<p>例如，设计一个具有4路信号输入的优先级编码器：</p>
+<p>输入：X0, X1, X2, X3</p>
+<p>输出：A0, A1, EO(EO用于判定是否存在有效输入)</p>
+<p>功能：将4个输入信号进行二进制编码（4线-2线编码器）</p>
+<p><strong>优先级编码</strong>：当有多个信号同时输入时，只对优先权高的一个信号进行编码。</p>
+<p><strong>输出使能端</strong>：用于判别电路是否有信号输入。用EO表示，EO=0表示有信号输入，EO=1表示无信号输入。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>A0</th>
+<th>A1</th>
+<th>EO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无有效信号</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>X0有效，X1, X2, X3无效</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>X1有效，X2, X3无效</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>X2有效，X3无效</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>X3有效</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>因此X0, X1, X2, X3编码分别为：00，01，10，11</p>
+<p>于是可以画出真值表。在真值表中，X0先出现(X3=0, X2=0, X1=0, X0=1)就对应A0=0，A1=0，EO=0；X1先出现(X3=0, X2=0, X1=1, X0=0或X3=0, X2=0, X1=1, X0=1)就对应A0=0，A1=1，EO=0…</p>
+<p>然后就可以使用X简化真值表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>X3</th>
+<th>X2</th>
+<th>X1</th>
+<th>X0</th>
+<th>A1</th>
+<th>A0</th>
+<th>EO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>X</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>X</td>
+<td>X</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>由真值表画出X0X1X2X3的卡诺图，即可写出A0、A1、EO的表达式。</p>
+<h2 id="译码器"><a href="#译码器" class="headerlink" title="译码器"></a>译码器</h2><p>译码时编码的逆过程，有n个输入，$2^n$个输出。</p>
+<p>每一种输入的组合对应使能端某个特定时刻的输出信号。</p>
+<p>输出使独热（互斥）的，同一时刻只能输出一个有效信号，即每一组输入只能使一条输出线产生有效输出电平。</p>
+<p>译码器的每一个输出都对应输入信号的一个最小项。</p>
+<p>译码器可以把地址信息当做输入信号，把有效输出信号当成选择信号，来选中特定的设备来工作。</p>
+<p>同一时刻只能允许总线上的一个外部设备向处理器发送信息，所以在同一时刻只能允许一个三态缓冲器的使能端输出有效信号。这时就要用到译码器。因为译码器输出的信号就是互斥的。</p>
+<p>译码器的每一个输出信号连接到一个外部设备的三态缓冲器上。于是，同一时刻只需发送一个特定的信号，就能确定用哪一个三态缓冲器了。</p>
+<p>每个外部设备都有一个地址来唯一标识。计算机想与哪一个外部设备进行数据交换，首先就要知道这个设备的地址，控制这个设备。</p>
+<p>但是只知道信号和地址，无法确定数据的流向。因为总线上的数据是双向传递的。</p>
+<p>读写控制依赖于输入输出信号（0或1，通过与门或与非门后到达三态缓冲器使能端，由此决定数据传输方向）。高电平时表示设备向处理器发送数据，低电平时表示处理器将数据输送到设备。</p>
+<p>数据、地址、控制——三总线。</p>
+<p>通过译码器+或门可以构造出更加复杂的表达式。</p>
+<h2 id="多路选择器"><a href="#多路选择器" class="headerlink" title="多路选择器"></a>多路选择器</h2><p>根据选择信号的值从N个可能的输入中选择一个作为输出。</p>
+<p>需要使用logN位选择信号作为输入，控制输入信号的选择。</p>
 
       
     </div>
