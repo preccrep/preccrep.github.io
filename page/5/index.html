@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">33</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">78</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,301 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/14/MATLAB%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/14/MATLAB%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">MATLAB学习记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-14 10:03:25" itemprop="dateCreated datePublished" datetime="2020-07-14T10:03:25+08:00">2020-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 19:48:52" itemprop="dateModified" datetime="2020-07-15T19:48:52+08:00">2020-07-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>注：这篇文章主要是我学习基础语法时的一些零散记录。</p>
+<h1 id="MATLAB数值数据"><a href="#MATLAB数值数据" class="headerlink" title="MATLAB数值数据"></a>MATLAB数值数据</h1><h2 id="数值数据类型"><a href="#数值数据类型" class="headerlink" title="数值数据类型"></a>数值数据类型</h2><h3 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h3><p>无/有 符号 8/16/32/64 位整数</p>
+<p><strong><em>数据类型转换函数</em></strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = uint8(<span class="number">129</span>)</span><br><span class="line"><span class="number">129</span></span><br><span class="line">&gt;&gt; x = int8(129)    # 因为int最大是127，129&gt;127，所以返回最大值</span><br><span class="line"><span class="number">127</span></span><br><span class="line">&gt;&gt; x = int8(-129)   # int最小是-128</span><br><span class="line"><span class="number">-128</span></span><br></pre></td></tr></table></figure>
+<h3 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h3><p>单精度：single 函数</p>
+<p>双精度：double 函数</p>
+<p>数值数据默认是双精度型。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; class(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">     <span class="string">&#x27;double&#x27;</span></span><br><span class="line">&gt;&gt; class(single(<span class="number">4</span>))</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">     <span class="string">&#x27;single&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="复型"><a href="#复型" class="headerlink" title="复型"></a>复型</h3><p>实部和虚部默认双精度型。虚数单位用 i 或 j 来表示。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span>+<span class="number">5</span><span class="built_in">i</span> 和 <span class="number">6</span>+<span class="number">5</span><span class="built_in">j</span> 表示的是一样的</span><br></pre></td></tr></table></figure>
+<p>real 函数求实部，imag 函数求虚部。</p>
+<h2 id="数值数据的输出格式"><a href="#数值数据的输出格式" class="headerlink" title="数值数据的输出格式"></a>数值数据的输出格式</h2><p>format 命令：&gt;&gt; format long（转换为 long 型输出）</p>
+<p>转换回默认类型 short：&gt;&gt; format</p>
+<p>format 命令只影响数据输出格式。</p>
+<h2 id="常用数学函数"><a href="#常用数学函数" class="headerlink" title="常用数学函数"></a>常用数学函数</h2><p>abs 函数可以求实数的绝对值、复数的模、字符串的ASCII码值。</p>
+<p>B = rem(A, 10) 是对 A 的每一个元素模10取余，得到一个布尔矩阵。</p>
+<p>power(x, 2) 等价于 x^2。</p>
+<p>取整函数：</p>
+<p>fix：向0取整</p>
+<p>floor：向下取整</p>
+<p>ceil：向上取整</p>
+<p>round：四舍五入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = sin(pi/2)    # 弧度制</span><br><span class="line">&gt;&gt; x = sind(90)     # 角度制</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = sqrt(7)-2i   # 复数</span><br><span class="line">&gt;&gt; y = exp(pi/2)    # e的pi/2次幂</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = <span class="number">1</span> : <span class="number">100</span></span><br><span class="line">&gt;&gt; k = isprime(x)   # 输出的是0/1的布尔值</span><br><span class="line">&gt;&gt; k1 = find(k)     # 输出的是1:100之间的素数</span><br><span class="line">&gt;&gt; p = x(k)         # 同上</span><br><span class="line">&gt;&gt; p1 = x(k1)       # 同上</span><br></pre></td></tr></table></figure>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量名以字母开头，只能由字母、数字和下划线组成，最多63个字符。变量名区分字母的大小写。标准函数名以及命令名必须用小写字母。</p>
+<h2 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h2><p>ans 是默认赋值变量</p>
+<p>i 和 j 代表虚数单位</p>
+<p>pi 代表圆周率</p>
+<p>NaN 代表非数</p>
+<h2 id="变量管理"><a href="#变量管理" class="headerlink" title="变量管理"></a>变量管理</h2><p>用 who 和 whos 查看变量。</p>
+<p>用于保存MATLAB工作区变量的文件叫内存变量文件，扩展名为.mat，也叫 MAT 文件。</p>
+<p>save 命令：创建内存变量文件</p>
+<p>load 命令：装入内存变量文件</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; save mydata a x   # mydata.mat</span><br><span class="line">&gt;&gt; load mydata</span><br></pre></td></tr></table></figure>
+<h1 id="MATLAB矩阵"><a href="#MATLAB矩阵" class="headerlink" title="MATLAB矩阵"></a>MATLAB矩阵</h1><h2 id="矩阵的建立"><a href="#矩阵的建立" class="headerlink" title="矩阵的建立"></a>矩阵的建立</h2><p>1）直接输入法</p>
+<p>将矩阵元素用 [ ] 括起来，按矩阵行的顺序输入各元素，同一行元素用<strong>逗号或空格</strong>分隔，不同行用<strong>分号</strong>分隔。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>; <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">A =</span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>2）利用已建好的矩阵建立更大的矩阵</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">&gt;&gt; B = [<span class="number">-1</span>,<span class="number">0</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">2</span>,<span class="number">-5</span>;<span class="number">9</span>,<span class="number">-6</span>,<span class="number">1</span>]</span><br><span class="line">&gt;&gt; C = [A, B; B, A]</span><br></pre></td></tr></table></figure>
+<p>还可以用实部矩阵和虚部矩阵构成复数矩阵</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; B = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt; C = [<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>;<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>]</span><br><span class="line">&gt;&gt; A = B + <span class="built_in">i</span>*C</span><br></pre></td></tr></table></figure>
+<h2 id="冒号表达式"><a href="#冒号表达式" class="headerlink" title="冒号表达式"></a>冒号表达式</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e1 : e2 : e3</span><br></pre></td></tr></table></figure>
+<p>e1 为初始值，e2 为步长，e3 为终止值。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; t = <span class="number">0</span> : <span class="number">1</span> : <span class="number">5</span></span><br><span class="line">t =</span><br><span class="line">     <span class="number">0</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span>     <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>e2 可以省略，默认为 1.</p>
+<p><strong><em>linspace函数</em></strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">linspace</span>(a, b, n)</span><br></pre></td></tr></table></figure>
+<p>a 为第一个元素，b 为最后一个元素，n 为元素总数。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = <span class="built_in">linspace</span>(<span class="number">0</span>, <span class="built_in">pi</span>, <span class="number">6</span>)</span><br><span class="line">x =</span><br><span class="line">     <span class="number">0</span>    <span class="number">0.6283</span>    <span class="number">1.2566</span>    <span class="number">1.8850</span>    <span class="number">2.5133</span>    <span class="number">3.1416</span></span><br></pre></td></tr></table></figure>
+<h2 id="结构矩阵和单元矩阵"><a href="#结构矩阵和单元矩阵" class="headerlink" title="结构矩阵和单元矩阵"></a>结构矩阵和单元矩阵</h2><h3 id="结构矩阵"><a href="#结构矩阵" class="headerlink" title="结构矩阵"></a>结构矩阵</h3><p>格式为：<strong>结构矩阵元素 . 成员名 = 表达式</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; a(<span class="number">1</span>).x1 = <span class="number">10</span>; a(<span class="number">1</span>).x2 = <span class="string">&#x27;A&#x27;</span>; a(<span class="number">1</span>).x3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">&gt;&gt; a(<span class="number">2</span>).x1 = <span class="number">16</span>; a(<span class="number">2</span>).x2 = <span class="string">&#x27;K&#x27;</span>; a(<span class="number">2</span>).x3 = [<span class="number">9</span>, <span class="number">2</span>, <span class="number">7</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><p>和一般矩阵相似，但是要用 { } 括起来。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; b = &#123;10,&#x27;A&#x27;,[1,2,3]; 16,&#x27;K&#x27;,[9,2,7]&#125;   # b是 2×3 cell数组</span><br><span class="line">b =</span><br><span class="line">     &#123;[<span class="number">10</span>]&#125;    &#123;<span class="string">&#x27;A&#x27;</span>&#125;    &#123;<span class="number">1</span>×<span class="number">3</span> double&#125;</span><br><span class="line">     &#123;[<span class="number">16</span>]&#125;    &#123;<span class="string">&#x27;K&#x27;</span>&#125;    &#123;<span class="number">1</span>×<span class="number">3</span> double&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="矩阵元素的引用"><a href="#矩阵元素的引用" class="headerlink" title="矩阵元素的引用"></a>矩阵元素的引用</h1><h2 id="通过下标引用"><a href="#通过下标引用" class="headerlink" title="通过下标引用"></a>通过下标引用</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A(4, 5) = 10   # 矩阵A的第4行第5列元素赋值为10</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [1,2,3;4,5,6]   # A是2行3列</span><br><span class="line">&gt;&gt; A(4, 5) = 10        # 超出矩阵范围，自动填充为0</span><br><span class="line">A =</span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>    <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<h2 id="通过序号引用"><a href="#通过序号引用" class="headerlink" title="通过序号引用"></a>通过序号引用</h2><p>在MATLAB中，矩阵元素按列存储。矩阵元素的序号就是其在内存中的排列顺序。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">A =</span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">&gt;&gt; A(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">     <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>序号与下标是一一对应的，m <em> n 矩阵 A 的元素 A( i, j ) 的序号为 ( j - 1 ) </em> m + i 。</p>
+<p>矩阵元素的序号与下标可以通过 sub2ind 和 ind2sub 函数实现相互转换。</p>
+<h3 id="sub2ind"><a href="#sub2ind" class="headerlink" title="sub2ind"></a>sub2ind</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D = <span class="built_in">sub2ind</span>(S, I, J)   下标转序号</span><br></pre></td></tr></table></figure>
+<p>S 是行数和列数组成的向量，通常用 size(A) 获取。I 是转换矩阵元素的行下标，J 是列下标。如果 I 和 J 是矩阵，则表示要将多个元素的行列下标转换为序号。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>:<span class="number">3</span>;<span class="number">4</span>:<span class="number">6</span>]</span><br><span class="line">A =</span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">&gt;&gt; B = <span class="built_in">sub2ind</span>(<span class="built_in">size</span>(A),[<span class="number">1</span>,<span class="number">2</span>;<span class="number">2</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">1</span>;<span class="number">3</span>,<span class="number">2</span>])</span><br><span class="line">B =</span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span></span><br><span class="line">     <span class="number">6</span>     <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>size(A) 得到的是向量 [2, 3] 。然后依次得到：</p>
+<p>行下标为 1，列下标为 1 的元素的序号是 1；</p>
+<p>行下标为 2，列下标为 1 的元素的序号是 2；</p>
+<p>行下标为 2，列下标为 3 的元素的序号是 6；</p>
+<p>行下标为 2，列下标为 2 的元素的序号是 4。</p>
+<h3 id="ind2sub"><a href="#ind2sub" class="headerlink" title="ind2sub"></a>ind2sub</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[I, J] = <span class="built_in">ind2sub</span>(S, D)   序号转下标</span><br></pre></td></tr></table></figure>
+<p>D 是序号。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; [I, J] = <span class="built_in">ind2sub</span>([<span class="number">3</span>,<span class="number">3</span>], [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>])</span><br><span class="line">I =</span><br><span class="line">     <span class="number">1</span>     <span class="number">3</span>     <span class="number">2</span></span><br><span class="line">J =</span><br><span class="line">     <span class="number">1</span>     <span class="number">1</span>     <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="利用冒号表达式获得子矩阵"><a href="#利用冒号表达式获得子矩阵" class="headerlink" title="利用冒号表达式获得子矩阵"></a>利用冒号表达式获得子矩阵</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A(<span class="built_in">i</span>, :)              第<span class="built_in">i</span>行的全部元素</span><br><span class="line">A(:, <span class="built_in">j</span>)              第<span class="built_in">j</span>列的全部元素</span><br><span class="line">A(<span class="built_in">i</span>:<span class="built_in">i</span>+m, k:k+n)      第<span class="built_in">i</span>~<span class="built_in">i</span>+m行且在第k~k+n列的全部元素</span><br><span class="line">A(<span class="built_in">i</span>:<span class="built_in">i</span>+m, :)          第<span class="built_in">i</span>~<span class="built_in">i</span>+m行的全部元素</span><br></pre></td></tr></table></figure>
+<p><strong>end运算符</strong>：表示某一维的末尾元素下标。（注意是某一维，可以是行或列）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A(end, :)          # 最后一行</span><br><span class="line">&gt;&gt; A([1,4], 3:end)    # 第1、4行从第3列到最后一列的元素</span><br></pre></td></tr></table></figure>
+<h2 id="删除矩阵中的元素"><a href="#删除矩阵中的元素" class="headerlink" title="删除矩阵中的元素"></a>删除矩阵中的元素</h2><h3 id="利用空矩阵删除矩阵的元素"><a href="#利用空矩阵删除矩阵的元素" class="headerlink" title="利用空矩阵删除矩阵的元素"></a>利用空矩阵删除矩阵的元素</h3><p>空矩阵是指没有任何元素的矩阵。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = []</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">7</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>;<span class="number">1</span>,<span class="number">4</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">8</span>]</span><br><span class="line">&gt;&gt; A(:, [2,4]) = []          # 删除了第2、4列元素</span><br><span class="line">A =</span><br><span class="line">     <span class="number">1</span>     <span class="number">3</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">7</span>     <span class="number">9</span>     <span class="number">6</span></span><br><span class="line">     <span class="number">1</span>    <span class="number">-1</span>     <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<h3 id="改变矩阵的形状"><a href="#改变矩阵的形状" class="headerlink" title="改变矩阵的形状"></a>改变矩阵的形状</h3><p><strong>reshape(A, m, n)</strong>：在矩阵总元素保持不变的前提下，将矩阵 A 重新排成 m * n 的二维矩阵。</p>
+<p>reshape 函数只改变原矩阵的行数和列数，但并不改变原矩阵元素个数及其存储顺序。</p>
+<p>A(:) 是将 A 的每一列元素堆叠起来，成为一个列向量。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt; B = A(:)</span><br><span class="line">B =</span><br><span class="line">     <span class="number">1</span></span><br><span class="line">     <span class="number">4</span></span><br><span class="line">     <span class="number">2</span></span><br><span class="line">     <span class="number">5</span></span><br><span class="line">     <span class="number">3</span></span><br><span class="line">     <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>所以这里 A(:) 等价于 reshape(A, 6, 1)。</p>
+<h1 id="MATLAB基本运算"><a href="#MATLAB基本运算" class="headerlink" title="MATLAB基本运算"></a>MATLAB基本运算</h1><h2 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h2><p>非奇异矩阵是行列式不为 0 的矩阵，也就是可逆矩阵。n 阶方阵 A 是非奇异方阵的充要条件是 A 为可逆矩阵，即A的行列式不为零。矩阵(方阵)A可逆与矩阵A非奇异是等价的概念。</p>
+<p>除法运算：</p>
+<p>在MATLAB中，有两种矩阵除法运算：右除/和左除\。</p>
+<p>如果 A 矩阵是非奇异方阵，则 B/A等效于B <em> inv(A)，A\B 等效于 inv(A) </em> B。其中 inv(A) 是 A 的逆矩阵。</p>
+<p>乘方运算：^</p>
+<p>点运算：.*、./、.\ 和 .^。</p>
+<p>两矩阵进行点运算是指它们的<strong>对应元素</strong>进行运算，所以两矩阵必须同型。</p>
+<p>A .<em> B 和 A </em> B 是不一样的。前者是 A 中每个元素与 B 中对应位置的元素相乘，得到与 A 、B 都同型的矩阵。而 A * B 就是普通的矩阵乘法。</p>
+<p>例如，当 x = 1, 4, 7 时，分别求 y = sinxcosx 的值：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = <span class="number">1</span>:<span class="number">3</span>:<span class="number">7</span></span><br><span class="line">&gt;&gt; y = <span class="built_in">sin</span>(x) .* <span class="built_in">cos</span>(x)</span><br></pre></td></tr></table></figure>
+<h2 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h2><p><strong>关系运算符</strong>：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;    &lt;=    &gt;    &gt;=    ==    ~=</span><br></pre></td></tr></table></figure>
+<p>当参与比较的是两个同型的矩阵时，是对应位置的元素按照标量关系运算规则逐个进行，最后得到的结果是一个与原矩阵同型的矩阵，它的元素由 0 / 1 组成。</p>
+<p>当参与比较的是一个标量和一个矩阵时，是这个标量与矩阵中的每一个元素进行比较，最后得到的结果是一个与原矩阵同型的矩阵，它的元素由 0 / 1 组成。</p>
+<p><strong>逻辑运算符</strong>：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;(与)    |(或)    ~(非)</span><br></pre></td></tr></table></figure>
+<p>在算术运算、关系运算与逻辑运算中，算术运算的优先级最高，逻辑运算的优先级最低，但非(~)是单目运算符，优先级高于双目运算符。</p>
+<p>例如判断水仙花数（一个三位数，其三位上的数字的立方之和等于这个数本身）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="number">100</span> : <span class="number">999</span>;</span><br><span class="line">m1 = <span class="built_in">rem</span>(m, <span class="number">10</span>);</span><br><span class="line">m2 = <span class="built_in">rem</span>(<span class="built_in">fix</span>(m/<span class="number">10</span>), <span class="number">10</span>);</span><br><span class="line">m3 = <span class="built_in">fix</span>(m/<span class="number">100</span>);</span><br><span class="line">k = <span class="built_in">find</span>(m == m1.*m1.*m1 + m2.*m2.*m2 + m3.*m3.*m3);</span><br><span class="line">s = m(k);</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; k      # 序号</span><br><span class="line">k =</span><br><span class="line">    <span class="number">54</span>   <span class="number">271</span>   <span class="number">272</span>   <span class="number">308</span></span><br><span class="line">&gt;&gt; s      # 元素</span><br><span class="line">s =</span><br><span class="line">   <span class="number">153</span>   <span class="number">370</span>   <span class="number">371</span>   <span class="number">407</span></span><br></pre></td></tr></table></figure>
+<h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><p>在MATLAB中，字符串是用<strong>单引号</strong>括起来的字符序列。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; s = <span class="string">&#x27;preccrep workstation&#x27;</span></span><br><span class="line">&gt;&gt; ss = s(<span class="number">1</span>:<span class="number">8</span>)</span><br><span class="line">ss =</span><br><span class="line">    <span class="string">&#x27;preccrep&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>若字符串中的字符含有单引号，则该字符要用两个单引号来表示。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="string">&#x27;I&#x27;&#x27;m a hacker.&#x27;</span></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">    <span class="string">&#x27;I&#x27;</span>m a hacker.&#x27;</span><br></pre></td></tr></table></figure>
+<p>还可建立多行字符串，形成字符串矩阵：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; ch = [<span class="string">&#x27;abcdef&#x27;</span>; <span class="string">&#x27;123456&#x27;</span>]</span><br><span class="line">&gt;&gt; ch(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">    <span class="string">&#x27;3&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>例如：建立一个字符串向量，然后做如下处理：</p>
+<ol>
+<li>取第1~5个字符作为子字符串；</li>
+<li>将字符串倒序排列；</li>
+<li>将字符串中的小写字母全部变为大写；</li>
+<li>统计字符串中的小写字母数。</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; ch = <span class="string">&#x27;ABc123dhUn&#x27;</span></span><br><span class="line">&gt;&gt; subch = ch(<span class="number">1</span>:<span class="number">5</span>)</span><br><span class="line">&gt;&gt; revch = ch(<span class="keyword">end</span>:<span class="number">-1</span>:<span class="number">1</span>)</span><br><span class="line">&gt;&gt; k = <span class="built_in">find</span>(ch&gt;=<span class="string">&#x27;a&#x27;</span> &amp; ch&lt;=<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">&gt;&gt; ch(k) = ch(k)-(<span class="string">&#x27;a&#x27;</span>-<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">&gt;&gt; <span class="built_in">length</span>(k)</span><br></pre></td></tr></table></figure>
+<p><strong>字符串的执行</strong></p>
+<p>eval(s) 是将字符串 s 当作命令执行，也就是用来执行一个字符串表达式，并返回表达式的值。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="built_in">pi</span>;</span><br><span class="line">m = <span class="string">&#x27;[t, sin(t), cos(t)]&#x27;</span>;</span><br><span class="line">r = eval(m);</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; r</span><br><span class="line">r =</span><br><span class="line">    <span class="number">3.1416</span>    <span class="number">0.0000</span>   <span class="number">-1.0000</span></span><br></pre></td></tr></table></figure>
+<p><strong>字符串与数值之间的转换</strong></p>
+<p>abs 和 double 都可以用来获取字符串矩阵所对应的 ASCII 码数值矩阵。</p>
+<p>char 函数可以把 ACSII 码矩阵转换为字符串矩阵。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; s1 = <span class="string">&#x27;MATLAB&#x27;</span></span><br><span class="line">&gt;&gt; a = <span class="built_in">ans</span>(s1)</span><br><span class="line">a =</span><br><span class="line">    <span class="number">77</span>    <span class="number">65</span>    <span class="number">84</span>    <span class="number">76</span>    <span class="number">65</span>    <span class="number">66</span></span><br><span class="line">&gt;&gt; s2 = char(a+<span class="number">32</span>)</span><br><span class="line">s2 =</span><br><span class="line">    <span class="string">&#x27;matlab&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><strong>字符串的比较</strong></p>
+<p>两种方法：利用关系运算符比较和字符串比较函数。</p>
+<p>关系运算符比较：两个字符串长度相等时，每个字符逐个比较，返回结果是一个数值向量，其元素为0/1。</p>
+<p>字符串比较函数：用来判断字符串是否相等。</p>
+<ol>
+<li>strcmp() 函数的基本功能是比较两个字符串是否相等，相等返回 1，否则返回 0。其基本用法是：</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ans</span> = strcmp(s1, s2)</span><br></pre></td></tr></table></figure>
+<p>但是，如果我们要查找字符串数组中等于某字符串的索引时，该如果操作？strcmp() 函数也提供了这个功能，用法相同，其中，s1是字符串数组，s2是字符串，返回值为逻辑类型，大小与字符串数组s1相同。</p>
+<ol>
+<li>strncmp(s1, s2, n) 比较前 n 个字符。</li>
+<li>strcmpi(s1, s2) 在忽略字母大小写的情况下，比较两字符串是否相等。</li>
+<li>strncmpi(s1, s2, n) 同理。</li>
+</ol>
+<p><strong>字符串的查找与替换</strong></p>
+<p>findstr(s1, s2) 返回短字符串在长字符串中的开始位置。</p>
+<p>strrep(s1, s2, s3) 将字符串 s1 中的所有子串 s2 替换为字符串 s3。</p>
+<p>strfind() 用于查找字符串数组中包含某字符串的记录：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k = strfind(str, pattern)</span><br></pre></td></tr></table></figure>
+<p>输出结果k表示pattern在str中出现的位置，若不出现，则返回[]。比如：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S = ‘Find the starting indices of the pattern string’;</span><br><span class="line">k = strfind(S, ‘in’)</span><br><span class="line">k = </span><br><span class="line">     <span class="number">2</span>     <span class="number">15</span>     <span class="number">19</span>     <span class="number">45</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/14/%E6%A0%91%E5%BD%A2dp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/14/%E6%A0%91%E5%BD%A2dp/" class="post-title-link" itemprop="url">树形dp</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-14 09:13:17 / Modified: 11:47:22" itemprop="dateCreated datePublished" datetime="2020-07-14T09:13:17+08:00">2020-07-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">动态规划</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>树形dp就是在树的结构上用动态规划，主要用DFS。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dp</span>[i][j][<span class="number">0</span>/<span class="number">1</span>]，其中i指以i为根的子树，j指在以i为根的子树中选择j个子节点，<span class="number">0</span>表示不选这个节点，<span class="number">1</span>表示选择这个节点。有时候j或<span class="number">0</span>/<span class="number">1</span>这一维可以压掉。</span><br></pre></td></tr></table></figure>
+<p>基本方程：</p>
+<p>选择节点类</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp<span class="comment">[i]</span><span class="comment">[0]</span> = dp<span class="comment">[j]</span><span class="comment">[1]</span></span><br><span class="line">dp<span class="comment">[i]</span><span class="comment">[1]</span> = max/min(dp<span class="comment">[j]</span><span class="comment">[0]</span>, dp<span class="comment">[j]</span><span class="comment">[1]</span>)</span><br></pre></td></tr></table></figure>
+<p>树形背包类</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp<span class="comment">[v]</span><span class="comment">[k]</span> = dp<span class="comment">[u]</span><span class="comment">[k]</span> + val</span><br><span class="line">dp<span class="comment">[u]</span><span class="comment">[k]</span> = max(dp<span class="comment">[u]</span><span class="comment">[k]</span>, dp<span class="comment">[v]</span><span class="comment">[k-1]</span>)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352">入门题1：没有上司的舞会</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">6005</span>;</span><br><span class="line"><span class="keyword">int</span> n, root, r[maxn], f[maxn][<span class="number">2</span>], v[maxn];  <span class="comment">//f记录快乐指数总和；v表示visited，用于找root；r存储每个人的快乐指数</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    f[x][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    f[x][<span class="number">1</span>] = r[x];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s[x].size(); i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> t = s[x][i];</span><br><span class="line">        dp(t);                             <span class="comment">//dfs</span></span><br><span class="line">        f[x][<span class="number">0</span>] += max(f[t][<span class="number">0</span>], f[t][<span class="number">1</span>]);  <span class="comment">//上司没来，直接下属想来就来</span></span><br><span class="line">        f[x][<span class="number">1</span>] += f[t][<span class="number">0</span>];                <span class="comment">//上司来了，直接下属一定不来</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; r[i];</span><br><span class="line">    <span class="keyword">int</span> l, k;</span><br><span class="line">    <span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; l &gt;&gt; k;</span><br><span class="line">        s[k].push_back(l);</span><br><span class="line">        v[l] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">if</span>(!v[i])&#123;</span><br><span class="line">            root = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    dp(root);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; max(f[root][<span class="number">0</span>], f[root][<span class="number">1</span>]) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ifmyt/p/9588872.html">参考资料</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -854,205 +1149,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/28/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/28/%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">线段树</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-28 14:37:20" itemprop="dateCreated datePublished" datetime="2020-06-28T14:37:20+08:00">2020-06-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-29 11:20:12" itemprop="dateModified" datetime="2020-06-29T11:20:12+08:00">2020-06-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" rel="index"><span itemprop="name">线段树</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>基本概念</strong></p>
-<p>线段树(segment tree)是一种二叉搜索树，它的每一个结点对应着一个区间 [L, R]，叶子结点对应的是一个单位区间，即 L == R。对于一个非叶子结点 [L, R]，它的左儿子所表示的区间为 [L, (L + R) / 2]，右儿子所表示的区间为 [(L + R) / 2 + 1, R] (也可以用位运算，更快：[L, (L + R) &gt;&gt; 1] 和 [((L + R) &gt;&gt; 1) | 1, R])。根据定义，线段树是一棵平衡二叉树，它的叶子结点数目为 N，即整个区间的长度。</p>
-<p><strong>基本操作</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/28/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/28/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">树状数组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-28 14:37:02" itemprop="dateCreated datePublished" datetime="2020-06-28T14:37:02+08:00">2020-06-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-29 11:03:30" itemprop="dateModified" datetime="2020-06-29T11:03:30+08:00">2020-06-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" itemprop="url" rel="index"><span itemprop="name">树状数组</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>什么是树状数组？</strong></p>
-<p>就是用数组来模拟树形结构，可以解决大部分基于区间上的更新以及求和问题。树状数组可以解决的问题都可以用线段树解决，这两者的区别在哪里呢？树状数组修改和查询的复杂度都是 O(log n)，而且相比线段树系数要少很多，比传统数组要快，而且容易写。缺点是遇到复杂的区间问题还是不能解决，功能还是有限。树状数组多用于高效计算数列的前缀和。</p>
-<p><strong>核心思想</strong></p>
-<p>(1) 树状数组中的每个元素是原数组中的一个或多个连续元素的和；</p>
-<p>(2) 在进行连续求和时，只需要将树状数组中某几个元素进行求和；</p>
-<p>(3) 在对某一个元素进行修改时，只需要修改树状数组中某几个元素的和即可。</p>
-<p>(4) 用 A 表示原始数组，C 表示树状数组，则：C[i] = A[i - 2^k + 1] + A[i - 2^k + 2] + … + A[i]；k为 i 的二进制中末尾连续的 0 的个数。</p>
-<p>C[1] = A[1];</p>
-<p>C[2] = A[1] + A[2];</p>
-<p>C[3] = A[3];</p>
-<p>C[4] = A[1] + A[2] + A[3] + A[4];</p>
-<p>C[5] = A[5];</p>
-<p>C[6] = A[5] + A[6];</p>
-<p>C[7] = A[7];</p>
-<p>C[8] = A[1] + A[2] + A[3] + A[4] + A[5] + A[6] + A[7] + A[8];</p>
-<p>(5) C 中元素的后继(为此结点的父结点)：结点的后继是比它大、最近的且编号末尾连续 0 比它多的结点。</p>
-<p>(6) C 中元素的前驱：结点的前驱为比它小、最近的且末尾连续 0 的个数比它多的结点。前驱主要用来计算连续和。</p>
-<p>例如 i = 8(1000) 时候，k = 3，可自行验证。</p>
-<p>这个怎么实现求和呢，比如我们要找前 7 项和，那么应该是 SUM = C[7] + C[6] + C[4]；</p>
-<p>而根据上面的式子，容易的出 SUM[i] = C[i] + C[i - 2 ^ k1] + C[(i - 2 ^ k1) - 2 ^ k2] + …..；</p>
-<p>其实树状数组就是一个二进制上面的应用。</p>
-<p>现在新的问题来了：2 ^ k 该怎么求呢，不难得出 2 ^ k = i &amp; (i ^ (i - 1))；但这个还是不好求出呀，于是就有：2 ^ k = i &amp; (- i)；</p>
-<p>为什么呢？</p>
-<p>这里利用的负数的存储特性，负数是以补码存储的，对于整数运算 x &amp; (-x) 有：</p>
-<p>当 x 为 0 时，即 0 &amp; 0，结果为 0；</p>
-<p>当 x 为奇数时，最后一个比特位为 1，取反加 1 没有进位，故 x 和 - x 除最后一位外前面的位正好相反，按位与结果为 0。结果为 1。</p>
-<p>当 x 为偶数，且为 2 的 m 次方时，x 的二进制表示中只有一位是 1（从右往左的第 m + 1 位），其右边有 m 位 0，故 x 取反加 1 后，从右到左第有 m 个 0，第 m + 1 位及其左边全是 1。这样，x &amp; (- x) 得到的就是 x。 </p>
-<p>当 x 为偶数，却不为 2 的 m 次方的形式时，可以写作 x = y * (2 ^ k)。其中，y 的最低位为 1。实际上就是把 x 用一个奇数左移 k 位来表示。这时，x 的二进制表示最右边有 k 个 0，从右往左第 k + 1 位为 1。当对 x 取反时，最右边的 k 位 0 变成 1，第 k + 1 位变为 0；再加 1，最右边的 k 位就又变成了 0，第 k + 1位因为进位的关系变成了 1。左边的位因为没有进位，正好和 x 原来对应的位上的值相反。二者按位与，得到：第 k + 1 位上为 1，左边右边都为 0。结果为 2 ^ k。</p>
-<p>总结一下：x &amp; (-x)，当 x 为 0 时结果为 0；x 为奇数时，结果为 1；x 为偶数时，结果为 x 中 2 的最大次方的因子。</p>
-<p>而且这个有一个专门的称呼，叫做 lowbit，即取 2 ^ k。</p>
-<p><strong>基本操作</strong></p>
-<p>1.预备函数 lowbit(int)</p>
-<p>树状数组最基本的操作就是找到前驱和后继。lowbit 函数返回将参数转化为二进制后最后一个 1 所在的位置转化为十进制后的值。例如，34 转化二进制为 100010，最后一个 1 在第二位，所以返回 10， 即 2 。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> k &amp; (-k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.修改原始数据某一元素的值</p>
-<p>将 a[k] 的值增加 v ，需要把 e[k] 以及其后继结点的值全部加 k ，一直到 LEN (数组最大长度)。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEN 100</span></span><br><span class="line"><span class="keyword">int</span> e[LEN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(k &lt; LEN)&#123;</span><br><span class="line">        e[k] += v;</span><br><span class="line">        k += lowbit(k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.求原始数据前 k 项的和</p>
-<p>只需要把 e[k] 以及其前驱结点的值累加即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> re = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(k &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        re += e[k];</span><br><span class="line">        k -= lowbit(k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>代码实现</strong></p>
-<p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1166">模板题</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50005</span>],c[<span class="number">50005</span>]; <span class="comment">//对应原数组和树状数组</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> k)</span></span>&#123;  <span class="comment">//在i位置加上k</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= n)&#123;</span><br><span class="line">        c[i] += k;</span><br><span class="line">        i += lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;  <span class="comment">//求A[1 - i]的和</span></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        res += c[i];</span><br><span class="line">        i -= lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> tot = <span class="number">1</span>; tot &lt;= t; tot++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Case &quot;</span> &lt;&lt; tot &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">        <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">            update(i, a[i]);  <span class="comment">//输入初值的时候，也相当于更新了值</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">string</span> s;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; s &amp;&amp; s[<span class="number">0</span>] != <span class="string">&#x27;E&#x27;</span>)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">            <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">&#x27;Q&#x27;</span>)&#123;  <span class="comment">//求和操作</span></span><br><span class="line">                <span class="keyword">int</span> sum = getsum(y) - getsum(x<span class="number">-1</span>);  <span class="comment">//x-y区间和也就等于1-y区间和减去1-(x-1)区间和</span></span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">&#x27;A&#x27;</span>)&#123;</span><br><span class="line">                update(x, y);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">&#x27;S&#x27;</span>)&#123;</span><br><span class="line">                update(x, -y);  <span class="comment">//减去操作，即为加上相反数</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>树状数组的几种变式(区间更新，区间查询)</strong></p>
-<p>1.单点更新、单点查询</p>
-<p>2.单点更新、区间查询</p>
-<p>3.区间更新、单点查询</p>
-<p>这就是第一个问题，如果题目是要把 x - y 区间内的所有值全部加上 k 或者减去 k ，然后查询操作是问某个点的值。如果是像上面的树状数组来说，就必须把 x - y 区间内每个值都更新，这样的复杂度肯定是不行的，这个时候，就不能再用数据的值建树了，这里我们引入差分，利用差分建树。</p>
-<p>假设我们规定 A[0] = 0，则有 A[i] = ΣD[j] (D[j] = A[j] - A[j - 1])。那么当某个区间 [x, y] 值改变了，区间内的差值是不变的，只有 D[x] 和 D[y + 1] 的值发生改变。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50005</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> sum1[<span class="number">50005</span>];  <span class="comment">//(D[1] + D[2] + ... + D[n])</span></span><br><span class="line"><span class="keyword">int</span> sum2[<span class="number">50005</span>];  <span class="comment">//(1*D[1] + 2*D[2] + ... + n*D[n])</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (- x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = i;  <span class="comment">//因为x不变，所以得先保存i值</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= n)&#123;</span><br><span class="line">        sum1[i] += k;</span><br><span class="line">        sum2[i] += k * (x - <span class="number">1</span>);</span><br><span class="line">        i += lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;  <span class="comment">//求前缀和</span></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>, x = i;</span><br><span class="line">    <span class="keyword">while</span>(i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        res += x * sum1[i] - sum2[i];</span><br><span class="line">        i -= lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">        update(i, a[i] - a[i - <span class="number">1</span>]);  <span class="comment">//输入初值的时候，也相当于更新了值</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//[x,y]区间内加上k</span></span><br><span class="line">    update(x, k);  <span class="comment">//A[x] - A[x-1]增加k</span></span><br><span class="line">    update(y + <span class="number">1</span>, - k);  <span class="comment">//A[y+1] - A[y]减少k</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//求[x,y]区间和</span></span><br><span class="line">    <span class="keyword">int</span> sum = getsum(y) - getsum(x - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1122,20 +1218,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

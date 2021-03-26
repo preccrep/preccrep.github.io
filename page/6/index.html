@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">33</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">78</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,205 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/28/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/28/%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">线段树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-28 14:37:20" itemprop="dateCreated datePublished" datetime="2020-06-28T14:37:20+08:00">2020-06-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-29 11:20:12" itemprop="dateModified" datetime="2020-06-29T11:20:12+08:00">2020-06-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" rel="index"><span itemprop="name">线段树</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>基本概念</strong></p>
+<p>线段树(segment tree)是一种二叉搜索树，它的每一个结点对应着一个区间 [L, R]，叶子结点对应的是一个单位区间，即 L == R。对于一个非叶子结点 [L, R]，它的左儿子所表示的区间为 [L, (L + R) / 2]，右儿子所表示的区间为 [(L + R) / 2 + 1, R] (也可以用位运算，更快：[L, (L + R) &gt;&gt; 1] 和 [((L + R) &gt;&gt; 1) | 1, R])。根据定义，线段树是一棵平衡二叉树，它的叶子结点数目为 N，即整个区间的长度。</p>
+<p><strong>基本操作</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/28/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/28/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">树状数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-28 14:37:02" itemprop="dateCreated datePublished" datetime="2020-06-28T14:37:02+08:00">2020-06-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-29 11:03:30" itemprop="dateModified" datetime="2020-06-29T11:03:30+08:00">2020-06-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" itemprop="url" rel="index"><span itemprop="name">树状数组</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>什么是树状数组？</strong></p>
+<p>就是用数组来模拟树形结构，可以解决大部分基于区间上的更新以及求和问题。树状数组可以解决的问题都可以用线段树解决，这两者的区别在哪里呢？树状数组修改和查询的复杂度都是 O(log n)，而且相比线段树系数要少很多，比传统数组要快，而且容易写。缺点是遇到复杂的区间问题还是不能解决，功能还是有限。树状数组多用于高效计算数列的前缀和。</p>
+<p><strong>核心思想</strong></p>
+<p>(1) 树状数组中的每个元素是原数组中的一个或多个连续元素的和；</p>
+<p>(2) 在进行连续求和时，只需要将树状数组中某几个元素进行求和；</p>
+<p>(3) 在对某一个元素进行修改时，只需要修改树状数组中某几个元素的和即可。</p>
+<p>(4) 用 A 表示原始数组，C 表示树状数组，则：C[i] = A[i - 2^k + 1] + A[i - 2^k + 2] + … + A[i]；k为 i 的二进制中末尾连续的 0 的个数。</p>
+<p>C[1] = A[1];</p>
+<p>C[2] = A[1] + A[2];</p>
+<p>C[3] = A[3];</p>
+<p>C[4] = A[1] + A[2] + A[3] + A[4];</p>
+<p>C[5] = A[5];</p>
+<p>C[6] = A[5] + A[6];</p>
+<p>C[7] = A[7];</p>
+<p>C[8] = A[1] + A[2] + A[3] + A[4] + A[5] + A[6] + A[7] + A[8];</p>
+<p>(5) C 中元素的后继(为此结点的父结点)：结点的后继是比它大、最近的且编号末尾连续 0 比它多的结点。</p>
+<p>(6) C 中元素的前驱：结点的前驱为比它小、最近的且末尾连续 0 的个数比它多的结点。前驱主要用来计算连续和。</p>
+<p>例如 i = 8(1000) 时候，k = 3，可自行验证。</p>
+<p>这个怎么实现求和呢，比如我们要找前 7 项和，那么应该是 SUM = C[7] + C[6] + C[4]；</p>
+<p>而根据上面的式子，容易的出 SUM[i] = C[i] + C[i - 2 ^ k1] + C[(i - 2 ^ k1) - 2 ^ k2] + …..；</p>
+<p>其实树状数组就是一个二进制上面的应用。</p>
+<p>现在新的问题来了：2 ^ k 该怎么求呢，不难得出 2 ^ k = i &amp; (i ^ (i - 1))；但这个还是不好求出呀，于是就有：2 ^ k = i &amp; (- i)；</p>
+<p>为什么呢？</p>
+<p>这里利用的负数的存储特性，负数是以补码存储的，对于整数运算 x &amp; (-x) 有：</p>
+<p>当 x 为 0 时，即 0 &amp; 0，结果为 0；</p>
+<p>当 x 为奇数时，最后一个比特位为 1，取反加 1 没有进位，故 x 和 - x 除最后一位外前面的位正好相反，按位与结果为 0。结果为 1。</p>
+<p>当 x 为偶数，且为 2 的 m 次方时，x 的二进制表示中只有一位是 1（从右往左的第 m + 1 位），其右边有 m 位 0，故 x 取反加 1 后，从右到左第有 m 个 0，第 m + 1 位及其左边全是 1。这样，x &amp; (- x) 得到的就是 x。 </p>
+<p>当 x 为偶数，却不为 2 的 m 次方的形式时，可以写作 x = y * (2 ^ k)。其中，y 的最低位为 1。实际上就是把 x 用一个奇数左移 k 位来表示。这时，x 的二进制表示最右边有 k 个 0，从右往左第 k + 1 位为 1。当对 x 取反时，最右边的 k 位 0 变成 1，第 k + 1 位变为 0；再加 1，最右边的 k 位就又变成了 0，第 k + 1位因为进位的关系变成了 1。左边的位因为没有进位，正好和 x 原来对应的位上的值相反。二者按位与，得到：第 k + 1 位上为 1，左边右边都为 0。结果为 2 ^ k。</p>
+<p>总结一下：x &amp; (-x)，当 x 为 0 时结果为 0；x 为奇数时，结果为 1；x 为偶数时，结果为 x 中 2 的最大次方的因子。</p>
+<p>而且这个有一个专门的称呼，叫做 lowbit，即取 2 ^ k。</p>
+<p><strong>基本操作</strong></p>
+<p>1.预备函数 lowbit(int)</p>
+<p>树状数组最基本的操作就是找到前驱和后继。lowbit 函数返回将参数转化为二进制后最后一个 1 所在的位置转化为十进制后的值。例如，34 转化二进制为 100010，最后一个 1 在第二位，所以返回 10， 即 2 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> k &amp; (-k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.修改原始数据某一元素的值</p>
+<p>将 a[k] 的值增加 v ，需要把 e[k] 以及其后继结点的值全部加 k ，一直到 LEN (数组最大长度)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEN 100</span></span><br><span class="line"><span class="keyword">int</span> e[LEN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(k &lt; LEN)&#123;</span><br><span class="line">        e[k] += v;</span><br><span class="line">        k += lowbit(k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.求原始数据前 k 项的和</p>
+<p>只需要把 e[k] 以及其前驱结点的值累加即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> re = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(k &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        re += e[k];</span><br><span class="line">        k -= lowbit(k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>代码实现</strong></p>
+<p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1166">模板题</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50005</span>],c[<span class="number">50005</span>]; <span class="comment">//对应原数组和树状数组</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> k)</span></span>&#123;  <span class="comment">//在i位置加上k</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= n)&#123;</span><br><span class="line">        c[i] += k;</span><br><span class="line">        i += lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;  <span class="comment">//求A[1 - i]的和</span></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        res += c[i];</span><br><span class="line">        i -= lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> tot = <span class="number">1</span>; tot &lt;= t; tot++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Case &quot;</span> &lt;&lt; tot &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">        <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span> c);</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">            update(i, a[i]);  <span class="comment">//输入初值的时候，也相当于更新了值</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">string</span> s;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; s &amp;&amp; s[<span class="number">0</span>] != <span class="string">&#x27;E&#x27;</span>)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">            <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">&#x27;Q&#x27;</span>)&#123;  <span class="comment">//求和操作</span></span><br><span class="line">                <span class="keyword">int</span> sum = getsum(y) - getsum(x<span class="number">-1</span>);  <span class="comment">//x-y区间和也就等于1-y区间和减去1-(x-1)区间和</span></span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">&#x27;A&#x27;</span>)&#123;</span><br><span class="line">                update(x, y);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">0</span>] == <span class="string">&#x27;S&#x27;</span>)&#123;</span><br><span class="line">                update(x, -y);  <span class="comment">//减去操作，即为加上相反数</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>树状数组的几种变式(区间更新，区间查询)</strong></p>
+<p>1.单点更新、单点查询</p>
+<p>2.单点更新、区间查询</p>
+<p>3.区间更新、单点查询</p>
+<p>这就是第一个问题，如果题目是要把 x - y 区间内的所有值全部加上 k 或者减去 k ，然后查询操作是问某个点的值。如果是像上面的树状数组来说，就必须把 x - y 区间内每个值都更新，这样的复杂度肯定是不行的，这个时候，就不能再用数据的值建树了，这里我们引入差分，利用差分建树。</p>
+<p>假设我们规定 A[0] = 0，则有 A[i] = ΣD[j] (D[j] = A[j] - A[j - 1])。那么当某个区间 [x, y] 值改变了，区间内的差值是不变的，只有 D[x] 和 D[y + 1] 的值发生改变。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50005</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> sum1[<span class="number">50005</span>];  <span class="comment">//(D[1] + D[2] + ... + D[n])</span></span><br><span class="line"><span class="keyword">int</span> sum2[<span class="number">50005</span>];  <span class="comment">//(1*D[1] + 2*D[2] + ... + n*D[n])</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (- x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = i;  <span class="comment">//因为x不变，所以得先保存i值</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= n)&#123;</span><br><span class="line">        sum1[i] += k;</span><br><span class="line">        sum2[i] += k * (x - <span class="number">1</span>);</span><br><span class="line">        i += lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;  <span class="comment">//求前缀和</span></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>, x = i;</span><br><span class="line">    <span class="keyword">while</span>(i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        res += x * sum1[i] - sum2[i];</span><br><span class="line">        i -= lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">        update(i, a[i] - a[i - <span class="number">1</span>]);  <span class="comment">//输入初值的时候，也相当于更新了值</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//[x,y]区间内加上k</span></span><br><span class="line">    update(x, k);  <span class="comment">//A[x] - A[x-1]增加k</span></span><br><span class="line">    update(y + <span class="number">1</span>, - k);  <span class="comment">//A[y+1] - A[y]减少k</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//求[x,y]区间和</span></span><br><span class="line">    <span class="keyword">int</span> sum = getsum(y) - getsum(x - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -867,174 +1066,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/23/poj3259/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/23/poj3259/" class="post-title-link" itemprop="url">poj3259</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-23 22:02:44" itemprop="dateCreated datePublished" datetime="2020-06-23T22:02:44+08:00">2020-06-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-24 09:42:30" itemprop="dateModified" datetime="2020-06-24T09:42:30+08:00">2020-06-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Bellman-Ford-SPFA/" itemprop="url" rel="index"><span itemprop="name">Bellman-Ford & SPFA</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="http://poj.org/problem?id=3259">传送门</a></p>
-<p>第一种方法：Bellman-Ford</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, w;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 10005</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> u, v, t;</span><br><span class="line">&#125;p[<span class="number">5210</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bellman_Ford</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dis[<span class="number">505</span>];</span><br><span class="line">    <span class="built_in">memset</span>(dis, MAX, <span class="keyword">sizeof</span>(dis));</span><br><span class="line">    dis[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">2</span> * m + w; j++)</span><br><span class="line">            dis[p[j].v] = min(dis[p[j].v], dis[p[j].u] + p[j].t);</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span> * m + w; i++)</span><br><span class="line">        <span class="keyword">if</span>(dis[p[i].v] &gt; dis[p[i].u] + p[i].t)&#123;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;YES&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;NO&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> f;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; f;</span><br><span class="line">    <span class="keyword">while</span>(f--)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span> * m - <span class="number">1</span>; i += <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; p[i].u &gt;&gt; p[i].v &gt;&gt; p[i].t;</span><br><span class="line">            p[i + <span class="number">1</span>].v = p[i].u;</span><br><span class="line">            p[i + <span class="number">1</span>].u = p[i].v;</span><br><span class="line">            p[i + <span class="number">1</span>].t = p[i].t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span> * m + <span class="number">1</span>; i &lt;= <span class="number">2</span> * m + w; i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; p[i].u &gt;&gt; p[i].v &gt;&gt; p[i].t;</span><br><span class="line">            p[i].t = -p[i].t;</span><br><span class="line">        &#125;</span><br><span class="line">        Bellman_Ford();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Input:</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">3 3 1</span></span><br><span class="line"><span class="comment">1 2 2</span></span><br><span class="line"><span class="comment">1 3 4</span></span><br><span class="line"><span class="comment">2 3 1</span></span><br><span class="line"><span class="comment">3 1 3</span></span><br><span class="line"><span class="comment">3 2 1</span></span><br><span class="line"><span class="comment">1 2 3</span></span><br><span class="line"><span class="comment">2 3 4</span></span><br><span class="line"><span class="comment">3 1 8</span></span><br><span class="line"><span class="comment">Output:</span></span><br><span class="line"><span class="comment">NO</span></span><br><span class="line"><span class="comment">YES</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/23/Bellman-Ford%E7%AE%97%E6%B3%95%E5%8F%8ASPFA%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/23/Bellman-Ford%E7%AE%97%E6%B3%95%E5%8F%8ASPFA%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Bellman-Ford算法及SPFA算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-23 20:50:20" itemprop="dateCreated datePublished" datetime="2020-06-23T20:50:20+08:00">2020-06-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-26 13:43:56" itemprop="dateModified" datetime="2020-11-26T13:43:56+08:00">2020-11-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Bellman-Ford-SPFA/" itemprop="url" rel="index"><span itemprop="name">Bellman-Ford & SPFA</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h1><p>Bellman-Ford算法能解决存在负权边的单源点最短路径问题。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Bellman_Ford</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> f;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        f = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = edge[j].from;</span><br><span class="line">            <span class="keyword">int</span> y = edge[j].to;</span><br><span class="line">            <span class="keyword">int</span> z = edge[j].v;</span><br><span class="line">            <span class="keyword">if</span>(dis[x] + z &lt; dis[y])&#123;</span><br><span class="line">                dis[y] = dis[x] + z;</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!f) <span class="keyword">break</span>;</span><br><span class="line">    	<span class="keyword">if</span>(i == n - <span class="number">1</span> &amp;&amp; f) <span class="keyword">return</span> <span class="literal">false</span>;  <span class="comment">//表示图中存在负权环(因为从源点出发到n-1个结点，而n-1遍还没有更新完毕)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">//表示找到了最短路</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>几点解释：</strong></p>
-<blockquote>
-<p><strong>m是什么？</strong>   图中一共有m条边。</p>
-<p><strong>为什么松弛的过程要循环n次？</strong>   因为在进行了一次寻找可松弛边的循环（我们暂且将它称为m循环）后，结果只有两种情况。</p>
-<p>第一种情况：没找到可松弛边，此时 f 仍旧等于 false，n循环直接break了；</p>
-<p>第二种情况：找到了可松弛边。无论在第一轮m循环中松弛了多少次，总会有一次松弛得到的是源点到目标点的最短距离，否则就出现负权环了。此时按照这种最坏假设，循环 n-1 次就一定可以使 n-1 个点都找到各自到源点的最短路径。</p>
-</blockquote>
-<h2 id="SPFA算法"><a href="#SPFA算法" class="headerlink" title="SPFA算法"></a>SPFA算法</h2><p>SPFA (shortest path faster algorithm) 是Bellman-Ford算法的一种队列实现，减少了不必要的冗余计算。(SPFA是Bellman-Ford的优化)</p>
-<p>Bellman-Ford算法的复杂度较高，中间进行了一些不必要的计算，因为并不是每个顶点都会在松弛操作中改变。SPFA算法在最坏情况下的复杂度很高，但是在正常情况下点的平均入队次数不大于2。</p>
-<p>Bellman-Ford能实现的，都可以用SPFA来解决，所以一般都会用SPFA。</p>
-<p>基本思想是：使用队列，初始时队列里只有源点，dis 记录源点到所有点的最短路径 (初始时为无穷，若源点为s，则 dis[s] = 0。除了起点赋值为0外，其他顶点的对应的dis的值都赋予无穷大，这样有利于后续的<strong>松弛</strong>)，然后用队列里的点更新 dis 数组的值，如果某点的 dis 值被更新，则将该点加入到队尾。重复执行直到队列为空。</p>
-<p>如果存在一点进入队列的次数大于等于 n 次，则存在负权环。(<strong>当图中有负权环时，队列就不会有空的情况了，因为由于负权环的存在，负权环上的点就可以一直被松弛，一直能被松弛就代表着队列会不断反复让负权环上的点入队出队，程序就会死循环</strong>)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;  <span class="comment">//SPFA判断负权环</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != top; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x = q[i];  <span class="comment">//取队列元素，数组q模拟队列</span></span><br><span class="line">        have[x] = <span class="number">0</span>;  <span class="comment">//出队，have[x] = 0 表示x已经不在队列中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; head[x].size(); j++)&#123;</span><br><span class="line">            y = head[x][j].to;</span><br><span class="line">            z = head[x][j].v;</span><br><span class="line">            <span class="keyword">if</span>(dis[x] + z &lt; dis[y])&#123;</span><br><span class="line">                dis[y] = dis[x] + z;</span><br><span class="line">                <span class="keyword">if</span>(!have[y])&#123;  <span class="comment">//如果y不在队列中</span></span><br><span class="line">                    have[y] = <span class="number">1</span>;  <span class="comment">//将y入队</span></span><br><span class="line">                    q[top++] = y;  <span class="comment">//加到队尾</span></span><br><span class="line">                    cnt[y]++;  <span class="comment">//记录结点y入队次数</span></span><br><span class="line">                    <span class="keyword">if</span>(cnt[y] &gt;= n)  <span class="comment">//存在负权环</span></span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;  <span class="comment">//不存在负权环</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于SPFA的一篇很详细的博客：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35644234/article/details/61614581">https://blog.csdn.net/qq_35644234/article/details/61614581</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1104,20 +1135,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

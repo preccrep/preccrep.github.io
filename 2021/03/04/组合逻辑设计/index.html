@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/03/07/lwovJ962CQtPTpd.png">
 <meta property="og:image" content="https://i.loli.net/2021/03/15/c23Cr8hXqWePdDO.png">
 <meta property="article:published_time" content="2021-03-04T13:44:43.000Z">
-<meta property="article:modified_time" content="2021-03-15T12:40:05.204Z">
+<meta property="article:modified_time" content="2021-03-22T09:20:58.820Z">
 <meta property="article:author" content="preccrep">
 <meta property="article:tag" content="数字逻辑与数字系统">
 <meta name="twitter:card" content="summary">
@@ -138,17 +138,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">33</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">78</span></a>
 
   </li>
   </ul>
@@ -209,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-15 20:40:05" itemprop="dateModified" datetime="2021-03-15T20:40:05+08:00">2021-03-15</time>
+                <time title="Modified: 2021-03-22 17:20:58" itemprop="dateModified" datetime="2021-03-22T17:20:58+08:00">2021-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -645,6 +645,7 @@ Y=A\oplus B\oplus C=(A\oplus B)\oplus C</script><p>将二级门电路转成多�
 <h2 id="译码器"><a href="#译码器" class="headerlink" title="译码器"></a>译码器</h2><p>译码时编码的逆过程，有n个输入，$2^n$个输出。</p>
 <p>每一种输入的组合对应使能端某个特定时刻的输出信号。</p>
 <p>输出使独热（互斥）的，同一时刻只能输出一个有效信号，即每一组输入只能使一条输出线产生有效输出电平。</p>
+<p>如果是高电平有效，EO的值在输入信号无效时为1.（于是当EO为0时，输出为高电平）</p>
 <p>译码器的每一个输出都对应输入信号的一个最小项。</p>
 <p>译码器可以把地址信息当做输入信号，把有效输出信号当成选择信号，来选中特定的设备来工作。</p>
 <p>同一时刻只能允许总线上的一个外部设备向处理器发送信息，所以在同一时刻只能允许一个三态缓冲器的使能端输出有效信号。这时就要用到译码器。因为译码器输出的信号就是互斥的。</p>
@@ -654,8 +655,26 @@ Y=A\oplus B\oplus C=(A\oplus B)\oplus C</script><p>将二级门电路转成多�
 <p>读写控制依赖于输入输出信号（0或1，通过与门或与非门后到达三态缓冲器使能端，由此决定数据传输方向）。高电平时表示设备向处理器发送数据，低电平时表示处理器将数据输送到设备。</p>
 <p>数据、地址、控制——三总线。</p>
 <p>通过译码器+或门可以构造出更加复杂的表达式。</p>
-<h2 id="多路选择器"><a href="#多路选择器" class="headerlink" title="多路选择器"></a>多路选择器</h2><p>根据选择信号的值从N个可能的输入中选择一个作为输出。</p>
-<p>需要使用logN位选择信号作为输入，控制输入信号的选择。</p>
+<h2 id="多路选择器（MUX）"><a href="#多路选择器（MUX）" class="headerlink" title="多路选择器（MUX）"></a>多路选择器（MUX）</h2><p>根据选择信号的值从N个可能的输入中选择一个作为输出。</p>
+<p>需要使用logN位选择信号（也称地址信号）作为输入，控制输入信号的选择。</p>
+<p>3-8译码器对低电平有效，输出值中只有一个是0.</p>
+<p>74LS138 3-8译码器</p>
+<p>组合逻辑电路的传播延迟是关键路径上每一个元件的传播延迟之和。</p>
+<p>传播延迟一般大于最小延迟。</p>
+<p>最小延迟是从输入发生变化直到任何一个输出开始改变的最短时间。</p>
+<p>传播延迟是从输入改变直到一个或多个输出改变为最终值所经历的最长时间延迟。</p>
+<p>由0到1是一个给电容充电的过程，由1到0是一个给电容放电的过程。</p>
+<p>产生延迟的原因：</p>
+<ul>
+<li>电路中的电阻和电容的充放电</li>
+<li>光速的上限</li>
+</ul>
+<p>上升沿和下降沿的延迟可能不同</p>
+<p>不同输出的延迟可能不同</p>
+<p>电路对温度敏感，电路较热时速度会变慢</p>
+<p>组合逻辑电路中，最小延迟是最短路径上每个元件的最小延迟之和。</p>
+<p>毛刺的产生是由于电路中，变化的信号从出发点到汇合点所经历的两个路径长度不同所造成的。</p>
+<p>毛刺只能在传播延迟的时间范围之内发生，否则传播延迟计算错误。</p>
 
     </div>
 
@@ -739,7 +758,7 @@ Y=A\oplus B\oplus C=(A\oplus B)\oplus C</script><p>将二级门电路转成多�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E7%82%B9%E5%92%8C%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">结点和模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">数字逻辑电路的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF"><span class="nav-number">1.3.1.</span> <span class="nav-text">组合逻辑电路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">布尔代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E9%A1%B9"><span class="nav-number">2.2.</span> <span class="nav-text">最小项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E9%A1%B9"><span class="nav-number">2.3.</span> <span class="nav-text">最大项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E4%B8%8E%E6%88%96%E5%BC%8F%E5%92%8C%E6%A0%87%E5%87%86%E6%88%96%E4%B8%8E%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">标准与或式和标准或与式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E4%B8%8E%E6%88%96%E5%BC%8F%EF%BC%88sum-of-products%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">标准与或式（sum-of-products）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%88%96%E4%B8%8E%E5%BC%8F%EF%BC%88product-of-sum%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">标准或与式（product-of-sum）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E4%B8%8E%E6%88%96%E5%BC%8F%E5%92%8C%E6%A0%87%E5%87%86%E6%88%96%E4%B8%8E%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.3.</span> <span class="nav-text">标准与或式和标准或与式的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E7%9C%9F%E5%80%BC%E8%A1%A8%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.4.</span> <span class="nav-text">布尔表达式与真值表的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9A%E7%90%86%E5%8C%96%E7%AE%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.5.</span> <span class="nav-text">使用定理化简表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E9%80%BB%E8%BE%91%E5%88%B0%E9%97%A8"><span class="nav-number">4.</span> <span class="nav-text">从逻辑到门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#X%E5%92%8CZ"><span class="nav-number">5.</span> <span class="nav-text">X和Z</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E6%B3%95%E5%80%BC"><span class="nav-number">5.1.</span> <span class="nav-text">非法值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%85%B3%E9%A1%B9"><span class="nav-number">5.2.</span> <span class="nav-text">无关项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%A9%BA%E5%80%BC"><span class="nav-number">5.3.</span> <span class="nav-text">浮空值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%80%81%E7%BC%93%E5%86%B2%E5%99%A8"><span class="nav-number">5.4.</span> <span class="nav-text">三态缓冲器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%A1%E8%AF%BA%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">卡诺图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E7%A1%AC%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">减少硬件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">组合逻辑电路设计方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%A8%A1%E5%9D%97"><span class="nav-number">9.</span> <span class="nav-text">组合逻辑模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">9.1.</span> <span class="nav-text">编码器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%91%E7%A0%81%E5%99%A8"><span class="nav-number">9.2.</span> <span class="nav-text">译码器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">9.3.</span> <span class="nav-text">多路选择器</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E7%82%B9%E5%92%8C%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">结点和模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">数字逻辑电路的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF"><span class="nav-number">1.3.1.</span> <span class="nav-text">组合逻辑电路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">布尔代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E9%A1%B9"><span class="nav-number">2.2.</span> <span class="nav-text">最小项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E9%A1%B9"><span class="nav-number">2.3.</span> <span class="nav-text">最大项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E4%B8%8E%E6%88%96%E5%BC%8F%E5%92%8C%E6%A0%87%E5%87%86%E6%88%96%E4%B8%8E%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">标准与或式和标准或与式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E4%B8%8E%E6%88%96%E5%BC%8F%EF%BC%88sum-of-products%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">标准与或式（sum-of-products）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%88%96%E4%B8%8E%E5%BC%8F%EF%BC%88product-of-sum%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">标准或与式（product-of-sum）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E4%B8%8E%E6%88%96%E5%BC%8F%E5%92%8C%E6%A0%87%E5%87%86%E6%88%96%E4%B8%8E%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.3.</span> <span class="nav-text">标准与或式和标准或与式的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E7%9C%9F%E5%80%BC%E8%A1%A8%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.4.</span> <span class="nav-text">布尔表达式与真值表的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9A%E7%90%86%E5%8C%96%E7%AE%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.5.</span> <span class="nav-text">使用定理化简表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E9%80%BB%E8%BE%91%E5%88%B0%E9%97%A8"><span class="nav-number">4.</span> <span class="nav-text">从逻辑到门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#X%E5%92%8CZ"><span class="nav-number">5.</span> <span class="nav-text">X和Z</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E6%B3%95%E5%80%BC"><span class="nav-number">5.1.</span> <span class="nav-text">非法值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%85%B3%E9%A1%B9"><span class="nav-number">5.2.</span> <span class="nav-text">无关项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%A9%BA%E5%80%BC"><span class="nav-number">5.3.</span> <span class="nav-text">浮空值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%80%81%E7%BC%93%E5%86%B2%E5%99%A8"><span class="nav-number">5.4.</span> <span class="nav-text">三态缓冲器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%A1%E8%AF%BA%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">卡诺图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E7%A1%AC%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">减少硬件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">组合逻辑电路设计方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%A8%A1%E5%9D%97"><span class="nav-number">9.</span> <span class="nav-text">组合逻辑模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">9.1.</span> <span class="nav-text">编码器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%91%E7%A0%81%E5%99%A8"><span class="nav-number">9.2.</span> <span class="nav-text">译码器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88MUX%EF%BC%89"><span class="nav-number">9.3.</span> <span class="nav-text">多路选择器（MUX）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -753,20 +772,20 @@ Y=A\oplus B\oplus C=(A\oplus B)\oplus C</script><p>将二级门电路转成多�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

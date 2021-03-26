@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">33</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">76</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">78</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,155 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/11/14/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/14/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">后缀数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-14 23:01:06" itemprop="dateCreated datePublished" datetime="2020-11-14T23:01:06+08:00">2020-11-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-19 09:12:08" itemprop="dateModified" datetime="2020-11-19T09:12:08+08:00">2020-11-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><p>对于待排序的数组a，在排序时逐个遍历数组a，将数组a的值作为”桶数组r”的下标。当a中数据被读取时，就将桶的值加1。例如，读取到数组a[3]=5，则将r[5]的值+1。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bucket_sort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">int</span> bucket[maxn]; <span class="comment">// maxn是a[]的最大值</span></span><br><span class="line">    <span class="built_in">memset</span>(bucket, <span class="number">0</span>, <span class="keyword">sizeof</span>(bucket));</span><br><span class="line">    <span class="comment">// 计数</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        bucket[a[i]]++;</span><br><span class="line">    <span class="comment">// 排序</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; maxn; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span>((bucket[i]--) &gt; <span class="number">0</span>)</span><br><span class="line">            a[j++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><p>桶排序的扩展。它的基本思想是：将整数按位数切割成不同的数字，然后按每个位数分别比较。<br>具体做法是：将所有待比较数值统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">base</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">10</span> * base(i - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bucket_sort</span><span class="params">(<span class="keyword">int</span> bit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bucket[maxn];</span><br><span class="line">    <span class="keyword">int</span> tmp[n];</span><br><span class="line">    <span class="built_in">memset</span>(bucket, <span class="number">0</span>, <span class="keyword">sizeof</span>(bucket));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        bucket[(a[i] / base(bit)) % <span class="number">10</span>]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; maxn; i++)</span><br><span class="line">        bucket[i] += bucket[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        tmp[bucket[(a[i] / base(bit)) % <span class="number">10</span>] - <span class="number">1</span>] = a[i];</span><br><span class="line">        bucket[(a[i] / base(bit)) % <span class="number">10</span>]--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        a[i] = tmp[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bit = getbit();  <span class="comment">//获取数组a的位数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bit; i++)</span><br><span class="line">        bucket_sort(i);</span><br><span class="line">    print();  <span class="comment">//已排好序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="后缀数组"><a href="#后缀数组" class="headerlink" title="后缀数组"></a>后缀数组</h1><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Str</span>: 需要处理的字符串(长度为<span class="symbol">Len</span>)</span><br><span class="line"><span class="symbol">Suffix</span>[i]: <span class="symbol">Str</span>下标为i~<span class="symbol">Len</span>的连续子串(例如<span class="symbol">Str</span>=<span class="string">&quot;abcdef&quot;</span>, <span class="symbol">Suffix</span>[<span class="number">3</span>]=<span class="string">&quot;def&quot;</span>)</span><br><span class="line"><span class="symbol">Rank</span>[i]: <span class="symbol">Suffix</span>[i]在所有后缀中的排名</span><br><span class="line"><span class="symbol">SA</span>[i]: 排名为i的后缀的起始下标，即排名为i的后缀为<span class="symbol">Suffix</span>[<span class="symbol">SA</span>[i]]，与<span class="symbol">Rank</span>是互逆运算</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>后缀数组</strong>指的就是这个<strong>SA[i]</strong>,有了它，我们就可以实现一些很强大的功能(如不相同子串个数、连续重复子串等)。如何快速的到它，便成为了这个算法的<strong>关键</strong>。而<strong>SA</strong>和<strong>Rank</strong>是互逆的，只要求出任意一个，另一个就可以O(Len)得到。<br>现在比较主流的算法有两种，<strong>倍增</strong>和<strong>DC3</strong>，在这里，就主要讲一下稍微慢一些，但比较好实现以及理解的倍增算法(虽说慢，但也是<strong>O(Len logLen)</strong>)的。</p>
+</blockquote>
+<h2 id="倍增算法"><a href="#倍增算法" class="headerlink" title="倍增算法"></a>倍增算法</h2><h2 id="Height数组"><a href="#Height数组" class="headerlink" title="Height数组"></a>Height数组</h2><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Height<span class="comment">[i]</span>: 表示Suffix<span class="comment">[SA<span class="comment">[i]</span>]</span>和Suffix<span class="comment">[SA<span class="comment">[i-1]</span>]</span>的最长公共前缀，也就是排名相邻的两个后缀的最长公共前缀</span><br><span class="line">H<span class="comment">[i]</span>: 等于Height<span class="comment">[Rank<span class="comment">[i]</span>]</span>，即Height<span class="comment">[i]</span>=H<span class="comment">[SA<span class="comment">[i]</span>]</span></span><br></pre></td></tr></table></figure>
+<p><code>H[i] &gt;= H[i-1] - 1</code></p>
+<blockquote>
+<p>证明：设<strong>Suffix[k]</strong>是排在<strong>Suffix[i - 1]</strong>前一名的后缀，则它们的最长公共前缀是<strong>H[i - 1]</strong>。都<strong>去掉第一个字符</strong>，就变成<strong>Suffix[k + 1]</strong>和<strong>Suffix[i]</strong>。<strong>如果H[i - 1] = 0或1</strong>,那么<strong>H[i] ≥ 0</strong>显然成立。<strong>否则</strong>，<strong>H[i] ≥ H[i - 1] - 1(去掉了原来的第一个,其他前缀一样相等)</strong>，所以<strong>Suffix[i]</strong>和在它前一名的后缀的最长公共前缀<strong>至少是H[i - 1] - 1。</strong></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/10/24/Analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/24/Analysis/" class="post-title-link" itemprop="url">Analysis</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-24 00:15:23 / Modified: 01:03:20" itemprop="dateCreated datePublished" datetime="2020-10-24T00:15:23+08:00">2020-10-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>It’s a specific analysis of the nemu code. To make typing easier I use English.</p>
+<p>First, I really need to know how make_helper and make_helper_v work.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in &#x27;nemu/include/cpu/helper.h&#x27;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __HELPER_H__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __HELPER_H__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;nemu.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;cpu/decode/operand.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* All function defined with &#x27;make_helper&#x27; return the length of the operation. */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> make_helper(name) int name(swaddr_t eip)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">uint32_t</span> <span class="title">instr_fetch</span><span class="params">(<span class="keyword">swadrr_t</span> addr, <span class="keyword">size_t</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> swaddr_read(addr, len);  <span class="comment">// instr_fetch equals swaddr_read, read memory</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> len;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">idex</span><span class="params">(<span class="keyword">swaddr_t</span> eip, <span class="keyword">int</span> (*decode)(<span class="keyword">swaddr_t</span>), <span class="keyword">void</span> (*execute)(<span class="keyword">void</span>))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* eip is pointing to the opcode */</span></span><br><span class="line">    len = decode(eip + <span class="number">1</span>);</span><br><span class="line">    execute();</span><br><span class="line">    <span class="keyword">return</span> len + <span class="number">1</span>; <span class="comment">// &quot;1&quot; for opcode</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">in &#x27;nemu/include/cpu/exec/helper.h&#x27; there is a reference of idex:</span></span><br><span class="line"><span class="comment">   idex(eip, concat4(decode_, type, _, SUFFIX), do_execute);</span></span><br><span class="line"><span class="comment">do_execute is a self-defined function, defined in every instruction&#x27;s .h template files.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">see what&#x27;s concat4:</span></span><br><span class="line"><span class="comment">in &#x27;nemu/include/macro.h&#x27;:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#define str_temp(x) #x</span></span><br><span class="line"><span class="comment">#define str(x) str_temp(x)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#define concat_temp(x, y) x ## y</span></span><br><span class="line"><span class="comment">#define concat(x, y) concat_temp(x, y)</span></span><br><span class="line"><span class="comment">#define concat3(x, y, z) concat(concat(x, y), z)</span></span><br><span class="line"><span class="comment">#define concat4(x, y, z, w) concat3(concat(x, y), z, w)</span></span><br><span class="line"><span class="comment">#define concat5(x, y, z, v, w) concat4(concat(x, y), z, v, w)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">It remains to be a problem.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">get_instr_len</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> len + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> Operands ops_decoded;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> op_src (&amp;ops_decoded.src)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> op_src2 (&amp;ops_decoded.src2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> op_dest (&amp;ops_decoded.dest)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">So what&#x27;s Operands?</span></span><br><span class="line"><span class="comment">in &#x27;nemu/include/cpu/decode/operand.h&#x27;:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">typedef struct &#123;</span></span><br><span class="line"><span class="comment">	uint32_t opcode;</span></span><br><span class="line"><span class="comment">	bool is_data_size_16;</span></span><br><span class="line"><span class="comment">	Operand src, dest, src2;</span></span><br><span class="line"><span class="comment">&#125; Operands;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">About the use of is_data_size_16:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">I guess it probably be like this: ops_decoded.is_data_size_16 ? concat(name, _w) : concat(name, _l).</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">And src and dest and src2... it seems reasonable now.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>Here is Operand:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="keyword">uint32_t</span> type;</span><br><span class="line">	<span class="keyword">size_t</span> size;</span><br><span class="line">	<span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">		<span class="keyword">uint32_t</span> reg;</span><br><span class="line">		<span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">			<span class="keyword">swaddr_t</span> addr;</span><br><span class="line">			<span class="keyword">uint8_t</span> sreg;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">uint32_t</span> imm;</span><br><span class="line">		<span class="keyword">int32_t</span> simm;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">uint32_t</span> val;</span><br><span class="line">	<span class="keyword">char</span> str[OP_STR_SIZE];</span><br><span class="line">&#125; Operand;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1021,177 +1170,6 @@ S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/29/MATLAB%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/29/MATLAB%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2/" class="post-title-link" itemprop="url">MATLAB绘制三维图形</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-29 21:18:30 / Modified: 22:33:50" itemprop="dateCreated datePublished" datetime="2020-07-29T21:18:30+08:00">2020-07-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="平面网格数据的生成"><a href="#平面网格数据的生成" class="headerlink" title="平面网格数据的生成"></a>平面网格数据的生成</h1><h2 id="利用矩阵运算生成"><a href="#利用矩阵运算生成" class="headerlink" title="利用矩阵运算生成"></a>利用矩阵运算生成</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">X = <span class="built_in">ones</span>(<span class="built_in">size</span>(y))*x;</span><br><span class="line">Y = y*<span class="built_in">ones</span>(<span class="built_in">size</span>(x));</span><br></pre></td></tr></table></figure>
-<h2 id="利用meshgrid函数生成"><a href="#利用meshgrid函数生成" class="headerlink" title="利用meshgrid函数生成"></a>利用meshgrid函数生成</h2><p>[X, Y] = meshgrid(x, y);</p>
-<p>其中，参数x、y为向量，存储网格点坐标的X、Y为矩阵。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span>:<span class="number">6</span>;</span><br><span class="line">y = (<span class="number">3</span>:<span class="number">8</span>)&#x27;;</span><br><span class="line">[X, Y] = <span class="built_in">meshgrid</span>(x, y);</span><br><span class="line">Z = <span class="built_in">randn</span>(<span class="built_in">size</span>(X));</span><br><span class="line"><span class="built_in">plot3</span>(X, Y, Z)</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
-<h1 id="绘制三维曲面的函数"><a href="#绘制三维曲面的函数" class="headerlink" title="绘制三维曲面的函数"></a>绘制三维曲面的函数</h1><p><strong>mesh(x, y, z, c)</strong>用于绘制三维网格图</p>
-<p><strong>surf(x, y, z, c)</strong>用于绘制三维曲面图</p>
-<p>其中，x、y是网格坐标矩阵，z是网格点上的高度矩阵，c用于指定在不同高度下的曲面颜色。</p>
-<p><strong>mesh(z, c)</strong></p>
-<p><strong>surf(z, c)</strong></p>
-<p>当x、y省略时，z矩阵的第2维下标当作x轴坐标，z矩阵的第1维下标当作y轴坐标。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">1</span>:<span class="number">5</span>;</span><br><span class="line">z = [<span class="number">0.5</span>*t; <span class="number">2</span>*t; <span class="number">3</span>*t];</span><br><span class="line">mesh(z);</span><br></pre></td></tr></table></figure>
-<p><strong>meshc</strong>带等高线的三维网格曲面函数</p>
-<p><strong>meshz</strong>带底座的三维网格曲面函数</p>
-<p><strong>surfc</strong>带等高线的曲面函数</p>
-<p><strong>surfl</strong>带光照效果的曲面函数</p>
-<h1 id="标准三维曲面"><a href="#标准三维曲面" class="headerlink" title="标准三维曲面"></a>标准三维曲面</h1><p><strong>sphere</strong></p>
-<p>[x, y, z] = sphere(n)</p>
-<p><strong>cylinder</strong></p>
-<p>[x, y, z] = cylinder(R, n)</p>
-<p>参数n决定曲面的圆滑程度，默认为20。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/26/Windows%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/26/Windows%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8/" class="post-title-link" itemprop="url">Windows任务管理器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-26 23:03:25 / Modified: 23:09:52" itemprop="dateCreated datePublished" datetime="2020-07-26T23:03:25+08:00">2020-07-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Dave Plummer是最初的任务管理器开发者，他解释说，他所创建的一些功能目前仍然存在，只是很少有人真正了解这些功能。</p>
-<p><strong>CTRL + Shift + Esc</strong></p>
-<p>大多数人启动任务管理器的方法是右击任务栏选择任务管理器，或者按CTRL + Alt + Del，然后选择任务管理器。但实际上，按CTRL + Shift + Esc就可以直接启动任务管理器，这要简单得多，并且可以在不使用shell的情况下打开任务管理器。</p>
-<p>为什么说这比其他方法更有用呢?因为在不涉及shell的情况下，这个快捷键可以让你在shell本身崩溃的情况下也能启动任务管理器，有时候任务栏消失就不能右键启动任务管理器。</p>
-<p>Plummer说，即使在任务管理器本身崩溃时，也可以使用同样的快捷方式启动该应用，而这一切都是因为这个快捷键从一开始设计就专门考虑到了这个问题。</p>
-<p>“如果任务管理器曾经卡死或崩溃，按ctrl-shift-esc启动另一个任务管理器。Winlogon会寻找一个现有的实例，并尝试重启它，最多10秒。如果旧的任务管理器没有在这段时间内以秘密代码响应，那么另一个任务管理器将被启动。”他说：“这样一来，只要有一些资源可用，你永远不会打不开任务管理器。”</p>
-<p><strong>任务管理器精简模式</strong></p>
-<p>很多用户都已经知道，APP死机、系统资源耗尽，可能会导致各种问题，包括电脑一开始就无法启动任务管理器。</p>
-<p>这是因为没有资源来加载任务管理器，所以开发者在创建这个APP的时候，也准备了一个精简模式来处理资源不足的问题。</p>
-<p>换句话说，这是一个特殊的“安全”模式，你可以启动，然后直接点开进程选项卡，看看是什么原因导致资源占用，然后手动杀死进程，让系统恢复到正常工作状态。同样，你可以使用上述的快捷方式来完成，因为当系统资源耗尽时，任务管理器会自动进入精简模式。</p>
-<p>“任务管理器会在资源不足的情况下以精简模式加载，比如只加载进程页面。它是极少数不会在出现问题时直接‘失败和退出’的应用程序之一。”Plummer说。</p>
-<p><strong>重置任务管理器</strong></p>
-<p>在某些情况下，即使任务管理器也难以处理系统上的所有崩溃，因此任务管理器本身有时也可能会崩溃。</p>
-<p>不过不用担心，因为Plummer表示，你只需要用一个非常小的技巧就可以轻松地将其重置，并将其恢复到正常状态。</p>
-<p>“如果任务管理器一旦内部损坏，请杀死/关闭它。然后重启它的同时按住CTRL、ALT和SHIFT键，任务管理器在启动时如果检测到了这个组合键，就会将所有内部设置重置为出厂时的状态。”他还解释说：“我写的每一个应用都有这个小技巧!”。</p>
-<p>总而言之，Windows任务管理器是一个比大多数人想象的要复杂得多的应用，而这一切都是因为它在开发之初就考虑到了用户在需要该应用时可能遇到的大部分场景。幸运的是，微软在这么多年的时间里并没有改变任务管理器的根基，所以上述技巧不仅在老版本的Windows中可以使用，在Windows 10中也可以正常使用。</p>
-<p>(注：仅为学习记录，摘自网络)</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1261,20 +1239,20 @@ S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
