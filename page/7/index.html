@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">31</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">34</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">78</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">79</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,119 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/24/Tarjan%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/24/Tarjan%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Tarjan算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-24 12:13:46" itemprop="dateCreated datePublished" datetime="2020-06-24T12:13:46+08:00">2020-06-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-26 01:18:52" itemprop="dateModified" datetime="2020-06-26T01:18:52+08:00">2020-06-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tarjan/" itemprop="url" rel="index"><span itemprop="name">Tarjan</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>Tarjan 算法</strong>是一种由 Robert Tarjan 提出的求解有向图强连通分量的算法，它能做到线性时间的复杂度。</p>
+<p>有如下定义：</p>
+<p>如果两个顶点可以相互通达，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connected components)。</p>
+<p>Tarjan 算法是基于对图深度优先搜索的算法，每个强连通分量为搜索树中的一棵子树。搜索时，把当前搜索树中未处理的节点加入一个堆栈，回溯时可以判断栈顶到栈中的节点是否为一个强连通分量。</p>
+<p>在 Tarjan 算法中，有如下定义。</p>
+<p>dfn[i] : 在DFS中该节点被搜索的次序(时间戳)</p>
+<p>low[i] : 为 i 或 i 的子树能够追溯到的最早的栈中节点的次序号</p>
+<p>当 dfn[i] == low[i] 时，为 i 或 i 的子树可以构成一个强连通分量。</p>
+<p>另一种解释：</p>
+<p>dfn[i]：就是一个时间戳（被搜到的次序），一旦某个点被DFS到后，这个时间戳就不再改变（且每个点只有唯一的时间戳）。所以常根据dfn的值来判断是否需要进行进一步的深搜。</p>
+<p>low[i]：该子树中，且仍在栈中的最小时间戳，像是确立了一个关系，low[i] 相等的点在同一强连通分量中。</p>
+<p>注意初始化时 dfn[i] = low[i] = ++cnt.</p>
+<p>算法思路：</p>
+<p>首先这个图不一定是一个连通图，所以跑 Tarjan 时要枚举每个点，若 dfn[i] == 0，进行深搜。</p>
+<p>然后对于搜到的点寻找与其有边相连的点，判断这些点是否已经被搜索过，若没有，则进行搜索。若该点已经入栈，说明形成了环，则更新 low.</p>
+<p>在不断深搜的过程中如果没有路可走了（出边遍历完了），那么就进行回溯，回溯时不断比较 low[i]，去最小的 low 值。如果dfn[x] == low[x] 则x可以看作是<strong>某一强连通分量子树的根</strong>，也说明找到了一个强连通分量，然后对栈进行弹出操作，直到 x 被弹出。</p>
+<p>详细请看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanyiming10243247/p/9294160.html">这里</a></p>
+<p>如果还没懂是什么意思，再给出一种解释：</p>
+<p>dfn[i] 表示在DFS回溯的前提下，该结点 vi <strong>被遍历的时间先后顺序</strong>，也就是时间戳，顺序递增。</p>
+<p>low[i] 表示在DFS回溯的前提下，该结点 vi <strong>不通过父结点时到达 vi 这条边所能连通的顶点时间戳的最小值</strong>。初始 low[i] = dfn[i]。</p>
+<p><strong>DFS处理到末尾后向前回溯，同时维护</strong>：(因为可以由 father 到 children 再到 children 所能连通的顶点时间戳的最小值，并没有通过 father 的 father)</p>
+<p><strong>low[father] = min{ low[father], low[children] }</strong>.</p>
+<p>dfn 和 low 都处理完毕后：</p>
+<p>设一个父结点 vf 的所有子结点 v ci，0 &lt;= i &lt;= k。k 是 vf 的子结点总数。</p>
+<p>若存在 low[ci] &gt;= dfn[vf]，则 vf 是割点；</p>
+<p>若存在 low[ci] &gt; dfn[vf]，则 e f-ci 是割边。</p>
+<p><strong>这也正说明了一个图中割边的数量永远不会超过割点的数量。</strong></p>
+<p>Tarjan 算法仅用两次DFS回溯就可以得到所有割点和割边，不必暴力枚举，对于无向图 G(V, E) 的时间复杂度是 O(|V| + |E|).</p>
+<p>两篇很详细的文章：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/844aa43b23ab">https://www.jianshu.com/p/844aa43b23ab</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34374664/article/details/77488976">https://blog.csdn.net/qq_34374664/article/details/77488976</a></p>
+</blockquote>
+<p><strong>算法模板</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> now)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfn[now] = low[now] = ++cnt;  <span class="comment">//初始化</span></span><br><span class="line">    <span class="built_in">stack</span>[++t] = now;　　　　　　 <span class="comment">//入栈操作</span></span><br><span class="line">    v[now] = <span class="number">1</span>;　　　　　　　　    <span class="comment">//v[i]代表该点是否已入栈</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = f[now]; i != <span class="number">-1</span>; i = e[i].next)  <span class="comment">//邻接表存图</span></span><br><span class="line">        <span class="keyword">if</span>(!dfn[e[i].v]) 　　　　　　　　　 <span class="comment">//判断该点是否被搜索过，若没有</span></span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(e[i].v);</span><br><span class="line">            low[now] = min(low[now], low[e[i].v]); <span class="comment">//回溯时更新low[i]，取最小值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(v[e[i].v])                      <span class="comment">//若访问过，并且还在栈里</span></span><br><span class="line">            low[now] = min(low[now], dfn[e[i].v]); <span class="comment">//一旦遇到已入栈的点，就将该点作为连通量的根</span></span><br><span class="line">　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment">//这里用dfn[e[i].v]更新的原因是：这个点可能</span></span><br><span class="line">　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment">//已经在另一个强连通分量中了但暂时尚未出栈，所</span></span><br><span class="line">　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment">//以now不一定能到达low[e[i].v]但一定能到达</span></span><br><span class="line">　　　　　　　　　　　　　　　　　　　　　　　　　　　　 <span class="comment">//dfn[e[i].v].</span></span><br><span class="line">    <span class="keyword">if</span>(dfn[now] == low[now])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> cur;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            cur = <span class="built_in">stack</span>[t--];</span><br><span class="line">            v[cur] = <span class="literal">false</span>;                       <span class="comment">//不要忘记出栈</span></span><br><span class="line">        &#125;<span class="keyword">while</span>(now != cur);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>具体实现</strong></p>
+<p><strong>复杂版</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e3</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> tst;    <span class="comment">// timestamp</span></span><br><span class="line"><span class="keyword">int</span> N, M;   <span class="comment">// 顶点数N，边数M</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> from, to;</span><br><span class="line">    Edge(<span class="keyword">int</span> f = <span class="number">0</span>, <span class="keyword">int</span> t = <span class="number">0</span>):</span><br><span class="line">        from(f), to(t) &#123; &#125;</span><br><span class="line">    ~Edge() &#123; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// adj-list undirected graph</span></span><br><span class="line"><span class="comment">// idx -&gt; even with compone idx + 1.</span></span><br><span class="line"><span class="built_in">vector</span>&lt;Edge&gt; edges;    <span class="comment">//所有边的集合</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ver[maxn]; <span class="comment">//记录每一个顶点出发的边在edges中的索引</span></span><br><span class="line"><span class="keyword">int</span> dfn[maxn];</span><br><span class="line"><span class="keyword">int</span> low[maxn];</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; verCut;    <span class="comment">//割点集</span></span><br><span class="line"><span class="built_in">vector</span>&lt;Edge&gt; edgeCut;  <span class="comment">//割边集</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 读取数据，以邻接表方式储存，因为是无向图需要一条边存两次</span></span><br><span class="line"><span class="comment"> *        第1行输入N和M表示图的顶点数和边数</span></span><br><span class="line"><span class="comment"> *        接下来第2到第M + 1行输入from和to表示无向图的一条边的两个顶点.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">readData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> inc = <span class="number">0</span>; inc &lt; M; inc ++) &#123;</span><br><span class="line">        <span class="keyword">int</span> from = <span class="number">0</span>, to = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; from &gt;&gt; to;</span><br><span class="line">        ver[from].push_back(edges.size());</span><br><span class="line">        edges.push_back(Edge(from, to));</span><br><span class="line">        ver[to].push_back(edges.size());</span><br><span class="line">        edges.push_back(Edge(to, from));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief DFS回溯上标签</span></span><br><span class="line"><span class="comment"> * @param curr_ver 当前顶点的编号</span></span><br><span class="line"><span class="comment"> * @param fa_ver   当前顶点的父亲编号，根节点父亲设为-1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">labelling</span><span class="params">(<span class="keyword">int</span> curr_ver = <span class="number">0</span>, <span class="keyword">int</span> fa_ver = <span class="number">-1</span>)</span> </span>&#123;</span><br><span class="line">    dfn[curr_ver] = low[curr_ver] = ++tst;  <span class="comment">//初始化dfn和low</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter = ver[curr_ver].begin();</span><br><span class="line">        iter != ver[curr_ver].end(); iter ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (edges[*iter].to == fa_ver)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (!low[edges[*iter].to]) &#123;</span><br><span class="line">            labelling(edges[*iter].to, curr_ver);</span><br><span class="line">        &#125;</span><br><span class="line">        low[curr_ver] = min(low[curr_ver], low[edges[*iter].to]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 收集统计割点及割边</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">collect</span><span class="params">(<span class="keyword">int</span> curr_ver = <span class="number">0</span>, <span class="keyword">int</span> fa_ver = <span class="number">-1</span>)</span> </span>&#123;</span><br><span class="line">    tst++;</span><br><span class="line">    <span class="keyword">bool</span> is_vercut = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter = ver[curr_ver].begin();</span><br><span class="line">         iter != ver[curr_ver].end(); iter++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (edges[*iter].to == fa_ver || dfn[edges[*iter].to] != tst + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        collect(edges[*iter].to, curr_ver);</span><br><span class="line">        <span class="keyword">int</span> sub = low[edges[*iter].to] - dfn[curr_ver];</span><br><span class="line">        is_vercut = (sub &gt;= <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (sub &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            edgeCut.push_back(Edge(curr_ver, edges[*iter].to));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (is_vercut) &#123;</span><br><span class="line">        verCut.push_back(curr_ver);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief tarjan算法，包含两个子函数，调用函数前需要将时间戳重置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    tst = <span class="number">0</span>;</span><br><span class="line">    labelling();</span><br><span class="line"></span><br><span class="line">    tst = <span class="number">0</span>;</span><br><span class="line">    collect();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;vertex cut(s):&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;total: &quot;</span> &lt;&lt; verCut.size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter = verCut.begin();</span><br><span class="line">        iter != verCut.end(); iter ++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (*iter) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;edge cut(s):&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;total: &quot;</span> &lt;&lt; edgeCut.size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;Edge&gt;::iterator iter = edgeCut.begin();</span><br><span class="line">         iter != edgeCut.end(); iter ++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (*iter).from &lt;&lt; <span class="string">&quot; to &quot;</span> &lt;&lt; (*iter).to &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//freopen(&quot;Tarjan.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line"></span><br><span class="line">    readData();</span><br><span class="line"></span><br><span class="line">    tarjan();</span><br><span class="line"></span><br><span class="line">    show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*****测试数据******</span></span><br><span class="line"><span class="comment">6 6</span></span><br><span class="line"><span class="comment">0 1</span></span><br><span class="line"><span class="comment">1 3</span></span><br><span class="line"><span class="comment">3 4</span></span><br><span class="line"><span class="comment">4 5</span></span><br><span class="line"><span class="comment">1 4</span></span><br><span class="line"><span class="comment">1 2</span></span><br><span class="line"><span class="comment">*******************/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>简易版</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1001</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">int</span> next;</span><br><span class="line">&#125;edge[maxn];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> low[maxn], dfn[maxn];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">stack</span>[maxn], heads[maxn], visit[maxn]; <span class="comment">//head配合结构体前向星</span></span><br><span class="line"><span class="keyword">int</span> cnt, dep, idx;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    edge[++cnt].next = heads[x];</span><br><span class="line">    edge[cnt].c = y;</span><br><span class="line">    heads[x] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;  <span class="comment">//代表第几个点在处理,递归的是点</span></span><br><span class="line">    dfn[u] = low[u] = ++dep;  <span class="comment">//新进点的初始化</span></span><br><span class="line">    <span class="built_in">stack</span>[++idx] = u;</span><br><span class="line">    visit[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = heads[u]; i != <span class="number">-1</span>; i = edge[i].next)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[edge[i].c])&#123;</span><br><span class="line">            Tarjan(edge[i].c);</span><br><span class="line">            low[u] = min(low[u], low[edge[i].c]);  <span class="comment">//递归出来，比较谁是谁的儿子／父亲，就是树的对应关系，涉及到强连通分量子树最小根的事情</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(visit[edge[i].c])&#123;</span><br><span class="line">            low[u] = min(low[u], dfn[edge[i].c]);   <span class="comment">//比较谁是谁的儿子／父亲,就是链接对应关系</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(low[u] == dfn[u])&#123;  <span class="comment">//发现是整个强连通分量子树里的最小根</span></span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">stack</span>[idx] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">            visit[<span class="built_in">stack</span>[idx]] = <span class="number">0</span>;</span><br><span class="line">            idx--;</span><br><span class="line">        &#125;<span class="keyword">while</span>(u != <span class="built_in">stack</span>[idx + <span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(heads, <span class="number">-1</span>, <span class="keyword">sizeof</span>(heads));</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        addEdge(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[i])</span><br><span class="line">            Tarjan(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Input:</span></span><br><span class="line"><span class="comment">6 8</span></span><br><span class="line"><span class="comment">1 3</span></span><br><span class="line"><span class="comment">1 2</span></span><br><span class="line"><span class="comment">2 4</span></span><br><span class="line"><span class="comment">3 4</span></span><br><span class="line"><span class="comment">3 5</span></span><br><span class="line"><span class="comment">4 6</span></span><br><span class="line"><span class="comment">4 1</span></span><br><span class="line"><span class="comment">5 6</span></span><br><span class="line"><span class="comment">Output:</span></span><br><span class="line"><span class="comment">6</span></span><br><span class="line"><span class="comment">5</span></span><br><span class="line"><span class="comment">3 4 2 1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -919,82 +1032,6 @@ j -= 1。若j > 1，则返回步骤P_2。</script><p>数学原理其实很简单
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/15/hexo%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E4%B8%8E%E5%8F%91%E5%B8%83%E4%B8%8D%E4%B8%80%E8%87%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/15/hexo%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E4%B8%8E%E5%8F%91%E5%B8%83%E4%B8%8D%E4%B8%80%E8%87%B4/" class="post-title-link" itemprop="url">hexo本地预览与发布不一致</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-15 13:51:30" itemprop="dateCreated datePublished" datetime="2020-06-15T13:51:30+08:00">2020-06-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-16 09:44:44" itemprop="dateModified" datetime="2020-06-16T09:44:44+08:00">2020-06-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">记录</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>hexo博客更改主题配置后，在localhost上预览的效果十分完美，然而在github.io上却没有任何更新。原因是需要在部署之前清除缓存。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo clean</span></span><br><span class="line"><span class="attribute">hexo d -g</span></span><br></pre></td></tr></table></figure>
-<p>然后就好了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1064,20 +1101,20 @@ j -= 1。若j > 1，则返回步骤P_2。</script><p>数学原理其实很简单
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
