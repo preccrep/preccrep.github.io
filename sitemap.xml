@@ -697,14 +697,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/MATLAB/</loc>
+    <loc>https://preccrep.github.io/tags/LaTex/</loc>
     <lastmod>2021-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/LaTex/</loc>
+    <loc>https://preccrep.github.io/tags/MATLAB/</loc>
     <lastmod>2021-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -881,14 +881,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Dijkstra/</loc>
+    <loc>https://preccrep.github.io/categories/DFS/</loc>
     <lastmod>2021-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/DFS/</loc>
+    <loc>https://preccrep.github.io/categories/Dijkstra/</loc>
     <lastmod>2021-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -951,14 +951,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/%E5%BC%A0%E9%87%8F%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://preccrep.github.io/categories/Tarjan/</loc>
     <lastmod>2021-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Tarjan/</loc>
+    <loc>https://preccrep.github.io/categories/%E5%BC%A0%E9%87%8F%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
