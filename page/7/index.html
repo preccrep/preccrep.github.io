@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">33</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">79</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">80</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,77 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/25/%E5%89%B2%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/25/%E5%89%B2%E7%82%B9/" class="post-title-link" itemprop="url">割点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-25 20:30:22 / Modified: 21:15:28" itemprop="dateCreated datePublished" datetime="2020-06-25T20:30:22+08:00">2020-06-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tarjan/" itemprop="url" rel="index"><span itemprop="name">Tarjan</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>题目描述</strong></p>
+<p>给定一个有 N 个点的无向连通图，问图中哪些点去掉后图将不再连通？同时输出去掉这个点后，图被分为几个连通块？</p>
+<p>输入包含多组数据，每组以 0 结尾，每行描述图中边的两个顶点的标号。每组数据之间有一个空行。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> tar;</span><br><span class="line">    Edge * next;</span><br><span class="line">&#125; * first[<span class="number">1000</span>], * eg, edges[<span class="number">1000000</span>];</span><br><span class="line"><span class="keyword">int</span> fl[<span class="number">1000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    eg-&gt;tar = b;</span><br><span class="line">    eg-&gt;next = first[a];</span><br><span class="line">    first[a] = eg++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    fl[k] = x;</span><br><span class="line">    <span class="keyword">for</span>(Edge * arr = first[k]; arr != <span class="literal">NULL</span>; arr = arr-&gt;next)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr-&gt;tar == x || fl[arr-&gt;tar] == x)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        dfs(arr-&gt;tar, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cas = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(first, <span class="number">0</span>, <span class="keyword">sizeof</span>(first));</span><br><span class="line">        eg = edges;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> a, b;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">            <span class="keyword">if</span>(!a) <span class="keyword">break</span>;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; b;</span><br><span class="line">            n = max(n, max(a, b));</span><br><span class="line">            a--; b--;</span><br><span class="line">            addedge(a, b);</span><br><span class="line">            addedge(b, a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(cas) <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        cas++;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Network #&quot;</span> &lt;&lt; cas &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">bool</span> f = <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">memset</span>(fl, <span class="number">-1</span>, <span class="keyword">sizeof</span>(fl));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(first[i] == <span class="literal">NULL</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i == j) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(first[j] == <span class="literal">NULL</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(fl[j] &lt; i)&#123;</span><br><span class="line">                    cnt++;</span><br><span class="line">                    dfs(j, i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(cnt &gt; <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;SPF node &quot;</span> &lt;&lt; i+<span class="number">1</span> &lt;&lt; <span class="string">&quot; leaves &quot;</span> &lt;&lt; cnt &lt;&lt; <span class="string">&quot; subnets&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!f) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;No SPF nodes&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Input:</span></span><br><span class="line"><span class="comment">1 2</span></span><br><span class="line"><span class="comment">5 4</span></span><br><span class="line"><span class="comment">3 1</span></span><br><span class="line"><span class="comment">3 2</span></span><br><span class="line"><span class="comment">3 4</span></span><br><span class="line"><span class="comment">3 5</span></span><br><span class="line"><span class="comment">0</span></span><br><span class="line"><span class="comment">Output:</span></span><br><span class="line"><span class="comment">Network #1</span></span><br><span class="line"><span class="comment">SPF node 3 leaves 2 subnets</span></span><br><span class="line"><span class="comment">Input:</span></span><br><span class="line"><span class="comment">0</span></span><br><span class="line"><span class="comment">(end)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -943,95 +1014,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/06/15/random-shuffle%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/15/random-shuffle%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">random_shuffle原理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-15 16:24:40" itemprop="dateCreated datePublished" datetime="2020-06-15T16:24:40+08:00">2020-06-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-02 18:06:02" itemprop="dateModified" datetime="2020-07-02T18:06:02+08:00">2020-07-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>random_shuffle，即随机洗牌，算法描述如下：</p>
-<script type="math/tex; mode=display">
-设X_1, X_2, ..., X_t是要洗的t个数的集合。</script><p>P1.初始化：</p>
-<script type="math/tex; mode=display">
-j = t;</script><p>P2.生成U：</p>
-<script type="math/tex; mode=display">
-生成在0与1之间一致分布的随机数U；</script><p>P3.交换：</p>
-<script type="math/tex; mode=display">
-k = \lfloor jU \rfloor + 1, 交换X_j和X_k；</script><p>P4.减小j：</p>
-<script type="math/tex; mode=display">
-j -= 1。若j > 1，则返回步骤P_2。</script><p>数学原理其实很简单。第一个被选中的数，概率是1/t，第二个被选中的数的概率是1/(t-1) * (t-1)/t = 1/t，…</p>
-<p>这是因为第二个数第一次未被选中，所以是(t-1)/t，而第一次选完之后还剩下t-1个数，所以是1/(t-1)，相乘即可。</p>
-<p>于是可以看出，每个数被选到的概率是一样的。</p>
-<p>Java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; arr[i].length; j++)&#123;</span><br><span class="line">        <span class="keyword">int</span> i1 = (<span class="keyword">int</span>)(Math.random() * arr.length);</span><br><span class="line">        <span class="keyword">int</span> j1 = (<span class="keyword">int</span>)(Math.random() * arr[i].length);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> temp = arr[i][j];</span><br><span class="line">        arr[i][j] = arr[i1][j1];</span><br><span class="line">        arr[i1][j1] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>PS：很早就知道了随机洗牌是等概率的，而且有时也会用到这个函数，就是忘了具体算法是什么。在网上找了很久都没有找到想要看的东西，最后无意中发现有人说《计算机程序设计艺术》第二卷有它的解释，于是赶紧看了看。概率是我自己推的，的确很简单。在此记录一下。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1101,7 +1083,7 @@ j -= 1。若j > 1，则返回步骤P_2。</script><p>数学原理其实很简单
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1114,7 +1096,7 @@ j -= 1。若j > 1，则返回步骤P_2。</script><p>数学原理其实很简单
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

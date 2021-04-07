@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"preccrep.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="关系模型关系数据库使用一个或多个表来存储数据。数学上把一系列域上的笛卡尔积的子集称为关系。 软件系统无法保证数据的真实正确性，但可以保证数据符合可明确定义的约束。这种约束通常称为完整性约束。它是数据安全性的一部分。常见的简单约束有两种形式，一种是对属性取值范围的确定，比如性别只有男、女两种属性的取值（个人认为应该是三种，男、女、无 :)  ）。另一种是对属性值之间相互关系的限定，最典型的就是关系模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库复习">
+<meta property="og:url" content="https://preccrep.github.io/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Serial">
+<meta property="og:description" content="关系模型关系数据库使用一个或多个表来存储数据。数学上把一系列域上的笛卡尔积的子集称为关系。 软件系统无法保证数据的真实正确性，但可以保证数据符合可明确定义的约束。这种约束通常称为完整性约束。它是数据安全性的一部分。常见的简单约束有两种形式，一种是对属性取值范围的确定，比如性别只有男、女两种属性的取值（个人认为应该是三种，男、女、无 :)  ）。另一种是对属性值之间相互关系的限定，最典型的就是关系模">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-07T13:01:36.000Z">
+<meta property="article:modified_time" content="2021-04-07T16:52:12.234Z">
+<meta property="article:author" content="preccrep">
+<meta property="article:tag" content="Database">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://preccrep.github.io/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>数据库复习 | Serial</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Serial</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">of or relating to the sequential performance of multiple operations</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">80</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库复习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-07 21:01:36" itemprop="dateCreated datePublished" datetime="2021-04-07T21:01:36+08:00">2021-04-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-08 00:52:12" itemprop="dateModified" datetime="2021-04-08T00:52:12+08:00">2021-04-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h1><p>关系数据库使用一个或多个表来存储数据。<br>数学上把一系列域上的笛卡尔积的子集称为关系。</p>
+<p>软件系统无法保证数据的真实正确性，但可以保证数据符合可明确定义的约束。这种约束通常称为完整性约束。它是数据安全性的一部分。<br>常见的简单约束有两种形式，一种是对属性取值范围的确定，比如性别只有男、女两种属性的取值（个人认为应该是三种，男、女、无 :)  ）。另一种是对属性值之间相互关系的限定，最典型的就是关系模型中键的定义，如主键、超键、外键、候选键。<br>超键：在给定关系模式中，能唯一标识出各个元组的属性集合。超键中可能包含无关紧要的属性，也就是说超键的真子集也可能是超键。例如在学生成绩表中有学号、姓名和成绩3个属性，其中学号是超键，而且也是主键，因为姓名和成绩可能重复，但学号是唯一的。{学号，姓名}，{学号，成绩}，{学号，姓名，成绩}也是超键。<br>候选键：在给定关系模式中，能够唯一标识出各个元组的属性集合，并且不含多余属性。候选键是超键，但超键不一定是候选键。只有不存在任何真子集是超键的超键才是候选键。<br>主键：一个关系中可能有多个候选键，通常指定其中一个，并且只能是一个，用来标识元组。由于主键具有唯一性，所以主键是候选键，但候选键不一定是主键。<br>外键：如果关系表S1的一个属性子集A，必须匹配另一个关系表S2中出现的数值，则称A是关系表S1的外键。其中，S1称为引用关系，S2称为被引用关系。外键的值，或与被引用关系中出现的数值对应，或为空值。例如关系表1中有院系这个属性，并且是外键，对应关系表2中的单位这个属性，而院系属性中有工程学院，单位属性中此项为教育学院或为空值，那么就出问题了。如果院系属性也为教育学院，或者院系属性为空而单位属性为教育学院，那么是可以的。</p>
+<p>可以用代数、逻辑等方法描述关系操作，最基本最常用的是代数方法，即关系代数。<br>关系代数也是一门代数，关系代数包括一个运算集合，这些运算以一个或两个关系作为运算数，产生一个新的关系作为结果。<br>关系代数运算包含基本关系代数运算、附加关系代数运算和扩展关系代数运算。其中基本关系代数运算包含选择、投影、集合并、集合差、笛卡尔积和更名运算。</p>
+<p>选择：选择运算是选出满足给定谓词（条件）的元组，结果关系和原关系有着相同的模式。<br>选择运算用 $\sigma$ 表示。将谓词写作 $\sigma$ 的右下标，并在 $\sigma$ 后面的括号中给出作为参数的关系名。例如：</p>
+<script type="math/tex; mode=display">
+\sigma_{gender=none}(students)</script><p>就是在students关系表中选出gender属性为none的元组。（hhh）<br>投影：投影运算用来从给定关系产生一个只有其部分列的新关系。投影运算用 $\pi$ 表示。所有希望在结果关系中出现的属性作为右下标，作为参数的关系名紧跟在 $\pi$ 后面的括号中。结果关系的模式是 $\pi$ 的下标中列出的所有属性，并按 $\pi$ 下标中列出的顺序出现。例如：</p>
+<script type="math/tex; mode=display">
+\pi_{id,age}(students)</script><p>于是结果关系中只包含id和age两个属性，并且会去掉结果关系中重复的元组。<br>⚠️ 关系代数把表看作是作为元组集合的关系，既然是集合，就不包括重复元组，也就是说，关系代数每个运算都是去重的。<br>并运算：关系是相容的。两个关系必须是同元的，即它们所包含的属性个数必须相同；两个关系对应属性的域必须相同或相容。<br>例如，找出所有已有考生报考又安排了考官组卷的eid：</p>
+<script type="math/tex; mode=display">
+\pi_{eid}(eeexam) \bigcup \pi_{eid}(erexam)</script><p>差运算：用来查询在一个关系中而不在另一个关系中的那些元组，和并运算一样，差运算只能在相容的关系间进行。<br>例如，找出所有已有考生报考但没有安排考官组卷的eid：</p>
+<script type="math/tex; mode=display">
+\pi_{eid}(eeexam)-\pi_{eid}(erexam)</script><p>笛卡尔积运算：结果关系的模式是参与运算的两个关系的模式的串接。运算符左侧关系中的每一个元组与右侧关系的每一个元组拼接，形成结果关系中的一个元组。<br>⚠️ 元组的拼接<br>更名：对给定的关系代数表达式E，表达式 $\rho_X(E)$ 返回表达式E的结果，并把名字X赋给了它。<br>如果关系代数表达式E是n元的，则表达式 $\rho_{X(A_1,A_2,…,A_n)}(E)$ 返回表达式E的结果，并赋给它名字X，同时将E的各属性更名为 $A_1,A_2,…,A_n$。<br>关系运算的运算参数是关系，运算结果也是关系。<br>查询历史学院的考生的姓名：</p>
+<script type="math/tex; mode=display">
+\sigma_{name}(\pi_{department=history}(contestants))</script><p>关系代数基本运算是完备的，足以表达任何普通的关系代数查询。但是许多查询的表达式复杂、冗长，因此定义附加运算，简化一些查询的表达。<br>常见的附加运算有：集合交、自然联接、属性联接、条件联接和赋值运算。</p>
+<p>集合交：集合交运算的结果是由那些同时在参与运算关系中存在的元组组成，只能在相容的关系间进行，用 $\bigcap$ 表示。</p>
+<p>自然联接：可以将特定选择运算和笛卡尔积合并为一个运算。首先计算笛卡尔积，然后在笛卡尔积的结果上，基于两个关系模式中都出现的属性，即两个关系模式的<strong>所有</strong>同名属性进行属性值相等的选择运算，最后去掉重复列。也就是结果关系模式中相同的属性只保留一列，因为在任何元组中同名属性的值都是相等的。</p>
+<p>例如：</p>
+<p>examinee表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>eeid</th>
+<th>eename</th>
+<th>dname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>department表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>dname</th>
+<th>dloca</th>
+<th>dtele</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>先算笛卡尔积：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>examinee.eeid</th>
+<th>examinee.eename</th>
+<th>examinee.dname</th>
+<th>department.dname</th>
+<th>department.dloca</th>
+<th>department.dtele</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>选择examinee.dname和department.dname相同的元组，最终选出了3组，将examinee.dname和department.dname属性合并后，成为了结果关系。</p>
+<p>属性联接：首先计算笛卡尔积，然后在笛卡尔积的结果上，基于两个关系模式中都出现的属性，即两个关系模式的<strong>指定</strong>同名属性进行属性值相等的选择运算，最后去掉重复列。指定同名属性只保留一个。</p>
+<p>自然联接用 $S1 \infty S2$ 表示，属性联接用 $S1 \infty_{attribute} S2$ 表示。<br>例如指定了属性name，那么联接时就只看S1.name和S2.name相等的元组。<br>因此区别就是，当参与联接运算的两个表有多个<strong>同名列</strong>时，自然联接的匹配条件是所有同名列全部取值相等，而属性联接的匹配条件是指定其中的某些同名列取值相等。<br>赋值：赋值运算是将 $\leftarrow$ 右侧的表达式结果赋给其左侧的关系变量，该关系变量可以在后续的表达式中使用。<br>例如：从A中去除属性X</p>
+<script type="math/tex; mode=display">
+A\leftarrow A-\sigma_{att1=x}(A)</script><p>关系代数运算的进一步扩充：<br>广义投影：允许将算术运算作为投影的一部分<br>聚集：例如计算给定集合元素的总和、平均值等<br>外联接：使得关系代数表达式可以处理缺失信息</p>
+<p>广义投影：允许在投影列表中使用算术表达式。<br>例如 $\pi_{F_1,F_2,…,F_n}(E)$ 中，E是任意关系代数表达式，$F_1,F_2,…,F_n$ 中的每一个都是涉及E的属性的算术表达式，也可以仅仅是单个属性或常量。<br>广义投影的结果是对关系表达式t的每一行分别计算 $F_1,F_2,…,F_n$，<br>聚集函数：sum, avg, count, max, min等。<br>例如：</p>
+<script type="math/tex; mode=display">
+G_{avg(erage)}(examiner)</script><p>查询结果只包含一个元组，只有单个属性。<br>还可以这样：</p>
+<script type="math/tex; mode=display">
+_{dname}G_{avg(erage)}(examiner)</script><p>意思是说对元组按dname进行分组。</p>
+<p>有些元组不能跟另外关系的任何一个元组匹配，一些实际应用系统可能希望在结果中保留悬浮元组，这就有了外联接运算。<br>不考虑悬浮元组的自然联接、属性联接和条件联接都属于内联接。<br>外联接：首先计算内联接，然后加入左侧关系、右侧关系、两侧关系中的悬浮元组，对应称为左外联接(L)、右外联接(R)、全外联接(F)。表示方法：$\infty^R$.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Database/" rel="tag"># Database</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/01/SystemVerilog/" rel="prev" title="SystemVerilog">
+      <i class="fa fa-chevron-left"></i> SystemVerilog
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">关系模型</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">preccrep</p>
+  <div class="site-description" itemprop="description">serial processing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">preccrep</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

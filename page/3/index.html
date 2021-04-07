@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">32</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">33</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">79</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">80</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,109 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/11/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/" class="post-title-link" itemprop="url">字符串哈希</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-11-20 19:54:19 / Modified: 21:39:12" itemprop="dateCreated datePublished" datetime="2020-11-20T19:54:19+08:00">2020-11-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="什么是字符串哈希"><a href="#什么是字符串哈希" class="headerlink" title="什么是字符串哈希"></a>什么是字符串哈希</h1><p>字符串Hash可以通俗的理解为，<strong>把一个字符串转换为一个整数</strong>。</p>
+<p>如果我们通过某种方法，将字符串转换为一个整数，就可以便的确定某个字符串是否重复出现过，这是最简单的字符串Hash应用情景了。</p>
+<p>当然也不难想到，如果有不同的两个字符串同时Hash到一个整数，这样就比较麻烦了。我们希望这个映射是一个单射，所以问题就是如何构造这个Hash函数，使得他们成为一个单射。</p>
+<h1 id="Hash方法"><a href="#Hash方法" class="headerlink" title="Hash方法"></a>Hash方法</h1><blockquote>
+<p>给定字符串 s，则 asc[s[i]] = s[i] - ‘a’ + 1.</p>
+</blockquote>
+<h2 id="自然溢出方法"><a href="#自然溢出方法" class="headerlink" title="自然溢出方法"></a>自然溢出方法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> Hash[n];</span><br><span class="line">Hash[i] = Hash[i - <span class="number">1</span>] * p + asc[s[i]]</span><br></pre></td></tr></table></figure>
+<p>利用unsigned long long的范围自然溢出，相当于自动对 2^64 -1 取模。</p>
+<h2 id="单哈希方法"><a href="#单哈希方法" class="headerlink" title="单哈希方法"></a>单哈希方法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hash[i] = (Hash[i - <span class="number">1</span>] * p + asc[s[i]]) % MOD</span><br></pre></td></tr></table></figure>
+<p>其中 p 和 MOD 均为质数，且有 p &lt; MOD。</p>
+<p>对于此种Hash方法，将 p 和 MOD 尽量取大即可，这种情况下，冲突的概率是很低的。</p>
+<blockquote>
+<p>如取 p = 13, MOD = 101, 对字符串 “abc” 进行Hash。这里注意asc[s[i]]是s[i]的ascii码加1.</p>
+<p>Hash[0] = 1;</p>
+<p>Hash[1] = (Hash[0] * 13 + 2) % 101 = 15;  // s[i] = ‘b’, asc[s[i]] = ‘b’ - ‘a’ + 1 = 2</p>
+<p>Hash[2] = (Hash[1] * 13 + 3) % 101 = 97;</p>
+<p>结果是Hash[n]，即Hash[2]。所以此时认为 97 就是字符串”abc”的值。</p>
+</blockquote>
+<h2 id="双哈希方法"><a href="#双哈希方法" class="headerlink" title="双哈希方法"></a>双哈希方法</h2><p>将一个字符串用不同的MOD Hash两次，将这两个结果用一个二元组表示，作为Hash结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hash1[i] = (Hash[i - <span class="number">1</span>] * p + asc[s[i]]) % MOD1;</span><br><span class="line">Hash2[i] = (Hash[i - <span class="number">1</span>] * p + asc[s[i]]) % MOD2;</span><br></pre></td></tr></table></figure>
+<p>Hash的结果为 <code>&lt; Hash1[n], Hash2[n] &gt;</code>。</p>
+<p>这种Hash很安全。</p>
+<h1 id="求子串公式"><a href="#求子串公式" class="headerlink" title="求子串公式"></a>求子串公式</h1><p>假设有一个∣S∣=5 的字符串，设 Si 为第 i 个字符，其中 1 ≤ i ≤ 5。</p>
+<p>根据定义分别求出hash[i]：</p>
+<p>hash[1] = s1;</p>
+<p>hash[2] = s1 ∗ p + s2;</p>
+<p>hash[3] = s1 ∗ p^2 + s2 ∗ p + s3;</p>
+<p>hash[4] = s1 ∗ p^3 + s2 ∗ p^2 + s3 ∗ p + s4;</p>
+<p>hash[5] = s1 ∗ p^4 + s2 ∗ p^3 + s3 ∗ p^2 + s4 ∗ p + s5;</p>
+<p>现在要求子串 s3s4 的hash值，不难得出为s3 ∗ p + s4。<br><code>Hash[4] - Hash[2] * pow(p, 4 - 3 + 1)</code></p>
+<p>所以公式如下：</p>
+<p><code>Hash[l~r] = Hash[r] - Hash[l - 1] * pow(p, r - l + 1)</code></p>
+<p>考虑到取模：</p>
+<p><code>Hash[l~r] = ((Hash[r] - Hash[l - 1] * pow(p, r - l + 1)) % MOD + MOD) % MOD</code></p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p><a target="_blank" rel="noopener" href="http://poj.org/problem?id=2774">POJ2774</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> p 131</span></span><br><span class="line"><span class="comment">// #define INF 0x3f3f3f3f</span></span><br><span class="line"><span class="comment">// #define MOD 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Hash1和Hash2存储两个字符串的哈希值，</span></span><br><span class="line"><span class="comment">// po记录p的乘方(相当于转化为p进制)，tmp用于比较(后面会讲解)</span></span><br><span class="line">ull Hash1[maxn], Hash2[maxn], po[maxn], tmp[maxn];</span><br><span class="line"><span class="keyword">int</span> len1, len2;  <span class="comment">// 两字符串的长度</span></span><br><span class="line"><span class="keyword">char</span> s1[maxn], s2[maxn];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求h的子串s[l~r](包括s[l]和s[r])的Hash值</span></span><br><span class="line"><span class="function">ull <span class="title">getHash</span><span class="params">(ull* h, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> h[r] - h[l - <span class="number">1</span>] * po[r - l + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">check函数用来判断是否有长度为len的相同子串</span></span><br><span class="line"><span class="comment">先将Hash1的长度为len的子串的Hash值依次求出，存入tmp数组中</span></span><br><span class="line"><span class="comment">将tmp由小到大排序(这里排序只是为了便于Hash2的二分查找)</span></span><br><span class="line"><span class="comment">因为二分查找要求数组有序！</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i + len - <span class="number">1</span> &lt;= len1; i++)</span><br><span class="line">		tmp[cnt ++] = getHash(Hash1, i, i + len - <span class="number">1</span>);</span><br><span class="line">	sort(tmp, tmp + cnt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i + len - <span class="number">1</span> &lt;= len2; i++) &#123;</span><br><span class="line">		ull x = getHash(Hash2, i, i + len - <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span>(binary_search(tmp, tmp + cnt, x)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="comment">// 这里用到了&lt;algorithm&gt;中的binary_search函数，这是一个bool类型函数，</span></span><br><span class="line">		<span class="comment">// 是在[tmp, tmp + cnt)，即[tmp, tmp + cnt - 1]范围内</span></span><br><span class="line">		<span class="comment">// 二分查找x，如果找到了就返回true，否则返回false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_po</span><span class="params">()</span> </span>&#123;  <span class="comment">// 将p的乘方都算出来，打表</span></span><br><span class="line">	po[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; maxn; i++)</span><br><span class="line">		po[i] = po[i - <span class="number">1</span>] * p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	init_po();</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>, s1 + <span class="number">1</span>, s2 + <span class="number">1</span>)) &#123;  <span class="comment">// s1和s2都从索引1开始存储</span></span><br><span class="line">		len1 = <span class="built_in">strlen</span>(s1 + <span class="number">1</span>);</span><br><span class="line">		len2 = <span class="built_in">strlen</span>(s2 + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 计算s1和s2的Hash值</span></span><br><span class="line">		Hash1[<span class="number">0</span>] = Hash2[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len1; i++)</span><br><span class="line">			Hash1[i] = Hash1[i - <span class="number">1</span>] * p + (s1[i] - <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len2; i++)</span><br><span class="line">			Hash2[i] = Hash2[i - <span class="number">1</span>] * p + (s2[i] - <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 二分查找最大长度</span></span><br><span class="line">		<span class="keyword">int</span> l = <span class="number">0</span>, r = min(len1, len2);</span><br><span class="line">		<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(l &lt;= r) &#123;</span><br><span class="line">			<span class="keyword">int</span> m = (l + r) &gt;&gt; <span class="number">1</span>;  <span class="comment">// 移位更快</span></span><br><span class="line">			<span class="keyword">if</span>(check(m)) &#123;  <span class="comment">// 如果m满足长度为m的子串相等</span></span><br><span class="line">				l = m + <span class="number">1</span>;  <span class="comment">// 就增大左边界l，看看有没有更大的长度</span></span><br><span class="line">				ans = m;    <span class="comment">// ans更新为当前的最大值</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				r = m - <span class="number">1</span>;  <span class="comment">// 没有找到，那就先减小右边界看看有没有符合的m</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1081,88 +1184,6 @@ S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/08/12/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/12/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">线性代数基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-08-12 19:07:31 / Modified: 19:33:28" itemprop="dateCreated datePublished" datetime="2020-08-12T19:07:31+08:00">2020-08-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%A0%E9%87%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">张量网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="本征向量、本征值、正定矩阵的定性理解"><a href="#本征向量、本征值、正定矩阵的定性理解" class="headerlink" title="本征向量、本征值、正定矩阵的定性理解"></a>本征向量、本征值、正定矩阵的定性理解</h1><p>对于一个非零向量x和一个矩阵A，如果标量a使得：Ax=ax，则称a为A的本征值，x为本征向量。</p>
-<p>本征值和本征向量的求法：</p>
-<p>Ax-ax=0</p>
-<p>(A-aI)x=0</p>
-<p>只要|A-aI|=0，就可以求出a，然后代入a求出本征向量x里元素的关系。</p>
-<p>本征值在几何上的意义：<strong>会将对应本征向量方向上的向量进行缩放，也可以说：缩放的倍数就是本征值</strong></p>
-<p>正定矩阵：对于任意非零的向量x和一个对称矩阵A，如果满足：xTAx&gt;0，就称A为正定矩阵。</p>
-<p>正定矩阵在几何上面的理解：</p>
-<p>在空间中找到一组为正交的向量，经过正定矩阵的变化，变化后他们还是正交的，且方向会不变。但是他们的向量的模会改变。</p>
-<p>猜测：可以用来对图片进行缩放。</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jian-gao/p/10781649.html">特征值分解和奇异值分解</a></p>
-<p>参考资料：</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/MyUniverse/p/10146907.html">https://www.cnblogs.com/MyUniverse/p/10146907.html</a></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1232,7 +1253,7 @@ S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1245,7 +1266,7 @@ S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
