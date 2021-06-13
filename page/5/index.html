@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">34</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">35</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">83</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">85</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,223 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/26/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%AE%A1%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/26/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%AE%A1%E7%AE%97/" class="post-title-link" itemprop="url">数据分析与多项式计算</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-26 12:05:46 / Modified: 17:53:00" itemprop="dateCreated datePublished" datetime="2020-07-26T12:05:46+08:00">2020-07-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据统计分析"><a href="#数据统计分析" class="headerlink" title="数据统计分析"></a>数据统计分析</h1><p>max()：求向量或矩阵元素的最大值。</p>
+<p>min()：求向量或矩阵元素的最小值。</p>
+<p><em>当参数为向量时：</em></p>
+<p>y = max(X)：返回向量 X 的最大值存入 y，如果 X 中包含复数元素，则按模取最大值。</p>
+<p>[y, k] = max(X)：返回向量 X 的最大值存入 y，最大值元素的序号存入 k，如果 X 中包含复数元素，则按模取最大值。</p>
+<p><em>当参数为矩阵时：</em></p>
+<p>max(A)：返回一个行向量，向量的第 i 个元素是矩阵 A 的第 i 列上的最大值。</p>
+<p>[Y, U] = max(A)：返回行向量 Y 和 U，Y 向量记录 A 的每列的最大值，U 向量记录每列最大值的行号。</p>
+<p>max(A, [], dim)：dim 取 1 或 2。dim 取 1 时，该函数的功能与 max(A) 完全相同；dim 取 2 时，该函数返回一个列向量，其第 i 个元素是 A 矩阵的第 i 行上的最大值。</p>
+<p>求矩阵的最大值：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(<span class="built_in">max</span>(A))</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(A(:))</span><br></pre></td></tr></table></figure>
+<p>mean()：求算术平均值。</p>
+<p>median()：求中值。</p>
+<p>sum()：求和函数。</p>
+<p>prod()：求积函数。</p>
+<p>cumsum()：累加和函数。</p>
+<p>cumprod()：累乘积函数。</p>
+<p><em>标准差：</em></p>
+<p>std()：计算标准差函数。</p>
+<p>调用格式：</p>
+<p>std(X)：计算向量 X 的标准差。</p>
+<p>std(A)：计算矩阵 A 是各列的标准差。</p>
+<p>std(A, flag, dim)：flag 取 0 或 1，当 flag = 0 时，按 S1 公式计算样本标准差；当 flag = 1 时，按 S2 公式计算总体标准差。默认情况下，flag = 0，dim = 1。</p>
+<p>生成满足正态分布的 50000 * 4 随机矩阵，用不同的形式求其各列之间的标准差。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">randn</span>(<span class="number">50000</span>, <span class="number">4</span>);</span><br><span class="line">y1 = std(x, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">y2 = std(x, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">x1 = x&#x27;;</span><br><span class="line">y3 = std(x1, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">y3 = y3&#x27;;</span><br><span class="line">y4 = std(x1, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">y4 = y4&#x27;;</span><br></pre></td></tr></table></figure>
+<p><em>相关系数：</em></p>
+<p>corrcoef()</p>
+<p>调用格式：</p>
+<p>corrcoef(A)：返回的相关系数矩阵的第 i 行第 j 列元素表示矩阵 A 中第 i 列和第 j 列的相关系数。</p>
+<p>corrcoef(X, Y)：这里 X，Y是向量。</p>
+<p><em>排序：</em></p>
+<p>sort()</p>
+<p>调用格式：</p>
+<p>sort(X)：对向量 X 按升序排序。</p>
+<p>[Y, I] = sort(A, dim, mode)：其中 dim 指明对 A 的列还是行进行排序，mode 指明升序还是降序排序，若取 “ascend”，则按升序；若取 “descend”，则按降序。默认为升序。输出参数中，Y 是排序后的矩阵，I 记录 Y 中元素在 A 中的位置。</p>
+<h1 id="多项式计算"><a href="#多项式计算" class="headerlink" title="多项式计算"></a>多项式计算</h1><p><em>多项式乘法</em></p>
+<p>conv(P1, P2)：P1，P2是多项式系数向量。</p>
+<p><em>多项式除法</em></p>
+<p>[Q, r] = deconv(P1, P2)：Q 返回多项式 P1 除以 P2 的商式，r 返回 P1 除以 P2 的余式。</p>
+<p><em>多项式的求导</em></p>
+<p>polyder()</p>
+<p>p = polyder(P)：求多项式 P 的导函数。</p>
+<p>p = polyder(P, Q)：求 P*Q 的导函数。</p>
+<p>[p, q] = polyder(P, Q)：求 P/Q 的导函数。导函数的分子存入 p，分母存入 q。</p>
+<p><em>多项式的求值</em></p>
+<p>polyval(p, x)：代数多项式求值。p 为多项式系数向量，x 可以是标量、向量或矩阵。</p>
+<p>polyvalm(p, x)：矩阵多项式求值。x 为方阵。</p>
+<p><em>多项式求根</em></p>
+<p>roots(p)：p 为多项式系数向量。</p>
+<p>若已知多项式的全部根，则可以用 poly 函数建立起该多项式：p = poly(x)。</p>
+<p>求多项式 - 38.89 <em> t^2 + 126.11 </em> t - 3.42 的极大值：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = [<span class="number">-38.89</span>, <span class="number">126.11</span>, <span class="number">-3.42</span>];</span><br><span class="line">q = polyder(p);</span><br><span class="line">a = roots(q);</span><br><span class="line">b = polyval(p, a);</span><br><span class="line">x = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">2</span>;</span><br><span class="line"><span class="built_in">plot</span>(x, polyval(p, x), a, b, <span class="string">&#x27;rp&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="数据插值"><a href="#数据插值" class="headerlink" title="数据插值"></a>数据插值</h1><p>数据插值可以根据有限个点的取值状况，合理估算出附近其他点的取值，从而节约大量的实验和测试资源。数据插值是一种函数逼近的方法。</p>
+<p><strong><em>interp1()：一维插值函数。</em></strong></p>
+<p><strong>Y1 = interp1(X, Y, X1, method)</strong></p>
+<p>根据 X，Y 的值，计算函数在 X1 处的值。其中，X，Y是两个等长的已知向量，分别表示采样点和采样值。X1 是一个向量或标量，表示要插值的点。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>];</span><br><span class="line">y = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1.7</span>,<span class="number">2.0</span>,<span class="number">2.1</span>,<span class="number">2.0</span>,<span class="number">1.8</span>,<span class="number">1.2</span>,<span class="number">1.0</span>,<span class="number">1.6</span>];</span><br><span class="line">x1 = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">15</span>;</span><br><span class="line">y1 = interp1(x, y, x1, <span class="string">&#x27;spline&#x27;</span>);</span><br><span class="line"><span class="built_in">plot</span>(x1, y1)</span><br></pre></td></tr></table></figure>
+<p><strong>method</strong> 用于指定插值方法，常用的取值有以下四种：</p>
+<p><em>linear</em>：线性插值，默认方法。将插值点与靠近的两个数据点用直线连接，然后在直线上选取对应插值点的数据。</p>
+<p><em>nearest</em>：最近插值点。选择最近样本点的值作为插值数据。(如果是中间点，则取后一个数据点的值)</p>
+<p><em>pchip</em>：分段 3 次埃尔米特插值。采用分段三次多项式，除满足插值条件，还需满足在若干节点处相邻段插值函数的一阶导数相等，使得曲线光滑的同时，还具有保形性。</p>
+<p><em>spline</em>：3 次样条插值。每个分段内构造一个三次多项式，使其插值函数除满足插值条件外，还要求在各节点处具有连续的一阶和二阶导数。</p>
+<p><strong><em>为什么这两种插值方法都用 3 次多项式而不用更高次的？</em></strong></p>
+<p><em>多项式次数并非越高越好。次数越高，越容易产生震荡而偏离原函数，这种现象称为龙格(Runge)现象。</em></p>
+<p><strong><em>interp2()：二维插值函数</em></strong></p>
+<p><strong>Z1 = interp2(X, Y, Z, X1, Y1, method)</strong></p>
+<p>其中，X，Y 是两个向量，表示两个参数的采样点，Z 是采样点对应的函数值。X1，Y1 是两个标量或向量，表示要插值的点。</p>
+<h1 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h1><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1790</span>:<span class="number">10</span>:<span class="number">2020</span>;</span><br><span class="line">y = [...];    # 此处数据省略。。。</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">p = polyfit(x, y, <span class="number">3</span>);</span><br><span class="line">polyval(p, <span class="number">2020</span>)</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>, polyval(p, x))</span><br></pre></td></tr></table></figure>
+<p>与数据插值类似，曲线拟合也是一种函数逼近的方法，但是拟合出的曲线不一定经过所有样本点。</p>
+<p>曲线拟合的原理：最小二乘法</p>
+<p>polyfit()：多项式拟合函数。可求得最小二乘拟合多项式系数。</p>
+<p>调用格式：</p>
+<p>P = polyfit(X, Y, m)</p>
+<p>[P, S] = polyfit(X, Y, m)</p>
+<p>[P, S, mu] = polyfit(X, Y, m)</p>
+<p>根据样本数据 X 和 Y，产生一个 m 次多项式 P 及其在采样点误差数据 S，mu 是一个二元向量，mu(1) 是 mean(X)，而 mu(2) 是 std(X)。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/18/GUID%E5%9C%A8%E7%BA%BF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/18/GUID%E5%9C%A8%E7%BA%BF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">GUID在线生成工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-18 11:36:38 / Modified: 11:39:02" itemprop="dateCreated datePublished" datetime="2020-07-18T11:36:38+08:00">2020-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">记录</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.guidgenerator.com/online-guid-generator.aspx">https://www.guidgenerator.com/online-guid-generator.aspx</a></p>
+</blockquote>
+<h2 id="What-is-a-GUID"><a href="#What-is-a-GUID" class="headerlink" title="What is a GUID?"></a>What is a GUID?</h2><p>GUID (or UUID) is an acronym for ‘Globally Unique Identifier’ (or ‘Universally Unique Identifier’). It is a 128-bit integer number used to identify resources. The term GUID is generally used by developers working with Microsoft technologies, while UUID is used everywhere else.</p>
+<h2 id="How-unique-is-a-GUID"><a href="#How-unique-is-a-GUID" class="headerlink" title="How unique is a GUID?"></a>How unique is a GUID?</h2><p>128-bits is big enough and the generation algorithm is unique enough that if 1,000,000,000 GUIDs per second were generated for 1 year the probability of a duplicate would be only 50%. Or if every human on Earth generated 600,000,000 GUIDs there would only be a 50% probability of a duplicate.</p>
+<h2 id="How-are-GUIDs-used"><a href="#How-are-GUIDs-used" class="headerlink" title="How are GUIDs used?"></a>How are GUIDs used?</h2><p>GUIDs are used in enterprise software development in C#, Java, and C++ as database keys, component identifiers, or just about anywhere else a truly unique identifier is required. GUIDs are also used to identify all interfaces and objects in COM programming.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1178,154 +1395,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/06/Github%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/06/Github%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/" class="post-title-link" itemprop="url">Github博客绑定域名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-06 16:42:32 / Modified: 16:49:28" itemprop="dateCreated datePublished" datetime="2020-07-06T16:42:32+08:00">2020-07-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">记录</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>参考资料：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/heimu24/article/details/81159099">https://blog.csdn.net/heimu24/article/details/81159099</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/05/KM%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/05/KM%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">KM算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-05 18:59:03" itemprop="dateCreated datePublished" datetime="2020-07-05T18:59:03+08:00">2020-07-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-13 20:04:48" itemprop="dateModified" datetime="2020-07-13T20:04:48+08:00">2020-07-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/KM/" itemprop="url" rel="index"><span itemprop="name">KM</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>KM算法解决的是<strong>带权二分图的最优匹配</strong>问题。</p>
-<p>下面这段代码来自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wenruo/p/5264235.html">click here</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">305</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> love[MAXN][MAXN];   <span class="comment">// 记录每个妹子和每个男生的好感度</span></span><br><span class="line"><span class="keyword">int</span> ex_girl[MAXN];      <span class="comment">// 每个妹子的期望值</span></span><br><span class="line"><span class="keyword">int</span> ex_boy[MAXN];       <span class="comment">// 每个男生的期望值</span></span><br><span class="line"><span class="keyword">bool</span> vis_girl[MAXN];    <span class="comment">// 记录每一轮匹配匹配过的女生</span></span><br><span class="line"><span class="keyword">bool</span> vis_boy[MAXN];     <span class="comment">// 记录每一轮匹配匹配过的男生</span></span><br><span class="line"><span class="keyword">int</span> match[MAXN];        <span class="comment">// 记录每个男生匹配到的妹子 如果没有则为-1</span></span><br><span class="line"><span class="keyword">int</span> slack[MAXN];        <span class="comment">// 记录每个汉子如果能被妹子倾心最少还需要多少期望值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> girl)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vis_girl[girl] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> boy = <span class="number">0</span>; boy &lt; N; ++boy) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (vis_boy[boy]) <span class="keyword">continue</span>; <span class="comment">// 每一轮匹配 每个男生只尝试一次</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> gap = ex_girl[girl] + ex_boy[boy] - love[girl][boy];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (gap == <span class="number">0</span>) &#123;  <span class="comment">// 如果符合要求</span></span><br><span class="line">            vis_boy[boy] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (match[boy] == <span class="number">-1</span> || dfs( match[boy] )) &#123;    <span class="comment">// 找到一个没有匹配的男生 或者该男生的妹子可以找到其他人</span></span><br><span class="line">                match[boy] = girl;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            slack[boy] = min(slack[boy], gap);  <span class="comment">// slack 可以理解为该男生要得到女生的倾心 还需多少期望值 取最小值 备胎的样子【捂脸</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KM</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(match, <span class="number">-1</span>, <span class="keyword">sizeof</span>(match));    <span class="comment">// 初始每个男生都没有匹配的女生</span></span><br><span class="line">    <span class="built_in">memset</span>(ex_boy, <span class="number">0</span>, <span class="keyword">sizeof</span>(ex_boy));   <span class="comment">// 初始每个男生的期望值为0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每个女生的初始期望值是与她相连的男生最大的好感度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        ex_girl[i] = love[i][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; N; ++j) &#123;</span><br><span class="line">            ex_girl[i] = max(ex_girl[i], love[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 尝试为每一个女生解决归宿问题</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        fill(slack, slack + N, INF);    <span class="comment">// 因为要取最小值 初始化为无穷大</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 为每个女生解决归宿问题的方法是 ：如果找不到就降低期望值，直到找到为止</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 记录每轮匹配中男生女生是否被尝试匹配过</span></span><br><span class="line">            <span class="built_in">memset</span>(vis_girl, <span class="literal">false</span>, <span class="keyword">sizeof</span>(vis_girl));</span><br><span class="line">            <span class="built_in">memset</span>(vis_boy, <span class="literal">false</span>, <span class="keyword">sizeof</span>(vis_boy));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (dfs(i)) <span class="keyword">break</span>;  <span class="comment">// 找到归宿 退出</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果不能找到 就降低期望值</span></span><br><span class="line">            <span class="comment">// 最小可降低的期望值</span></span><br><span class="line">            <span class="keyword">int</span> d = INF;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j)</span><br><span class="line">                <span class="keyword">if</span> (!vis_boy[j]) d = min(d, slack[j]);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j) &#123;</span><br><span class="line">                <span class="comment">// 所有访问过的女生降低期望值</span></span><br><span class="line">                <span class="keyword">if</span> (vis_girl[j]) ex_girl[j] -= d;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 所有访问过的男生增加期望值</span></span><br><span class="line">                <span class="keyword">if</span> (vis_boy[j]) ex_boy[j] += d;</span><br><span class="line">                <span class="comment">// 没有访问过的boy 因为girl们的期望值降低，距离得到女生倾心又进了一步！</span></span><br><span class="line">                <span class="keyword">else</span> slack[j] -= d;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 匹配完成 求出所有配对的好感度的和</span></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)</span><br><span class="line">        res += love[ match[i] ][i];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;N)) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j)</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;love[i][j]);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, KM());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>模板题：<a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2255">HDU2255</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1395,7 +1464,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1408,7 +1477,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

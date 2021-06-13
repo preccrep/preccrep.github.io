@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">34</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">35</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">83</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">85</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,204 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/12/18/Directory-Symbolic-Link/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/18/Directory-Symbolic-Link/" class="post-title-link" itemprop="url">Directory-Symbolic-Link</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-12-18 21:37:42" itemprop="dateCreated datePublished" datetime="2020-12-18T21:37:42+08:00">2020-12-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-19 12:42:42" itemprop="dateModified" datetime="2020-12-19T12:42:42+08:00">2020-12-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>In the context of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NTFS">NTFS</a>:</p>
+<p><code>MKLINK [[/D] | [/H] | [/J]] Link Target</code></p>
+<pre><code>    /D      创建目录符号链接。默认为文件
+            符号链接。
+    /H      创建硬链接而非符号链接。
+    /J      创建目录联接。
+    Link    指定新的符号链接名称。
+    Target  指定新链接引用的路径
+            (相对或绝对)。
+</code></pre><ol>
+<li><p>Isn’t a <strong>directory junction</strong> the exact same thing as a <strong>directory symbolic link</strong>?</p>
+<p>What’s the difference between <code>mklink /D f1 f2</code> and <code>mklink /J f1 f2</code> ?</p>
+</li>
+<li><p>Since a “directory” is actually just a <em>file</em>, what would be the difference between a directory symbolic link and a file symbolic link?</p>
+</li>
+</ol>
+<p>A junction is definitely not the same thing as a directory symbolic link, although they behave similarly. The main difference is that, if you are looking at a remote server, <strong>junctions are processed at the server</strong> and <strong>directory symbolic links are processed at the client</strong>. Also see Matthew’s comment on the fact that this means symbolic links on the local file system can point to remote file systems.</p>
+<p>Suppose that on a machine named Alice you were to put a junction point <code>c:\myjp</code> and a directory symbolic link <code>c:\mysymlink</code>, both pointing to <code>c:\targetfolder</code>. While you’re using Alice you won’t notice much difference between them. But if you’re using another machine named Bob, then the junction point</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\m</span>yjp` will point to `<span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\t</span>argetfolder</span><br></pre></td></tr></table></figure>
+<p>but the symbolic link</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\\</span>Alice<span class="symbol">\c</span>$<span class="symbol">\m</span>ysymlink` will point to `<span class="symbol">\\</span>Bob<span class="symbol">\c</span>$<span class="symbol">\t</span>argetfolder</span><br></pre></td></tr></table></figure>
+<p>(Caveat: by default, the system doesn’t follow symlinks on remote volumes, so in most cases the second example will actually result in either <em>“File Not Found”</em> or <em>“The symbolic link cannot be followed because its type is disabled.”</em>)</p>
+<p>The difference between a directory symbolic link and a file symbolic link is simply that one represents a directory and one represents a file. Since the target of the link doesn’t need to exist when the link is created, the file system needs to know whether to tell applications that it is a directory or not.</p>
+<p>It should also be noted that creating a symbolic link requires special privilege (by default, only available to elevated processes) whereas creating a junction only requires access to the file system.</p>
+<p><a target="_blank" rel="noopener" href="https://superuser.com/questions/343074/directory-junction-vs-directory-symbolic-link/343079#343079">source</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/12/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%BB%83%E4%B9%A0%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%BB%83%E4%B9%A0%E9%A2%98/" class="post-title-link" itemprop="url">动态规划练习题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-12-17 10:42:20" itemprop="dateCreated datePublished" datetime="2020-12-17T10:42:20+08:00">2020-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-28 21:11:06" itemprop="dateModified" datetime="2020-12-28T21:11:06+08:00">2020-12-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>此文会不定期更新</p>
+</blockquote>
+<h1 id="购买股票问题"><a href="#购买股票问题" class="headerlink" title="购买股票问题"></a>购买股票问题</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/">LeetCode714.买卖股票的最佳时机含手续费</a></p>
+<blockquote>
+<p>给定一个整数数组 prices，其中第 <code>i</code> 个元素代表了第 <code>i</code> 天的股票价格 ；非负整数 fee 代表了交易股票的手续费用。</p>
+<p>你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。</p>
+<p>返回获得利润的最大值。</p>
+<p>注意：这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。</p>
+</blockquote>
+<p>输入: prices = [1, 3, 2, 8, 4, 9], fee = 2<br>输出: 8</p>
+<ul>
+<li><code>0 &lt; prices.length &lt;= 50000</code>.</li>
+<li><code>0 &lt; prices[i] &lt; 50000</code>.</li>
+<li><code>0 &lt;= fee &lt; 50000</code>.</li>
+</ul>
+<p><code>dp[i][0]</code> 表示第 <code>i</code> 天未持有股票的最大利润，<code>dp[i][1]</code> 表示第 <code>i</code>天持有股票的最大利润。</p>
+<p>那么对于 <code>dp[i][0]</code> ，它的来源有两种：第一种是在第 <code>i - 1</code> 天时手中就没有股票，到了第 <code>i</code> 天仍然没有；第二种是在第 <code>i - 1</code> 天手中有股票，到了第 <code>i</code> 天就卖出了。因此得到递推关系式：</p>
+<p><code>dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i] - fee)</code></p>
+<p>对于 <code>dp[i][1]</code> ，它的来源也有两种：第一种是在第 <code>i - 1</code> 天手中就有股票，第 <code>i</code> 天也没有抛售出去；第二种是在第 <code>i - 1</code> 天未持有股票，在第 <code>i</code> 天购入。递推关系式为：</p>
+<p><code>dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i])</code></p>
+<p>初始条件为：</p>
+<p><code>dp[0][0] = 0</code> ：第 0 天什么也没买</p>
+<p><code>dp[0][1] = -prices[0]</code> ：第 0 天买了，那么就只可能买 prices[0] 的股票。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices, <span class="keyword">int</span> fee)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> dp[<span class="number">50010</span>][<span class="number">2</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>, dp[<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> n = prices.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = max(dp[i - <span class="number">1</span>][<span class="number">0</span>], dp[i - <span class="number">1</span>][<span class="number">1</span>] + prices[i] - fee);</span><br><span class="line">            dp[i][<span class="number">1</span>] = max(dp[i - <span class="number">1</span>][<span class="number">1</span>], dp[i - <span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max(dp[n - <span class="number">1</span>][<span class="number">0</span>], dp[n - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/">LeetCode188.买卖股票的最佳时机</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span> k, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -794,311 +992,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/10/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="post-title-link" itemprop="url">数据结构与算法学习笔记1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-10-04 08:03:00 / Modified: 14:15:32" itemprop="dateCreated datePublished" datetime="2020-10-04T08:03:00+08:00">2020-10-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="程序性能"><a href="#程序性能" class="headerlink" title="程序性能"></a>程序性能</h1><h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>程序所需要的空间主要由以下部分构成：</p>
-<p><strong>指令空间</strong>（instruction space）指令空间是指用来存储经过编译之后的程序指令所需的空间。</p>
-<p><strong>数据空间</strong>（data space）数据空间是指用来存储所有常量和所有变量值所需的空间。数据空间由两个部分构成：</p>
-<ol>
-<li><p>存储常量和简单变量所需要的空间：如4是常量，a、b、c是简单变量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c + <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>存储复合变量所需要的空间。这一类包括数据结构所需的空间及动态分配的空间。如数组a。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        sum += a[i];</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>环境栈空间</strong>（environment stack space）环境栈用来保存函数调用返回时恢复运行所需要的信息。例如，如果函数fun1调用了函数fun2，那么至少必须保存fun2结束时fun1将要继续执行的指令的地址。</p>
-<h3 id="指令空间"><a href="#指令空间" class="headerlink" title="指令空间"></a>指令空间</h3><p>程序所需要的指令空间的数量取决于如下因素：</p>
-<p><code>把程序编译成机器代码的编译器</code></p>
-<p><code>编译时实际采用的编译器选项</code></p>
-<p><code>目标计算机</code></p>
-<h3 id="数据空间"><a href="#数据空间" class="headerlink" title="数据空间"></a>数据空间</h3><p>对于简单变量和常量来说，所需要的空间取决于所使用的使用的计算机和编译器以及变量与常量的数目。</p>
-<h3 id="环境栈"><a href="#环境栈" class="headerlink" title="环境栈"></a>环境栈</h3><p>当一个函数被调用时，下面的数据将被保存在环境栈中：</p>
-<p><code>返回地址</code></p>
-<p><code>函数被调用时所有局部变量的值以及传值形式参数的值</code></p>
-<p><code>所有引用参数及常量引用参数的定义</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function">T <span class="title">Rsum</span><span class="params">(T a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> Rsum(a, n - <span class="number">1</span>) + a[n - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong><em>当Rsum被调用时，不管该调用是来自外部或第4行，a的当前赋值、n的值以及程序运行结束时的返回地址都被存储在环境栈之中。</em></strong></p>
-<p>值得注意的是，有些编译器在保留局部变量的值、传值形式参数的值以及引用参数和常量引用参数的定义时，对于递归函数和非递归函数一视同仁，而有些编译器则仅为递归函数保存上述内容。所以实际使用的编译器将影响环境栈所需要的空间。</p>
-<p>可以把一个程序所需要的空间分成两部分：</p>
-<p><code>固定部分</code>：它独立于实例的特征。一般包含指令空间、简单变量和常量及定长复合变量所占空间等等。</p>
-<p><code>可变部分</code>：包含复合变量所需空间（这些变量的大小依赖于所解决的具体问题）、动态分配的空间（一般都依赖于实例特征）、递归栈所需空间（也依赖于实例特征）。</p>
-<p>任意程序P所需要的空间S(P)可以表示为：</p>
-<script type="math/tex; mode=display">
-S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要的空间， Sp表示可变部分所需要的空间。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">seq_search</span><span class="params">(T a[], <span class="keyword">const</span> T&amp; x, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n &amp;&amp; a[i] != x; i++);</span><br><span class="line">    <span class="keyword">if</span>(i == n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们希望采用实例特征n来估算该函数的空间复杂性。假定T为int类型，则数组a中的每个元素需要2个字节，实参x需要2个字节，传值形式参数n需要2个字节，局部变量i需要2个字节，每个整型常量0和-1也分别需要2个字节。因此，所需要的总的数据空间为12字节。因为该空间独立于n，所以S(n) = 0。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function">T <span class="title">Sum</span><span class="params">(T a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T tsum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        tsum += a[i];</span><br><span class="line">    <span class="keyword">return</span> tsum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在该函数中，a、n、i和tsum需要分配空间，所以程序所需要的空间与n无关，因此有S(n) = 0。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该程序的空间复杂性是n的函数而不是输入（只有一个）或输出（也只有一个）个数的函数。递归深度为max{n, 1}。每次调用函数Factorial 时，递归栈需要保留返回地址（ 2个字节）和n的值（2个字节）。此外没有其他依赖于n的空间，所以S(n) = 4*max{n, 1}。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用递归函数生成排列</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Perm</span><span class="params">(T <span class="built_in">list</span>[], <span class="keyword">int</span> k, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>(k == m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">list</span>[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = k; i &lt;= m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(<span class="built_in">list</span>[k], <span class="built_in">list</span>[i]);</span><br><span class="line">            Perm(<span class="built_in">list</span>, k + <span class="number">1</span>, m);</span><br><span class="line">            swap(<span class="built_in">list</span>[k], <span class="built_in">list</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于初始调用Perm(list, 0, n-1)，递归的深度为n。由于每次调用需要10个字节的递归栈空间（每个返回地址、list、k、m以及i各需要2个字节），所以需要10n字节的递归栈空间，S(n) = 10n。</p>
-<h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>有两个更可行的方法可以用来估算运行时间：</p>
-<ol>
-<li>确定关键操作所需要的执行时间；</li>
-<li>确定程序执行的总步数。</li>
-</ol>
-<h3 id="操作计数"><a href="#操作计数" class="headerlink" title="操作计数"></a>操作计数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算名次</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rank</span><span class="params">(T a[], <span class="keyword">int</span> n, <span class="keyword">int</span> r[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        r[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt;= a[i]) r[j]++;</span><br><span class="line">            <span class="keyword">else</span> r[i]++; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意在估算时间复杂性时没有考虑for循环的额外开销、初始化数组r的开销以及每次比较a中两个元素时对r进行增值的开销。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原地重排</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rearrange</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// rank: r[], array: a[]</span></span><br><span class="line">    <span class="comment">// int r[5] = &#123;2, 0, 4, 1, 3&#125;;</span></span><br><span class="line">    <span class="comment">// int a[5] = &#123;4, 3, 9, 3, 7&#125;;</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(r[i] != i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = r[i];</span><br><span class="line">            swap(a[t], a[i]);</span><br><span class="line">            swap(r[t], r[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="执行步数"><a href="#执行步数" class="headerlink" title="执行步数"></a>执行步数</h3><p><strong>程序步</strong>（program step）可以定义为一个语法或语义意义上的程序片段，该片段的执行时间独立于实例特征。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/09/28/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-09-28 20:33:14 / Modified: 21:18:28" itemprop="dateCreated datePublished" datetime="2020-09-28T20:33:14+08:00">2020-09-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">正则表达式</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><em>学习<a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-syntax.html">菜鸟教程</a>的一些记录。</em></p>
-<p>正则表达式（regular expression）描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
-<p><code>runoo+b</code> 匹配 runoob、runooob、runoooooob 等，+ 号代表前面的字符必须至少出现一次（1次或多次）</p>
-<p><code>runoo*b</code> 可以匹配 runob、runoob、runoooooob 等，* 号代表前面的字符可以不出现，也可以出现一次或者多次（0次、或1次、或多次）。</p>
-<p><code>colou?r</code> 可以匹配 color 或者 colour，? 问号代表前面的字符最多只可以出现一次（0次、或1次）。</p>
-<p><strong>普通字符</strong></p>
-<p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
-<p><code>[ABC]</code> 匹配 <code>[...]</code> 中的所有字符。</p>
-<p><code>[^ABC]</code> 匹配除了 <code>[...]</code> 中的所有字符。</p>
-<p><code>[A-Z]</code> 匹配所有大写字母，<code>[a-z]</code> 匹配所有小写字母。</p>
-<p><code>.</code> 相当于 <code>[^\n\r]</code>，匹配除换行符（\n、\r）之外的任何单个字符。</p>
-<p><code>[\s\S]</code> ：\s 是匹配所有空白符，包括换行，\S 非空白符，不包括换行。</p>
-<p><code>\w</code> 匹配字母、数字、下划线，等价于 <code>[A-Za-z0-9_]</code>。</p>
-<p><strong>非打印字符</strong></p>
-<p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>\cx</code></td>
-<td>匹配由x指明的控制字符。例如， <code>\cM</code> 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
-</tr>
-<tr>
-<td><code>\f</code></td>
-<td>匹配一个换页符。等价于 <code>\x0c</code> 和 <code>\cL</code>。</td>
-</tr>
-<tr>
-<td><code>\n</code></td>
-<td>匹配一个换行符。等价于 <code>\x0a</code> 和 <code>\cJ</code>。</td>
-</tr>
-<tr>
-<td><code>\r</code></td>
-<td>匹配一个回车符。等价于 <code>\x0d</code> 和 <code>\cM</code>。</td>
-</tr>
-<tr>
-<td><code>\s</code></td>
-<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 <code>[\f\n\r\t\v]</code>。注意 Unicode 正则表达式会匹配全角空格符。</td>
-</tr>
-<tr>
-<td><code>\S</code></td>
-<td>匹配任何非空白字符。等价于 <code>[^\f\n\r\t\v]</code>。</td>
-</tr>
-<tr>
-<td><code>\t</code></td>
-<td>匹配一个制表符。等价于 <code>\x09</code> 和 <code>\cI</code>。</td>
-</tr>
-<tr>
-<td><code>\v</code></td>
-<td>匹配一个垂直制表符。等价于 <code>\x0b</code> 和 <code>\cK</code>。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>特殊字符</strong></p>
-<p>所谓特殊字符，就是一些有特殊含义的字符，如上面说的 <code>runoo*b</code> 中的 <em>，简单的说就是表示任何字符串的意思。如果要查找字符串中的 </em> 符号，则需要对 <em> 进行转义，即在其前加一个 <code>\</code>: `runo\</em>ob<code>匹配</code>runo*ob`。</p>
-<p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符 <code>\</code> 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>特别字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$$`</td>
-<td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 <code>$$ 也匹配 &#39;\n&#39; 或 &#39;\r&#39;。要匹配 $$</code> 字符本身，请使用 `$$。</td>
-</tr>
-<tr>
-<td><code>()</code></td>
-<td>标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 <code>\(</code> 和 <code>\)</code>。</td>
-</tr>
-<tr>
-<td><code>*</code></td>
-<td>匹配前面的子表达式零次或多次。要匹配 <code>*</code> 字符，请使用 <code>\*</code>。</td>
-</tr>
-<tr>
-<td><code>+</code></td>
-<td>匹配前面的子表达式一次或多次。要匹配 <code>+</code> 字符，请使用 <code>\+</code>。</td>
-</tr>
-<tr>
-<td><code>.</code></td>
-<td>匹配除换行符 <code>\n</code> 之外的任何单字符。要匹配 <code>.</code> ，请使用 <code>\.</code> 。</td>
-</tr>
-<tr>
-<td><code>[</code></td>
-<td>标记一个中括号表达式的开始。要匹配 <code>[</code>，请使用 <code>\[</code>。</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 <code>?</code> 字符，请使用 <code>\?</code>。</td>
-</tr>
-<tr>
-<td><code>\</code></td>
-<td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， <code>n</code> 匹配字符 <code>n</code>。<code>\n</code> 匹配换行符。序列 <code>\\</code> 匹配 <code>\</code>，而 <code>\(</code> 则匹配 <code>(</code>。</td>
-</tr>
-<tr>
-<td><code>^</code></td>
-<td>匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 <code>^</code> 字符本身，请使用 <code>\^</code>。</td>
-</tr>
-<tr>
-<td><code>&#123;</code></td>
-<td>标记限定符表达式的开始。要匹配 <code>&#123;</code>，请使用 <code>\&#123;</code>。</td>
-</tr>
-<tr>
-<td>`</td>
-<td>`</td>
-<td>指明两项之间的一个选择。要匹配 `</td>
-<td><code>，请使用</code>\</td>
-<td>`。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>限定符</strong></p>
-<p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 <code>*</code> 或 <code>+</code> 或 <code>?</code> 或 <code>&#123;n&#125;</code> 或 <code>&#123;n,&#125;</code> 或 <code>&#123;n,m&#125;</code> 共6种。</p>
-<p>正则表达式的限定符有：</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1168,7 +1061,7 @@ S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1181,7 +1074,7 @@ S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">34</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">35</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">83</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">85</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,311 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/10/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="post-title-link" itemprop="url">数据结构与算法学习笔记1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-04 08:03:00 / Modified: 14:15:32" itemprop="dateCreated datePublished" datetime="2020-10-04T08:03:00+08:00">2020-10-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="程序性能"><a href="#程序性能" class="headerlink" title="程序性能"></a>程序性能</h1><h2 id="空间复杂性"><a href="#空间复杂性" class="headerlink" title="空间复杂性"></a>空间复杂性</h2><p>程序所需要的空间主要由以下部分构成：</p>
+<p><strong>指令空间</strong>（instruction space）指令空间是指用来存储经过编译之后的程序指令所需的空间。</p>
+<p><strong>数据空间</strong>（data space）数据空间是指用来存储所有常量和所有变量值所需的空间。数据空间由两个部分构成：</p>
+<ol>
+<li><p>存储常量和简单变量所需要的空间：如4是常量，a、b、c是简单变量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c + <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>存储复合变量所需要的空间。这一类包括数据结构所需的空间及动态分配的空间。如数组a。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        sum += a[i];</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>环境栈空间</strong>（environment stack space）环境栈用来保存函数调用返回时恢复运行所需要的信息。例如，如果函数fun1调用了函数fun2，那么至少必须保存fun2结束时fun1将要继续执行的指令的地址。</p>
+<h3 id="指令空间"><a href="#指令空间" class="headerlink" title="指令空间"></a>指令空间</h3><p>程序所需要的指令空间的数量取决于如下因素：</p>
+<p><code>把程序编译成机器代码的编译器</code></p>
+<p><code>编译时实际采用的编译器选项</code></p>
+<p><code>目标计算机</code></p>
+<h3 id="数据空间"><a href="#数据空间" class="headerlink" title="数据空间"></a>数据空间</h3><p>对于简单变量和常量来说，所需要的空间取决于所使用的使用的计算机和编译器以及变量与常量的数目。</p>
+<h3 id="环境栈"><a href="#环境栈" class="headerlink" title="环境栈"></a>环境栈</h3><p>当一个函数被调用时，下面的数据将被保存在环境栈中：</p>
+<p><code>返回地址</code></p>
+<p><code>函数被调用时所有局部变量的值以及传值形式参数的值</code></p>
+<p><code>所有引用参数及常量引用参数的定义</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function">T <span class="title">Rsum</span><span class="params">(T a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> Rsum(a, n - <span class="number">1</span>) + a[n - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em>当Rsum被调用时，不管该调用是来自外部或第4行，a的当前赋值、n的值以及程序运行结束时的返回地址都被存储在环境栈之中。</em></strong></p>
+<p>值得注意的是，有些编译器在保留局部变量的值、传值形式参数的值以及引用参数和常量引用参数的定义时，对于递归函数和非递归函数一视同仁，而有些编译器则仅为递归函数保存上述内容。所以实际使用的编译器将影响环境栈所需要的空间。</p>
+<p>可以把一个程序所需要的空间分成两部分：</p>
+<p><code>固定部分</code>：它独立于实例的特征。一般包含指令空间、简单变量和常量及定长复合变量所占空间等等。</p>
+<p><code>可变部分</code>：包含复合变量所需空间（这些变量的大小依赖于所解决的具体问题）、动态分配的空间（一般都依赖于实例特征）、递归栈所需空间（也依赖于实例特征）。</p>
+<p>任意程序P所需要的空间S(P)可以表示为：</p>
+<script type="math/tex; mode=display">
+S(P) = c + S_p</script><p>其中c是一个常量，表示固定部分所需要的空间， Sp表示可变部分所需要的空间。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">seq_search</span><span class="params">(T a[], <span class="keyword">const</span> T&amp; x, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n &amp;&amp; a[i] != x; i++);</span><br><span class="line">    <span class="keyword">if</span>(i == n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们希望采用实例特征n来估算该函数的空间复杂性。假定T为int类型，则数组a中的每个元素需要2个字节，实参x需要2个字节，传值形式参数n需要2个字节，局部变量i需要2个字节，每个整型常量0和-1也分别需要2个字节。因此，所需要的总的数据空间为12字节。因为该空间独立于n，所以S(n) = 0。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function">T <span class="title">Sum</span><span class="params">(T a[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T tsum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        tsum += a[i];</span><br><span class="line">    <span class="keyword">return</span> tsum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在该函数中，a、n、i和tsum需要分配空间，所以程序所需要的空间与n无关，因此有S(n) = 0。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该程序的空间复杂性是n的函数而不是输入（只有一个）或输出（也只有一个）个数的函数。递归深度为max{n, 1}。每次调用函数Factorial 时，递归栈需要保留返回地址（ 2个字节）和n的值（2个字节）。此外没有其他依赖于n的空间，所以S(n) = 4*max{n, 1}。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用递归函数生成排列</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Perm</span><span class="params">(T <span class="built_in">list</span>[], <span class="keyword">int</span> k, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>(k == m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">list</span>[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i = k; i &lt;= m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(<span class="built_in">list</span>[k], <span class="built_in">list</span>[i]);</span><br><span class="line">            Perm(<span class="built_in">list</span>, k + <span class="number">1</span>, m);</span><br><span class="line">            swap(<span class="built_in">list</span>[k], <span class="built_in">list</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于初始调用Perm(list, 0, n-1)，递归的深度为n。由于每次调用需要10个字节的递归栈空间（每个返回地址、list、k、m以及i各需要2个字节），所以需要10n字节的递归栈空间，S(n) = 10n。</p>
+<h2 id="时间复杂性"><a href="#时间复杂性" class="headerlink" title="时间复杂性"></a>时间复杂性</h2><p>有两个更可行的方法可以用来估算运行时间：</p>
+<ol>
+<li>确定关键操作所需要的执行时间；</li>
+<li>确定程序执行的总步数。</li>
+</ol>
+<h3 id="操作计数"><a href="#操作计数" class="headerlink" title="操作计数"></a>操作计数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算名次</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rank</span><span class="params">(T a[], <span class="keyword">int</span> n, <span class="keyword">int</span> r[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        r[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt;= a[i]) r[j]++;</span><br><span class="line">            <span class="keyword">else</span> r[i]++; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意在估算时间复杂性时没有考虑for循环的额外开销、初始化数组r的开销以及每次比较a中两个元素时对r进行增值的开销。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原地重排</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rearrange</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// rank: r[], array: a[]</span></span><br><span class="line">    <span class="comment">// int r[5] = &#123;2, 0, 4, 1, 3&#125;;</span></span><br><span class="line">    <span class="comment">// int a[5] = &#123;4, 3, 9, 3, 7&#125;;</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(r[i] != i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = r[i];</span><br><span class="line">            swap(a[t], a[i]);</span><br><span class="line">            swap(r[t], r[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="执行步数"><a href="#执行步数" class="headerlink" title="执行步数"></a>执行步数</h3><p><strong>程序步</strong>（program step）可以定义为一个语法或语义意义上的程序片段，该片段的执行时间独立于实例特征。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/09/28/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-28 20:33:14 / Modified: 21:18:28" itemprop="dateCreated datePublished" datetime="2020-09-28T20:33:14+08:00">2020-09-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">正则表达式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><em>学习<a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-syntax.html">菜鸟教程</a>的一些记录。</em></p>
+<p>正则表达式（regular expression）描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p><code>runoo+b</code> 匹配 runoob、runooob、runoooooob 等，+ 号代表前面的字符必须至少出现一次（1次或多次）</p>
+<p><code>runoo*b</code> 可以匹配 runob、runoob、runoooooob 等，* 号代表前面的字符可以不出现，也可以出现一次或者多次（0次、或1次、或多次）。</p>
+<p><code>colou?r</code> 可以匹配 color 或者 colour，? 问号代表前面的字符最多只可以出现一次（0次、或1次）。</p>
+<p><strong>普通字符</strong></p>
+<p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
+<p><code>[ABC]</code> 匹配 <code>[...]</code> 中的所有字符。</p>
+<p><code>[^ABC]</code> 匹配除了 <code>[...]</code> 中的所有字符。</p>
+<p><code>[A-Z]</code> 匹配所有大写字母，<code>[a-z]</code> 匹配所有小写字母。</p>
+<p><code>.</code> 相当于 <code>[^\n\r]</code>，匹配除换行符（\n、\r）之外的任何单个字符。</p>
+<p><code>[\s\S]</code> ：\s 是匹配所有空白符，包括换行，\S 非空白符，不包括换行。</p>
+<p><code>\w</code> 匹配字母、数字、下划线，等价于 <code>[A-Za-z0-9_]</code>。</p>
+<p><strong>非打印字符</strong></p>
+<p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\cx</code></td>
+<td>匹配由x指明的控制字符。例如， <code>\cM</code> 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>匹配一个换页符。等价于 <code>\x0c</code> 和 <code>\cL</code>。</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>匹配一个换行符。等价于 <code>\x0a</code> 和 <code>\cJ</code>。</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>匹配一个回车符。等价于 <code>\x0d</code> 和 <code>\cM</code>。</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 <code>[\f\n\r\t\v]</code>。注意 Unicode 正则表达式会匹配全角空格符。</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>匹配任何非空白字符。等价于 <code>[^\f\n\r\t\v]</code>。</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>匹配一个制表符。等价于 <code>\x09</code> 和 <code>\cI</code>。</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>匹配一个垂直制表符。等价于 <code>\x0b</code> 和 <code>\cK</code>。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>特殊字符</strong></p>
+<p>所谓特殊字符，就是一些有特殊含义的字符，如上面说的 <code>runoo*b</code> 中的 <em>，简单的说就是表示任何字符串的意思。如果要查找字符串中的 </em> 符号，则需要对 <em> 进行转义，即在其前加一个 <code>\</code>: `runo\</em>ob<code>匹配</code>runo*ob`。</p>
+<p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符 <code>\</code> 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>特别字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$$`</td>
+<td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 <code>$$ 也匹配 &#39;\n&#39; 或 &#39;\r&#39;。要匹配 $$</code> 字符本身，请使用 `$$。</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 <code>\(</code> 和 <code>\)</code>。</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>匹配前面的子表达式零次或多次。要匹配 <code>*</code> 字符，请使用 <code>\*</code>。</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>匹配前面的子表达式一次或多次。要匹配 <code>+</code> 字符，请使用 <code>\+</code>。</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>匹配除换行符 <code>\n</code> 之外的任何单字符。要匹配 <code>.</code> ，请使用 <code>\.</code> 。</td>
+</tr>
+<tr>
+<td><code>[</code></td>
+<td>标记一个中括号表达式的开始。要匹配 <code>[</code>，请使用 <code>\[</code>。</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 <code>?</code> 字符，请使用 <code>\?</code>。</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， <code>n</code> 匹配字符 <code>n</code>。<code>\n</code> 匹配换行符。序列 <code>\\</code> 匹配 <code>\</code>，而 <code>\(</code> 则匹配 <code>(</code>。</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 <code>^</code> 字符本身，请使用 <code>\^</code>。</td>
+</tr>
+<tr>
+<td><code>&#123;</code></td>
+<td>标记限定符表达式的开始。要匹配 <code>&#123;</code>，请使用 <code>\&#123;</code>。</td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+<td>指明两项之间的一个选择。要匹配 `</td>
+<td><code>，请使用</code>\</td>
+<td>`。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>限定符</strong></p>
+<p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 <code>*</code> 或 <code>+</code> 或 <code>?</code> 或 <code>&#123;n&#125;</code> 或 <code>&#123;n,&#125;</code> 或 <code>&#123;n,m&#125;</code> 共6种。</p>
+<p>正则表达式的限定符有：</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -878,223 +1183,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/26/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%AE%A1%E7%AE%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/26/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%AE%A1%E7%AE%97/" class="post-title-link" itemprop="url">数据分析与多项式计算</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-26 12:05:46 / Modified: 17:53:00" itemprop="dateCreated datePublished" datetime="2020-07-26T12:05:46+08:00">2020-07-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据统计分析"><a href="#数据统计分析" class="headerlink" title="数据统计分析"></a>数据统计分析</h1><p>max()：求向量或矩阵元素的最大值。</p>
-<p>min()：求向量或矩阵元素的最小值。</p>
-<p><em>当参数为向量时：</em></p>
-<p>y = max(X)：返回向量 X 的最大值存入 y，如果 X 中包含复数元素，则按模取最大值。</p>
-<p>[y, k] = max(X)：返回向量 X 的最大值存入 y，最大值元素的序号存入 k，如果 X 中包含复数元素，则按模取最大值。</p>
-<p><em>当参数为矩阵时：</em></p>
-<p>max(A)：返回一个行向量，向量的第 i 个元素是矩阵 A 的第 i 列上的最大值。</p>
-<p>[Y, U] = max(A)：返回行向量 Y 和 U，Y 向量记录 A 的每列的最大值，U 向量记录每列最大值的行号。</p>
-<p>max(A, [], dim)：dim 取 1 或 2。dim 取 1 时，该函数的功能与 max(A) 完全相同；dim 取 2 时，该函数返回一个列向量，其第 i 个元素是 A 矩阵的第 i 行上的最大值。</p>
-<p>求矩阵的最大值：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(<span class="built_in">max</span>(A))</span><br></pre></td></tr></table></figure>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">max</span>(A(:))</span><br></pre></td></tr></table></figure>
-<p>mean()：求算术平均值。</p>
-<p>median()：求中值。</p>
-<p>sum()：求和函数。</p>
-<p>prod()：求积函数。</p>
-<p>cumsum()：累加和函数。</p>
-<p>cumprod()：累乘积函数。</p>
-<p><em>标准差：</em></p>
-<p>std()：计算标准差函数。</p>
-<p>调用格式：</p>
-<p>std(X)：计算向量 X 的标准差。</p>
-<p>std(A)：计算矩阵 A 是各列的标准差。</p>
-<p>std(A, flag, dim)：flag 取 0 或 1，当 flag = 0 时，按 S1 公式计算样本标准差；当 flag = 1 时，按 S2 公式计算总体标准差。默认情况下，flag = 0，dim = 1。</p>
-<p>生成满足正态分布的 50000 * 4 随机矩阵，用不同的形式求其各列之间的标准差。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">randn</span>(<span class="number">50000</span>, <span class="number">4</span>);</span><br><span class="line">y1 = std(x, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">y2 = std(x, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">x1 = x&#x27;;</span><br><span class="line">y3 = std(x1, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">y3 = y3&#x27;;</span><br><span class="line">y4 = std(x1, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">y4 = y4&#x27;;</span><br></pre></td></tr></table></figure>
-<p><em>相关系数：</em></p>
-<p>corrcoef()</p>
-<p>调用格式：</p>
-<p>corrcoef(A)：返回的相关系数矩阵的第 i 行第 j 列元素表示矩阵 A 中第 i 列和第 j 列的相关系数。</p>
-<p>corrcoef(X, Y)：这里 X，Y是向量。</p>
-<p><em>排序：</em></p>
-<p>sort()</p>
-<p>调用格式：</p>
-<p>sort(X)：对向量 X 按升序排序。</p>
-<p>[Y, I] = sort(A, dim, mode)：其中 dim 指明对 A 的列还是行进行排序，mode 指明升序还是降序排序，若取 “ascend”，则按升序；若取 “descend”，则按降序。默认为升序。输出参数中，Y 是排序后的矩阵，I 记录 Y 中元素在 A 中的位置。</p>
-<h1 id="多项式计算"><a href="#多项式计算" class="headerlink" title="多项式计算"></a>多项式计算</h1><p><em>多项式乘法</em></p>
-<p>conv(P1, P2)：P1，P2是多项式系数向量。</p>
-<p><em>多项式除法</em></p>
-<p>[Q, r] = deconv(P1, P2)：Q 返回多项式 P1 除以 P2 的商式，r 返回 P1 除以 P2 的余式。</p>
-<p><em>多项式的求导</em></p>
-<p>polyder()</p>
-<p>p = polyder(P)：求多项式 P 的导函数。</p>
-<p>p = polyder(P, Q)：求 P*Q 的导函数。</p>
-<p>[p, q] = polyder(P, Q)：求 P/Q 的导函数。导函数的分子存入 p，分母存入 q。</p>
-<p><em>多项式的求值</em></p>
-<p>polyval(p, x)：代数多项式求值。p 为多项式系数向量，x 可以是标量、向量或矩阵。</p>
-<p>polyvalm(p, x)：矩阵多项式求值。x 为方阵。</p>
-<p><em>多项式求根</em></p>
-<p>roots(p)：p 为多项式系数向量。</p>
-<p>若已知多项式的全部根，则可以用 poly 函数建立起该多项式：p = poly(x)。</p>
-<p>求多项式 - 38.89 <em> t^2 + 126.11 </em> t - 3.42 的极大值：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = [<span class="number">-38.89</span>, <span class="number">126.11</span>, <span class="number">-3.42</span>];</span><br><span class="line">q = polyder(p);</span><br><span class="line">a = roots(q);</span><br><span class="line">b = polyval(p, a);</span><br><span class="line">x = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">2</span>;</span><br><span class="line"><span class="built_in">plot</span>(x, polyval(p, x), a, b, <span class="string">&#x27;rp&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="数据插值"><a href="#数据插值" class="headerlink" title="数据插值"></a>数据插值</h1><p>数据插值可以根据有限个点的取值状况，合理估算出附近其他点的取值，从而节约大量的实验和测试资源。数据插值是一种函数逼近的方法。</p>
-<p><strong><em>interp1()：一维插值函数。</em></strong></p>
-<p><strong>Y1 = interp1(X, Y, X1, method)</strong></p>
-<p>根据 X，Y 的值，计算函数在 X1 处的值。其中，X，Y是两个等长的已知向量，分别表示采样点和采样值。X1 是一个向量或标量，表示要插值的点。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>];</span><br><span class="line">y = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1.7</span>,<span class="number">2.0</span>,<span class="number">2.1</span>,<span class="number">2.0</span>,<span class="number">1.8</span>,<span class="number">1.2</span>,<span class="number">1.0</span>,<span class="number">1.6</span>];</span><br><span class="line">x1 = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">15</span>;</span><br><span class="line">y1 = interp1(x, y, x1, <span class="string">&#x27;spline&#x27;</span>);</span><br><span class="line"><span class="built_in">plot</span>(x1, y1)</span><br></pre></td></tr></table></figure>
-<p><strong>method</strong> 用于指定插值方法，常用的取值有以下四种：</p>
-<p><em>linear</em>：线性插值，默认方法。将插值点与靠近的两个数据点用直线连接，然后在直线上选取对应插值点的数据。</p>
-<p><em>nearest</em>：最近插值点。选择最近样本点的值作为插值数据。(如果是中间点，则取后一个数据点的值)</p>
-<p><em>pchip</em>：分段 3 次埃尔米特插值。采用分段三次多项式，除满足插值条件，还需满足在若干节点处相邻段插值函数的一阶导数相等，使得曲线光滑的同时，还具有保形性。</p>
-<p><em>spline</em>：3 次样条插值。每个分段内构造一个三次多项式，使其插值函数除满足插值条件外，还要求在各节点处具有连续的一阶和二阶导数。</p>
-<p><strong><em>为什么这两种插值方法都用 3 次多项式而不用更高次的？</em></strong></p>
-<p><em>多项式次数并非越高越好。次数越高，越容易产生震荡而偏离原函数，这种现象称为龙格(Runge)现象。</em></p>
-<p><strong><em>interp2()：二维插值函数</em></strong></p>
-<p><strong>Z1 = interp2(X, Y, Z, X1, Y1, method)</strong></p>
-<p>其中，X，Y 是两个向量，表示两个参数的采样点，Z 是采样点对应的函数值。X1，Y1 是两个标量或向量，表示要插值的点。</p>
-<h1 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h1><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1790</span>:<span class="number">10</span>:<span class="number">2020</span>;</span><br><span class="line">y = [...];    # 此处数据省略。。。</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">p = polyfit(x, y, <span class="number">3</span>);</span><br><span class="line">polyval(p, <span class="number">2020</span>)</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;*&#x27;</span>, polyval(p, x))</span><br></pre></td></tr></table></figure>
-<p>与数据插值类似，曲线拟合也是一种函数逼近的方法，但是拟合出的曲线不一定经过所有样本点。</p>
-<p>曲线拟合的原理：最小二乘法</p>
-<p>polyfit()：多项式拟合函数。可求得最小二乘拟合多项式系数。</p>
-<p>调用格式：</p>
-<p>P = polyfit(X, Y, m)</p>
-<p>[P, S] = polyfit(X, Y, m)</p>
-<p>[P, S, mu] = polyfit(X, Y, m)</p>
-<p>根据样本数据 X 和 Y，产生一个 m 次多项式 P 及其在采样点误差数据 S，mu 是一个二元向量，mu(1) 是 mean(X)，而 mu(2) 是 std(X)。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/18/GUID%E5%9C%A8%E7%BA%BF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/18/GUID%E5%9C%A8%E7%BA%BF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">GUID在线生成工具</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-18 11:36:38 / Modified: 11:39:02" itemprop="dateCreated datePublished" datetime="2020-07-18T11:36:38+08:00">2020-07-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">记录</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.guidgenerator.com/online-guid-generator.aspx">https://www.guidgenerator.com/online-guid-generator.aspx</a></p>
-</blockquote>
-<h2 id="What-is-a-GUID"><a href="#What-is-a-GUID" class="headerlink" title="What is a GUID?"></a>What is a GUID?</h2><p>GUID (or UUID) is an acronym for ‘Globally Unique Identifier’ (or ‘Universally Unique Identifier’). It is a 128-bit integer number used to identify resources. The term GUID is generally used by developers working with Microsoft technologies, while UUID is used everywhere else.</p>
-<h2 id="How-unique-is-a-GUID"><a href="#How-unique-is-a-GUID" class="headerlink" title="How unique is a GUID?"></a>How unique is a GUID?</h2><p>128-bits is big enough and the generation algorithm is unique enough that if 1,000,000,000 GUIDs per second were generated for 1 year the probability of a duplicate would be only 50%. Or if every human on Earth generated 600,000,000 GUIDs there would only be a 50% probability of a duplicate.</p>
-<h2 id="How-are-GUIDs-used"><a href="#How-are-GUIDs-used" class="headerlink" title="How are GUIDs used?"></a>How are GUIDs used?</h2><p>GUIDs are used in enterprise software development in C#, Java, and C++ as database keys, component identifiers, or just about anywhere else a truly unique identifier is required. GUIDs are also used to identify all interfaces and objects in COM programming.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1164,7 +1252,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1177,7 +1265,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
