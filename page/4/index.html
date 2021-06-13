@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">33</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">35</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">80</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">83</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,328 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/09/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">操作系统笔记（一）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-22 21:51:05" itemprop="dateCreated datePublished" datetime="2020-09-22T21:51:05+08:00">2020-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-23 09:45:48" itemprop="dateModified" datetime="2020-09-23T09:45:48+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong><em>计算机的启动（boot）过程</em></strong></p>
+<p><code>第一阶段：BIOS（Basic Input / Output System）</code></p>
+<p><em>硬件自检</em>（Power-On Self-Test，缩写为POST）：首先检查计算机硬件能否满足运行的基本条件</p>
+<p><em>启动顺序</em>（Boot Sequence）：硬件自检完成后，BIOS将控制权转交给下一阶段的启动程序。这时，BIOS需要知道“下一阶段的启动程序“具体在哪一个设备。BIOS需要一个外部存储设备的排序，排在前面的设备就是优先转交控制权的设备</p>
+<p><code>第二阶段：主引导记录</code></p>
+<p>BIOS按照用户指定的引导顺序，从硬盘、软盘或可移动设备中读取启动设备的MBR（Master Root Record，主引导记录）并放入指定位置（0x7c000）的内存中。</p>
+<p>计算机读取该设备的第一个扇区，也就是读取最前面的 512 个字节。它的主要作用是告诉计算机<em>到硬盘的哪一个位置去找操作系统</em>。</p>
+<p>如果这512个字节的最后两个字节是0x55和0xAA，表明这个设备可以用于启动；如果不是，表明设备不能用于启动，控制权被转交给启动顺序中的下一个设备。</p>
+<p><code>第三阶段：硬盘启动</code></p>
+<p>计算机的控制权要交给硬盘的某个分区了。</p>
+<p>计算机会读取激活分区的第一个扇区，叫做“卷引导记录”（Volume Boot Record，缩写为VBR）。</p>
+<p>VBR的主要作用是告诉计算机操作系统在这个分区里的位置，这样计算机就会加载操作系统了。</p>
+<p><em>启动管理器</em></p>
+<p>在这种情况下，计算机读取主引导记录前面446字节的机器码之后，不再把控制权转交给某一个分区，而是运行事先安装的启动管理器（boot loader ），由用户选择启动哪一个操作系统。</p>
+<p><code>第四阶段：操作系统</code></p>
+<p>控制权转交给操作系统后，操作系统的内核首先被载入内存。</p>
+<p><strong><em>操作系统的目标</em></strong></p>
+<p><code>提高系统的资源利用率</code>，<code>提高系统效率</code>，<code>方便性</code>，<code>可扩充性</code>，<code>开放性</code></p>
+<p><strong><em>Simple Batch Systems 单道批处理系统</em></strong></p>
+<p>为解决人机速度不匹配问题。</p>
+<p><code>实现</code></p>
+<p>通过一种称为监控程序的软件，使用户不必直接接触机器，而是先通过卡片机和纸带机向监控程序提交（同类）作业 ，由监控程序将作业组织在一起构成一批作业 ，然后将整批作业放入由监控程序管理的输入设备上，每当一个作业执行完毕返回监控程序时，监控程序自动装入下一个作业 。</p>
+<p>60年代初期，硬件获得了两方面的发展，即<code>通道和中断技术</code>，导致了OS进入<code>执行系统阶段</code>。</p>
+<p>用监督程序（或管理程序monitor）来实现作业的自动转换处理。</p>
+<p>原来的Monitor不仅负责作业运行的自动调度，而且还要提供 I/0 控制功能，常驻内存，称为<code>执行系统</code>（ Executive System）。</p>
+<p><code>特点</code></p>
+<p>解决了人工干预过长的问题，但仍然是单道顺序的处理作业，资源容易造成空闲，即利用率不高。</p>
+<p>为解决该问题，OS进入了多道程序阶段。</p>
+<p><strong><em>Multiprogramming Batch Systems 多道程序批处理系统</em></strong></p>
+<p>集成电路——现代意义上的操作系统出现</p>
+<p>主存中可同时有若干个作业，CPU在其中切换。</p>
+<p><code>优点</code></p>
+<p>资源利用率高：</p>
+<p><strong>标准MBR结构</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">地址</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">长度（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Hex</td>
+<td style="text-align:center">Oct</td>
+<td style="text-align:center">Dec</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">0000</td>
+<td style="text-align:center">0000</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">代码区</td>
+<td style="text-align:center">440（最大446）</td>
+</tr>
+<tr>
+<td style="text-align:center">01B8</td>
+<td style="text-align:center">0670</td>
+<td style="text-align:center">440</td>
+<td style="text-align:center">选用磁盘标志</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">01BC</td>
+<td style="text-align:center">0674</td>
+<td style="text-align:center">444</td>
+<td style="text-align:center">一般为空值；0x0000</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">01BE</td>
+<td style="text-align:center">0676</td>
+<td style="text-align:center">446</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">64</td>
+</tr>
+<tr>
+<td style="text-align:center">01FE</td>
+<td style="text-align:center">0776</td>
+<td style="text-align:center">510</td>
+<td style="text-align:center">55h     MBR有效标志：</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">01FF</td>
+<td style="text-align:center">0777</td>
+<td style="text-align:center">511</td>
+<td style="text-align:center">AAh                   0x55AA</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">MBR，</td>
+<td style="text-align:center">总大小：</td>
+<td style="text-align:center">446</td>
+<td style="text-align:center">+  64  +  2  =</td>
+<td style="text-align:center">512</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/09/12/LaTex-%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8B%E5%85%8D%E8%B4%B9%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/12/LaTex-%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8B%E5%85%8D%E8%B4%B9%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/" class="post-title-link" itemprop="url">LaTex--命令查看免费说明文档</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-12 22:08:41 / Modified: 22:13:30" itemprop="dateCreated datePublished" datetime="2020-09-12T22:08:41+08:00">2020-09-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LaTex/" itemprop="url" rel="index"><span itemprop="name">LaTex</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ctex宏包的使用方法：</p>
+<p>查看ctex宏包手册，终端输入，并另存为：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">texdoc ctex</span><br></pre></td></tr></table></figure>
+<p>LaTex简单实用教程：</p>
+<p>终端输入：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">texdoc lshort     <span class="comment">% 英文版</span></span><br><span class="line">texdoc lshort-zh  <span class="comment">% 中文版</span></span><br></pre></td></tr></table></figure>
+<p>（摘自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Mikowoo007/article/details/87464547">LaTex—命令查看免费的说明文档 </a> )</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/08/14/%E9%AA%8C%E8%AF%81%E6%9C%AC%E5%BE%81%E5%80%BC%E5%92%8C%E6%9C%AC%E5%BE%81%E5%90%91%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/14/%E9%AA%8C%E8%AF%81%E6%9C%AC%E5%BE%81%E5%80%BC%E5%92%8C%E6%9C%AC%E5%BE%81%E5%90%91%E9%87%8F/" class="post-title-link" itemprop="url">验证本征值和本征向量</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-14 10:33:44 / Modified: 10:38:50" itemprop="dateCreated datePublished" datetime="2020-08-14T10:33:44+08:00">2020-08-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linear-algebra/" itemprop="url" rel="index"><span itemprop="name">linear algebra</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>验证python中根据np.linalg.eig生成的本征值和本征向量的对应关系：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">dim = <span class="number">4</span></span><br><span class="line">M = np.random.randn(dim, dim)</span><br><span class="line">M = M + M.T</span><br><span class="line">print(M)</span><br><span class="line"></span><br><span class="line">lm, u = np.linalg.eig(M)</span><br><span class="line">print(<span class="string">&#x27;Eigenvalues:&#x27;</span>)</span><br><span class="line">print(lm)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;Eigenvectors:&#x27;</span>)</span><br><span class="line">print(u)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">4</span>):</span><br><span class="line">    e_val = lm[i]</span><br><span class="line">    v = []</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">4</span>):</span><br><span class="line">        e_vec = u[j][i]</span><br><span class="line">        v.append(e_vec)</span><br><span class="line">    a = np.array(v)</span><br><span class="line">    a = a.reshape(-<span class="number">1</span>, <span class="number">1</span>)  <span class="comment"># 将行向量转置为列向量，这里先转换为np.array，再用reshape</span></span><br><span class="line">    print(<span class="string">&#x27;M * a:&#x27;</span>)</span><br><span class="line">    print(M.dot(a))</span><br><span class="line">    print(<span class="string">&#x27;r * a:&#x27;</span>)</span><br><span class="line">    print(e_val * a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">dim = <span class="number">4</span></span><br><span class="line">M = np.random.randn(dim, dim)</span><br><span class="line">M = M + M.T</span><br><span class="line">print(M)</span><br><span class="line"></span><br><span class="line">lm, u = np.linalg.eig(M)</span><br><span class="line">print(<span class="string">&#x27;Eigenvalues:&#x27;</span>)</span><br><span class="line">print(lm)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;Eigenvectors:&#x27;</span>)</span><br><span class="line">print(u)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">4</span>):</span><br><span class="line">    e_val = lm[i]</span><br><span class="line">    a = u[:, i]  <span class="comment"># 这种方法可以验证，但是得到的向量是行向量</span></span><br><span class="line">    print(<span class="string">&#x27;M * a:&#x27;</span>)</span><br><span class="line">    print(M.dot(a))</span><br><span class="line">    print(<span class="string">&#x27;r * a:&#x27;</span>)</span><br><span class="line">    print(e_val * a)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -773,373 +1095,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/17/DFS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/17/DFS/" class="post-title-link" itemprop="url">DFS</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-17 22:43:44" itemprop="dateCreated datePublished" datetime="2020-07-17T22:43:44+08:00">2020-07-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-20 16:03:16" itemprop="dateModified" datetime="2020-07-20T16:03:16+08:00">2020-07-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DFS/" itemprop="url" rel="index"><span itemprop="name">DFS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA10364">Problem 1</a></p>
-<p><strong>题目描述</strong><br>给定M根小木棍，每根木棍有各自的长度，能否把它们全部用上来围成一个正方形？其中4≤M≤20，每根木棍的长度是1到10000之间的整数</p>
-<p><strong>输入格式</strong><br>第一行是一个整数T表示测试数据的组数。 对于每组测试数据，输入一行，包含M+1个整数，第一个整数表示M，接下来M个整数表示M个木棍的长度</p>
-<p><strong>输出格式</strong><br>对于每组数据一行，如果能够围成正方形 输出“yes” 否则输出“no”</p>
-<p><strong>输入输出样例</strong></p>
-<p><strong>输入</strong></p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="symbol">4 </span><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">5 </span><span class="number">10</span> <span class="number">20</span> <span class="number">30</span> <span class="number">40</span> <span class="number">50</span></span><br><span class="line"><span class="symbol">8 </span><span class="number">1</span> <span class="number">7</span> <span class="number">2</span> <span class="number">6</span> <span class="number">4</span> <span class="number">4</span> <span class="number">3</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
-<p><strong>输出</strong></p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">yes</span></span><br><span class="line"><span class="literal">no</span></span><br><span class="line"><span class="literal">yes</span></span><br></pre></td></tr></table></figure>
-<p><strong>Solution</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> len[<span class="number">25</span>],v[<span class="number">25</span>],m,l;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> g,<span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(d==<span class="number">3</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=p; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i])&#123;</span><br><span class="line">			v[i]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> t=g+len[i];</span><br><span class="line">			<span class="keyword">if</span>(t&lt;l)&#123;</span><br><span class="line">				<span class="keyword">if</span>(dfs(p<span class="number">-1</span>,t,d))</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t==l)&#123;</span><br><span class="line">				<span class="keyword">if</span>(dfs(m<span class="number">-1</span>,<span class="number">0</span>,d+<span class="number">1</span>))</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				v[i]=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;m);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;len[i]);</span><br><span class="line">			sum+=len[i];</span><br><span class="line">		&#125;</span><br><span class="line">		sort(len,len+m);</span><br><span class="line">		<span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span>(v));</span><br><span class="line">		l=sum/<span class="number">4</span>;</span><br><span class="line">		<span class="keyword">if</span>(sum%<span class="number">4</span>!=<span class="number">0</span> || m&lt;<span class="number">4</span> || l&lt;len[m<span class="number">-1</span>]) <span class="built_in">printf</span>(<span class="string">&quot;no\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(dfs(m<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>)) <span class="built_in">printf</span>(<span class="string">&quot;yes\n&quot;</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;no\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4961">Problem 2</a></p>
-<p><strong>题目描述</strong><br>小埋会告诉你一盘扫雷，用一个 n*m 的矩阵表示，1 是雷 ，0 不是雷，请你告诉她这盘扫雷的 3bv 。</p>
-<p>周围八格没有“雷”且自身不是“雷”的方格称为“空格”，周围八格有“雷”且自身不是“雷”的方格称为“数字”，由“空格”组成的八连通块称为一个“空”。3bv = 周围八格没有“空格”的“数字”个数 + “空”的个数。</p>
-<p><strong>输入格式</strong><br>第一行有两个整数 n 和 m，代表这盘扫雷是一个 n*m 的矩阵。</p>
-<p>后面的 n 行每行有 m 个整数，表示这个矩阵，每个数字为 0 或 1，1 代表是雷，0 代表不是雷。</p>
-<p><strong>输出格式</strong><br>一个整数，代表这盘扫雷的 3bv 。</p>
-<p><strong>输入</strong></p>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">8 </span><span class="number">8</span></span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">1 </span><span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> </span><br><span class="line"><span class="symbol">1 </span><span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br></pre></td></tr></table></figure>
-<p><strong>输出</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13</span><br></pre></td></tr></table></figure>
-<p><strong>Solution</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000</span>][<span class="number">1000</span>],v[<span class="number">1000</span>][<span class="number">1000</span>],bv3,n,m;</span><br><span class="line"><span class="keyword">int</span> x[<span class="number">8</span>]=&#123;<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,y[<span class="number">8</span>]=&#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">noBlank</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;     <span class="comment">//周围八格没有“空格”的</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> ll=l+x[i]; <span class="keyword">int</span> rr=r+y[i];</span><br><span class="line">		<span class="keyword">if</span>(ll&gt;=<span class="number">0</span> &amp;&amp; ll&lt;n &amp;&amp; rr&gt;=<span class="number">0</span> &amp;&amp; rr&lt;m &amp;&amp; !a[ll][rr])</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">incr</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;      <span class="comment">//让“雷”周围八格中不是“雷”的都增加1</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> ll=l+x[i]; <span class="keyword">int</span> rr=r+y[i];</span><br><span class="line">		<span class="keyword">if</span>(ll&gt;=<span class="number">0</span> &amp;&amp; ll&lt;n &amp;&amp; rr&gt;=<span class="number">0</span> &amp;&amp; rr&lt;m &amp;&amp; a[ll][rr]!=<span class="number">-1</span>)</span><br><span class="line">			a[ll][rr]++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> ll=l+x[i]; <span class="keyword">int</span> rr=r+y[i];</span><br><span class="line">		<span class="keyword">if</span>(ll&gt;=<span class="number">0</span> &amp;&amp; ll&lt;n &amp;&amp; rr&gt;=<span class="number">0</span> &amp;&amp; rr&lt;m &amp;&amp; !a[ll][rr] &amp;&amp; !v[ll][rr])&#123;   <span class="comment">//判断是否越界，用v判重</span></span><br><span class="line">			v[ll][rr]=<span class="number">1</span>;</span><br><span class="line">			dfs(ll,rr);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i][j]);</span><br><span class="line">			<span class="keyword">if</span>(a[i][j])</span><br><span class="line">				a[i][j]=<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)</span><br><span class="line">			<span class="keyword">if</span>(a[i][j]==<span class="number">-1</span>)</span><br><span class="line">				incr(i,j);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i][j] &amp;&amp; a[i][j]!=<span class="number">-1</span> &amp;&amp; noBlank(i,j))   <span class="comment">//周围八格没有“空格”的“数字”的个数</span></span><br><span class="line">				bv3++;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!a[i][j] &amp;&amp; !v[i][j])&#123;     <span class="comment">//“空”的个数</span></span><br><span class="line">				bv3++;</span><br><span class="line">				dfs(i,j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, bv3);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/A1143">Problem 3</a></p>
-<p>将数字 1…9 填入一个 3×3 的九宫格中，使得格子中每一横行和的值全部相等，每一竖列和的值全部相等。请你计算有多少种填数字的方案。</p>
-<p><em>next_permutation</em></p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/eudiwffe/p/6260699.html">https://www.cnblogs.com/eudiwffe/p/6260699.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/c18219227162/article/details/50301513">https://blog.csdn.net/c18219227162/article/details/50301513</a></p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i++)</span><br><span class="line">        a[i] = i;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[<span class="number">1</span>] + a[<span class="number">2</span>] + a[<span class="number">3</span>] == a[<span class="number">4</span>] + a[<span class="number">5</span>] + a[<span class="number">6</span>]</span><br><span class="line">        &amp;&amp; a[<span class="number">4</span>] + a[<span class="number">5</span>] + a[<span class="number">6</span>] == a[<span class="number">7</span>] + a[<span class="number">8</span>] + a[<span class="number">9</span>]</span><br><span class="line">        )&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[<span class="number">1</span>] + a[<span class="number">4</span>] + a[<span class="number">7</span>] == a[<span class="number">2</span>] + a[<span class="number">5</span>] + a[<span class="number">8</span>]</span><br><span class="line">            &amp;&amp; a[<span class="number">2</span>] + a[<span class="number">5</span>] + a[<span class="number">8</span>] == a[<span class="number">3</span>] + a[<span class="number">6</span>] + a[<span class="number">9</span>]</span><br><span class="line">            )</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(a + <span class="number">1</span>, a + <span class="number">10</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//72</span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/A1145">Problem 4</a></p>
-<p>右侧代码是将 6 个整数按照任意顺序组合到一起，计算能组合出的最大数字。</p>
-<p>例如：4123，25，66 组合到一起就是 66412325。</p>
-<p>请阅读程序补全代码，实现这个功能</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> tp = a[i];</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(tp) &#123;</span><br><span class="line">			j *= <span class="number">10</span>;</span><br><span class="line">			tp /= <span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		ret = ret * j + a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (k == <span class="number">6</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> test(a, k);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = k; i &lt; <span class="number">6</span>; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> t = a[k];</span><br><span class="line">		a[k] = a[i];</span><br><span class="line">		a[i] = t;</span><br><span class="line">		ret = <span class="built_in">std</span>::max(ret,  f(a, k + <span class="number">1</span>));</span><br><span class="line">		t = a[k];</span><br><span class="line">		a[k] = a[i];</span><br><span class="line">		a[i] = t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">6</span>] = &#123;<span class="number">517</span>, <span class="number">283</span>, <span class="number">429</span>, <span class="number">65</span>, <span class="number">6566</span>, <span class="number">32</span>&#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, f(a, <span class="number">0</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/16/MATLAB%E7%BB%98%E5%9B%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/16/MATLAB%E7%BB%98%E5%9B%BE/" class="post-title-link" itemprop="url">MATLAB绘图</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-16 10:47:52" itemprop="dateCreated datePublished" datetime="2020-07-16T10:47:52+08:00">2020-07-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-19 23:25:30" itemprop="dateModified" datetime="2020-07-19T23:25:30+08:00">2020-07-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="二维曲线"><a href="#二维曲线" class="headerlink" title="二维曲线"></a>二维曲线</h1><h2 id="plot函数"><a href="#plot函数" class="headerlink" title="plot函数"></a>plot函数</h2><h3 id="plot函数的基本用法"><a href="#plot函数的基本用法" class="headerlink" title="plot函数的基本用法"></a>plot函数的基本用法</h3><p><strong>plot(x, y)</strong></p>
-<p>其中，x、y 分别存储 x 坐标和 y 坐标。</p>
-<p>绘制一条折线：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">y = [<span class="number">7</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">1</span>];</span><br><span class="line"><span class="built_in">plot</span>(x,y)</span><br></pre></td></tr></table></figure>
-<h3 id="最简单的plot函数调用格式"><a href="#最简单的plot函数调用格式" class="headerlink" title="最简单的plot函数调用格式"></a>最简单的plot函数调用格式</h3><p> <strong>plot(x)</strong></p>
-<p>当 x 是实向量时，则以该向量元素的下标为横坐标，元素的值为纵坐标，绘制曲线。</p>
-<p>当 x 是复向量时，则以该向量元素的实部为横坐标，虚部为纵坐标，绘制曲线。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>];</span><br><span class="line">y = [<span class="number">6</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">3</span>];</span><br><span class="line">c = <span class="built_in">complex</span>(x, y);</span><br><span class="line"><span class="built_in">plot</span>(c)</span><br></pre></td></tr></table></figure>
-<h3 id="plot-x-y-函数参数的变化形式"><a href="#plot-x-y-函数参数的变化形式" class="headerlink" title="plot(x, y)函数参数的变化形式"></a>plot(x, y)函数参数的变化形式</h3><p>一般地，x、y 是长度相等的向量。</p>
-<p><strong>当 x 是向量，y 是矩阵时：</strong></p>
-<p>如果矩阵 y 的列数等于 x 的长度，则以向量 x 为横坐标，以 y 的每个行向量为纵坐标绘制曲线，曲线的条数等于 y 的行数。</p>
-<p>如果矩阵 y 的行数等于 x 的长度，则以向量 x 为横坐标，以 y 的每个列向量为纵坐标绘制曲线，曲线的条数等于 y 的列数。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">y = [sin(x);sin(2*x);sin(x/2)];  # y是一个矩阵</span><br><span class="line"><span class="built_in">plot</span>(x,y)</span><br></pre></td></tr></table></figure>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">0</span>:<span class="number">0.01</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">t1 = t&#x27;;</span><br><span class="line">x = [t1,t1,t1];</span><br><span class="line">y = [<span class="built_in">sin</span>(t1),<span class="built_in">sin</span>(<span class="number">2</span>*t1),<span class="built_in">sin</span>(<span class="number">0.5</span>*t1)];</span><br><span class="line"><span class="built_in">plot</span>(x,y)</span><br></pre></td></tr></table></figure>
-<h3 id="含多个输入参数的plot函数"><a href="#含多个输入参数的plot函数" class="headerlink" title="含多个输入参数的plot函数"></a>含多个输入参数的plot函数</h3><p><strong>ploy(x1, y1, x2, y2, … xn, yn)</strong></p>
-<p>其中，每一向量对构成一组数据的横、纵坐标，绘制一条曲线。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t1 = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">10</span>);</span><br><span class="line">t2 = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">20</span>);</span><br><span class="line">t3 = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line"><span class="built_in">plot</span>(t1,<span class="built_in">sin</span>(t1),t2,<span class="built_in">sin</span>(t2)+<span class="number">1</span>,t3,<span class="built_in">sin</span>(t3)+<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="含选项的plot函数"><a href="#含选项的plot函数" class="headerlink" title="含选项的plot函数"></a>含选项的plot函数</h3><p><strong>plot(x, y, 选项)</strong></p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">线型：<span class="string">&quot;-&quot;</span><span class="comment">(实线)</span>, <span class="string">&quot;:&quot;</span><span class="comment">(虚线)</span>, <span class="string">&quot;-.&quot;</span><span class="comment">(点画线)</span>, <span class="string">&quot;--&quot;</span><span class="comment">(双画线)</span></span><br><span class="line">颜色：<span class="string">&quot;r&quot;</span><span class="comment">(红)</span>, <span class="string">&quot;g&quot;</span><span class="comment">(绿)</span>, <span class="string">&quot;b&quot;</span><span class="comment">(蓝)</span>, <span class="string">&quot;w&quot;</span><span class="comment">(白)</span>, <span class="string">&quot;k&quot;</span><span class="comment">(黑)</span></span><br><span class="line">数据点标记：<span class="string">&quot;*&quot;</span><span class="comment">(星号)</span>, <span class="string">&quot;o&quot;</span><span class="comment">(圆圈)</span>, <span class="string">&quot;s&quot;</span><span class="comment">(方块)</span>, <span class="string">&quot;p&quot;</span><span class="comment">(五角星)</span>, <span class="string">&quot;^&quot;</span><span class="comment">(朝上三角符号)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = (<span class="number">0</span>:<span class="built_in">pi</span>/<span class="number">50</span>:<span class="number">2</span>*<span class="built_in">pi</span>)&#x27;;</span><br><span class="line">y1 = <span class="number">2</span>*<span class="built_in">exp</span>(<span class="number">-0.5</span>*x)*[<span class="number">1</span>,<span class="number">-1</span>];</span><br><span class="line">y2 = <span class="number">2</span>*<span class="built_in">exp</span>(<span class="number">-0.5</span>*x).*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>*x);</span><br><span class="line">x1 = <span class="number">0</span>:<span class="number">0.5</span>:<span class="number">6</span>;</span><br><span class="line">y3 = <span class="number">2</span>*<span class="built_in">exp</span>(<span class="number">-0.5</span>*x1).*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>*x1);</span><br><span class="line"><span class="built_in">plot</span>(x,y1,<span class="string">&#x27;k:&#x27;</span>,x,y2,<span class="string">&#x27;b--&#x27;</span>,x1,y3,<span class="string">&#x27;rp&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="fplot函数"><a href="#fplot函数" class="headerlink" title="fplot函数"></a>fplot函数</h2><h3 id="fplot函数的基本用法"><a href="#fplot函数的基本用法" class="headerlink" title="fplot函数的基本用法"></a>fplot函数的基本用法</h3><p><strong>fplot(f, lims, 选项)</strong></p>
-<p>其中，f 代表一个函数，通常采用函数句柄的形式。lims 为 x 轴的取值范围，用二元向量 [xmin, xmax] 描述，默认值为 [-5, 5]。选项定义与 plot 函数相同。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fplot(@(x)<span class="built_in">sin</span>(<span class="number">1.</span>/x),[<span class="number">0</span>,<span class="number">0.2</span>],<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="双输入函数参数的用法"><a href="#双输入函数参数的用法" class="headerlink" title="双输入函数参数的用法"></a>双输入函数参数的用法</h3><p><strong>fplot(funx, funy, tlims, 选项)</strong></p>
-<p>其中，funx、funy 代表函数，通常采用函数句柄的形式。tlims 为参数函数 funx 和 funy 的自变量的取值范围，用二元向量 [tmin, tmax] 描述。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fplot(@(t)t.*<span class="built_in">sin</span>(t),@(t)t.*<span class="built_in">cos</span>(t),[<span class="number">0</span>,<span class="number">10</span>*<span class="built_in">pi</span>],<span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="绘制图形的辅助操作"><a href="#绘制图形的辅助操作" class="headerlink" title="绘制图形的辅助操作"></a>绘制图形的辅助操作</h1><h2 id="图形标注"><a href="#图形标注" class="headerlink" title="图形标注"></a>图形标注</h2><p><strong>title(图形标题)</strong></p>
-<p><strong>xlabel(x 轴说明)</strong></p>
-<p><strong>ylabel(y轴说明)</strong></p>
-<p><strong>text(x, y, 图形说明)</strong></p>
-<p><strong>legend(图例1, 图例2, …)</strong></p>
-<h3 id="title函数"><a href="#title函数" class="headerlink" title="title函数"></a>title函数</h3><p><strong>title函数的基本用法</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">-2</span>*<span class="built_in">pi</span>:<span class="number">0.05</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">y = <span class="built_in">sin</span>(x);</span><br><span class="line"><span class="built_in">plot</span>(x, y);</span><br><span class="line">title(&#123;&#x27;MATLAB&#x27;, &#x27;y=sin x&#x27;&#125;)   # 有多行标题时要用&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>在图形标题中使用LaTeX格式控制符</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title(<span class="string">&#x27;y=cos&#123;\omega&#125;t&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;y=e^&#123;axt&#125;&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;X_&#123;1&#125;&#123;\geq&#125;X_&#123;2&#125;&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;&#123;\bf y=cos&#123;\omega&#125;t + &#123;\beta&#125;&#125;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">\bf</span> 加粗</span><br><span class="line"><span class="string">\it</span> 斜体</span><br><span class="line"><span class="string">\rm</span> 正体</span><br></pre></td></tr></table></figure>
-<p><strong>含属性设置的title函数</strong></p>
-<p><strong>title(图形标题，属性名，属性值)</strong></p>
-<p><strong>Color</strong>属性：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title(<span class="string">&#x27;y=sin x&#x27;</span>,<span class="string">&#x27;Color&#x27;</span>,<span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>FontSize</strong>属性：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title(<span class="string">&#x27;y=sin x&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">24</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="xlabel和ylabel"><a href="#xlabel和ylabel" class="headerlink" title="xlabel和ylabel"></a>xlabel和ylabel</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">-2</span>*<span class="built_in">pi</span>:<span class="number">0.05</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">y = <span class="built_in">sin</span>(x);</span><br><span class="line"><span class="built_in">plot</span>(x, y)</span><br><span class="line">title(<span class="string">&#x27;y = sin(x)&#x27;</span>)</span><br><span class="line">xlabel(<span class="string">&#x27;-2\pi \leq x \leq 2\pi&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="text函数和gtext函数"><a href="#text函数和gtext函数" class="headerlink" title="text函数和gtext函数"></a>text函数和gtext函数</h3><p><strong>text(x, y, 说明)</strong></p>
-<p><strong>gtext(说明)</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; text(<span class="number">-2</span>*<span class="built_in">pi</span>, <span class="number">0</span>, <span class="string">&#x27;-2&#123;\pi&#125;&#x27;</span>)</span><br><span class="line">&gt;&gt; text(<span class="number">3</span>, <span class="number">0.28</span>, <span class="string">&#x27;\leftarrow sin(x)&#x27;</span>)</span><br><span class="line">&gt;&gt; gtext(<span class="string">&#x27;\leftarrow sin(x)&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="legend函数"><a href="#legend函数" class="headerlink" title="legend函数"></a>legend函数</h3><p><strong>legend(图例1, 图例2, …)</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line"><span class="built_in">plot</span>(x,[<span class="built_in">sin</span>(x);<span class="built_in">sin</span>(<span class="number">2</span>*x);<span class="built_in">sin</span>(<span class="number">3</span>*x)])</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">&#x27;sin(x)&#x27;</span>,<span class="string">&#x27;sin(2x)&#x27;</span>,<span class="string">&#x27;sin(3x)&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="坐标控制"><a href="#坐标控制" class="headerlink" title="坐标控制"></a>坐标控制</h2><h3 id="axis函数"><a href="#axis函数" class="headerlink" title="axis函数"></a>axis函数</h3><p><strong>axis([xmin, xmax, ymin, ymax, zmin, zmax])</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axis([-<span class="built_in">pi</span>,<span class="built_in">pi</span>,<span class="number">-10</span>,<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
-<p><strong>axis equal</strong>：纵、横坐标轴采用等长刻度</p>
-<p><strong>axis square</strong>：产生正方形坐标系(默认为矩形)</p>
-<p><strong>axis auto</strong>：使用默认设置</p>
-<p><strong>axis off</strong>：取消坐标轴</p>
-<p><strong>axis on</strong>：显示坐标轴</p>
-<h3 id="给坐标系加网格和边框"><a href="#给坐标系加网格和边框" class="headerlink" title="给坐标系加网格和边框"></a>给坐标系加网格和边框</h3><p><strong>网格</strong></p>
-<p><strong>grid on</strong>：显示网格</p>
-<p><strong>grid off</strong>：不显示网格</p>
-<p><strong>grid</strong>：在两种状态下切换</p>
-<p><strong>边框</strong></p>
-<p><strong>box on</strong></p>
-<p><strong>box off</strong></p>
-<p><strong>box</strong></p>
-<p>一般来说，绘图命令每执行一次，就刷新一次图形窗口，原有图形不会保持。要想保持原有图形，可以用图形保持命令：</p>
-<p><strong>hold on</strong></p>
-<p><strong>hold off</strong></p>
-<p><strong>hold</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">x = <span class="built_in">sin</span>(t); y = <span class="built_in">cos</span>(t);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(<span class="number">2</span>*x, <span class="number">2</span>*y, <span class="string">&#x27;r--&#x27;</span>)</span><br><span class="line">grid on</span><br><span class="line">axis([<span class="number">-2.2</span>,<span class="number">2.2</span>,<span class="number">-2.2</span>,<span class="number">2.2</span>])</span><br><span class="line">axis equal   # 显示正圆而不是椭圆</span><br></pre></td></tr></table></figure>
-<h2 id="图形窗口的分割"><a href="#图形窗口的分割" class="headerlink" title="图形窗口的分割"></a>图形窗口的分割</h2><p>子图：同一图形窗口中的不同坐标系下的图形称为子图。</p>
-<p><strong>subplot</strong>函数</p>
-<p><strong>subplot(m, n, p)</strong>：其中，m 和 n 指定将图形窗口分成 m * n 个绘图区，p 指定当前活动区。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">60</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">sin</span>(x)<span class="number">-1</span>)</span><br><span class="line">title(<span class="string">&#x27;sin(x)-1&#x27;</span>); axis([<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">-2</span>,<span class="number">0</span>])</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">cos</span>(x)+<span class="number">1</span>)</span><br><span class="line">title(<span class="string">&#x27;cos(x)+1&#x27;</span>); axis([<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">0</span>,<span class="number">2</span>])</span><br><span class="line">subplot(<span class="number">4</span>,<span class="number">4</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">tan</span>(x))</span><br><span class="line">title(<span class="string">&#x27;tan(x)&#x27;</span>);</span><br><span class="line">subplot(<span class="number">4</span>,<span class="number">4</span>,<span class="number">8</span>)</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">cot</span>(x))</span><br><span class="line">title(<span class="string">&#x27;cot(x)&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="其他坐标系下的二维曲线图"><a href="#其他坐标系下的二维曲线图" class="headerlink" title="其他坐标系下的二维曲线图"></a>其他坐标系下的二维曲线图</h1><h2 id="对数坐标图"><a href="#对数坐标图" class="headerlink" title="对数坐标图"></a>对数坐标图</h2><p><strong>semilogx(x1, y1, 选项1, x2, y2, 选项2, …)</strong></p>
-<p><strong>semilogy(x1, y1, 选项1, x2, y2, 选项2, …)</strong></p>
-<p><strong>loglog(x1, y1, 选项1, x2, y2, 选项2, …)</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">10</span>;</span><br><span class="line">y = <span class="number">1.</span>/x;</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y)</span><br><span class="line">title(<span class="string">&#x27;plot(x,y)&#x27;</span>); subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">semilogx(x, y)</span><br><span class="line">title(<span class="string">&#x27;semilogx(x,y)&#x27;</span>); grid on</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">semilogy(x, y)</span><br><span class="line">title(<span class="string">&#x27;semilogy(x,y)&#x27;</span>); grid on</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">loglog(x, y)</span><br><span class="line">title(<span class="string">&#x27;loglog(x,y)&#x27;</span>); grid on</span><br></pre></td></tr></table></figure>
-<h2 id="极坐标图"><a href="#极坐标图" class="headerlink" title="极坐标图"></a>极坐标图</h2><p><strong>polar(theta, rho, 选项)</strong></p>
-<p>其中，theta 为极角，rho 为极径，选项的内容与 plot 函数相同。</p>
-<p>绘制心形线：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">t = <span class="number">0</span>:<span class="built_in">pi</span>/<span class="number">100</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">r = <span class="number">1</span> - <span class="built_in">sin</span>(t);</span><br><span class="line">subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">polar(t, r)</span><br><span class="line">subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">t1 = t - <span class="built_in">pi</span>/<span class="number">2</span>;</span><br><span class="line">r1 = <span class="number">1</span> - <span class="built_in">sin</span>(t1);</span><br><span class="line">polar(t, r1)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/07/15/MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/15/MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">MATLAB程序流程控制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-15 19:06:33" itemprop="dateCreated datePublished" datetime="2020-07-15T19:06:33+08:00">2020-07-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-16 10:45:34" itemprop="dateModified" datetime="2020-07-16T10:45:34+08:00">2020-07-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>MATLAB 程序文件包含脚本文件和函数文件。</p>
-<p>脚本文件是可以在命令行窗口直接执行的文件，也叫命令文件。</p>
-<p>函数文件是定义一个函数，不能直接执行，而必须以函数调用的方式来调用它。</p>
-<p><strong><em>文件的建立</em></strong></p>
-<ol>
-<li>用命令按钮创建文件(主页—&gt;新建脚本)；</li>
-<li>用 edit 命令创建文件：</li>
-</ol>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; edit test</span><br></pre></td></tr></table></figure>
-<p><strong><em>顺序结构</em></strong></p>
-<p>1）数据的输入：input()</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = input(<span class="string">&#x27;Please enter the value of variable A: &#x27;</span>)</span><br><span class="line">Please enter the value of variable A: <span class="number">100</span></span><br><span class="line">A =</span><br><span class="line">   <span class="number">100</span></span><br></pre></td></tr></table></figure>
-<p>2）数据的输出：disp()</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt; <span class="built_in">disp</span>(A)</span><br></pre></td></tr></table></figure>
-<p>3）程序的暂停：pause(延迟秒数)</p>
-<p>或者，Ctrl + C。</p>
-<p><strong><em>选择结构</em></strong></p>
-<p><strong>if</strong></p>
-<p>当条件结果为标量时，非零表示条件成立；</p>
-<p>当条件结果为矩阵时，非空且不包含零元素表示条件成立。</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">c = input(<span class="string">&#x27;Please enter a char: &#x27;</span>,<span class="string">&#x27;s&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span> c &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;Z&#x27;</span></span><br><span class="line">    <span class="built_in">disp</span>(lower(c))</span><br><span class="line"><span class="keyword">elseif</span> c &gt;= <span class="string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="built_in">disp</span>(upper(c))</span><br><span class="line"><span class="keyword">elseif</span> c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span></span><br><span class="line">    <span class="built_in">disp</span>(str2double(c))</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(c)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><strong>switch</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x = input(<span class="string">&#x27;x = ?&#x27;</span>);</span><br><span class="line"><span class="keyword">switch</span> <span class="built_in">fix</span>(x)</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">111</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span></span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">222</span>)</span><br><span class="line">    <span class="keyword">case</span> &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">333</span>)</span><br><span class="line">    <span class="keyword">otherwise</span></span><br><span class="line">        <span class="built_in">disp</span>(<span class="number">444</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>输入2、4、8时，分别输出111、333、444。</p>
-<p><strong><em>函数参数的可调性</em></strong></p>
-<p><strong>nargin</strong>：输入实参的个数</p>
-<p><strong>nargout</strong>：输出实参的个数</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">font</span>=<span class="title">fib</span><span class="params">(a,b,c)</span></span></span><br><span class="line"><span class="keyword">if</span> nargin==<span class="number">1</span></span><br><span class="line">    font=a;</span><br><span class="line"><span class="keyword">elseif</span> nargin==<span class="number">2</span></span><br><span class="line">    font=a+b;</span><br><span class="line"><span class="keyword">elseif</span> nargin==<span class="number">3</span></span><br><span class="line">    font=a+b+c;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1205,20 +1164,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">33</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">35</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">80</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">83</span></a>
 
   </li>
   </ul>
@@ -160,6 +160,978 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2021/02/23/%E5%BA%94%E7%94%A8%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/23/%E5%BA%94%E7%94%A8%E5%B1%82/" class="post-title-link" itemprop="url">应用层</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-23 14:12:36" itemprop="dateCreated datePublished" datetime="2021-02-23T14:12:36+08:00">2021-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-26 22:41:38" itemprop="dateModified" datetime="2021-02-26T22:41:38+08:00">2021-02-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>应用层<br>应用层协议原理<br>网络应用程序体系结构<br>现代网络应用程序的两大主流体系结构：客户-服务器体系结构 对等（P2P）体系结构</p>
+<p>客户-服务器体系结构（client-server architecture）<br>在此结构中，有一个总是打开的主机称为服务器，它服务于来自许多其他称为客户的主机的请求。客户之间不能相互通信。</p>
+<p>该服务器具有固定的、周知的地址，即IP地址。</p>
+<p>P2P体系结构<br>在一个P2P体系结构中，对位于数据中心的专用服务器有最小的（或者没有）依赖。相反，应用程序在间断连接的主机对之间使用直接通信，这些主机对被称为对等方。</p>
+<p>进程通信</p>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>应用层的大多数协议都是基于客户服务器方式。客户和服务器都是指通信中所涉及的两个应用进程。客户服务器方式所描述的进程之间服务和被服务的关系。</p>
+<p><strong>域名系统(Domain Name System, 简称DNS)</strong>，主要是解决Internet网上机器或设备命名的一种系统。它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。</p>
+<p>DNS使用TCP和UDP端口53.</p>
+<p>对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p>
+<p>域名系统是一种服务器资源，许多应用层软件经常直接使用域名系统DNS，但计算机的用户只是间接而不是直接使用域名系统。</p>
+<p>Internet采用层次结构的命名树作为主机的名字，并使用分布式的域名系统DNS。</p>
+<p>域名服务器程序在专设的节点上运行，运行该程序的机器称为域名服务器。</p>
+<blockquote>
+<p><strong>域名</strong>（英语：<strong>Domain Name</strong>），又称<strong>网域</strong>，是由一串用点分隔的名字组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时对计算机的定位标识（有时也指地理位置）。</p>
+<p>由于IP地址具有不方便记忆并且不能显示地址组织的名称和性质等缺点，人们设计出了域名，并通过网域名称系统（DNS，Domain Name System）来将域名和IP地址相互映射，使人更方便地访问互联网，而不用去记住能够被机器直接读取的IP地址数串。</p>
+</blockquote>
+<p>Internet采用了层次树状结构的命名方法，任何一个连接在Internet上的主机或路由器，都有一个唯一的层次结构的名字，即域名。</p>
+<p>域名的结构由若干层次组成，各分量之间用点隔开，各分量分别代表不同级别的域名。</p>
+<p><strong>域名服务器与域名解析</strong></p>
+<p>Internet允许各个单位根据具体情况将本单位的域名划分为若干个域名服务器管辖区(zone)，并在各管辖区中设置相应的授权域名服务器。</p>
+<p>域名是需要授权的，需要预先注册登记，如果没有授权，域名是不允许改动、删除的。</p>
+<p>在Internet中，划分多个区域，每个区域中设一个授权区域。</p>
+<p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210223145913712.png" alt="image-20210223145913712"></p>
+<p><strong>域名解析过程</strong>：</p>
+<p>DNS查询有两种方式：递归查询和迭代查询。</p>
+<p>DNS客户端设置使用的DNS服务器一般都是递归服务器，它负责全权处理客户端的DNS查询请求，直到返回最终结果。DNS服务器之间一般采用迭代查询方式。</p>
+<p><strong>递归查询</strong>：如果想知道一个域名对应的IP地址，但在访问本地域名服务器时，可能该域名查询不到，此时该本地域名服务器就会请求它的上级支援，直到查到所查询的IP地址。</p>
+<p>递归解析（递归查询）过程中，一直是以本地名称服务器为中心的，DNS客户端只是发出原始的域名查询请求报文，然后就一直处于等待状态，直到本地域名服务器发来最终的查询结果。此时的本地域名服务器只是起到了中介代理的作用。</p>
+<p>本地名称服务器也有缓存技术。</p>
+<p><img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210223152830400.png" alt="image-20210223152830400"  /></p>
+<p><strong>域名解析过程加快的途径</strong>：</p>
+<ul>
+<li>物理配置上，配一台运行速度高（CPU主频高、计算机内存大）的域名服务器；</li>
+<li>让数据库域名表中记录有序存放，可采用效率高的查找算法，例如折半查找法；</li>
+<li>准备一个高速缓冲cache，将域名放入其中，即名字的高速缓存。</li>
+</ul>
+<h1 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h1><p>文件传输协议FTP是用于在网络上进行文件传输的一套标准协议。</p>
+<p>FTP能把多种类型的文件或文档，从不同厂家生产的计算机、手机等智能终端，通过有线或无线的计算机网络，发送复制到远程另外一台智能设备中，是网络环境的一项基本应用。</p>
+<p>网络环境下复制文件的复杂性主要是：</p>
+<ol>
+<li>计算机存储数据的格式不同；</li>
+<li>文件的目录结构和文件命名的规定不同；</li>
+<li>对于相同的文件存取功能，操作系统使用的命令不同；</li>
+<li>访问控制方法不同。</li>
+</ol>
+<p><strong>FTP特点</strong>：</p>
+<ul>
+<li>文件传输协议FTP只提供文件传送的一些基本的服务，它使用TCP可靠的传输服务。</li>
+<li>FTP的主要功能是减少或消除在不同操作系统下处理文件的不兼容性。</li>
+<li>FTP使用客户服务器方式。一个FTP服务器进程可同时为多个客户进程提供服务。</li>
+<li>FTP的服务器进程由两大部分组成：一个主进程，负责接受新的请求；另外有若干个从属进程，负责处理单个请求。</li>
+</ul>
+<p><strong>主进程的工作步骤</strong>：</p>
+<ul>
+<li>打开熟知端口(端口号为21)，使客户进程能够连接上；</li>
+<li>等待客户进程发出连接请求；</li>
+<li>启动从属进程来处理客户进程发来的请求。从属进程将客户进程的请求处理完毕后即终止，但从属进程在运行期间根据需要还可能创建其他一些子进程；</li>
+<li>回到等待状态，继续接受其他客户进程发来的请求。主进程和从属进程的处理是并发进行。</li>
+</ul>
+<blockquote>
+<p><strong>TCP的端口(用16位端口号来标示一个端口  0-66535正好65536个  0为保留，可允许有65535个不同的端口)</strong></p>
+<p><strong>注意：端口只具有本地意义，只是为标志本计算机应用层中的各个进程在和运输层交互时的层间接口，在因特网上不同主机中，相同的端口号没有关联。</strong></p>
+<p><strong>由此可见，两个计算机的进程要互相通信，不仅必须知道对方的IP地址(为了找到对方的计算机)，而且还要知道对方的端口号(为了找到对方计算机中的应用进程)</strong></p>
+<p>TCP的端口号可分为两大类:</p>
+<ol>
+<li><p>服务器端使用的端口号(又可分为两类):</p>
+<p>1) 熟知端口号/系统端口号(well known port number): 数值为0-1023.可在www.iana.org查到，IANA把这些端口号指派给TCP/IP中最重要的一些应用程序，让所有用户都知道。当一种新的应用程序出现后，IANA必须为它指派一个熟知端口，否则因特网上的其他应用进程就无法和它进行通信。如下是一些熟知端口号：</p>
+<p>| 应用程序   | FTP  | TELNET | SMTP | DNS  | TFTP | HTTP | SNMP | SNMP(trap) |<br>| ————— | —— | ——— | —— | —— | —— | —— | —— | ————— |<br>| 熟知端口号 | 21   | 23     | 25   | 53   | 69   | 80   | 161  | 162        |</p>
+<p>2) 注册端口号: 数值为1024-49151.为没有熟知端口号的应用程序使用的。使用这类端口号必须按照IANA的规定手续登记，以防止重复。</p>
+</li>
+<li><p>客户端使用的端口号</p>
+<p>数值为49152-65535。由于这类端口号仅在客户进程运行时才动态的选择，因此又称短暂端口号(临时端口号)。是留给客户进程选择暂时使用，当服务器进程收到客户进程的报文，就知道了客户进程所使用的端口号，因而可以把数据发送给客户进程。通信结束后，这个端口号就不存在了，就可以供给其他客户进程以后使用。</p>
+</li>
+</ol>
+</blockquote>
+<p>FTP使用的两个TCP连接：控制连接和数据连接</p>
+<p>控制连接在整个会话期间一直保持打开，FTP客户发出的传送请求，通过控制连接发送给服务器端的控制进程，但控制连接不用来传送文件。</p>
+<p>实际用于传输文件的是“数据连接”。服务器端的控制进程在受到FTP客户发送来的文件传输请求后，就创建“数据传送进程”和“数据连接”，用来连接客户端和服务器端的数据传送进程。</p>
+<p>两个不同的端口号：当客户进程向服务器进程发出建立连接请求时，要寻找连接服务器进程的熟知端口(21)，同时还要告诉服务器进程自己的另一个端口号码，用于建立数据传送连接。接着，服务器进程用自己传送数据的熟知端口(20)与客户进程所提供的端口号码建立数据传送连接。</p>
+<p>由于FTP使用了两个不同的端口号，所以数据连接与控制连接不会发生混乱。</p>
+<p>FTP的使用模式：主动模式和被动模式</p>
+<p>主动模式要求客户端和服务器端同时打开并且监听一个端口以建立连接。在这种情况下，客户端如果安装了防火墙，文件传输就会产生一些问题。所以，创立了被动模式。</p>
+<p>被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装防火墙的问题。</p>
+<p><strong>基于主动模式的FTP连接创建步骤</strong></p>
+<p>客户端打开一个随机的端口(端口号大于1024，在这里称其为X)，同时一个FTP进程连接至服务器的21号命令端口。此时，该TCP连接的来源地端口为客户端指定的随机端口X，目的地端口(远程端口)为服务器上的21号端口。</p>
+<p>客户端开始监听端口X+1，同时向服务器发送一个端口命令(通过服务器的21号命令端口)，此命令告诉服务器客户端正在监听的端口号并且已准备好从此端口接收数据。这个端口就是数据端口。</p>
+<p>服务器打开20号源端口并且创建和客户端数据端口的连接。此时，来源地端口为20，目的地端口为X+1.</p>
+<p>客户端通过本地的数据端口创建一个和服务器20号端口的连接，然后向服务器发送一个应答，告诉服务器它已经创建好了一个连接。</p>
+<p>大多数网页浏览器和文件管理器都能和FTP服务器创建连接。这使得在FTP上通过一个接口就可以操控远程文件，如同操控本地文件一样。</p>
+<p>是否提供密码是可选择的，如果有密码，则形如<code>ftp://&lt;login&gt;:&lt;password&gt;@&lt;ftpserveraddress&gt;</code>.</p>
+<h1 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h1><p>网络文件系统是FreeBSD支持的文件系统中的一种，它允许一个系统在网络上与他人共享目录和文件。</p>
+<p>通过使用NFS，用户和程序可以像访问本地文件一样，访问远端系统上的文件。</p>
+<p>NFS至少有两个主要部分：一台服务器和一台(或者更多)客户机。客户机远程访问存放在服务器上 的数据。为了正常工作，一些进程需要被配置并运行。</p>
+<p>Linux环境下，NFS的配置重点在于对<code>/etc/rc.conf</code>文件的修改，过程如下：</p>
+<p>NFS服务器端，确认<code>/etc/rc.conf</code>文件有如下语句：</p>
+<p><code>rpcbind_enable=&quot;YES&quot;</code></p>
+<p><code>nfs_server_enable=&quot;YES&quot;</code></p>
+<p><code>mountd_flags=&quot;-r&quot;</code></p>
+<blockquote>
+<p>NFS被设置为enable，mountd就能自动运行。</p>
+</blockquote>
+<p>客户端，确认<code>/etc/rc.conf</code>文件有如下语句：</p>
+<p><code>nfs_client_enable=&quot;YES&quot;</code></p>
+<blockquote>
+<p><code>/etc/exports</code>文件指定了哪个文件系统NFS应该输出(也成为共享)。<code>/etc/exports</code>里面每行指定一个输出的文件系统和哪些机器可以访问该文件系统。在指定机器访问权限的同时，访问选项开关也可以被指定。</p>
+</blockquote>
+<p>NFS的技术优势：</p>
+<ul>
+<li>本地工作站使用更少的磁盘空间，因为通常的数据可以存放在一台机器上而且可以通过网络访问到。</li>
+<li>用户不必在每个网络机器上都有一个home目录。home目录可以被放在NFS服务器上并且在网络上处处可用。</li>
+</ul>
+<blockquote>
+<p>以下内容来自<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">维基</a>：</p>
+<p><strong>文件传输协议</strong>（英语：<strong>F</strong>ile <strong>T</strong>ransfer <strong>P</strong>rotocol，缩写：<strong>FTP</strong>）是一个用于在计算机网络上在客户端和服务器之间进行文件传输的应用层协议。文件传送（file transfer）和文件访问（file access）之间的区别在于：前者由FTP提供，后者由如NFS(<strong>N</strong>etwork <strong>F</strong>ile <strong>S</strong>ystem)等应用系统提供。</p>
+<p>FTP是一个8位的客户端-服务器协议，能操作任何类型的文件而不需要进一步处理，就像<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/MIME">MIME</a>或<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Unicode">Unicode</a>一样。但是，FTP有着极高的延时，这意味着，从开始请求到第一次接收需求数据之间的时间，会非常长；并且不时的必须执行一些冗长的登录进程。</p>
+<p>FTP服务一般运行在20和21两个端口。端口20用于在客户端和服务器之间传输数据流，而端口21用于传输控制流，并且是命令通向ftp服务器的进口。当数据通过数据流传输时，控制流处于空闲状态。而当控制流空闲很长时间后，客户端的防火墙会将其会话置为超时，这样当大量数据通过防火墙时，会产生一些问题。此时，虽然文件可以成功的传输，但因为控制会话，会被防火墙断开；传输会产生一些错误。</p>
+</blockquote>
+<h1 id="TFTP"><a href="#TFTP" class="headerlink" title="TFTP"></a>TFTP</h1><p>TFTP(<strong>简单文件传输协议</strong>也称<strong>小型文件传输协议</strong>（<strong>T</strong>rivial <strong>F</strong>ile <strong>T</strong>ransfer <strong>P</strong>rotocol, <strong>TFTP</strong>）)是一个很小且易于实现的文件传送协议。</p>
+<p>TFTP使用客户服务器方式和使用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE">UDP</a>数据报，它得不到可靠的数据传输，因此TFTP需要有自己的差错改正措施。</p>
+<p>TFTP只支持文件传输而不支持交互。</p>
+<p>TFTP没有一个庞大的命令集，没有列目录的功能，也不能对用户进行身份鉴别。</p>
+<p>特点：</p>
+<ul>
+<li>每次传送的数据PDU中有512个字节的数据，但最后一次可不足512字节</li>
+<li>数据PDU(协议数据单元)也称为文件块(block)，每个块按序编号，从1开始</li>
+<li>支持ASCII码(即支持文本文件传输)或二进制(即支持非文本传输，如一段音乐、一个照片等)传送</li>
+<li>可对文件进行读或写</li>
+<li>使用很简单的首部</li>
+</ul>
+<blockquote>
+<p><strong>协议数据单元</strong>（英语：Protocol Data Unit，缩写为<strong>PDU</strong>）:</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI模型">OSI模型</a>系统里，PDU和最下面四层相关。</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/物理层">物理层</a>（一层）PDU指<strong>数据位</strong>（<strong>Bit</strong>）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据链路层">数据链路层</a>（二层）PDU指<strong>数据帧</strong>（<strong>Frame</strong>）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/网络层">网络层</a>（三层）PDU指<strong>数据包</strong>（<strong>Packet</strong>）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/传输层">传输层</a>（四层）PDU指<strong>数据段</strong>（<strong>Segment</strong>）。</p>
+</li>
+</ol>
+<p>第五层或以上为<strong>数据</strong>（<strong>data</strong>）。在特定的上下文情况下，一个特定层的PDU有时可以代表这个层。</p>
+</blockquote>
+<p>关于UDP：</p>
+<blockquote>
+<p><strong>用户数据报协议</strong>（英语：<strong>U</strong>ser <strong>D</strong>atagram <strong>P</strong>rotocol，缩写：<strong>UDP</strong>；又称<strong>用户数据包协议</strong>）是一个简单的面向<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据报">数据报</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/通信协议">通信协议</a>，位于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OSI模型">OSI模型</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/传输层">传输层</a>。</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/TCP/IP">TCP/IP</a>模型中，UDP为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/网络层">网络层</a>以上和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/应用层">应用层</a>以下提供了一个简单的接口。UDP只提供<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据">数据</a>的不可靠传递，它一旦把应用程序发给网络层的数据发送出去，就不保留数据备份（所以UDP有时候也被认为是不可靠的数据报协议）。UDP在IP数据报的头部仅仅加入了复用和数据校验字段。</p>
+<p>UDP适用于不需要或在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/计算机程序">程序</a>中执行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/错误检测与纠正">错误检查和纠正</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/应用程序">应用</a>，它避免了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/协议栈">协议栈</a>中此类处理的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=开销&amp;action=edit&amp;redlink=1">开销</a>。对时间有较高要求的应用程序通常使用UDP，因为丢弃数据包比等待或重传导致延迟更可取。</p>
+</blockquote>
+<p>数据报（Datagram）：</p>
+<blockquote>
+<p>是在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/封包交換網路">分组交换网络</a>中的最小传输资料单元。是一种<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/無連接式通訊">无连接式通信</a>方法，它与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/虛擬電路">虚拟电路</a>构成了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/分组交换">分组交换</a>的两种主要传输方式。</p>
+</blockquote>
+<p>TFTP工作原理：</p>
+<ul>
+<li>在一开始工作时，TFTP客户进程发送一个读请求PDU或写请求PDU给TFTP服务器进程，其熟知端口号为69(16进制)</li>
+<li>初始连接时要发出WRQ(请求写入远程系统)或RRQ(请求读取远程系统)，收到一个确定应答，一个确定可以写出的包或应该读取的第一块数据</li>
+<li>创建连接时，通信双方随机选择一个TID，因此两次选择同一个ID的可能性就很小</li>
+<li>每个包包括两个TID，发送者ID和接收者ID</li>
+<li>TFTP服务器进程要选择一个新的端口和TFTP客户进程进行通信。若文件长度恰好为512字节的整数倍，则在文件传送完毕后，还必须在最后发送一个只含首部而无数据的数据PDU。若文件长度不是512字节的整数倍，则最后传送数据PDU的数据字段一定不满足512字节，这正好可作为文件结束的标志</li>
+</ul>
+<p>TFTP工作原理：</p>
+<p>写入例子(WRQ，ACK和DATA代表写入、确认和数据)</p>
+<p>主机A向主机B发出WRQ，其中端口为69</p>
+<p>B机向A机发出ACK，块号为0，包括B和A的TID</p>
+<h1 id="EMAIL"><a href="#EMAIL" class="headerlink" title="EMAIL"></a>EMAIL</h1><p>3个主要组成部分：</p>
+<ol>
+<li>用户代理</li>
+<li>邮件服务器</li>
+<li>简单邮件传输协议：SMTP</li>
+</ol>
+<p><strong>用户代理</strong>：</p>
+<ul>
+<li>又名“邮件阅读器”</li>
+<li>撰写、编辑和阅读邮件</li>
+<li>如Outlook, Foxmail</li>
+<li>输出和输入邮件保存在服务器上</li>
+</ul>
+<p>例如WEB的HTTP代理就是浏览器，FTP的代理就是FTP的后端软件</p>
+<p><strong>邮件服务器</strong>：</p>
+<ul>
+<li>邮箱中管理和维护发送给用户的邮件</li>
+<li>输出报文队列保持待发送邮件报文</li>
+<li>邮件服务器之间的SMTP协议：发送EMAIL报文<ul>
+<li>客户：发送方邮件服务器</li>
+<li>服务器：接收端邮件服务器</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2021/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">计算机网络基本概念</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-23 08:04:28" itemprop="dateCreated datePublished" datetime="2021-02-23T08:04:28+08:00">2021-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-20 17:52:10" itemprop="dateModified" datetime="2021-04-20T17:52:10+08:00">2021-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>网络的定义</strong>：利用通信线路将地理上分散的、具有独立功能的计算机系统和通信设备按不同的形式连接起来，以功能完善的网络软件实现资源共享和信息传递的复合系统。</p>
+<p><strong>网络的基本特征</strong>：</p>
+<ol>
+<li>具有共享能力</li>
+<li>各计算机自治（计算机自成系统）</li>
+<li>网络协议支持（管理、控制和通信）</li>
+<li>支持互操作功能</li>
+</ol>
+<p><strong>资源子网</strong>是由各计算机系统、终端控制器和终端设备、软件和可供共享的数据库等组成。其功能是负责全网面向应用的数据处理工作，向用户提供数据处理能力、数据存储能力、数据管理能力和数据输入输出能力以及其它数据资源。</p>
+<p><strong>网络资源</strong>：硬件资源、软件资源、数据资源。</p>
+<p><strong>资源共享</strong>：是指网络系统中的各计算机用户可以利用网内其他计算机系统中的全部或部分资源的过程。它是网络的主要功能之一。</p>
+<p><strong>通信子网</strong>是由通信硬件（通信设备和通信线路等）和通信软件组成，其功能是为网中用户共享各种网络资源提供必要的通信手段和通信服务。</p>
+<p><strong>通信子网类型</strong>：结合型、公用型、专用型</p>
+<p><strong>节点</strong>：就是由一条或多条通信线路连接的具有一定功能的设备。网络中的各主计算机、终端和通信设备等均可称为节点。网络节点有两类：访问节点和交换节点。</p>
+<p><strong>广域网（WAN）</strong>：覆盖的范围大，如一个大城市、国家或洲际间建立的网络。</p>
+<p><strong>局域网（LAN）</strong>：覆盖范围有限，属于一个部门或单位组建的小范围网络，是目前计算机网络发展中最活跃的分支。</p>
+<p><strong>城域网（MAN）</strong>：是指建立在大城市、大都市区域的计算机网络，覆盖城市的大部分或全部地域。</p>
+<p><strong>互联网</strong>：一般把由多个网络相互连接构成的复合网络称为互联网。互联网是不同网络的相互连接，如局域网和广域网连接、两个局域网相互连接或多个局域网通过广域网连接。</p>
+<p><strong>虚拟局域网（VLAN）</strong>是指利用网络软件和网络交换技术将跨越不同地理位置的一个或多个物理网段上的相关用户组成的一个逻辑工作组（逻辑网络）。VLAN是依赖网络软件建立起的逻辑网络，相当部分的VLAN是临时性的。</p>
+<p><strong>虚拟专用网（VPN）</strong>是指依靠Internet服务提供者(ISP)和其他网络服务提供者(NSP)在公共网络中建立的专用的数据通信网络。VPN可使用户利用公共网的资源将分散在各地的机构动态地连接起来，进行数据低成本的安全传输，这样既节省长途电话费用支出，又不再需要专用线路。</p>
+<p><strong>主计算机（HOST）</strong>：与其他主计算机联网后构成网络中的主要资源。主计算机的作用：</p>
+<ul>
+<li>负责网络中的数据处理</li>
+<li>执行网络协议</li>
+<li>网络控制和管理</li>
+<li>维护共享数据库</li>
+</ul>
+<p><strong>终端</strong>：用户访问网络的设备。终端的主要功能：</p>
+<ul>
+<li>[x] 把用户输入的信息转变为适合传送的信息送到网络上</li>
+<li>[x] 把网络上其他节点输出并经过通信线路接收的数据转变为用户所能识别的信息</li>
+</ul>
+<p><strong>通信控制处理机（CCP）</strong>：也称通信控制器，在某些网络中也叫前端处理机（FEP）、接口信息处理机（IMP）等。</p>
+<p><strong>CCP主要作用</strong>：承担通信控制和管理工作，减轻主机负担。</p>
+<p>通信控制处理机是一种在计算机网络系统中执行通信控制与处理功能的专用计算机，通常由小型机或微型机担任。</p>
+<p><strong>调制解调器（MODEM）</strong>：一种数据传输和信号转换设备。借助于调制解调器，就可以进行远距离通信，便于实现多路复用。</p>
+<p><strong>多路复用器</strong>：具有多路复用功能。</p>
+<p>利用多路复用器可以实现在一条物理链路上同时传输多路信号，提高信道利用率。</p>
+<p><strong>集中器</strong>：用于在终端密集的地方，可以节省通信链路，提高线路利用率。集中器可由微型计算机或单片机担任。</p>
+<p><strong>网络连接设备</strong>有：中继器、集线器及各种线路连接器等。</p>
+<p><strong>网络互联设备</strong>有：网桥、路由器、交换机和网关等。</p>
+<p><strong>网络操作系统（NOS）</strong>的主要作用：除了具有常规操作系统的功能外，还应有网络通信管理功能、网络范围内的资源管理功能和网络服务等。</p>
+<p><strong>网络协议软件（Protocol）</strong>：网络协议软件是网络软件中最重要、最核心的部分。它是计算机网络中各部分通信所必须遵守的规则集合。</p>
+<p><strong>计算机网络的特点</strong>：</p>
+<ul>
+<li>可靠性：当网内某子系统出现故障时，可由网内其他子系统代为处理，网络环境提供了高度的可靠性。</li>
+<li>独立性：网络系统中各相连的计算机系统是相对独立的，它们各自既相互联系又相互独立。</li>
+<li>高效率性：网络信息传递迅速，系统实时性强。网络系统可把一个大型复杂的任务分给几台计算机去处理，从而提高工作效率。</li>
+<li>易扩充性：可以灵活地在网络中接入新的节点，如远程终端系统等，达到扩充网络系统功能的目的。</li>
+<li>廉价性</li>
+<li>透明性：网络用户所关心的是如何利用网络高效而可靠地完成自己的任务，而不去考虑网络所涉及的技术和具体工作过程。</li>
+<li>易操作性</li>
+</ul>
+<p><strong>计算机网络的分类</strong>：</p>
+<ul>
+<li>[x] 按照覆盖范围划分：广域网、局域网、城域网</li>
+<li>[x] 按照逻辑功能划分：资源子网、通信子网</li>
+<li>[x] 按照传输介质划分：有线网、无线网</li>
+<li>[x] 按照拓扑结构划分：星型网、总线型网、环形网、树形网、网型网</li>
+<li>[x] 按照传输介质种类划分：双绞线网、同轴电缆网、光纤网、卫星网、微波网</li>
+<li>[x] 按照应用范围和管理性质划分：公用网和专用网</li>
+<li>[x] 按照交换方式划分：电路交换网、分组交换网、ATM交换网等</li>
+<li>[x] 按照连接方式划分：全连通式网络、交换式网络、广播式网络</li>
+</ul>
+<p>网络体系结构是针对计算机网络所执行的各种功能而设计出的一种<strong>层次结构模型</strong>。</p>
+<p>网络协议组成的三要素：</p>
+<ul>
+<li>语义：规定了通信双方要发出的控制信息、执行的动作和返回的应答等。</li>
+<li>语法：规定通信双方彼此应该如何操作，即确定协议元素的形式。</li>
+<li>时序：（也称定时、同步）是对事件实现顺序的详细说明，指出事件的顺序和速率匹配等，</li>
+</ul>
+<p>OSI七层模型：</p>
+<ol>
+<li><p>物理层：物理介质为数据链路层提供传输比特流的一个物理连接</p>
+<p>主要任务：为通信双方的数据传输提供物理连接，并在物理连接上透明地传输比特流。传输单位是位（比特）。</p>
+</li>
+<li><p>数据链路层：检测并校正物理层传输介质上产生的传输差错，使两系统之间构成一条无差错的链路。</p>
+</li>
+<li><p>网络层：通信子网的最高层，用于控制和管理通信子网的操作。它体现了网络应用环境中资源子网访问通信子网的方式。网络层的数据传输单位是数据分组（包）。</p>
+<p>主要任务：在数据链路服务的基础上，实现整个通信子网内的连接，向传输层提供端到端的数据传输链路，为报文分组以最佳路径通过通信子网到达目的主机提供服务。</p>
+</li>
+<li><p>传输层：OSI中1-3层面向数据通信，是由通信子网所完成的通信功能的集合，通信子网就是基于低三层通信协议构成的网络。5-7层是由端主机进程所完成的面向应用功能的集合。传输层是OSI中高层与低层之间的接口层。</p>
+<p>对于网络中通信的两个主机，其端到端的可靠通信最后要靠传输层来完成。传输层是OSI中负责通信的最高层，是唯一总体负责数据传输和控制的层次。传输层还是OSI中用户功能的最低层。</p>
+</li>
+<li><p>会话层：利用传输层提供的端到端服务，向表示层提供它的增值服务。这种服务主要是向表示层实体或用户进程提供建立连接并在连接上有序地传输数据。</p>
+</li>
+<li><p>表示层：</p>
+</li>
+<li><p>应用层</p>
+</li>
+</ol>
+<p>协议是计算机网络有序运行的重要保证。</p>
+<p>硬件（主机、路由器、通信链路等）是计算机网络的基础。</p>
+<p>计算机网络中的数据交换必须遵守约定好的规则。</p>
+<p><strong>网络协议</strong>(network protocol)，简称<strong>协议</strong>，是为进行网络中的数据交换而建立的规则、标准或约定。</p>
+<p><strong>协议</strong>规定了通信实体之间所交换的消息的格式、意义、顺序以及针对收到信息或发生的事件所采取的”动作”(actions).</p>
+<p><strong>协议的三要素</strong>：</p>
+<ol>
+<li>语法(syntax)<ul>
+<li>数据与控制信息的结构或格式</li>
+<li>信号电平</li>
+</ul>
+</li>
+<li>语义(semantics)<ul>
+<li>需要发出何种控制信息</li>
+<li>完成何种动作以及做出何种响应</li>
+<li>差错控制</li>
+</ul>
+</li>
+<li>时序(timing)<ul>
+<li>事件顺序</li>
+<li>速度匹配</li>
+</ul>
+</li>
+</ol>
+<p>协议规范了网络中所有信息发送和接收过程。</p>
+<p><strong>网络应用体系结构</strong></p>
+<p>C/S结构、P2P结构、混合结构</p>
+<p><strong>客户机/服务器结构</strong></p>
+<p>服务器：</p>
+<ol>
+<li>7*24小时提供服务</li>
+<li>永久性访问地址/域名</li>
+<li>利用大量服务器实现可扩展性</li>
+</ol>
+<p>客户机：</p>
+<ol>
+<li>与服务器通信，使用服务器提供的服务</li>
+<li>间歇性接入网络</li>
+<li>可能使用动态IP地址</li>
+<li>不会与其他客户机直接通信</li>
+</ol>
+<p>服务器上运行web服务器软件，客户机上运行浏览器软件</p>
+<p><strong>P2P结构</strong></p>
+<p>没有永远在线的服务器</p>
+<p>任意端系统/节点之间可以直接通讯</p>
+<p>节点<strong>间歇性</strong>接入网络</p>
+<p>节点可能改变IP地址</p>
+<blockquote>
+<p>优点：高度可伸缩</p>
+<p>缺点：难于管理</p>
+</blockquote>
+<p><strong>混合结构</strong></p>
+<p>Napster</p>
+<p><strong>网络应用的基础：进程间通信</strong></p>
+<p>进程：主机上运行的程序</p>
+<p>同一主机上运行的进程之间如何通信？</p>
+<ul>
+<li>进程间通信机制</li>
+<li>操作系统提供</li>
+</ul>
+<p>不同主机上运行的进程之间如何通信？</p>
+<ul>
+<li>消息交换</li>
+</ul>
+<p><strong>客户机进程</strong>：发起通信的进程</p>
+<p><strong>服务器进程</strong>：等待通信请求的进程</p>
+<p>不同主机之间进程的通信依靠套接字。这是操作系统提供的一种抽象接口，使其与网络硬件基础设施进行交互。例如寄信，你只需要把信件放在自己门外的信箱里，信箱就像是socket，邮政部门就是传输基础设施，负责将信件传送到接收方的信箱中，即接收方的socket。</p>
+<p><strong>传输基础设施向进程提供API</strong>：传输协议的选择、参数的设置</p>
+<p><strong>socket是操作系统提供的关于网络的API</strong></p>
+<p><strong>如何寻址进程？</strong></p>
+<p>不同主机上进程间通信，那么每个进程必须拥有<strong>标识符</strong></p>
+<p>寻址主机——IP地址</p>
+<p>寻址进程——端口号</p>
+<p>为主机上每个需要通信的进程分配一个端口号：</p>
+<p>HTTP Server：80</p>
+<p>Mail Server：25</p>
+<p>mac查看端口占用：<code>sudo lsof -i tcp:port</code></p>
+<p>例如<code>sudo lsof -i tcp:80</code></p>
+<p>于是，进程的标识符就是：IP地址+端口号</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>本机IP:port</th>
+<th>外部IP:port</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP</td>
+<td>192.168.0.100:49225</td>
+<td>202.108.23.105:5287</td>
+<td>ESTABLISHED</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>应用层协议：</p>
+<p>网络应用需遵循应用层协议</p>
+<p>公开协议：</p>
+<p>由RFC(Request For Comments)定义</p>
+<p>允许互操作</p>
+<p>HTTP, SMTP, …</p>
+<p>私有协议：</p>
+<p>多数P2P的文件共享应用</p>
+<p><strong>应用层协议的内容</strong></p>
+<p>消息的类型(type)：请求消息、响应消息</p>
+<p>消息的语法(syntax)/格式：消息中有哪些字段(field)? 每个字段如何描述</p>
+<p>字段的语义(semantics)：字段中信息的含义</p>
+<p>规则(rules)：进程何时发送/响应消息、进程如何发送/响应消息</p>
+<p>设计一个网络应用时，要么使用现有的网络协议，要么设计一个新的协议</p>
+<p><strong>网络应用的需求与传输层服务</strong></p>
+<p>网络应用对传输服务的需求：</p>
+<ol>
+<li>数据丢失(data loss)/可靠性(reliability)</li>
+<li>时间(timing)/延迟(delay)</li>
+<li>带宽(bandwidth)</li>
+</ol>
+<p><strong>Internet提供的传输服务</strong></p>
+<p>TCP服务：</p>
+<ol>
+<li>面向连接：客户机/服务器进程间需要建立连接</li>
+<li>可靠的传输</li>
+<li>流量控制：发送方的发送速度不会过快，以至于超过接收方的处理能力</li>
+<li>拥塞控制：当网络负载过重时，能够限制发送方的发送速度</li>
+<li>不提供时间/延迟保障</li>
+<li>不提供最小带宽保障</li>
+</ol>
+<p>UDP服务：</p>
+<ol>
+<li>不面向连接</li>
+<li>不可靠传输</li>
+<li>不提供可靠性保障、流量控制、拥塞控制、延迟保障、带宽保障</li>
+</ol>
+<p><strong>web与HTTP</strong></p>
+<p>World Wide Web: 网页互相链接</p>
+<p>网页包含多个对象</p>
+<p>对象的寻址：URL(Uniform Resource Locator): 统一资源定位器 RFC1738</p>
+<p>Scheme://host:port/path</p>
+<p>www.someschool.edu/someDept/pic.gif</p>
+<p>www.someschool.edu是host name, someDept/pic.gif是path name.</p>
+<p><a target="_blank" rel="noopener" href="http://被省略了(因为是默认">http://被省略了(因为是默认</a>).</p>
+<p><strong>web遵守的应用层协议：HTTP</strong></p>
+<p>超文本传输协议(HyperText Transfer Protocol)</p>
+<p>HTTP使用TCP传输服务：</p>
+<ul>
+<li>服务器在80端口等待客户的请求</li>
+<li>浏览器发起到服务器的TCP连接(创建socket)</li>
+<li>服务器接受来自浏览器的TCP连接</li>
+<li>浏览器(HTTP客户端)与web服务器(HTTP服务器)交换HTTP信息</li>
+<li>关闭TCP连接</li>
+</ul>
+<p>HTTP是一个无状态的协议(stateless)：服务器不维护任何有关客户端过去所发送请求的信息。</p>
+<p><strong>HTTP连接的两种类型</strong></p>
+<ol>
+<li><p>非持久性连接(Nonpersistent HTTP)</p>
+<p>每个TCP连接最多允许传输一个对象</p>
+<p>HTTP 1.0版本使用非持久性连接</p>
+</li>
+<li><p>持久性连接(Persistent HTTP)</p>
+<p>每个TCP连接允许传输多个对象</p>
+<p>HTTP 1.1版本默认使用非持久性连接</p>
+</li>
+</ol>
+<p>socket编程——应用编程接口(Application Programming Interface, API)——位于应用层和传输层之间</p>
+<p>socket将应用层的数据交给传输层</p>
+<p><strong>应用编程接口API就是应用进程的控制权和操作系统的控制权进行转换的一个系统调用接口。</strong></p>
+<p>标识一个套接字(对外)：IP地址+端口号</p>
+<p>操作系统/进程如何管理套接字(对内)？</p>
+<ul>
+<li>套接字描述符(socket descriptor)</li>
+</ul>
+<p>即，操作系统在管理其内部创建的socket套接字的时候，使用套接字描述符来标识的</p>
+<ol>
+<li><p>socket抽象类似于文件的抽象，在UNIX中，套接字就是一种特殊的文件(一切皆文件！)</p>
+</li>
+<li><p>当应用进程创建套接字时，操作系统分配一个数据结构存储该套接字相关信息。</p>
+</li>
+<li>最后返回的是套接字描述符。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2021/02/18/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="preccrep">
+      <meta itemprop="description" content="serial processing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Serial">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/18/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">数字逻辑基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-18 09:25:11" itemprop="dateCreated datePublished" datetime="2021-02-18T09:25:11+08:00">2021-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-22 14:15:36" itemprop="dateModified" datetime="2021-02-22T14:15:36+08:00">2021-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">数字逻辑与数字系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>物理量有两种表示方法：<strong>模拟表示法</strong>、<strong>数字表示法</strong></p>
+<p>模拟量和数字量的主要区别：模拟量=连续，数字量=离散</p>
+<p><strong>数字系统</strong>是用来处理逻辑信息或以数字形式表示的物理量的器件组合，即其数值只能取离散值。或称是<code>有一组或几种基本的标准逻辑门来构成的复杂的、使用数字量来传递和加工、处理信息的实际工程系统</code>。</p>
+<p>最常见的数字系统：计算机、数字音像及世界上最大的数字系统——手机电话系统</p>
+<p><strong>数字逻辑电路</strong>是以逻辑门为基本单元构成的复杂的数字系统中的硬件部分。</p>
+<p><strong>逻辑门</strong>：以能完成<code>独立逻辑功能</code>的一组电子元件和器件所组成的线路。</p>
+<p><strong>模拟系统</strong>所包含的装置能处理以模拟形式表示的物理量。</p>
+<blockquote>
+<p>数字技术的优点：易设计、信息存储方便、操作可编程、数字电路抗干扰能力强、多数数字电路能制造在IC芯片上</p>
+<p>数字技术的缺点：</p>
+<ol>
+<li>由于必须在信息的模拟形式与数字形式之间进行转换，从而增加了系统的复杂性和费用；</li>
+<li>数字（二进制数）信号的处理需要时间。所需要的数据越精确，处理时间越长。</li>
+</ol>
+</blockquote>
+<p>当涉及到模拟输入、输出时，为了利用数字技术的优点，必须采用下面3步：</p>
+<ol>
+<li>把实际中的模拟输入转换为数字形式；</li>
+<li>数字信息处理；</li>
+<li>把数字输出变换为模拟输出。</li>
+</ol>
+<p>原则：随着信号在系统中的流动，在输入通道中尽可能早地把信号数字化，在输出通道中尽可能晚地把信号转换为模拟信号。</p>
+<h1 id="数的表示"><a href="#数的表示" class="headerlink" title="数的表示"></a>数的表示</h1><h2 id="进制表示"><a href="#进制表示" class="headerlink" title="进制表示"></a>进制表示</h2><p>不同进位计数制的数值具有等值关系：</p>
+<script type="math/tex; mode=display">
+N=N_{10}=(N)_{10}=N_S=(M)_S=N_T=(K)_T</script><p>其中M是十进制数N的S进制形式，K是N的T进制形式。</p>
+<p>也就是说，加了括号的括号内一定是转换数制后的数，不加括号就是原来的十进制数。例如：</p>
+<script type="math/tex; mode=display">
+13=(13)_{10}=13_8=(15)_8=(1101)_2</script><p>数值转换时小数位数的确定：</p>
+<script type="math/tex; mode=display">
+\alpha 进制的小数有k位，转换为\beta进制后，至少具有相同精度的小数是j位，则
+(0.1)_{\alpha}^k \geq (0.1)_{\beta}^j.</script><script type="math/tex; mode=display">
+在十进制中可表示为：(\frac{1}{\alpha})^k \geq (\frac{1}{\beta})^j.</script><script type="math/tex; mode=display">
+即：\alpha^k \leq \beta^j</script><script type="math/tex; mode=display">
+两边取对数：\log\alpha^k \leq \log\beta^j，即k\log\alpha \leq j\log\beta</script><script type="math/tex; mode=display">
+得到：j \geq k\frac{\log\alpha}{\log\beta}</script><script type="math/tex; mode=display">
+则j满足的不等式条件为：k\frac{\log\alpha}{\log\beta} \leq j < k\frac{\log\alpha}{\log\beta}+1</script><h2 id="数的表示和运算"><a href="#数的表示和运算" class="headerlink" title="数的表示和运算"></a>数的表示和运算</h2><p>计算机中表示小数点位置的方法通常有两种：定点表示法和浮点表示法。</p>
+<h3 id="定点表示法"><a href="#定点表示法" class="headerlink" title="定点表示法"></a>定点表示法</h3><p>小数点位置固定，一般固定在数的最高位之前或最低位之后。</p>
+<h3 id="浮点表示法"><a href="#浮点表示法" class="headerlink" title="浮点表示法"></a>浮点表示法</h3><p>例如，二进制数101.1和10.11可表示为：</p>
+<script type="math/tex; mode=display">
+101.1=(10)^{11}\times0.1011</script><script type="math/tex; mode=display">
+10.11=(10)^{10}\times0.1011</script><p>其中10和11是二进制数，转换为十进制就是2和3.</p>
+<p>因此，这两个二进制数可以用<strong>阶码</strong>和<strong>尾数</strong>表示：</p>
+<script type="math/tex; mode=display">
+101.1\rightarrow11, 0.1011</script><script type="math/tex; mode=display">
+10.11\rightarrow10, 0.1011</script><p>这就是浮点表示法。表示时需要将一个字长划分为两部分，分别用来表示阶码和尾数，<strong>两个部分的最高位分别为各自的符号位</strong>。</p>
+<p>例如，规定一个16位字长的前5位表示阶码，后11位表示尾数：</p>
+<p><code>0    0011        0    1011000000</code></p>
+<p><code>0    0010        0    1011000000</code></p>
+<p><strong>原码</strong>：符号位加上真值的绝对值，即用第一位表示符号，其余位表示值。</p>
+<p>因为第一位是符号位, 所以8位二进制数的取值范围就是[-127, 127]</p>
+<p><strong>反码</strong>：正数的反码是其本身；负数的反码是在其原码的基础上，符号位不变，其余各个位取反。</p>
+<p><strong>补码</strong>：正数的补码就是其本身；负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后+1（即在反码的基础上+1）。</p>
+<p>一篇可参考的博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">戳这</a></p>
+<h3 id="可靠性编码"><a href="#可靠性编码" class="headerlink" title="可靠性编码"></a>可靠性编码</h3><p>目的：解决代码在形成或传输过程中可能会发生的错误，提高系统的安全性</p>
+<p>方法：使代码自身具有一种特征或能力</p>
+<h4 id="格雷码"><a href="#格雷码" class="headerlink" title="格雷码"></a>格雷码</h4><p>任意两个相邻数的代码只有一位二进制数不同</p>
+<blockquote>
+<p>格雷码(Gray code)是1880年由法国工程师Jean-Maurice-Emlle Baudot发明的一种编码，是一种绝对编码方式，典型格雷码是一种具有反射特性和循环特性的单步自补码，它的循环、单步特性消除了随机取数时出现重大误差的可能，它的反射、自补特性使得求反非常方便。格雷码属于可靠性编码，是一种错误最小化的编码方式，因为，虽然自然二进制码可以直接由数/模转换器转换成模拟信号，但在某些情况，例如从十进制的3转换为4时二进制码的每一位都要变，能使数字电路产生很大的尖峰电流脉冲。而格雷码则没有这一缺点，它在相邻位间转换时，只有一位产生变化。它大大地减少了由一个状态到下一个状态时逻辑的混淆。由于这种编码相邻的两个码组之间只有一位不同，引起数字量发生变化时，格雷码仅改变一位，这样与其它编码同时改变两位或多位的情况相比更为可靠，即可减少出错的可能性。</p>
+</blockquote>
+<p> 格雷码是一个数列集合，相邻两数间只有一个位元改变，为无权数码，且格雷码的顺序不是唯一的。</p>
+<p>例如以下为3位元的格雷码： 000 001 011 010 110 111 101 100 。</p>
+<p>如果要产生n位元的格雷码，那么格雷码的个数为$2^n$.</p>
+<p>假设原始的值从0开始，格雷码产生的规律是：</p>
+<p>第一步，改变最右边的位元值；</p>
+<p>第二步，改变右起第一个为1的位元的左边位元；</p>
+<p>第三步，第四步重复第一步和第二步，直到所有的格雷码产生完毕（换句话说，已经走了$2^n -1$步）。</p>
+<p>用一个例子来说明：</p>
+<p>假设产生3位元的格雷码，原始值位 000</p>
+<p>第一步：改变最右边的位元值： 001</p>
+<p>第二步：改变右起第一个为1的位元的左边位元： 011</p>
+<p>第三步：改变最右边的位元值： 010</p>
+<p>第四步：改变右起第一个为1的位元的左边位元： 110</p>
+<p>第五步：改变最右边的位元值： 111</p>
+<p>第六步：改变右起第一个为1的位元的左边位元： 101</p>
+<p>第七步：改变最右边的位元值： 100</p>
+<p>如果按照这个规则来生成格雷码，是没有问题的，但是这样做太复杂了。如果仔细观察格雷码的结构，我们会有以下发现：</p>
+<ol>
+<li><p>除了最高位（左边第一位），格雷码的位元完全上下对称（看下面列表）。比如第一个格雷码与最后一个格雷码对称（除了第一位），第二个格雷码与倒数第二个对称，以此类推。</p>
+</li>
+<li><p><strong>最小的重复单元是 0 , 1</strong>。</p>
+</li>
+</ol>
+<blockquote>
+<p>0<strong>00</strong></p>
+<p>0<strong>01</strong></p>
+<p>…</p>
+<p>1<strong>01</strong></p>
+<p>1<strong>00</strong></p>
+</blockquote>
+<p>所以，在实现的时候，我们完全可以利用递归，在每一层前面加上0或者1，然后就可以列出所有的格雷码。</p>
+<p>比如：</p>
+<p>第一步：产生 0, 1 两个字符串。</p>
+<p>第二步：在第一步的基础上，每一个字符串都加上0和1，但是每次只能加一个，所以得做两次。这样就变成了 00,01,11,10 （注意对称）。</p>
+<p>第三步：在第二步的基础上，再给每个字符串都加上0和1，同样，每次只能加一个，这样就变成了 000,001,011,010,110,111,101,100。</p>
+<p>好了，这样就把3位元格雷码生成好了。</p>
+<p>如果要生成4位元格雷码，我们只需要在3位元格雷码上再加一层0,1就可以了： 0000,0001,0011,0010,0110,0111,0101,0100,1100,1101,1110,1010,0111,1001,1000.</p>
+<p>也就是说，<em>n位元格雷码是基于n-1位元格雷码产生的</em>。</p>
+<p><strong>格雷码和自然二进制码之间的转换方法</strong></p>
+<p>自然二进制码转换成二进制格雷码，其法则是保留自然二进制码的最高位作为格雷码的最高位，而次高位格雷码为二进制码的高位与次高位相异或，而格雷码其余各位与次高位的求法相类似。</p>
+<p><strong>原理:</strong> 若二进制码表示为：<code>B[N-1]B[N-2]...B[2]B[1]B[0]</code>；</p>
+<p>则二进制格雷码表示为：<code>G[N-1]G[N-2]...G[2]G[1]G[0]</code>.</p>
+<p>其中最高位保留：<code>G[N-1] = B[N-1]</code>；</p>
+<p>其他各位：<code>G[i] = B[i+1] xor B[i]. (i = 0, 1, 2, ..., n-2)</code></p>
+<p><strong>格雷码转换为二进制码的实现方法</strong></p>
+<p>二进制格雷码转换成自然二进制码，其法则是保留格雷码的最高位作为自然二进制码的最高位，而次高位自然二进制码为高位自然二进制码与次高位格雷码相异或，而自然二进制码的其余各位与次高位自然二进制码的求法相类似。</p>
+<p><strong>原理:</strong> 若二进制格雷码表示为：<code>G[N-1]G[N-2]...G[2]G[1]G[0]</code>；</p>
+<p>相应地, 则二进制码表示为：<code>B[N-1]B[N-2]...B[2]B[1]B[0]</code>.</p>
+<p>其中最高位保留：<code>B[N-1] = G[N-1]</code>；</p>
+<p>其他各位：<code>B[i-1] = G[i-1] xor B[i]. (i = 1, 2, ..., n-1)</code></p>
+<p>算法实现：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/0201zcr/p/4796950.html">参考链接</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] GrayCode(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    String[] arr = <span class="keyword">new</span> String[(<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n)];</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>)</span><br><span class="line">        System.out.println(<span class="string">&quot;Input Error!&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        arr[<span class="number">0</span>] = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">        arr[<span class="number">1</span>] = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    String[] b = GrayCode(n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">        arr[i] = <span class="string">&quot;0&quot;</span> + b[i];</span><br><span class="line">        arr[arr.length - <span class="number">1</span> - i] = <span class="string">&quot;1&quot;</span> + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//非递归</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] GrayCode(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    <span class="keyword">int</span> num = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n);</span><br><span class="line">    String[] s1 = &#123;<span class="string">&quot;0&quot;</span>, <span class="string">&quot;1&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>)</span><br><span class="line">        System.out.println(<span class="string">&quot;Input Error!&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, i);</span><br><span class="line">        String[] si = <span class="keyword">new</span> String[p];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j &lt; p/<span class="number">2</span>)</span><br><span class="line">                si[j] = <span class="string">&quot;0&quot;</span> + s1[j];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                si[j] = <span class="string">&quot;1&quot;</span> + s1[p - j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        s1 = si;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于<strong>典型格雷码</strong>（0~15）还有一个特点：所有对应于十进制数$2^m-1$的格雷码，都仅在m位上有1，其余位都为0.</p>
+<p>例如：m=1，1的典型格雷码为0001；m=2，3的典型格雷码为0010；m=3，7的典型格雷码为0100；m=4，15的典型格雷码为1000.</p>
+<p>15与0的格雷码仍能保持一位差别，所以这种典型格雷码也称作循环码，适用于做二进制码计数器。</p>
+<p><strong>十进制格雷码</strong>（0~9）：代码特征符合格雷码要求，且16选10，使得9到0也只有一位的差别，保持循环码特点。</p>
+<h4 id="校验码"><a href="#校验码" class="headerlink" title="校验码"></a>校验码</h4><p>参考博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/FZfangzheng/p/8519791.html">戳这</a></p>
+<p><strong>奇偶校验码</strong></p>
+<p>参考博客1：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dushikang/p/8334776.html">戳这</a></p>
+<p>参考博客2：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44574333/article/details/108927425">戳这</a></p>
+<p>视频链接地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BE411D7ii?from=search&amp;seid=6420326887479343502">戳这</a></p>
+<blockquote>
+<p>问题：</p>
+<ul>
+<li>奇偶校验码能发现单错，但不能对单错定位；</li>
+<li>奇偶校验码不能发现双错.</li>
+</ul>
+</blockquote>
+<p><strong>海明校验码</strong></p>
+<p>参考博客1：<a target="_blank" rel="noopener" href="https://blog.csdn.net/coolskyying/article/details/78963550">戳这</a></p>
+<p>参考博客2：<a target="_blank" rel="noopener" href="https://my.oschina.net/u/3374461/blog/1931270">戳这</a></p>
+<p>海明码（Hamming Code）是利用奇偶性来检错和纠错的校验方法。海明码的构成方法是在数据位之间的确定位置插入k个校验位，通过扩大码距来实现检错和纠错。对于m位的数据，加入k位的校验码，它应满足：$m+k+1&lt;2^k$.</p>
+<h1 id="逻辑代数"><a href="#逻辑代数" class="headerlink" title="逻辑代数"></a>逻辑代数</h1><ol>
+<li><p>布尔代数：用一种数学运算来描述人的逻辑思维规律和推理过程的代数系统.</p>
+</li>
+<li><p>逻辑代数：将布尔代数的一些基本前提和定理应用于继电器电路的分析与描述。即开关代数，也就是二值布尔代数.</p>
+</li>
+<li><p>逻辑变量：用于表示事物的逻辑状态随逻辑条件的变化而变化的量，取值：0或1.</p>
+</li>
+<li><p>逻辑常量：逻辑状态保持不变，值为0或1.</p>
+</li>
+<li><p>逻辑电路：由实现逻辑变量之间逻辑关系的物理器件所构成的电路称为逻辑电路，即二值逻辑电路.</p>
+</li>
+<li><p>逻辑电平：在二值逻辑电路即开关电路中，将物理器件的物理量离散为两种电平.</p>
+<blockquote>
+<p>噪音区：在高、低电平之间有一逻辑不确定区。若电平稳定于噪音区称为逻辑模糊，这在逻辑电路中不允许。</p>
+<p>一般用H表示高电平，用L表示的低电平</p>
+<p>抽象化的高、低电平忽略了其物理量值的实际含义，实际上它们是代表着一定范围的物理量。</p>
+</blockquote>
+</li>
+<li><p>逻辑状态：事物的某些特性表现为两种互不相容的状态，即<br>① 某一时刻必出现且仅出现一种状态；<br>② 一种状态是另一种状态的反状态.</p>
+<p>用0、1表示，两种状态无大小之分.</p>
+</li>
+<li><p>逻辑约定：规定逻辑电平（表示物理器件的物理量）与逻辑状态（表示物理器件的功能）之间的关系，即逻辑规定。这一规定的过程称为逻辑化过程。<br>逻辑规定有两种：正逻辑规定和负逻辑规定。</p>
+</li>
+<li><p>逻辑函数：输入逻辑变量 $A_1, A_2, …, A_n$，输出逻辑变量F，记为 $F = f(A_1, A_2, …, A_n)$。</p>
+<p>逻辑函数的表示法：真值表、逻辑表达式、卡诺图、时间图</p>
+</li>
+</ol>
+<h2 id="逻辑代数的运算"><a href="#逻辑代数的运算" class="headerlink" title="逻辑代数的运算"></a>逻辑代数的运算</h2><h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><p>”与“运算（逻辑乘，Logic Multiplication），运算结果是逻辑积（Logic Product）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>”与“运算（逻辑乘, Logic Multiplication）</th>
+<th>”或“运算（逻辑加, Logic Addition）</th>
+<th>”非“运算（逻辑乘, Logic Negation）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运算结果</td>
+<td>逻辑积(Logic Product)</td>
+<td>逻辑和(Logic Sum)</td>
+<td>求补(Complement)</td>
+</tr>
+<tr>
+<td>代数式</td>
+<td>$F=A\times B=A\cdot B$</td>
+<td>$F=A+B$</td>
+<td>$F=\overline{A}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="逻辑代数的基本公理"><a href="#逻辑代数的基本公理" class="headerlink" title="逻辑代数的基本公理"></a>逻辑代数的基本公理</h3><p><strong>0-1律</strong></p>
+<blockquote>
+<p>$A+0=A$</p>
+<p>$A+1=1$</p>
+<p>$A\cdot 1=A$</p>
+<p>$A\cdot 0=0$</p>
+</blockquote>
+<p>与、或运算满足交换律、结合律、分配律。</p>
+<p>互补律：$A+\overline{A}=1$, $A\cdot \overline{A}=0$</p>
+<p>重叠律：$A+A=A$, $A\cdot A=A$</p>
+<p>对合律：$\overline{\overline{A}}=A$</p>
+<h3 id="逻辑代数的基本定理"><a href="#逻辑代数的基本定理" class="headerlink" title="逻辑代数的基本定理"></a>逻辑代数的基本定理</h3><p><strong>吸收定理</strong></p>
+<blockquote>
+<p>$A+AB=A$</p>
+<p>$A\cdot (A+B)=A$</p>
+<p>$A+\overline{A} \cdot B=A+B$</p>
+<p>$A\cdot (\overline{A}+B)=A\cdot B$</p>
+<p>$A\cdot B+A\cdot \overline{B}=A$</p>
+<p>$(A+B)(A+\overline{B})=A$</p>
+</blockquote>
+<p><strong>反演定理</strong></p>
+<blockquote>
+<p>$\overline{A_1+A_2+\dots +A_n}=\overline{A_1}\cdot \overline{A_2}\cdot \dots \overline{A_n}$</p>
+<p>$\overline{A_1\cdot A_2\cdot \dots \cdot A_n}=\overline{A_1}+ \overline{A_2}+ \dots \overline{A_n}$</p>
+</blockquote>
+<p><strong>包含定理(多余项定理)</strong></p>
+<script type="math/tex; mode=display">
+AB+\overline{A} C+BC=AB+\overline{A} C</script><script type="math/tex; mode=display">
+(A+B)(\overline{A}+C)(B+C)=(A+B)(\overline{A}+C)</script><blockquote>
+<p>证明：$AB+\overline{A} C+BC=AB+\overline{A} C$</p>
+<script type="math/tex; mode=display">
+AB+\overline{A} C+BC=(A+C)B+\overline{A}C=(A+\overline{A}C)B+\overline{A}C=AB+\overline{A}C(B+1)=AB+\overline{A}C\cdot 1=AB+\overline{A}C</script></blockquote>
+<h3 id="逻辑代数的基本规则"><a href="#逻辑代数的基本规则" class="headerlink" title="逻辑代数的基本规则"></a>逻辑代数的基本规则</h3><p><strong>代入规则</strong></p>
+<p>已知 $f(x_1,x_2,\dots ,x_i,\dots ,x_n)=g(x_1,x_2,\dots ,x_i,\dots ,x_n)$，有任意函数h，令$x_i=h$，则 $f(x_1,x_2,\dots ,h,\dots ,x_n)=g(x_1,x_2,\dots ,h,\dots ,x_n)$依然成立。</p>
+<blockquote>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+\because x_i\in \{0,1\}且逻辑函数h取值仅有0或1</script><script type="math/tex; mode=display">
+\therefore 带入规则成立</script></blockquote>
+<p>可以用带入规则证明N变量的德摩根定理。</p>
+<p><strong>反演规则</strong></p>
+<p>已知原函数 $f(x_1,x_2,\dots ,x_n,0,1,+,\cdot)$，则反函数 $\overline{f}(x_1,x_2,\dots ,x_n,0,1,+,\cdot)=f(\overline{x_1},\overline{x_2},\dots ,\overline{x_n},1,0,\cdot ,+)$</p>
+<p><strong>对偶规则</strong></p>
+<p>已知原函数 $f(x_1,x_2,\dots ,x_n,0,1,+,\cdot)$，则对偶函数 $f’(x_1,x_2,\dots ,x_n,0,1,+,\cdot)=f(x_1,x_2,\dots ,x_n,1,0,\cdot ,+)$</p>
+<p>如果原函数相等，则对偶函数也相等。</p>
+<h3 id="复合运算"><a href="#复合运算" class="headerlink" title="复合运算"></a>复合运算</h3><p><strong>与非（NAND）</strong>：$F=\overline{A\cdot B\cdot C}$</p>
+<p>可以用与非门实现三种基本运算：</p>
+<p>与运算：$F_1=A\cdot B=\overline{\overline{A\cdot B}}$</p>
+<p>非运算：$F_2=\overline{A\cdot A}=\overline{A}$</p>
+<p>或运算：$F_3=\overline{\overline{A\cdot A}\cdot \overline{B\cdot B}}=\overline{\overline{A}\cdot \overline{B}}=A+B$</p>
+<p><strong>或非（NOR）</strong>：$F=\overline{A+B+C}$</p>
+<p>可以用或非门实现三种基本运算：</p>
+<p>与运算：$F_1=\overline{\overline{A+A}+\overline{B+B}}=\overline{\overline{A}+\overline{B}}=A\cdot B$</p>
+<p>非运算：$F_2=\overline{A+A}=\overline{A}$</p>
+<p>或运算：$F_3=\overline{\overline{A+B}}$</p>
+<p><strong>与或非（AOI）</strong>：$F=\overline{AB+CD+EF}$</p>
+<p><strong>异或（XOR）</strong>：$F=A\oplus B=\overline{A}\cdot B+A\cdot \overline{B}$</p>
+<p><strong>同或（XNOR）</strong>：$F=A\odot B=A\cdot B+\overline{A}\cdot\overline{B}$</p>
+<blockquote>
+<p>异或和同或的关系：</p>
+<p>$\overline{A\oplus B}=A\odot B$        $\overline{A\odot B}=A\oplus B$</p>
+<p>$(A\oplus B)‘=A\odot B$        $(A\odot B)‘=A\oplus B$（用对偶函数的运算性质证明）</p>
+<p>$A\oplus B\oplus C=A\odot B\odot C$</p>
+<p>证明  $(A\oplus B)‘=A\odot B$</p>
+<script type="math/tex; mode=display">
+(A\oplus B)'=(\overline{A}\cdot B+A\cdot\overline{B})'=(\overline{A}+B)\cdot(A+\overline{B})=AB+\overline{A}\overline{B}=A\odot B</script></blockquote>
+<p>由带入规则可以证明：</p>
+<p>当变量<strong>n为偶数</strong>时，XOR和XNOR具有互补关系：</p>
+<script type="math/tex; mode=display">
+A_1\oplus A_2\oplus\dots\oplus A_n=\overline{A_1\odot A_2\odot\dots\odot A_n}</script><p>当变量<strong>n为奇数</strong>时，XOR和XNOR具有相等关系：</p>
+<script type="math/tex; mode=display">
+A_1\oplus A_2\oplus\dots\oplus A_n=A_1\odot A_2\odot\dots\odot A_n</script><h2 id="逻辑函数的标准形式"><a href="#逻辑函数的标准形式" class="headerlink" title="逻辑函数的标准形式"></a>逻辑函数的标准形式</h2><p><strong>最小项之和</strong>：乘积项之和称为<em>积之和表达式（SOP）</em>，或称<em>与或表达式</em>。如果构成函数的积之和表达式中每一个与项均为最小项时，称为最小项标准式，且这种表示是唯一的。</p>
+<p><strong>最大项之积</strong>：和项之积称为<em>和之积表达式（POS）</em>，或称<em>或与表达式</em>。如果构成函数的和之积表达式中每一个和项均为最大值，称为最大项标准式，且这种表示是唯一的。</p>
+<p><strong>最小项minterm</strong>：设有n个变量，它们组成的与项中每个变量或以原变量或以反变量形式出现一次，且仅出现一次，此与项称之为n个变量的最小项。对于n个变量就可构成 $2^n$ 个最小项，记为 $m_i$.<br>其中下标值i：当各最小项变量按一定顺序排好后，用1代替其中的原变量，0代替其中的反变量，便得一个二进制数，该二进制数的等值十进制即为i的值。</p>
+<p>例如$\overline{A}B\overline{C}=m_{(010)_2}=m_2$</p>
+<p>为了区别不同n值对应的相同的 $m_i$，可记为 $m_i^n$.</p>
+<p><strong>最大项maxterm</strong>：与最小项相反，用0代替原变量，1代替反变量，例如：$\overline{A}+B+\overline{C}=M_5$</p>
+<p><strong>性质</strong>：</p>
+<ol>
+<li><p>对于任意最小项，只有一组变量组合取值可使其值为1；对于任意最大项，只有一组变量组合取值可使其值为0.</p>
+</li>
+<li><script type="math/tex; mode=display">
+n变量的所有最小项的和必为1，记为\sum_{i=0}^{2^n-1} m_i=1.</script><script type="math/tex; mode=display">
+n变量的所有最大项的积必为0，记为\prod_{i=0}^{2^n-1} M_i=0.</script></li>
+<li><p>任意两个最小项之积必为0，即：$m_i\cdot m_j=0, i\neq j$.</p>
+<p>任意两个最大项之和必为1，即：$M_i+M_j=1, i\neq j$.</p>
+</li>
+<li><p>同变量数（n相同）下标相同的最小项和最大项互为反函数，即 $m_i=\overline{M_i}$，$M_i=\overline{m_i}$.</p>
+<p>则 $m_i\cdot M_i=0$，$m_i+M_i=1$.</p>
+</li>
+</ol>
+<p><strong>最小项与原、反函数的关系</strong>：对于n个变量的函数F，它共有 $2^n$ 个最小项，这些最小项不是包含在原函数 $F$ 的最小项表达式中，就是包含在反函数 $\overline{F}$ 的最小项表达式中。</p>
+<p><strong>最大项与原、反函数的关系</strong>：对于n个变量的函数F，它共有 $2^n$ 个最大项，这些最大项不是包含在原函数 $F$ 的最大项表达式中，就是包含在反函数 $\overline{F}$ 的最大项表达式中。</p>
+<p><strong>同一函数的最小项标准式与其最大项标准式的关系</strong>：</p>
+<script type="math/tex; mode=display">
+F=\sum m^3(0,2,3)=\prod M^3(1,4,5,6,7)</script><blockquote>
+<p>证明：设 $F=\sum m^3(0,2,3)$，则</p>
+<script type="math/tex; mode=display">
+\overline{F}=\sum m^3(1,4,5,6,7)=m_1+m_4+m_5+m_6+m_7</script><script type="math/tex; mode=display">
+F=\overline{\overline{F}}=\overline{m_1+m_4+m_5+m_6+m_7}=M_1\cdot M_4\cdot M_5\cdot M_6\cdot M_7=\prod M^3(1,4,5,6,7)</script></blockquote>
+<p><strong>卡诺图</strong></p>
+<p>卡诺图是一种<em>平面方格阵列图</em>：</p>
+<p>行和列按变量的组合标注，其变量顺序按真值表中输入变量从左至右的顺序，并且行与列坐标按变量组合的二进制格雷码的顺序而小方格左上角标注可用十进制数表示，该数对应最小项。</p>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31649253">戳这</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1101,247 +2073,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/12/11/%E8%99%9A%E6%8B%9F-%E9%80%BB%E8%BE%91-%E7%BA%BF%E6%80%A7-%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/11/%E8%99%9A%E6%8B%9F-%E9%80%BB%E8%BE%91-%E7%BA%BF%E6%80%A7-%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/" class="post-title-link" itemprop="url">虚拟/逻辑/线性/物理地址到底是什么</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-12-11 19:08:04 / Modified: 19:15:36" itemprop="dateCreated datePublished" datetime="2020-12-11T19:08:04+08:00">2020-12-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="虚拟地址"><a href="#虚拟地址" class="headerlink" title="虚拟地址"></a>虚拟地址</h1><p>指的是由程序产生的由<code>段选择符</code>和<code>段内偏移地址</code>两个部分组成的地址。为什么叫它是虚拟的地址呢？因为这两部分组成的地址并没有直接访问物理内存，而是要通过分段地址的变换机构处理或映射后才会对应到相应的物理内存地址。</p>
-<h1 id="逻辑地址"><a href="#逻辑地址" class="headerlink" title="逻辑地址"></a>逻辑地址</h1><p>指由程序产生的与段相关的偏移地址部分。不过有些资料是直接把逻辑地址当成虚拟地址，两者并没有明确的界限。</p>
-<h1 id="线性地址"><a href="#线性地址" class="headerlink" title="线性地址"></a>线性地址</h1><p>指的是虚拟地址到物理地址变换之间的中间层，是处理器可寻址的内存空间（称为线性地址空间）中的地址。程序代码会产生逻辑地址，或者说是段中的偏移地址，加上相应段的基地址就生成了一个线性地址。如果启用了分页机制，那么线性地址可以再经过变换产生物理地址。若是没有采用分页机制，那么线性地址就是物理地址。</p>
-<h1 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h1><p>指的是现在CPU外部地址总线上的寻址物理内存的地址信号，是地址变换的最终结果。</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/42a4c21bcef4">参考来源</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/11/26/%E5%9B%9E%E6%BA%AF%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/26/%E5%9B%9E%E6%BA%AF%E6%B3%95/" class="post-title-link" itemprop="url">回溯法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-11-26 08:11:40 / Modified: 09:35:20" itemprop="dateCreated datePublished" datetime="2020-11-26T08:11:40+08:00">2020-11-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>回溯算法实际上是一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。</p>
-<p>回溯法是一种选优搜索法，按选优条件向前搜索以达到目标。当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术称为回溯法，而满足回溯条件的某个状态的点称为回溯点。</p>
-<p>许多复杂的、规模较大的问题都可以使用回溯法，有“通用解题方法”之称。</p>
-<h1 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h1><p>在包含问题的所有解的解空间树中，按照深度优先搜索的策略，从根节点出发深度优先搜索解空间树。当探索到某一结点时，要先判断节点是否包含问题的解，如果包含，就从该节点出发继续探索下去，如果不包含，则逐层向其祖先节点回溯。</p>
-<p>用回溯法求解问题的所有解时，要回溯到根，且根节点的所有可行的子树都要已被搜索遍才结束。</p>
-<p>而若用回溯法求任意一个解时，只要搜索到问题的一个可行解就可以结束。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><blockquote>
-<p>针对所给问题，确定问题的解空间：首先应明确定义问题的解空间，问题的解空间应至少包含问题的一个（最优）解。</p>
-<p>确定结点的扩展搜索规则</p>
-<p>以深度优先方式搜索解空间，并在搜索过程中用剪枝函数避免无效搜索</p>
-</blockquote>
-<p><strong>子集树</strong>：当所给问题是从 n 个元素的集合 S 中找出 S 满足的某种性质的子集时，相应的解空间树称为子集树。例如，0-1背包问题，要求在n个物品的集合S中，选出几个物品，使物品在背包容积C的限制下，总价值最大（即集合S的满足条件 &lt;容积C下价值最大&gt; 的某个子集）。</p>
-<p>子集树是从集合S中选出符合限定条件的子集，故每个集合元素只需判断是否（0,1）入选，因此解空间应是一颗满二叉树。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123; <span class="comment">//t是当前层数</span></span><br><span class="line">    <span class="keyword">if</span>(t &gt; n) output(x);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">1</span>; i++) &#123; <span class="comment">//子集树是从集合S中，选出符合限定条件的子集，故每个元素判断是（1）否（0）选入即可（二叉树），因此i定义域为&#123;0,1&#125;</span></span><br><span class="line">            x[t] = i; <span class="comment">//x[]表示是否加入点集，1表示是，0表示否</span></span><br><span class="line">            <span class="keyword">if</span>(constraint(t) &amp;&amp; bound(t)) <span class="comment">//constraint(t)和bound(t)分别是约束条件和限定函数 </span></span><br><span class="line">                backtrack(t + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>排列树</strong>：当问题是确定n个元素满足某种性质的排列时，相应的解空间称为排列树。排列树与子集树最大的区别在于，排列树的解包括整个集合S的元素，而子集树的解则只包括符合条件的集合S的子集。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123; <span class="comment">//t是当前层数</span></span><br><span class="line">    <span class="keyword">if</span>(t &gt; n) output(x);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i &lt;= n; i++) &#123;</span><br><span class="line">            swap(x[t], x[i]);</span><br><span class="line">            <span class="keyword">if</span>(constraint(t) &amp;&amp; bound(t))</span><br><span class="line">                backtrack(t + <span class="number">1</span>);</span><br><span class="line">            swap(x[i], x[t]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>非子集树，非排列数</strong>：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t &gt; n) output(x);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = f(n, t); i &lt;= g(n, t); i++) &#123;</span><br><span class="line">            x[t] = h[i];</span><br><span class="line">            <span class="keyword">if</span>(constraint(t) &amp;&amp; bound(t))</span><br><span class="line">                backtrack(t + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="货箱装船问题"><a href="#货箱装船问题" class="headerlink" title="货箱装船问题"></a>货箱装船问题</h1><p>有两艘船，载重量为c1、c2，有n个货箱，重量分别为w1, w2, …, wn。</p>
-<p>基本思路： 容易证明，如果一个给定装载问题有解，则采用下面的策略可得到最优装载方案。<br>(1)首先将第一艘轮船尽可能装满；<br>(2)将剩余的集装箱装上第二艘轮船。</p>
-<p>将第一艘轮船尽可能装满等价于选取全体集装箱的一个子集，使该子集中集装箱重量之和最接近c1。由此可知，装载问题等价于特殊的0-1背包问题。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;       <span class="comment">//货箱数目</span></span><br><span class="line"><span class="keyword">int</span> w[maxn]; <span class="comment">//货箱重量数组</span></span><br><span class="line"><span class="keyword">int</span> c;       <span class="comment">//第1艘船的载重量</span></span><br><span class="line"><span class="keyword">int</span> cw;      <span class="comment">//当前装载的重量</span></span><br><span class="line"><span class="keyword">int</span> bestw;   <span class="comment">//目前最优装载的重量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">maxLoading</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="comment">//从第i层节点搜索</span></span><br><span class="line">    <span class="keyword">if</span>(i &gt; n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(cw &gt; bestw) bestw = cw;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cw + w[i] &lt;= c) &#123; <span class="comment">//尝试x[i] = 1</span></span><br><span class="line">        cw += w[i];</span><br><span class="line">        maxLoading(i + <span class="number">1</span>);</span><br><span class="line">        cw -= w[i]; <span class="comment">//回溯</span></span><br><span class="line">    &#125;</span><br><span class="line">    maxLoading(i + <span class="number">1</span>); <span class="comment">//尝试x[i] = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://preccrep.github.io/2020/11/21/5%E4%B8%AA%E6%95%B0%E6%8E%92%E5%BA%8F%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E6%AF%94%E8%BE%83%E6%AC%A1%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="preccrep">
-      <meta itemprop="description" content="serial processing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Serial">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/21/5%E4%B8%AA%E6%95%B0%E6%8E%92%E5%BA%8F%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E6%AF%94%E8%BE%83%E6%AC%A1%E6%95%B0/" class="post-title-link" itemprop="url">5个数排序所需的最少比较次数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-11-21 10:28:14 / Modified: 10:50:54" itemprop="dateCreated datePublished" datetime="2020-11-21T10:28:14+08:00">2020-11-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>若使用插入排序，最坏情况需要10次比较：1 + 2 + 3 + 4</p>
-<p>若使用归并排序，最坏情况需要9次比较：nlogn</p>
-<p>7次比较：</p>
-<ol>
-<li>标记待排序元素为A，B，C，D，E。</li>
-<li>先将A与B、C与D比较，假设A &lt; B，C &lt; D，再将A与C比较，不妨设A &lt; C，则A &lt; C &lt; D，当前共3次比较。（若A &gt; C，那就C &lt; A &lt; B，两种情况等价）</li>
-<li>再将E折半插入A &lt; C &lt; D，最多需要2次比较（E先与C比较，若与C相等则只需1次比较，若小于C就再和A比较，若大于C就再和D比较）。</li>
-<li>假设结果为A &lt; C &lt; D &lt; E，再将B插入A &lt; C &lt; D &lt; E，因为已有A &lt; B，所以只需要将B插入C &lt; D &lt; E中，折半最多需要2次比较。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1407,20 +2142,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1506,6 +2241,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
