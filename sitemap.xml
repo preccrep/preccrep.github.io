@@ -669,7 +669,7 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/AVL%E6%A0%91/</loc>
+    <loc>https://preccrep.github.io/tags/experience/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -683,7 +683,7 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/experience/</loc>
+    <loc>https://preccrep.github.io/tags/AVL%E6%A0%91/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -725,14 +725,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://preccrep.github.io/tags/Java/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/Java/</loc>
+    <loc>https://preccrep.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -788,13 +788,6 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://preccrep.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
@@ -809,7 +802,7 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/pthread/</loc>
+    <loc>https://preccrep.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -823,6 +816,13 @@
   </url>
   
   <url>
+    <loc>https://preccrep.github.io/tags/pthread/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://preccrep.github.io/tags/algorithm/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
@@ -830,14 +830,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://preccrep.github.io/tags/divide-and-conquer/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/tags/divide-and-conquer/</loc>
+    <loc>https://preccrep.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -916,14 +916,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://preccrep.github.io/categories/Java/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Java/</loc>
+    <loc>https://preccrep.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -937,14 +937,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/DFS/</loc>
+    <loc>https://preccrep.github.io/categories/Dijkstra/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Dijkstra/</loc>
+    <loc>https://preccrep.github.io/categories/DFS/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -972,6 +972,13 @@
   </url>
   
   <url>
+    <loc>https://preccrep.github.io/categories/LaTex/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://preccrep.github.io/categories/KM/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
@@ -986,13 +993,6 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/LaTex/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://preccrep.github.io/categories/STL/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
@@ -1000,14 +1000,14 @@
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/HDL/</loc>
+    <loc>https://preccrep.github.io/categories/Tarjan/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://preccrep.github.io/categories/Tarjan/</loc>
+    <loc>https://preccrep.github.io/categories/HDL/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1022,20 +1022,6 @@
   
   <url>
     <loc>https://preccrep.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://preccrep.github.io/categories/Prim/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://preccrep.github.io/categories/Trie/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1057,6 +1043,20 @@
   
   <url>
     <loc>https://preccrep.github.io/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://preccrep.github.io/categories/Trie/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://preccrep.github.io/categories/Prim/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
