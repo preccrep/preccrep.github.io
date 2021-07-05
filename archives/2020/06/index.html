@@ -1,8 +1,1040 @@
-<html><head></head><body>{# 归档 #}
-{% extends '_layout.swig' %}
-{% import '_partials/index.swig' as template %}
-{% block content %}
-{% set description = _p('total', site.posts.length) %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html><html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>Archives | Serial</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="preccrep">
+	<meta name="description" content="serial processing">
+
+	
+	<meta name="keywords" content="hexo, casper, ghost, theme">
+	
+
+	
+	<link rel="shortcut icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	<link rel="apple-touch-icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="Serial">
+	<meta property="og:type" content="blog">
+	<meta property="og:title" content="Archives | Serial">
+	<meta property="og:description" content="serial processing">
+	<meta property="og:url" content="https://preccrep.github.io/archives/2020/06/index.html">
+
+	
+
+	
+	
+	
+<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+
+	
+	
+	
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body class="tag-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header outer " style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <div class="inner">
+        
+        
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                
+                <a class="site-nav-logo" href="/" title="Serial">
+                    <img src="今日事，今日毕" alt="Serial">
+                </a>
+                
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/preccrep" target="_blank" rel="noopener">
+        <svg viewBox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"></path></svg>
+    </a>
+    
+    
+    
+    <a class="social-link" title="twitter" href="https://preccrep.com" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+
+    </a>
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+        
+        <div class="site-header-content">
+            
+            <h1 class="site-title">
+                Archives
+            </h1>
+            <h2 class="site-description">Total: 86</h2>
+        </div>
+        
+        
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+	<div class="inner">
+		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="hdu1394" href="/2020/06/29/hdu1394/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								树状数组
+								| 
+								
+								<time datetime="2020-06-29T02:01:37.000Z">
+									2020-06-29
+								</time>
+							</span>
+							<h2 class="post-card-title">hdu1394</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								传送门
+本题就是求循环移位后逆序数的最小值。其实主要就是求序列的逆序数。逆序数的求法很多，可以用归并排序求。也可以用树状数组和线段树求逆序数。
+逆序数求得之后，
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							3
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="线段树" href="/2020/06/28/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								线段树
+								| 
+								
+								<time datetime="2020-06-28T06:37:20.000Z">
+									2020-06-28
+								</time>
+							</span>
+							<h2 class="post-card-title">线段树</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								基本概念
+线段树(segment tree)是一种二叉搜索树，它的每一个结点对应着一个区间 [L, R]，叶子结点对应的是一个单位区间，即 L == R。对于一个非叶子结点 [L, R]，它的左儿子所表示的区间为 [L, (L + R) / 2]，右儿子所表示的区间为 [(L + R) / 2 + 1, R] (也可以用位运算，更快：[L, (L + R) &gt;&gt; 1] 和 [((L + R) &gt;&gt; 1) | 1, R])。根据定义，线段树是一棵平衡二叉
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							1
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="树状数组" href="/2020/06/28/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								树状数组
+								| 
+								
+								<time datetime="2020-06-28T06:37:02.000Z">
+									2020-06-28
+								</time>
+							</span>
+							<h2 class="post-card-title">树状数组</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								什么是树状数组？
+就是用数组来模拟树形结构，可以解决大部分基于区间上的更新以及求和问题。树状数组可以解决的问题都可以用线段树解决，这两者的区别在哪里呢？树状数组修改和查询的复杂度都是 O(log n)，而且相比线段树系数要少很多，比传统数组要快，而且容易写。缺点是遇到复杂的区间问题还是不能解决，功能还是有限。树状数组多用于高效计算数列的前缀和。
+核心思想
+(1) 树状数组中的每个元素是原数组中的一个或多个连续元素的和；
+(2) 在进行连续求和时，只需要将树状数组中某几个元素进
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							10
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="Trie树" href="/2020/06/28/Trie%E6%A0%91/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								Trie
+								| 
+								
+								<time datetime="2020-06-28T06:36:48.000Z">
+									2020-06-28
+								</time>
+							</span>
+							<h2 class="post-card-title">Trie树</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								字典树
+字典树，因为它的搜索快捷的特性被单词搜索系统使用，故又称单词查找树。它是一种树形结构的数据结构。之所以快速，是因为它用空间代替了速度。
+性质
+1.根节点不包含字符，除根节点外每一个节点都只包含一个字符；
+2.从根节点到某一个节点，路径上经过的字符连接起来，就是该节点对应的字符串；
+3.每个节点的所有子节点包含的字符都不相同。
+应用
+1.字符串的快速查找：
+给出N个单词组成的熟词表，以及一篇全用小写英文书写的文章，请你按最早出现的顺序写出所有不在熟词表中的生词。在这道题
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							4
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="滑动窗口" href="/2020/06/26/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								单调队列
+								| 
+								
+								<time datetime="2020-06-26T02:56:29.000Z">
+									2020-06-26
+								</time>
+							</span>
+							<h2 class="post-card-title">滑动窗口</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								题目链接
+转载自洛谷博客
+此题为单调队列模板题。
+单调队列有两个性质：
+
+队列中的元素其对应在原来的列表中的顺序必须是单调递增的。
+
+队列中元素的大小必须是单调递*(增/减/甚至是自定义也可以)
+
+
+单调队列与普通队列不一样的地方就在于单调队列既可以从队首出队，也可以从队尾出队。
+就拿样例来谈谈，设以最小的为标准：
+128 31 3 -1 -3 5 3 6 7
+下文中我们用q来表示单调队列，p来表示其所对应的在原列表里的序号。
+
+由于此时队中没有一个元素，我们直接令1进队。此
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							5
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="STL用法总结" href="/2020/06/26/STL%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								STL
+								| 
+								
+								<time datetime="2020-06-26T00:03:34.000Z">
+									2020-06-26
+								</time>
+							</span>
+							<h2 class="post-card-title">STL用法总结</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							0
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="单调栈" href="/2020/06/26/%E5%8D%95%E8%B0%83%E6%A0%88/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								单调栈
+								| 
+								
+								<time datetime="2020-06-25T17:22:40.000Z">
+									2020-06-26
+								</time>
+							</span>
+							<h2 class="post-card-title">单调栈</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								单调栈与单调队列很相似。首先栈是后进先出的，单调性指的是严格的递增或者递减。
+单调栈有以下两个性质：
+1、若是单调递增栈，则从栈顶到栈底的元素是严格递增的。若是单调递减栈，则从栈顶到栈底的元素是严格递减的。
+2、越靠近栈顶的元素越后进栈。
+单调栈与单调队列不同的地方在于栈只能在栈顶操作，因此一般在应用单调栈的地方不限定它的大小，否则会造成元素无法进栈。
+元素进栈过程：对于单调递增栈，若当前进栈元素为e，从栈顶开始遍历元素，把小于e或者等于e的元素弹出栈，直接遇到一个大于e的元
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							6
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="单调队列" href="/2020/06/26/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								单调队列
+								| 
+								
+								<time datetime="2020-06-25T17:22:31.000Z">
+									2020-06-26
+								</time>
+							</span>
+							<h2 class="post-card-title">单调队列</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								用单调队列来解决问题，一般都是需要得到当前的某个范围内的最小值或最大值。
+一篇详细的博客：传送门
+例如：
+Description一个长度为n的整数序列，从中找出一段不超过m的连续子序列，使得整个序列的和最大。
+例如：  1, -3, 5, 1, -2, 3
+当m=4时，sum =  5+1-2+3 = 7
+当m=2或m=3时，sum = 5+1 = 6
+Input多测试用例，每个测试用例：
+第一行是两个正数n, m  ( n, m ≤ 300000 )
+第二行是n个整数
+Ou
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							5
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="前向星和链式前向星" href="/2020/06/26/%E5%89%8D%E5%90%91%E6%98%9F%E5%92%8C%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								前向星和链式前向星
+								| 
+								
+								<time datetime="2020-06-25T16:13:12.000Z">
+									2020-06-26
+								</time>
+							</span>
+							<h2 class="post-card-title">前向星和链式前向星</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								前向星
+一种数据结构，以储存边的方式来存储图。构造方法如下：读入每条边的信息，将边存放在数组中，把数组中的边按照起点顺序排序(可以使用基数排序)，前向星就构造完了。通常用在点的数目太多，或两点之间有多条弧的时候。一般在别的数据结构不能使用的时候才考虑用前向星。除了不能直接用起点终点定位以外，前向星几乎是完美的。
+前向星不需要像邻接表那样用指针指向下一条边，还是挺方便的。但是，由于前向星初始化需要快排一遍，相对邻接表要慢许多。考虑到一般图论题点数都不会很大，所以可以改为采用基数
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							2
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="割点" href="/2020/06/25/%E5%89%B2%E7%82%B9/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								Tarjan
+								| 
+								
+								<time datetime="2020-06-25T12:30:22.000Z">
+									2020-06-25
+								</time>
+							</span>
+							<h2 class="post-card-title">割点</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								题目描述
+给定一个有 N 个点的无向连通图，问图中哪些点去掉后图将不再连通？同时输出去掉这个点后，图被分为几个连通块？
+输入包含多组数据，每组以 0 结尾，每行描述图中边的两个顶点的标号。每组数据之间有一个空行。
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							4
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+		</div>
+	</div>
+</div>
+
+
+
+<div class="outer">
+	<nav class="pagination">
+		
+		<nav class="page-nav">
+			<span class="page-number current">1</span><a class="page-number" href="/archives/2020/06/page/2/">2</a><a class="page-number" href="/archives/2020/06/page/3/">3</a><a class="extend next" rel="next" href="/archives/2020/06/page/2/">NEXT →</a>
+		</nav>
+		
+	</nav>
+</div>
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">— Serial —</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2021/06/24/Logging/">Logging</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">MIPS汇编语言编程</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">数据链路层</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bellman-Ford-SPFA/">Bellman-Ford &amp; SPFA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DFS/">DFS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dijkstra/">Dijkstra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Floyd/">Floyd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDL/">HDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KM/">KM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kruskal/">Kruskal</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LaTex/">LaTex</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/NEMU/">NEMU</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Prim/">Prim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tarjan/">Tarjan</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Trie/">Trie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linear-algebra/">linear algebra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E5%90%91%E6%98%9F%E5%92%8C%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">前向星和链式前向星</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E6%A0%88/">单调栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">单调队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%A0%E9%87%8F%E7%BD%91%E7%BB%9C/">张量网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/">数字逻辑与数字系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png" alt="Serial">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="Serial">Serial © 2021</a>
+			
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async=""></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

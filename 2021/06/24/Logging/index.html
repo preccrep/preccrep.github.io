@@ -1,7 +1,846 @@
-<html><head></head><body>{# 文章页 #}
-{% extends '_layout.swig' %}
-{% import '_partials/post.swig' as template %}
-{% block content %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html><html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>Logging | Serial</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="preccrep">
+	<meta name="description" content="">
+
+	
+	<meta name="keywords" content="">
+	
+
+	
+	<link rel="shortcut icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	<link rel="apple-touch-icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="Serial">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Logging | Serial">
+	<meta property="og:description" content="">
+	<meta property="og:url" content="https://preccrep.github.io/2021/06/24/Logging/">
+
+	
+	<meta property="article:published_time" content="2021-06-24T11:06:00+08:00"> 
+	<meta property="article:author" content="preccrep">
+	<meta property="article:published_first" content="Serial, /2021/06/24/Logging/">
+	
+
+	
+	
+	
+<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+
+	
+	
+	
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                
+                <a class="site-nav-logo" href="/" title="Serial">
+                    <img src="今日事，今日毕" alt="Serial">
+                </a>
+                
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/preccrep" target="_blank" rel="noopener">
+        <svg viewBox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"></path></svg>
+    </a>
+    
+    
+    
+    <a class="social-link" title="twitter" href="https://preccrep.com" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+
+    </a>
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2021-06-24T03:47:17.000Z">
+                    2021-06-24
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">Logging</h1>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="photoswipe" class="markdown-body">
+                    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Log is used to record the history of database changes securely.</p>
+<p><strong>The transaction is the unit of execution of database operations.</strong></p>
+<p>In the typical embedded SQL system, transactions begin as soon as operations on the database are executed and end with an explicit COMMIT or ROLLBACK (“abort”) command.</p>
+<p><strong>How transactions interact with the database?</strong> There are 3 address spaces that interact in important ways:</p>
+<ol>
+<li>The space of disk blocks holding the database elements.</li>
+<li>The virtual or main memory address space that is managed by the buffer manager.</li>
+<li>The local address space of the transaction.</li>
+</ol>
+<p><strong>事务</strong>的定义：</p>
+<ul>
+<li>一个数据库操作序列</li>
+<li>一个不可分割的工作单位（atomic）</li>
+<li>恢复和并发控制的基本单位</li>
+</ul>
+<p>The SQL statement <strong>COMMIT</strong> causes a transaction to complete, database modifications are now permanent in the database.</p>
+<p>The SQL statement <strong>ROLLBACK</strong> also causes the transaction to end, but by <strong><em>aborting</em></strong>. Having no effects on the database. It caused by failures like division by 0 or a constraint violation.</p>
+<h1 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h1><p><strong>ACID transactions</strong> are:</p>
+<ul>
+<li>Atomic: Either the whole or the none of the transaction is done.</li>
+<li>Consistent: Database constraints reserved. For example, a + b = 10, if a changed, b also changes.</li>
+<li>Isolated: It appears to the user that only one process is executing at one time.</li>
+<li>Durable: Effects of a process survive a crash.</li>
+</ul>
+<p><strong>Correctness Principle</strong></p>
+<p>If a transaction executes in the absence of any other transactions or system errors, and it starts with the database in a consistent state, then the database is also in a consistent state when the transaction ends.</p>
+<blockquote>
+<p>State: a DB has state means a value for each of its elements.</p>
+<p>Consistent state: certain state satisfies all constraints.</p>
+</blockquote>
+<p>Another description of correctness principle:</p>
+<ol>
+<li>a transaction is atomic, and the complete execution of a single transaction is from one consistent state to another consistent state. That is to say, if only part of a transaction executes, then db state may not be consisitent.</li>
+<li>multiple transactions execute at the same time may lead to inconsistency unless using concurrecy control.</li>
+</ol>
+<p>So, a transaction is a collection of actions that preserve consistency.</p>
+<p>If T starts with consistent state and executes in isolation, then T leaves with consistent state.</p>
+<p><strong>Three address spaces:</strong></p>
+<ol>
+<li>Local address space of transaction (Memory)</li>
+<li>Buffer (Memory)</li>
+<li>Space of disk</li>
+</ol>
+<p><strong>INPUT(X)</strong>: block containing X disk to buffer/memory</p>
+<p><strong>OUTPUT(X)</strong>: block containing X buffer to disk</p>
+<p><strong>READ(X, t)</strong>: do input(X) if necessary; read value of x in buffer to t in local address space of transaction.</p>
+<p><strong>WRITE(X, t)</strong>: do output(X) if necessary; write t in local address space of transaction to the value of x in buffer.</p>
+<h1 id="Undo-Logging"><a href="#Undo-Logging" class="headerlink" title="Undo Logging"></a>Undo Logging</h1><p><strong><start t=""></start></strong>: indicates that transaction T has begun</p>
+<p><strong><commit t=""></commit></strong>: transaction T has completed successfully and will make no more changes to the database elements</p>
+<p><strong><abort t=""></abort></strong>: transcation T could not complete successfully</p>
+<p>only update record: <t, x,="" v=""></t,></p>
+<ul>
+<li>transaction T has changed database element X and its former value was v</li>
+</ul>
+<p>The change reflected by an update record normally occurs in memory, not disk.</p>
+<ul>
+<li>the log record is a response to a WRITE action, not an OUTPUT action</li>
+</ul>
+<p>undo log must be written to disk in the following order:</p>
+<ol>
+<li>The log records that indicating changed database elements.</li>
+<li>The changed database elements themselves.</li>
+<li>The COMMIT log record.</li>
+</ol>
+<p>So we got 2 rules:</p>
+<p>U1:</p>
+<p>U2:</p>
+<p>In order to force log records to disk:</p>
+<ul>
+<li>The log manager needs a flush-log command that tells the buffer manager to copy to disk any log blocks that have not previously been copied to disk.</li>
+<li>FLUSH LOG</li>
+</ul>
+<p>When a transaction begins, a <start t=""> is written to the log memory; after a series of actions like INPUT or READ (or probably no actions at all), a WRITE command comes, and a <t, 8="" a,=""> is written to the log memory. After the last WRITE operation, it’s time to FLUSH LOG. After flushing log, <start t=""> and <t, 8="" a,=""> are written to the disk. That is to say, before flushing log, the previous logs are still in the log memory.</t,></start></t,></start></p>
+<p>Then, execute OUTPUT(A), OUTPUT(B), … Only after the value of A, B, … is written to disk, a log <commit t=""> can be written to the log memory.</commit></p>
+<p>Then FLUSH LOG (after execute OUTPUT B, let’s assume that B is the last one) and <commit t=""> is written to disk.</commit></p>
+<h2 id="Recovery-Rules"><a href="#Recovery-Rules" class="headerlink" title="Recovery Rules"></a>Recovery Rules</h2><p>Incomplete transactions must be undone!<br><strong>Scan the undo log from the end:</strong></p>
+<ul>
+<li><p>Let S = set if transactions with <start ti=""> in log but no <commit ti=""> or <abort ti=""> record in log</abort></commit></start></p>
+</li>
+<li><p>For each <ti, x,="" v=""> in log, in reverse order (latest to earliest) do:</ti,></p>
+<p>If Ti in S then <code>WRITE(X, v)</code>, <code>OUTPUT(X)</code></p>
+</li>
+<li><p>For each Ti in S do: write <abort ti=""> to log</abort></p>
+</li>
+</ul>
+<h2 id="Simple-checkpointing"><a href="#Simple-checkpointing" class="headerlink" title="Simple checkpointing"></a>Simple checkpointing</h2><p>In a simple checkpoint,</p>
+<ol>
+<li><p>Stop accepting new transactions.</p>
+</li>
+<li><p>Wait until all currently active transactions commit or abort and have written a COMMIT or ABORT record on the log.</p>
+</li>
+<li><p>Flush the log to disk.</p>
+</li>
+<li><p>Write a log record <ckpt>, and flush the log again.</ckpt></p>
+</li>
+<li><p>Resume accepting transactions.</p>
+</li>
+</ol>
+<p>Problem: must shut the system while the ckpt is being made</p>
+<h2 id="Nonquiescent-checkpointing"><a href="#Nonquiescent-checkpointing" class="headerlink" title="Nonquiescent checkpointing"></a>Nonquiescent checkpointing</h2><p>Nonquiescent checkpointing</p>
+<ol>
+<li><p>Write a log record<br> <start ckpt="" (t1,="" …,="" tk)=""><br> and flush the log.</start></p>
+</li>
+<li><p>Wait until all of T1, …, TK commit or abort, but do not prohibit other transactions from starting</p>
+</li>
+<li><p>When all of T1, …, TK have completed, write a log record <end ckpt=""> and flush the log</end></p>
+</li>
+</ol>
+<p>Two cases:</p>
+<ol>
+<li><p>If we first meet an <end ckpt="">, then we know that all incomplete transactions began after the previous <start ckpt="" (t1,="" …,="" tk)="">. Scan backwards as far as <start ckpt="" (t1,="" …,="" tk)=""></start></start></end></p>
+</li>
+<li><p>If we first meet an <start ckpt="" (t1,="" …,="" tk)="">, then the crash occurred during the checkpoint</start></p>
+</li>
+</ol>
+<p>A general rule:</p>
+<p>Once an <end ckpt=""> has been written to disk, we can delete the log prior to the previous <start ckpt="">.</start></end></p>
+<h1 id="Redo-Logging"><a href="#Redo-Logging" class="headerlink" title="Redo Logging"></a>Redo Logging</h1><p>Problem for undo logging: First write all its changed data to disk then commit a transaction — too many disk I/Os.</p>
+<p>Save disk I/Os: Let changed data reside only in main memory for a while.</p>
+<p>Redo logging requires the COMMIT record appear on disk before any changed values reach disk.</p>
+<p><strong>Redo logging rules</strong></p>
+<p>R1: Before modifying any database element X on disk, it is necessary that all log records pertaining to this modification of X, including both the update record <t, x,="" v=""> and the <commit t=""> record, must appear on disk.</commit></t,></p>
+<ol>
+<li>The log records indicating changed db elements.</li>
+<li>The COMMIT log record.</li>
+<li>The changed db elements themselves.</li>
+</ol>
+<p><strong>First COMMIT then OUTPUT.</strong></p>
+<p>To recover, using a redo log, after a system crash:</p>
+<ol>
+<li><p>Identify the committed transactions.</p>
+</li>
+<li><p>Scan the log forward from the beginning. For each log record &lt;<em>T</em>, <em>X</em>, <em>v</em>&gt; encountered:</p>
+<p>a) If <em>T</em> is not a committed transaction, do nothing.</p>
+<p>b) If <em>T</em> is committed, write value <em>v</em> for database element <em>X</em>. (That’s because no COMMIT no values on disk)</p>
+</li>
+<li><p>For each incomplete transaction <em>T</em>, write an <abort *t*=""> record to the log and flush the log.</abort></p>
+</li>
+</ol>
+<p>The steps to perform a nonquiescent checkpoint of redo log:</p>
+<ol>
+<li><p>Write a log record <start ckpt="" (t1,="" …,="" tk)="">, where <em>T</em>1, …, Tk are all the active (uncommitted) transactions, and flush the log</start></p>
+</li>
+<li><p>Write to disk all database elements that were written to buffers but not yet to disk by transactions that had already committed when the START CKPT record was written to the log</p>
+</li>
+<li><p>Write an <end ckpt=""> record to the log and flush the log</end></p>
+</li>
+</ol>
+<h1 id="Undo-redo-Logging"><a href="#Undo-redo-Logging" class="headerlink" title="Undo/redo Logging"></a>Undo/redo Logging</h1><p>The update log record: <ti, x,="" v,="" w=""></ti,></p>
+<ul>
+<li>the former value is v, the new value is w</li>
+</ul>
+<p>UR1: Before modifying any db element X on disk because of changes made by some transaction T, it is necessary that the update record <t, x,="" v,="" w=""> appear on disk.</t,></p>
+<p>UR2: A <commit t=""> record must be flushed to disk as soon as it appears in the log.</commit></p>
+<p>The undo/redo recovery policy is:</p>
+<ol>
+<li>Redo all the commited transactions in the order earliest-first.</li>
+<li>Undo all the incomplete transactions in the order latest-first.</li>
+</ol>
+<p>系统故障造成数据库不一致状态的原因</p>
+<p>未完成事务对数据库的更新已写入数据库</p>
+<p>已提交事务对数据库的更新还留在缓冲区没来得及写入数据库</p>
+<p>恢复方法</p>
+<p>\1. Undo 故障发生时未完成的事务</p>
+<p>\2. Redo 已完成的事务</p>
+<p>系统故障的恢复由系统在重新启动时自动完成，不需要用户干预</p>
+<p>系统故障的恢复步骤</p>
+<ol>
+<li>正向扫描日志文件（即从头扫描日志文件）</li>
+</ol>
+<p>重做(REDO) 队列: 在故障发生前已经提交的事务</p>
+<p>这些事务既有BEGIN TRANSACTION记录，也有COMMIT记录</p>
+<p>撤销 (Undo)队列:故障发生时尚未完成的事务</p>
+<p>这些事务只有BEGIN TRANSACTION记录，无相应的COMMIT记录</p>
+<ol>
+<li>对撤销(Undo)队列事务进行撤销(UNDO)处理</li>
+</ol>
+<p>反向扫描日志文件，对每个UNDO事务的更新操作执行逆操作</p>
+<p>即将日志记录中“更新前的值”写入数据库 </p>
+<ol>
+<li>对重做(Redo)队列事务进行重做(REDO)处理</li>
+</ol>
+<p>正向扫描日志文件，对每个REDO事务重新执行登记的操作</p>
+<p>即将日志记录中“更新后的值”写入数据库</p>
+<p>A nonquiescent checkpoint is somewhat simpler for undo/redo logging than for other logging methods</p>
+<ol>
+<li><p>Write a <start ckpt="" (t1,="" …,="" tk)=""> record to the log, where T1, …, Tk are all the active transactions, and flush the log</start></p>
+</li>
+<li><p>Write to disk all the buffers that are <em>dirty</em>; i.e., they contain one or more changed database elements. Unlike redo logging, we flush all dirty buffers, not just those written by committed transactions</p>
+</li>
+<li><p>Write an <end ckpt=""> record to the log and flush the log</end></p>
+</li>
+</ol>
+<h1 id="Archiving"><a href="#Archiving" class="headerlink" title="Archiving"></a>Archiving</h1><p>Maintaining a copy of the db separate from the db itself.</p>
+<ul>
+<li>shut down the db for a while</li>
+<li>make a backup copy on some storage medium</li>
+<li>Store the copy in some remote secure location</li>
+</ul>
+<p><strong>Two levels of archiving:</strong></p>
+<ol>
+<li>a full dump, in which the entire db is copied</li>
+<li>an incremental dump, in which only those db elements changed since the previous full or incremental dump are copied</li>
+</ol>
+<h1 id="Concurrency-Control"><a href="#Concurrency-Control" class="headerlink" title="Concurrency Control"></a>Concurrency Control</h1><p><strong>The process of assuring that transactions preserve consistency when executing simultaneously.</strong></p>
+<p>The scheduler takes read/write requests from transactions and executes them in buffers or delay them.</p>
+<h2 id="Serial-and-Serializable-Schedules"><a href="#Serial-and-Serializable-Schedules" class="headerlink" title="Serial and Serializable Schedules"></a>Serial and Serializable Schedules</h2><p>A schedule is <strong>serial</strong> if its actions consist of all the actions of one transaction, then all the actions of another transaction, and so on.</p>
+<p>The correctness principle tells us that every serial schedule will preserve consistency of the db state.</p>
+<p>A schedule is <strong>serializable</strong> if there is a serial schedule S’ such that for every initial db state, the effects of S and S’ are the same.</p>
+<p><strong>Conflicts</strong>: A pair of consecutive actions in a schedule such that, if their order  is interchanged then the behaviour of at least one of the transactions involved can change.</p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/Database/" rel="tag"># Database</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="MIPS汇编语言编程" href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">
+            MIPS汇编语言编程 →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"></path></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"></path></svg>
+            <svg class="toc-close hide" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"></path><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"></path></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"></path></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACID"><span class="toc-text">ACID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Undo-Logging"><span class="toc-text">Undo Logging</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recovery-Rules"><span class="toc-text">Recovery Rules</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-checkpointing"><span class="toc-text">Simple checkpointing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nonquiescent-checkpointing"><span class="toc-text">Nonquiescent checkpointing</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redo-Logging"><span class="toc-text">Redo Logging</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Undo-redo-Logging"><span class="toc-text">Undo/redo Logging</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Archiving"><span class="toc-text">Archiving</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Concurrency-Control"><span class="toc-text">Concurrency Control</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Serial-and-Serializable-Schedules"><span class="toc-text">Serial and Serializable Schedules</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">— Serial —</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2021/06/24/Logging/">Logging</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">MIPS汇编语言编程</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">数据链路层</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bellman-Ford-SPFA/">Bellman-Ford &amp; SPFA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DFS/">DFS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dijkstra/">Dijkstra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Floyd/">Floyd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDL/">HDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KM/">KM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kruskal/">Kruskal</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LaTex/">LaTex</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/NEMU/">NEMU</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Prim/">Prim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tarjan/">Tarjan</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Trie/">Trie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linear-algebra/">linear algebra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E5%90%91%E6%98%9F%E5%92%8C%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">前向星和链式前向星</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E6%A0%88/">单调栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">单调队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%A0%E9%87%8F%E7%BD%91%E7%BB%9C/">张量网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/">数字逻辑与数字系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png" alt="Serial">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="Serial">Serial © 2021</a>
+			
+				
+			        <span hidden="true" id="/2021/06/24/Logging/" class="leancloud-visitors" data-flag-title="Logging">
+			            <span>阅读量 </span>
+			            <span class="leancloud-visitors-count">0</span>
+			        </span>
+	    		
+    		
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async=""></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+
+
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+
+
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+<script id="valineScript" src="//unpkg.com/valine/dist/Valine.min.js" async=""></script>
+<script>
+    document.getElementById('valineScript').addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Just go go',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true
+        })
+    });
+</script>
+
+
+
+
+
+
+
+</body></html>

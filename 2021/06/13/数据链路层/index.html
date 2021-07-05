@@ -1,7 +1,793 @@
-<html><head></head><body>{# 文章页 #}
-{% extends '_layout.swig' %}
-{% import '_partials/post.swig' as template %}
-{% block content %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html><html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>数据链路层 | Serial</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="preccrep">
+	<meta name="description" content="">
+
+	
+	<meta name="keywords" content="">
+	
+
+	
+	<link rel="shortcut icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	<link rel="apple-touch-icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="Serial">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="数据链路层 | Serial">
+	<meta property="og:description" content="">
+	<meta property="og:url" content="https://preccrep.github.io/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+
+	
+	<meta property="article:published_time" content="2021-06-13T17:06:00+08:00"> 
+	<meta property="article:author" content="preccrep">
+	<meta property="article:published_first" content="Serial, /2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+	
+
+	
+	
+	
+<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+
+	
+	
+	
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                
+                <a class="site-nav-logo" href="/" title="Serial">
+                    <img src="今日事，今日毕" alt="Serial">
+                </a>
+                
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/preccrep" target="_blank" rel="noopener">
+        <svg viewBox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"></path></svg>
+    </a>
+    
+    
+    
+    <a class="social-link" title="twitter" href="https://preccrep.com" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+
+    </a>
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2021-06-13T09:32:30.000Z">
+                    2021-06-13
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">数据链路层</h1>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="photoswipe" class="markdown-body">
+                    <h1 id="多路访问控制（MAC）协议"><a href="#多路访问控制（MAC）协议" class="headerlink" title="多路访问控制（MAC）协议"></a>多路访问控制（MAC）协议</h1><p>两类链路：</p>
+<ul>
+<li>点对点链路：拨号接入的PPP，以太网交换机与主机间的点对点链路</li>
+<li>广播链路（共享介质）：早期的总线以太网，HFC的上行链路，802.11无限局域网</li>
+</ul>
+<p>单一共享广播信道</p>
+<p>两个或两个以上节点同时传输：干扰，产生冲突，导致接受失败</p>
+<p><strong>多路访问控制协议（multiple access control protocol）</strong></p>
+<ul>
+<li>采用分布式算法决定节点如何共享信道，即决策节点何时可以传输数据</li>
+<li>必须基于信道本身，通信信道共享协调信息</li>
+</ul>
+<h2 id="MAC协议分类"><a href="#MAC协议分类" class="headerlink" title="MAC协议分类"></a>MAC协议分类</h2><ol>
+<li>信道划分 (channel partitioning) MAC协议<ul>
+<li>多路复用技术</li>
+<li>TDMA，FDMA，CDMA，WDMA等</li>
+</ul>
+</li>
+<li>随机访问 (random access) MAC协议<ul>
+<li>信道不划分，允许冲突</li>
+<li>采用冲突“恢复”机制</li>
+</ul>
+</li>
+<li>轮转 (taking turns) MAC协议<ul>
+<li>节点轮流使用信道（保证节点在使用信道时不冲突，同时在使用的时候用的是信道的全部带宽）</li>
+</ul>
+</li>
+</ol>
+<h3 id="信道划分MAC协议"><a href="#信道划分MAC协议" class="headerlink" title="信道划分MAC协议"></a>信道划分MAC协议</h3><h4 id="TDMA-time-division-multiple-access"><a href="#TDMA-time-division-multiple-access" class="headerlink" title="TDMA: time division multiple access"></a>TDMA: time division multiple access</h4><ol>
+<li>“周期性”接入信道</li>
+<li>每个站点在每个周期占用固定长度的时隙（这里的长度是指分组传输时间）</li>
+<li>未用的时隙空闲（idle）</li>
+<li>例如，6-slot的LAN，1、3、4传输分组，2、5、6空闲</li>
+</ol>
+<h4 id="FDMA-frequency-division-multiple-access"><a href="#FDMA-frequency-division-multiple-access" class="headerlink" title="FDMA: frequency division multiple access"></a>FDMA: frequency division multiple access</h4><ol>
+<li>信道频谱划分为若干频带(frequency bands)</li>
+<li>每个站点分配一个固定的频带</li>
+<li>没有传输数据的频带空闲</li>
+<li>例如，6站点LAN，1、3、4频带传输数据，2、5、6频带空闲</li>
+</ol>
+<h3 id="随机访问MAC协议"><a href="#随机访问MAC协议" class="headerlink" title="随机访问MAC协议"></a>随机访问MAC协议</h3><p>当节点要发送分组时，利用信道全部数据速率R发送分组，没有事先的节点间协调。</p>
+<p>会发生冲突。</p>
+<p>随机访问MAC协议需要定义：如何检测冲突、如何从冲突中恢复（通过延迟重传）</p>
+<p>典型的随机访问MAC协议：</p>
+<ul>
+<li>时隙(sloted)ALOHA</li>
+<li>ALOHA</li>
+<li>CSMA, CSMA/CD, CSMA/CA</li>
+</ul>
+<h4 id="时隙ALOHA协议"><a href="#时隙ALOHA协议" class="headerlink" title="时隙ALOHA协议"></a>时隙ALOHA协议</h4><p>假定：</p>
+<ul>
+<li>所有帧大小相同</li>
+<li>时间被划分为等长的时隙（每个时隙可以传输1个帧）</li>
+<li>节点只能在时隙开始时刻发送帧</li>
+<li>节点间时钟同步</li>
+<li>如果2个及以上的节点在同一时隙发送帧，则检测到冲突</li>
+</ul>
+<p>运行：</p>
+<ul>
+<li>当节点有新的帧时，在下一个时隙(slot)发送</li>
+<li>如果无冲突：该节点可以在下一个时隙继续发送新的帧</li>
+<li>如果冲突，该节点在下一个时隙以概率p重传该帧，直至成功</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>单个节点活动时，可以连续以信道全部速率传输数据</li>
+<li>高度分散化：只需同步时隙</li>
+<li>简单</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>冲突，浪费时隙</li>
+<li>时钟同步</li>
+<li>空闲时隙</li>
+<li>节点也许能以远小于分组传输的时间检测到冲突</li>
+</ul>
+<h4 id="非时隙ALOHA"><a href="#非时隙ALOHA" class="headerlink" title="非时隙ALOHA"></a>非时隙ALOHA</h4><p>更加简单，无需同步</p>
+<p>当有新的帧生成时，立即发送</p>
+<script type="math/tex; mode=display">
+P(给定节点成功发送帧) = P(该节点发送) * P(无其他节点在[t0-1,t0]内发送帧) * P(无其他节点在[t0,t0+1]内发送帧) = p * (1-p)^{N-1} * (1-p)^{N-1} = p * (1-p)^{2N-2} = 1/2e = 0.18</script><p>因此比时隙ALOHA协议更差。</p>
+<h4 id="CSMA协议"><a href="#CSMA协议" class="headerlink" title="CSMA协议"></a>CSMA协议</h4><p>载波监听多路访问协议CSMA(carrier sense multiple access)</p>
+<p>发送帧之前，监听信道（载波）：</p>
+<ul>
+<li>信道空闲：发送完整帧</li>
+<li><p>信道忙：推迟发送</p>
+<ul>
+<li>1-坚持CSMA</li>
+<li>非坚持CSMA</li>
+<li>P-坚持CSMA</li>
+</ul>
+</li>
+<li><p>冲突可能仍然发生：存在信号传播延迟</p>
+</li>
+</ul>
+<h4 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h4><p>CSMA/CD: CSMA with Collision Detection</p>
+<ul>
+<li>短时间内可以检测到冲突</li>
+<li>冲突后传输中止，减少信道浪费</li>
+</ul>
+<p>冲突检测：</p>
+<ul>
+<li>有线局域网易于实现：测量信号强度，比较发射信号与接收信号</li>
+<li>无线局域网很难实现：接收信号强度淹没在本地发射信号强度下</li>
+</ul>
+<p>网络带宽：R bps</p>
+<p>数据帧最小长度：$L_min$ (bits)</p>
+<p>信号传播速度：V(m/s)</p>
+<p>“边发边听，不发不听”</p>
+<p>主机A、B之间的距离是$d_{max}$，A向B发送数据帧，快到达B时，B又向A发送了一个数据帧，两者在靠近B的地方相遇，于是发生了冲突。A发送的数据帧到达B时，B检测到了冲突，但此时B发送的数据帧还未到达A，因此A还没有检测出冲突。最后，两者都检测到冲突时，用了$2d_{max}/V$的时间。</p>
+<p>满足：$L/R &gt;= 2d_{max}/V$</p>
+<p>那么：</p>
+<p>$L_{min}/R &gt;= 2d_{max}/V$</p>
+<p>$L_{min}/R = RTT_{max}$</p>
+<script type="math/tex; mode=display">
+t_{prop} = LAN中2个节点间的最大传播延迟</script><script type="math/tex; mode=display">
+t_{trans} = 最长帧传输延迟</script><script type="math/tex; mode=display">
+效率 = 1/(1+5t_{prop}/t_{trans})</script><p>$t_{prop}$趋近于0或$t_{trans}$趋近于∞时，效率趋近于1.</p>
+<p>远优于ALOHA，并且简单、分散。</p>
+<h1 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h1><h2 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h2><p>32位IP地址：</p>
+<ul>
+<li>接口的网络层地址</li>
+<li>用于标识网络层（第3层）分组，支持分组转发</li>
+</ul>
+<p>MAC地址（或称LAN地址，物理地址，以太网地址）</p>
+<ul>
+<li>作用：用于局域网内标识一个帧从哪个接口发出，到达哪个物理相连的其他接口</li>
+<li>48位MAC地址（用于大部分LANs），固化在网卡的ROM中，有时也可以软件设置</li>
+<li>将48bits分为6个字节，16进制表示，e.g.: 1A-2F-BB-76-09-AD</li>
+</ul>
+<p>局域网中的每块网卡都有一个唯一的MAC地址。</p>
+<p>MAC地址由IEEE统一管理与分配。</p>
+<p>网卡生产商购买MAC地址空间（前24比特），后24比特生产商依次分配。</p>
+<p>类比：</p>
+<ul>
+<li>MAC地址：身份证号</li>
+<li>IP地址：邮政地址</li>
+<li>MAC地址是“平面”地址，可”携带“，可以从一个LAN移到另一个LAN</li>
+<li>IP地址是层次地址，不可“携带”，IP地址依赖于节点连接到哪个子网</li>
+</ul>
+<h2 id="ARP：地址解析协议"><a href="#ARP：地址解析协议" class="headerlink" title="ARP：地址解析协议"></a>ARP：地址解析协议</h2><p>在同一个LAN内，如何在已知目的接口的IP地址前提下确定其MAC地址？</p>
+<p>ARP表：LAN中每个IP节点（主机、路由器）维护一个表</p>
+<ul>
+<li>存储某些LAN节点的IP/MAC地址映射关系。如：<ip, mac,="" ttl=""></ip,></li>
+<li>存活时间TTL(time to live)：经过这个时间后，该映射关系会被遗弃（典型时间是20min）</li>
+</ul>
+<p><strong>ARP协议：同一局域网内</strong></p>
+<ul>
+<li>A想要向同一局域网中的B发送数据报，但B的MAC地址不在A的ARP表中</li>
+<li>A<strong>广播</strong>ARP查询分组，其中包含B的IP地址。LAN中所有节点都会接收到ARP查询。</li>
+<li>B也接收到了，IP地址匹配成功，B向A应答B的MAC地址。利用单播帧向A发送应答。</li>
+<li>A在自己的ARP表中缓存B的IP-MAC地址对，直至超时。超时后，再次刷新。</li>
+<li>ARP是“即插即用”协议，节点自主创建ARP表，无需干预。</li>
+</ul>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="MIPS汇编语言编程" href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">
+            ← MIPS汇编语言编程
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="约束与触发器" href="/2021/05/10/%E7%BA%A6%E6%9D%9F%E4%B8%8E%E8%A7%A6%E5%8F%91%E5%99%A8/">
+            约束与触发器 →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"></path></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"></path></svg>
+            <svg class="toc-close hide" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"></path><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"></path></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"></path></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%EF%BC%88MAC%EF%BC%89%E5%8D%8F%E8%AE%AE"><span class="toc-text">多路访问控制（MAC）协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MAC%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB"><span class="toc-text">MAC协议分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86MAC%E5%8D%8F%E8%AE%AE"><span class="toc-text">信道划分MAC协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TDMA-time-division-multiple-access"><span class="toc-text">TDMA: time division multiple access</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FDMA-frequency-division-multiple-access"><span class="toc-text">FDMA: frequency division multiple access</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AEMAC%E5%8D%8F%E8%AE%AE"><span class="toc-text">随机访问MAC协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%9A%99ALOHA%E5%8D%8F%E8%AE%AE"><span class="toc-text">时隙ALOHA协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%97%B6%E9%9A%99ALOHA"><span class="toc-text">非时隙ALOHA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSMA%E5%8D%8F%E8%AE%AE"><span class="toc-text">CSMA协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSMA-CD%E5%8D%8F%E8%AE%AE"><span class="toc-text">CSMA/CD协议</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="toc-text">ARP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="toc-text">MAC地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP%EF%BC%9A%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE"><span class="toc-text">ARP：地址解析协议</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">— Serial —</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2021/06/24/Logging/">Logging</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">MIPS汇编语言编程</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">数据链路层</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bellman-Ford-SPFA/">Bellman-Ford &amp; SPFA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DFS/">DFS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dijkstra/">Dijkstra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Floyd/">Floyd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDL/">HDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KM/">KM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kruskal/">Kruskal</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LaTex/">LaTex</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/NEMU/">NEMU</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Prim/">Prim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tarjan/">Tarjan</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Trie/">Trie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linear-algebra/">linear algebra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E5%90%91%E6%98%9F%E5%92%8C%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">前向星和链式前向星</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E6%A0%88/">单调栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">单调队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%A0%E9%87%8F%E7%BD%91%E7%BB%9C/">张量网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/">数字逻辑与数字系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png" alt="Serial">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="Serial">Serial © 2021</a>
+			
+				
+			        <span hidden="true" id="/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="leancloud-visitors" data-flag-title="数据链路层">
+			            <span>阅读量 </span>
+			            <span class="leancloud-visitors-count">0</span>
+			        </span>
+	    		
+    		
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async=""></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+
+
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+
+
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+<script id="valineScript" src="//unpkg.com/valine/dist/Valine.min.js" async=""></script>
+<script>
+    document.getElementById('valineScript').addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Just go go',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true
+        })
+    });
+</script>
+
+
+
+
+
+
+
+</body></html>

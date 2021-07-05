@@ -1,7 +1,1066 @@
-<html><head></head><body>{# 文章页 #}
-{% extends '_layout.swig' %}
-{% import '_partials/post.swig' as template %}
-{% block content %}
-{% include '_partials/header.swig' %}
-{{ template.tpl() }}
-{% endblock %}</body></html>
+<!DOCTYPE html><html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>数据库复习 | Serial</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="preccrep">
+	<meta name="description" content="">
+
+	
+	<meta name="keywords" content="">
+	
+
+	
+	<link rel="shortcut icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	<link rel="apple-touch-icon" href="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="Serial">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="数据库复习 | Serial">
+	<meta property="og:description" content="">
+	<meta property="og:url" content="https://preccrep.github.io/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/">
+
+	
+	<meta property="article:published_time" content="2021-04-07T21:04:00+08:00"> 
+	<meta property="article:author" content="preccrep">
+	<meta property="article:published_first" content="Serial, /2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/">
+	
+
+	
+	
+	
+<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+
+	
+	
+	
+<link rel="alternate" href="/atom.xml" title="Serial" type="application/atom+xml">
+</head>
+
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                
+                <a class="site-nav-logo" href="/" title="Serial">
+                    <img src="今日事，今日毕" alt="Serial">
+                </a>
+                
+                
+            </li>
+            
+            
+            <li>
+                <a href="/about" title="ABOUT">ABOUT</a>
+            </li>
+            
+            <li>
+                <a href="/archives" title="ARCHIVES">ARCHIVES</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    <a class="social-link" title="github" href="https://github.com/preccrep" target="_blank" rel="noopener">
+        <svg viewBox="0 0 1049 1024" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z"></path></svg>
+    </a>
+    
+    
+    
+    <a class="social-link" title="twitter" href="https://preccrep.com" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+
+    </a>
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2021-04-07T13:01:36.000Z">
+                    2021-04-7
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;&nbsp;
+                
+                
+            </div>
+            <h1 class="post-full-title">数据库复习</h1>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="photoswipe" class="markdown-body">
+                    <h1 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h1><p>关系数据库使用一个或多个表来存储数据。<br>数学上把一系列域上的笛卡尔积的子集称为关系。</p>
+<p>软件系统无法保证数据的真实正确性，但可以保证数据符合可明确定义的约束。这种约束通常称为完整性约束。它是数据安全性的一部分。<br>常见的简单约束有两种形式，一种是对属性取值范围的确定，比如性别只有男、女两种属性的取值（个人认为应该是三种，男、女、无 :)  ）。另一种是对属性值之间相互关系的限定，最典型的就是关系模型中键的定义，如主键、超键、外键、候选键。<br>超键：在给定关系模式中，能唯一标识出各个元组的属性集合。超键中可能包含无关紧要的属性，也就是说超键的真子集也可能是超键。例如在学生成绩表中有学号、姓名和成绩3个属性，其中学号是超键，而且也是主键，因为姓名和成绩可能重复，但学号是唯一的。{学号，姓名}，{学号，成绩}，{学号，姓名，成绩}也是超键。<br>候选键：在给定关系模式中，能够唯一标识出各个元组的属性集合，并且不含多余属性。候选键是超键，但超键不一定是候选键。只有不存在任何真子集是超键的超键才是候选键。<br>主键：一个关系中可能有多个候选键，通常指定其中一个，并且只能是一个，用来标识元组。由于主键具有唯一性，所以主键是候选键，但候选键不一定是主键。<br>外键：如果关系表S1的一个属性子集A，必须匹配另一个关系表S2中出现的数值，则称A是关系表S1的外键。其中，S1称为引用关系，S2称为被引用关系。外键的值，或与被引用关系中出现的数值对应，或为空值。例如关系表1中有院系这个属性，并且是外键，对应关系表2中的单位这个属性，而院系属性中有工程学院，单位属性中此项为教育学院或为空值，那么就出问题了。如果院系属性也为教育学院，或者院系属性为空而单位属性为教育学院，那么是可以的。</p>
+<p>可以用代数、逻辑等方法描述关系操作，最基本最常用的是代数方法，即关系代数。<br>关系代数也是一门代数，关系代数包括一个运算集合，这些运算以一个或两个关系作为运算数，产生一个新的关系作为结果。<br>关系代数运算包含基本关系代数运算、附加关系代数运算和扩展关系代数运算。其中基本关系代数运算包含选择、投影、集合并、集合差、笛卡尔积和更名运算。</p>
+<p>选择：选择运算是选出满足给定谓词（条件）的元组，结果关系和原关系有着相同的模式。<br>选择运算用 $\sigma$ 表示。将谓词写作 $\sigma$ 的右下标，并在 $\sigma$ 后面的括号中给出作为参数的关系名。例如：</p>
+<script type="math/tex; mode=display">
+\sigma_{gender=none}(students)</script><p>就是在students关系表中选出gender属性为none的元组。（hhh）<br>投影：投影运算用来从给定关系产生一个只有其部分列的新关系。投影运算用 $\pi$ 表示。所有希望在结果关系中出现的属性作为右下标，作为参数的关系名紧跟在 $\pi$ 后面的括号中。结果关系的模式是 $\pi$ 的下标中列出的所有属性，并按 $\pi$ 下标中列出的顺序出现。例如：</p>
+<script type="math/tex; mode=display">
+\pi_{id,age}(students)</script><p>于是结果关系中只包含id和age两个属性，并且会去掉结果关系中重复的元组。<br>⚠️ 关系代数把表看作是作为元组集合的关系，既然是集合，就不包括重复元组，也就是说，关系代数每个运算都是去重的。<br>并运算：关系是相容的。两个关系必须是同元的，即它们所包含的属性个数必须相同；两个关系对应属性的域必须相同或相容。<br>例如，找出所有已有考生报考又安排了考官组卷的eid：</p>
+<script type="math/tex; mode=display">
+\pi_{eid}(eeexam) \bigcup \pi_{eid}(erexam)</script><p>差运算：用来查询在一个关系中而不在另一个关系中的那些元组，和并运算一样，差运算只能在相容的关系间进行。<br>例如，找出所有已有考生报考但没有安排考官组卷的eid：</p>
+<script type="math/tex; mode=display">
+\pi_{eid}(eeexam)-\pi_{eid}(erexam)</script><p>笛卡尔积运算：结果关系的模式是参与运算的两个关系的模式的串接。运算符左侧关系中的每一个元组与右侧关系的每一个元组拼接，形成结果关系中的一个元组。<br>⚠️ 元组的拼接<br>更名：对给定的关系代数表达式E，表达式 $\rho_X(E)$ 返回表达式E的结果，并把名字X赋给了它。<br>如果关系代数表达式E是n元的，则表达式 $\rho_{X(A_1,A_2,…,A_n)}(E)$ 返回表达式E的结果，并赋给它名字X，同时将E的各属性更名为 $A_1,A_2,…,A_n$。<br>关系运算的运算参数是关系，运算结果也是关系。<br>查询历史学院的考生的姓名：</p>
+<script type="math/tex; mode=display">
+\sigma_{name}(\pi_{department=history}(contestants))</script><p>关系代数基本运算是完备的，足以表达任何普通的关系代数查询。但是许多查询的表达式复杂、冗长，因此定义附加运算，简化一些查询的表达。<br>常见的附加运算有：集合交、自然联接、属性联接、条件联接和赋值运算。</p>
+<p>集合交：集合交运算的结果是由那些同时在参与运算关系中存在的元组组成，只能在相容的关系间进行，用 $\bigcap$ 表示。</p>
+<p>自然联接：可以将特定选择运算和笛卡尔积合并为一个运算。首先计算笛卡尔积，然后在笛卡尔积的结果上，基于两个关系模式中都出现的属性，即两个关系模式的<strong>所有</strong>同名属性进行属性值相等的选择运算，最后去掉重复列。也就是结果关系模式中相同的属性只保留一列，因为在任何元组中同名属性的值都是相等的。</p>
+<p>例如：</p>
+<p>examinee表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>eeid</th>
+<th>eename</th>
+<th>dname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>department表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>dname</th>
+<th>dloca</th>
+<th>dtele</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>先算笛卡尔积：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>examinee.eeid</th>
+<th>examinee.eename</th>
+<th>examinee.dname</th>
+<th>department.dname</th>
+<th>department.dloca</th>
+<th>department.dtele</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>123</td>
+<td>A</td>
+<td>历史</td>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>234</td>
+<td>B</td>
+<td>心理</td>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+<td>历史</td>
+<td>46-A</td>
+<td>444</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+<td>教育</td>
+<td>45-B</td>
+<td>555</td>
+</tr>
+<tr>
+<td>345</td>
+<td>C</td>
+<td>教育</td>
+<td>心理</td>
+<td>44-C</td>
+<td>666</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>选择examinee.dname和department.dname相同的元组，最终选出了3组，将examinee.dname和department.dname属性合并后，成为了结果关系。</p>
+<p>属性联接：首先计算笛卡尔积，然后在笛卡尔积的结果上，基于两个关系模式中都出现的属性，即两个关系模式的<strong>指定</strong>同名属性进行属性值相等的选择运算，最后去掉重复列。指定同名属性只保留一个。</p>
+<p>自然联接用 $S1 \infty S2$ 表示，属性联接用 $S1 \infty_{attribute} S2$ 表示。<br>例如指定了属性name，那么联接时就只看S1.name和S2.name相等的元组。<br>因此区别就是，当参与联接运算的两个表有多个<strong>同名列</strong>时，自然联接的匹配条件是所有同名列全部取值相等，而属性联接的匹配条件是指定其中的某些同名列取值相等。<br>赋值：赋值运算是将 $\leftarrow$ 右侧的表达式结果赋给其左侧的关系变量，该关系变量可以在后续的表达式中使用。<br>例如：从A中去除属性X</p>
+<script type="math/tex; mode=display">
+A\leftarrow A-\sigma_{att1=x}(A)</script><p>关系代数运算的进一步扩充：<br>广义投影：允许将算术运算作为投影的一部分<br>聚集：例如计算给定集合元素的总和、平均值等<br>外联接：使得关系代数表达式可以处理缺失信息</p>
+<p>广义投影：允许在投影列表中使用算术表达式。<br>例如 $\pi_{F_1,F_2,…,F_n}(E)$ 中，E是任意关系代数表达式，$F_1,F_2,…,F_n$ 中的每一个都是涉及E的属性的算术表达式，也可以仅仅是单个属性或常量。<br>广义投影的结果是对关系表达式t的每一行分别计算 $F_1,F_2,…,F_n$，<br>聚集函数：sum, avg, count, max, min等。<br>例如：</p>
+<script type="math/tex; mode=display">
+G_{avg(erage)}(examiner)</script><p>查询结果只包含一个元组，只有单个属性。<br>还可以这样：</p>
+<script type="math/tex; mode=display">
+_{dname}G_{avg(erage)}(examiner)</script><p>意思是说对元组按dname进行分组。</p>
+<p>有些元组不能跟另外关系的任何一个元组匹配，一些实际应用系统可能希望在结果中保留悬浮元组，这就有了外联接运算。<br>不考虑悬浮元组的自然联接、属性联接和条件联接都属于内联接。<br>外联接：首先计算内联接，然后加入左侧关系、右侧关系、两侧关系中的悬浮元组，对应称为左外联接(L)、右外联接(R)、全外联接(F)。表示方法：$\infty^R$.</p>
+<h1 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h1><p>实体用方框表示。</p>
+<p>联系用菱形表示。</p>
+<p>实体和实体集统称实体。</p>
+<p>实体通常使用属性来描述。同类实体通常使用相同的属性组来描述。</p>
+<p>属性可能取值的范围成为属性域</p>
+<p>现实生活中经常需要区分同类实体集中一个个不同的实体。例如在考生实体集中，由于可能出现同名同姓的考生，所以用考号来区分。</p>
+<p>能够并且用以区分一个实体集中不同实体的最小属性集称为标识符或主键，组成主键的属性称为标识属性。</p>
+<p>属性用椭圆表示。</p>
+<p><strong>联系也有属性！</strong></p>
+<p><strong>用线段将属性与其相对应的联系或实体连接起来。</strong></p>
+<p><strong>并在那些用于标识实体或联系的属性下面加上下划线</strong></p>
+<h1 id="2021-5-16-add"><a href="#2021-5-16-add" class="headerlink" title="2021/5/16 add"></a>2021/5/16 add</h1><h2 id="候选码-candidate-key-候选键"><a href="#候选码-candidate-key-候选键" class="headerlink" title="候选码(candidate key) / 候选键"></a>候选码(candidate key) / 候选键</h2><p>关系中的一个属性组，其值能唯一标识一个元组，若从该属性组中去掉任何一个属性，它就不具有这一性质了，这样的属性组称为候选码。</p>
+<p>关系中可以有多组候选码，例如：</p>
+<figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">Student</span><span class="params">(S#, Sname, Sage, Sclass, Saddress)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<p>S#是候选码，(Sname, Saddress)也是候选码。</p>
+<figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">Employee</span><span class="params">(EmpID, EmpName, MobileNumber)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<p>EmpID是候选码，MobileNumber也是候选码。</p>
+<h2 id="主码-primary-key-主键"><a href="#主码-primary-key-主键" class="headerlink" title="主码(primary key) / 主键"></a>主码(primary key) / 主键</h2><p>当有多个候选码时，可以选定一个作为主码。</p>
+<p>DBMS以主码为主要线索管理关系中的各个元组。</p>
+<p>例如可以选定属性 S# 作为 Student 表的主码，也可以选定属性组 (Sname, Saddress) 作为 Student 表的主码。</p>
+<h2 id="主属性和非主属性"><a href="#主属性和非主属性" class="headerlink" title="主属性和非主属性"></a>主属性和非主属性</h2><p>包含在任何一个候选码中的属性被称作主属性，而其他属性被称作非主属性。</p>
+<p>最简单的，候选码只包含一个属性。</p>
+<p>最极端的，所有属性构成这个关系的候选码，称为全码(all-key)。</p>
+<h2 id="外码-foreign-key-外键"><a href="#外码-foreign-key-外键" class="headerlink" title="外码(foreign key) / 外键"></a>外码(foreign key) / 外键</h2><p>关系R中的一个属性组，它不是R的候选码，但它与另一个关系S的<strong>候选码</strong>相对应，则称这个属性组为R的外码或外键。</p>
+<p>例如”合同”关系中的”客户号”不是候选码，但却是外码，因为它与”客户”关系中的候选码”客户号”相对应。</p>
+<p>两个关系是通过<strong>外键</strong>连接起来的。</p>
+<h2 id="关系模型的完整性"><a href="#关系模型的完整性" class="headerlink" title="关系模型的完整性"></a>关系模型的完整性</h2><h3 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h3><p>关系的主码中的属性值不能为空值。</p>
+<p>空值：不知道或无意义的值。</p>
+<p>意义：关系中的元组对应到现实世界相互之间可区分的一个个个体，这些个体是通过主码来唯一标识的；若主码为空，则出现不可标识的个体，这是不允许的。</p>
+<h2 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h2><p>如果关系R1的外码Fk与关系R2的主码Pk相对应，则R1中的每一个元组的Fk值或者等于R2中某个元组的Pk值，或者为空值。</p>
+<p>意义：如果关系R1的某个元组t1参照了关系R2的某个元组t2，则t2必须存在。</p>
+<h2 id="用户自定义完整性"><a href="#用户自定义完整性" class="headerlink" title="用户自定义完整性"></a>用户自定义完整性</h2><p>用户针对具体的应用环境定义的完整性约束条件。</p>
+<p>例如，S# 要求是10位整数，性别只能是男或女，年龄只能在12到35岁之间。</p>
+<h2 id="DBMS对关系完整性的支持"><a href="#DBMS对关系完整性的支持" class="headerlink" title="DBMS对关系完整性的支持"></a>DBMS对关系完整性的支持</h2><p>实体完整性和参照完整性由DBMS系统自动支持。</p>
+<p>DBMS系统通常提供了如下机制：</p>
+<ul>
+<li>它使用户可以自行定义有关的完整性约束条件</li>
+<li>当有更新操作发生时，DBMS将自动按照完整性约束条件检验更新操作的正确性，即是否符合用户自定义的完整性。</li>
+</ul>
+<h2 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h2><h3 id="并相容性"><a href="#并相容性" class="headerlink" title="并相容性"></a>并相容性</h3><p>某些关系代数操作，如并、差、交等，需要满足”并相容性”。</p>
+<p>参与运算的两个关系及其相关属性之间有一定的对应性、可比性或意义关联性。</p>
+<p>定义：关系R与关系S存在相容性，当且仅当：</p>
+<ol>
+<li>关系R和关系S的属性数目必须相同；</li>
+<li>对于任意 i，关系R的第 i 个属性的域必须和关系S的第 i 个属性的域相同。</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Student(SID char(<span class="number">10</span>), Sname char(<span class="number">8</span>), Age char(<span class="number">3</span>))</span><br><span class="line">Professor(PID char(<span class="number">10</span>), Pname char(<span class="number">8</span>), Age char(<span class="number">3</span>))</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="并操作-Union"><a href="#并操作-Union" class="headerlink" title="并操作(Union)"></a>并操作(Union)</h3><p>定义：假设关系R和关系S是并相容的，则关系R与关系S的并运算结果也是一个关系，记作：$R \cup S$，它由或者出现在关系R中，或者出现在S中的元组构成。</p>
+<p>并运算是将两个关系的元组合并成一个关系，在合并时去掉重复的元组。</p>
+<h3 id="theta-join"><a href="#theta-join" class="headerlink" title="theta-join"></a>theta-join</h3><p>投影与选择操作只是对单个关系（表）进行操作，而实际应用中往往涉及多个表之间的操作，这就需要theta-连接操作。</p>
+<h2 id="数据库完整性"><a href="#数据库完整性" class="headerlink" title="数据库完整性"></a>数据库完整性</h2><p>数据库完整性(DB Integrity)是指DBMS应保证的DB的一种特性——在任何情况下的正确性、有效性和一致性。</p>
+<h2 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h2><p>游标是指向某检索记录集的指针。</p>
+<p>通过这个指针的移动，每次读一行处理一行，直至处理完毕。</p>
+<p><strong>第一范式 1NF</strong></p>
+<p>若关系模式R(U)中关系的每个分量都是不可分的数据项，则称R(U)属于第一范式.</p>
+<figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constructor">Star(<span class="params">name</span>, <span class="params">address</span>(<span class="params">street</span>, <span class="params">city</span>)</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>Star不属于1NF，因为属性address仍包含了street, city两个属性，其分量不是原子。</p>
+<p><strong>不符合1NF的处理</strong></p>
+<p>将非1NF转换为1NF：</p>
+<figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="constructor">Star(<span class="params">name</span>, <span class="params">address</span>(<span class="params">street</span>, <span class="params">city</span>)</span>)</span><br><span class="line">转换为：</span><br><span class="line"><span class="constructor">Star(<span class="params">name</span>, <span class="params">street</span>, <span class="params">city</span>)</span>或<span class="constructor">Star(<span class="params">name</span>, <span class="params">address</span>)</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>第二范式 2NF</strong></p>
+<p>若R(U)是1NF且U中的每一非主属性完全函数依赖于候选键，则称R(U)属于第二范式。</p>
+<figure class="highlight armasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">R(S#, <span class="meta">SN</span>, SD, <span class="meta">CN</span>, G)</span><br><span class="line">其中，S#是学号，<span class="meta">SN</span>是姓名，SD是班级，<span class="meta">CN</span>是课程，G是成绩，</span><br><span class="line">函数依赖：S#-&gt;<span class="meta">SN</span>, S#-&gt;SD, (S#, CD)-&gt;G</span><br><span class="line">候选键包含(S#, <span class="meta">CN</span>)</span><br><span class="line">非主属性包含<span class="meta">SN</span>和SD</span><br><span class="line">因为(S#, <span class="meta">CN</span>) -P-&gt; (<span class="meta">SN</span>, SD)，所以R不属于<span class="number">2</span>NF。</span><br><span class="line">将其分解为<span class="built_in">R1</span>(S#, <span class="meta">SN</span>, SD), <span class="built_in">R2</span>(S#, <span class="meta">CN</span>, G)，则<span class="built_in">R1</span>和<span class="built_in">R2</span>都属于<span class="number">2</span>NF。</span><br></pre></td></tr></tbody></table></figure>
+<p>第二范式消除了非主属性对候选键的部分依赖。</p>
+<p><strong>第三范式 3NF</strong></p>
+<p>第三范式是确保每列都和主键列直接相关，而不是间接相关，即限制列的冗余性。 如果一个关系满足第二范式，并且除了主键以外的其他列都依赖于主键列，列和列之间不存在相互依赖关系，则满足第三范式。</p>
+<p>第三范式(Third Normal Form,3rd NF)就是指表中的所有数据元素不但要能唯一地被主关键字所标识,而且它们之间还必须相互独立,不存在其他的函数关系。也就是说，对于一个满足2nd NF 的数据结构来说，表中有可能存在某些数据元素依赖于其他非关键字数据元素的现象,必须消除。</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/关系模式">关系模式</a>R 中若不存在这样的码X、属性组Y及非主属性Z（Z (强制依赖)Y），使得X→Y，Y→Z，成立，Y→X不成立，则称R ∈ 3NF。</p>
+<p>若R∈3NF，则R的每一个非主属性既不<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/部分函数依赖">部分函数依赖</a>于候选码也不<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/传递函数依赖">传递函数依赖</a>于候选码。</p>
+<p>如果R∈3NF，则R也是2NF。</p>
+<p>采用投影分解法将一个2NF的关系分解为多个3NF的关系，可以在一定程度上解决原2NF关系中存在的插入异常、删除异常、数据冗余度大、修改复杂等问题。</p>
+<p>将一个2NF关系分解为多个3NF的关系后，并不能完全消除<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/关系模式">关系模式</a>中的各种异常情况和数据冗余。</p>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="SELECT-INTO"><a href="#SELECT-INTO" class="headerlink" title="SELECT INTO"></a>SELECT INTO</h2><p><code>SELECT INTO</code>语句从一个表中选取数据，然后把数据插入另一个表中。</p>
+<p>常用于创建表的备份复件或者用于对记录进行存档。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">INTO</span> new_table_name [<span class="keyword">IN</span> externaldatabase] <span class="keyword">FROM</span> old_database</span><br></pre></td></tr></tbody></table></figure>
+<p>或者只把需要的列插入新表：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">INTO</span> new_table_name [<span class="keyword">IN</span> externaldatabase]</span><br><span class="line"><span class="keyword">FROM</span> old_table_name</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO INCREMENT"></a>AUTO INCREMENT</h2><p><code>AUTO INCREMENT</code>（自动增长）语句会在新纪录插入表时生成一个唯一的数字。PostgreSQL使用序列来标识字段的自增长，数据类型有smallserial, serial和bigserial。</p>
+<p>使用<code>AUTO INCREMENT</code>的原因：我们通常希望在每次插入新纪录时，自动地创建主键字段的值。因此我们可以在表中创建一个<code>AUTO INCREMENT</code>字段。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">伪类型</th>
+<th style="text-align:left">存储大小</th>
+<th style="text-align:left">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>SMALLSERIAL</code></td>
+<td style="text-align:left">2字节</td>
+<td style="text-align:left">1 到 32,767</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SERIAL</code></td>
+<td style="text-align:left">4字节</td>
+<td style="text-align:left">1 到 2,147,483,647</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>BIGSERIAL</code></td>
+<td style="text-align:left">8字节</td>
+<td style="text-align:left">1 到 922,337,2036,854,775,807</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>SERIAL数据类型的基础语法：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tablename(</span><br><span class="line">	colName SERIAL</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+<p>假定我们要创建一张 COMPANY 表，并创建下面几个字段：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">runoobdb<span class="operator">=</span># <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> COMPANY(</span><br><span class="line">   ID  SERIAL <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">   NAME           TEXT      <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">   AGE            <span class="type">INT</span>       <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">   ADDRESS        <span class="type">CHAR</span>(<span class="number">50</span>),</span><br><span class="line">   SALARY         <span class="type">REAL</span></span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+<p>现在往表中插入几条记录：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (NAME,AGE,ADDRESS,SALARY)</span><br><span class="line"><span class="keyword">VALUES</span> ( <span class="string">'Paul'</span>, <span class="number">32</span>, <span class="string">'California'</span>, <span class="number">20000.00</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (NAME,AGE,ADDRESS,SALARY)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'Allen'</span>, <span class="number">25</span>, <span class="string">'Texas'</span>, <span class="number">15000.00</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (NAME,AGE,ADDRESS,SALARY)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'Teddy'</span>, <span class="number">23</span>, <span class="string">'Norway'</span>, <span class="number">20000.00</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (NAME,AGE,ADDRESS,SALARY)</span><br><span class="line"><span class="keyword">VALUES</span> ( <span class="string">'Mark'</span>, <span class="number">25</span>, <span class="string">'Rich-Mond '</span>, <span class="number">65000.00</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (NAME,AGE,ADDRESS,SALARY)</span><br><span class="line"><span class="keyword">VALUES</span> ( <span class="string">'David'</span>, <span class="number">27</span>, <span class="string">'Texas'</span>, <span class="number">85000.00</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (NAME,AGE,ADDRESS,SALARY)</span><br><span class="line"><span class="keyword">VALUES</span> ( <span class="string">'Kim'</span>, <span class="number">22</span>, <span class="string">'South-Hall'</span>, <span class="number">45000.00</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COMPANY (NAME,AGE,ADDRESS,SALARY)</span><br><span class="line"><span class="keyword">VALUES</span> ( <span class="string">'James'</span>, <span class="number">24</span>, <span class="string">'Houston'</span>, <span class="number">10000.00</span> );</span><br></pre></td></tr></tbody></table></figure>
+<p>查看 COMPANY 表的记录如下：</p>
+<figure class="highlight coq"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> id | <span class="type">name</span>  | <span class="type">age</span> | <span class="type">address</span>    | <span class="type">salary</span></span><br><span class="line">----+-------+-----+------------+--------</span><br><span class="line">  <span class="number">1</span> | <span class="type">Paul</span>  |  <span class="type">32</span> | <span class="type">California</span> |  <span class="type">20000</span></span><br><span class="line">  <span class="number">2</span> | <span class="type">Allen</span> |  <span class="type">25</span> | <span class="type">Texas</span>      |  <span class="type">15000</span></span><br><span class="line">  <span class="number">3</span> | <span class="type">Teddy</span> |  <span class="type">23</span> | <span class="type">Norway</span>     |  <span class="type">20000</span></span><br><span class="line">  <span class="number">4</span> | <span class="type">Mark</span>  |  <span class="type">25</span> | <span class="type">Rich</span>-Mond  |  <span class="type">65000</span></span><br><span class="line">  <span class="number">5</span> | <span class="type">David</span> |  <span class="type">27</span> | <span class="type">Texas</span>      |  <span class="type">85000</span></span><br><span class="line">  <span class="number">6</span> | <span class="type">Kim</span>   |  <span class="type">22</span> | <span class="type">South</span>-Hall |  <span class="type">45000</span></span><br><span class="line">  <span class="number">7</span> | <span class="type">James</span> |  <span class="type">24</span> | <span class="type">Houston</span>    |  <span class="type">10000</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><p>触发器是一种由事件自动触发执行的特殊存储过程，这些事件可以是对一个表进行 INSERT、UPDATE、DELETE 等操作。</p>
+<p>触发器经常用于加强数据的完整性约束和业务规则上的约束等。</p>
+<p>在SQL内部把触发器看作是存储过程但是不能传递参数。一般的存储过程通过存储过程名称被直接调用，而触发器主要是通过事件进行触发而被执行。</p>
+<p>在SQL Server里就是对一个表的一定操作触发某种条件，从而执行的一段程序。触发器是一个特殊的存储过程。</p>
+<ul>
+<li><p>SQL Server为每个触发器都创建了两个专用表﹕Inserted表和Deleted表。这两个表由系统来维护，它们存在于内存中而不是在数据库中。这两个表的结构总是与被该触发器作用的表的结构相同。触发器执行完成后，与该触发器相关的这两个表也被删除。 Deleted表存放由于执行Delete或Update语句而要从表中删除的所有行。 Inserted表存放由于执行Insert或Update语句而要向表中插入的所有行。</p>
+</li>
+<li><p>SQL Server提供了两种触发器：Instead of和After触发器。</p>
+<p>这两种触发器的差别在于它们</p>
+<ul>
+<li>Instead of触发器用于替代引起触发器执行的T-SQL语句。除表之外，Instead of触发器也可以用于视图，用来扩展视图可以支持的更新操作。</li>
+<li>After触发器在一个INSERT, UPDATE或DELETE语句之后执行，约束检查等动作都在After触发器被激活之前发生。After触发器只能用于表。一个表或视图的每一个修改动作(insert,update和delete)都可以有一个instead of 触发器，一个表的每个修改动作都可以有多个After触发器。</li>
+</ul>
+</li>
+<li><p>触发器的执行过程：如果一个INSERT, UPDATE或DELETE语句违反了约束，那么After触发器不会执行，因为对约束的检查是在After触发器被激活之前发生的。所以After触发器不能超越约束。</p>
+</li>
+<li>Instead of 触发器可以取代激发它的操作来执行。它在Inserted表和Deleted表刚刚建立、其它任何操作还没有发生时被执行。因为Instead of 触发器在约束之前执行，所以它可以对约束进行一些预处理。</li>
+</ul>
+<p><strong>触发器创建语法</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [ <span class="keyword">CONSTRAINT</span> ] <span class="keyword">TRIGGER</span> name</span><br><span class="line">{ BEFORE | AFTER | INSTEAD OF } { event [ OR ... ]}</span><br><span class="line"><span class="keyword">ON</span> table_name</span><br><span class="line">[ FROM referenced_table_name ]{ NOT DEFERRABLE | [ DEFEREABLE ] { IINITIALLY IMMEDIATE | INITIALLY DEFERED} }</span><br><span class="line">FOR [ EACH ] { ROW | STATEMENT }</span><br><span class="line">[ WHEN { condition }]</span><br><span class="line"><span class="keyword">EXECUTE</span> <span class="keyword">PROCEDURE</span> function_name ( arguments )</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="Concurrency-Control"><a href="#Concurrency-Control" class="headerlink" title="Concurrency Control"></a>Concurrency Control</h1><p>The general process of assuring that transactions preserve consistency when executing simultaneously is called <em>concurrency control</em>.</p>
+<blockquote>
+<p>The scheduler takes read/write requests from transactions and either executes them in buffers or delays them.</p>
+</blockquote>
+<h1 id="lec01"><a href="#lec01" class="headerlink" title="lec01"></a>lec01</h1><p>数据库是：<strong>长期存储在计算机内、有组织的、可共享的</strong>数据的集合。</p>
+<p>数据库管理系统：DBMS是位于<strong>用户</strong>和<strong>操作系统</strong>之间的一层数据管理软件。</p>
+<ul>
+<li>DBMS是系统软件</li>
+<li>DBMS是大型复杂的软件系统</li>
+</ul>
+<p>数据库系统<strong>DBS</strong> (database system)是针对某种应用开发的<em>信息管理系统</em> (IMS, information management system)。</p>
+<p>DBS的构成：数据库、DBMS、数据库管理员(DBA)、应用程序</p>
+<p><strong>DBMS的诞生</strong>——三大标志性事件：</p>
+<ul>
+<li>IMS系统——1966，层次数据模型</li>
+<li>DBTG报告——1969，网状数据模型</li>
+<li>Codd发表论文——1970，关系数据模型</li>
+</ul>
+<p>A data model is a notation for describing data or information. It consists of 3 parts: structure, operations, constraints on the data.</p>
+<p><strong>Important data models</strong>: Relational model (object-relational extensions), Graph data model (RDF).</p>
+<p><strong>Other data models:</strong> Hierarchical data model, Network data model, XML data model, object-oriented model</p>
+<p><strong>Relational Model in Brief</strong></p>
+<ul>
+<li>structure</li>
+<li>operations: relational algebra, table-oriented</li>
+<li>constraints</li>
+</ul>
+<p><strong>Graph Model in Brief</strong></p>
+<p>RDF三元组</p>
+<p><strong>Relations</strong>: 2-dimensional table</p>
+<p><strong>Attributes</strong>: the column names of a relation, describing the meaning of entries in the column</p>
+<p><strong>Schemas</strong>: relation name and its attributes. The schema for relation <strong>Movies</strong> is: <code>Movie(title, year, length, genre)</code>.</p>
+<p><em>Relational database schema: the set of schemas for the relations of a database</em></p>
+<p><strong>Tuples</strong>: a row of relation. A tuple has one component for each attribute. e.g., <code>(Gone With the Wind, 1939, 231 drama)</code>.</p>
+<p><strong>Domains</strong>: a particular elementary type. Associated with each attribute of a relation. e.g., <code>Movies(title:string, year:integer, length:integer, genre: string)</code></p>
+<p><strong>Key</strong>: a set of attributes of a relation.</p>
+<p><strong>SQL</strong>: the principal language used to describe and manipulate relational databases.</p>
+<p><strong>Two aspects of SQL</strong>:</p>
+<ul>
+<li>DDL(Data-Definition Language), declaring database schemas</li>
+<li>DML(Data-Manipulation Language), querying and modifying database</li>
+</ul>
+<p><strong>Data Types</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CHAR</span>(n)</span><br><span class="line"><span class="type">VARCHAR</span>(n)</span><br><span class="line"></span><br><span class="line">BIT(n)</span><br><span class="line">BIT <span class="type">VARYING</span>(n)</span><br><span class="line"></span><br><span class="line"><span class="type">BOOLEAN</span> <span class="comment">-- TRUE, FALSE, UNKNOWN</span></span><br><span class="line"></span><br><span class="line"><span class="type">INT</span> <span class="keyword">or</span> <span class="type">INTEGER</span></span><br><span class="line"><span class="type">SMALLINT</span> <span class="comment">-- in book is SHORTINT, I use SMALLINT</span></span><br><span class="line"></span><br><span class="line"><span class="type">FLOAT</span> <span class="keyword">or</span> <span class="type">REAL</span></span><br><span class="line"><span class="type">DOUBLE PRECISION</span></span><br><span class="line"><span class="type">DECIMAL</span>(n, d) <span class="comment">-- real number with a fixed decimal point, n decimal digits</span></span><br><span class="line"><span class="comment">-- 1234.45 of type DECIMAL(6, 2)</span></span><br><span class="line"><span class="type">NUMERIC</span> <span class="comment">-- synonym for DECIMAL</span></span><br><span class="line"></span><br><span class="line"><span class="type">DATE</span> <span class="comment">-- DATE '1948-05-14'</span></span><br><span class="line"><span class="type">TIME</span> <span class="comment">-- TIME '15:00:02.5'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- deleting a relation</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> R;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Modifying a relation</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> MovieStar <span class="keyword">ADD</span> phone <span class="type">CHAR</span>(<span class="number">16</span>);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> MovieStar <span class="keyword">DROP</span> birthdate;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- default values</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> blahblah(</span><br><span class="line">	gender <span class="type">CHAR</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">'?'</span>,</span><br><span class="line">  birthdate <span class="type">DATE</span> <span class="keyword">DEFAULT</span> <span class="type">DATE</span> <span class="string">'0000-00-00'</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> MovieStar <span class="keyword">ADD</span> phone <span class="type">CHAR</span>(<span class="number">16</span>) <span class="keyword">DEFAULT</span> <span class="string">'unlisted'</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Relational Algebra</strong></p>
+<p>Data-manipulation aspect of the relational model</p>
+<ul>
+<li>querying the data</li>
+<li>modifying the data</li>
+</ul>
+<p>An algebra on relations: input and output are all relations</p>
+<p><strong>Set Operations</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Union</span></span><br><span class="line">(<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> R) <span class="keyword">UNION</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> S);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Intersection</span></span><br><span class="line">(<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> R) <span class="keyword">INTERSECT</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> S);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Difference</span></span><br><span class="line">(<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> R) <span class="keyword">EXCEPT</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> S);</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Projection</strong></p>
+<p>to avoid duplicate tuples, use <code>DISTINCT</code>.</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> genre <span class="keyword">FROM</span> Movies;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Selection</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name <span class="keyword">FROM</span> Movies <span class="keyword">WHERE</span> length <span class="operator">&gt;=</span> <span class="number">100</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Cartesian Product</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> R <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> S;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Natural Joins</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> R <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> S;</span><br></pre></td></tr></tbody></table></figure>
+<p><em>Dangling tuple: a tuple fails to pair with any tuple of the other relation in a join</em></p>
+<p>使用<strong>自然连接</strong><code>NATURAL JOIN</code>时，两表中同名的字段不能超过一个；如果超过了1个，就用<code>INNER JOIN</code>.</p>
+<p><strong>Theta Join</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> U <span class="keyword">INNER</span> <span class="keyword">JOIN</span> V <span class="keyword">WHERE</span> A <span class="operator">&lt;</span> D;</span><br></pre></td></tr></tbody></table></figure>
+<script type="math/tex; mode=display">
+U \Join_{A<D\ AND\ U.B\ \neq\ V.B} V</script><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> U <span class="keyword">INNER</span> <span class="keyword">JOIN</span> V <span class="keyword">WHERE</span> A <span class="operator">&lt;</span> D <span class="keyword">AND</span> U.B <span class="operator">&lt;&gt;</span> V.B;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> U <span class="keyword">INNER</span> <span class="keyword">JOIN</span> V <span class="keyword">ON</span> A <span class="operator">&lt;</span> D <span class="keyword">WHERE</span> U.B <span class="operator">&lt;&gt;</span> V.B;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Renaming</strong></p>
+<p>Use <code>ESCAPE</code> to define a escape character:</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> titles <span class="keyword">FROM</span> Movies <span class="keyword">WHERE</span> titles <span class="keyword">LIKE</span> <span class="string">'x%%x%'</span> <span class="keyword">ESCAPE</span> <span class="string">'x'</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>NULL</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> titles <span class="keyword">FROM</span> Movies <span class="keyword">WHERE</span> name <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">SELECT</span> titles <span class="keyword">FROM</span> Movies <span class="keyword">WHERE</span> name <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p><code>ORDER BY &lt;list of attributes&gt;</code></p>
+<p>The order is by default ascending</p>
+<p>Use key words DESC and ASC</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> Movies</span><br><span class="line"><span class="keyword">WHERE</span> studioName <span class="operator">=</span> <span class="string">'Disney'</span> <span class="keyword">AND</span> <span class="keyword">year</span> <span class="operator">=</span> <span class="number">1990</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> length, title;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>All the atrributes of Movies are available at the time of sorting, even if they are not part of the SELECT clause.</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s1.n, s2.n <span class="keyword">FROM</span> Star s1, Star s2 <span class="keyword">WHERE</span> s1.a <span class="operator">=</span> s2.a <span class="keyword">AND</span> s1.n <span class="operator">&lt;</span> s2.n;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Subquery</strong></p>
+<p><code>EXISTS R</code> is a condition that is true if and only if R is not empty.</p>
+<p><code>S IN R</code> is true if and only if S is equal to one of the values in R.</p>
+<p><code>S &lt; ALL R</code> is true if and only if S is greater than every value in unary relation R.</p>
+<p><code>S &lt;&gt; ALL R</code> is the same as <code>S NOT IN R</code></p>
+<p><code>S &gt; ANY R</code> is true if and only if S is greater than at least one value in unary relation R.</p>
+<p><code>S = ANY R</code> is the same as <code>S IN R</code></p>
+<p><strong>Five Aggregation Operators</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AVG</span><br><span class="line">SUM</span><br><span class="line">MIN</span><br><span class="line">MAX</span><br><span class="line">COUNT</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Two rules about HAVING clauses</p>
+<ol>
+<li><p>An aggregation in a HAVING clause applies only to the tuples of the group being tested</p>
+</li>
+<li><p>Any attribute of relations in the FROM clause may be aggregated in the HAVING clause, but only those attributes that are in the GROUP BY list may appear <strong>unaggregated</strong> in the HAVING clause</p>
+<p>The same rule as for the SELECT clause</p>
+</li>
+</ol>
+<p><code>INSERT INTO table_name WHERE conditions;</code></p>
+<p><code>DELETE FROM table_name WHERE conditions;</code></p>
+<p>Delete all tuples in a relation: <code>DELETE FROM table_name;</code></p>
+<p><code>UPDATE R SET a=19 WHERE a&lt;b;</code></p>
+<p>inner join是内连接,显示符合连接条件的记录<br>语法如下:<br>select select_list from table1 inner join tabl2 on table1.column1=table2.column1<br>natural join是对两张表中字段名和数据类型都相同的字段进行等值连接，并返回符合条件的结果 。<br>natural join是自然连接,自动对两个表按照同名的列进行内连接语法如下：<br>select select_list from table1 natural join tabl2<br>使用自然连接要注意，两个表同名的列不能超过1个。</p>
+<p> natural join:指明了两表进行自然连接，并且连接是基于两表中所有同名字段的。<br> join…using:用于两表有同名字段但数据类型不同，或者使用多个同名字段中的某一个做等值连接<br> join…on :最为灵活，可以指明连接的条件。</p>
+<p>设K为R(U)中的属性或属性集合，若K完全函数决定U，则K是R(U)上的后候选键。</p>
+<p>可选任意候选键作为R的主键。</p>
+<p>包含在任一候选键中的属性称为主属性，其他属性称为非主属性。</p>
+<p><strong>完全函数依赖</strong></p>
+<p>{学号,课号}—&gt;成绩</p>
+<p> <strong>学号+课号</strong> 可以决定 <strong>成绩</strong> 但只有学号or只有课号无法决定<strong>成绩</strong>  </p>
+<p><strong>部分函数依赖</strong> </p>
+<p>{学号,课号}—&gt;姓名   </p>
+<p>只有学号就能决定<strong>姓名</strong>  (课号是冗余的)</p>
+<p><strong>候选键：最小性、唯一性</strong></p>
+<p><strong>外键：不是此关系的候选键，但是是另一个关系的候选键。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46670811/article/details/109526906">属性集闭包</a></p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/Database/" rel="tag"># Database</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="Java复习" href="/2021/04/10/Java%E5%A4%8D%E4%B9%A0/">
+            ← Java复习
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+        <a class="next-post" title="SystemVerilog" href="/2021/04/01/SystemVerilog/">
+            SystemVerilog →
+        </a>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"></path></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"></path></svg>
+            <svg class="toc-close hide" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"></path><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"></path></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"></path></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="toc-text">关系模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#E-R%E5%9B%BE"><span class="toc-text">E-R图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-5-16-add"><span class="toc-text">2021/5/16 add</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%99%E9%80%89%E7%A0%81-candidate-key-%E5%80%99%E9%80%89%E9%94%AE"><span class="toc-text">候选码(candidate key) / 候选键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E7%A0%81-primary-key-%E4%B8%BB%E9%94%AE"><span class="toc-text">主码(primary key) / 主键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E5%B1%9E%E6%80%A7%E5%92%8C%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">主属性和非主属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E7%A0%81-foreign-key-%E5%A4%96%E9%94%AE"><span class="toc-text">外码(foreign key) / 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">关系模型的完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">实体完整性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">参照完整性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">用户自定义完整性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBMS%E5%AF%B9%E5%85%B3%E7%B3%BB%E5%AE%8C%E6%95%B4%E6%80%A7%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-text">DBMS对关系完整性的支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0"><span class="toc-text">关系代数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E7%9B%B8%E5%AE%B9%E6%80%A7"><span class="toc-text">并相容性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E6%93%8D%E4%BD%9C-Union"><span class="toc-text">并操作(Union)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#theta-join"><span class="toc-text">theta-join</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">数据库完整性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%A0%87"><span class="toc-text">游标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL"><span class="toc-text">SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SELECT-INTO"><span class="toc-text">SELECT INTO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AUTO-INCREMENT"><span class="toc-text">AUTO INCREMENT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">触发器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Concurrency-Control"><span class="toc-text">Concurrency Control</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lec01"><span class="toc-text">lec01</span></a></li></ol>
+    </div>
+</div>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">— Serial —</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/2021/06/24/Logging/">Logging</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">MIPS汇编语言编程</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">数据链路层</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+    <header class="read-next-card-header tagcloud-card">
+        <h3 class="read-next-card-header-title">Categories</h3>
+    </header>
+    <div class="read-next-card-content">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bellman-Ford-SPFA/">Bellman-Ford &amp; SPFA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DFS/">DFS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dijkstra/">Dijkstra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Floyd/">Floyd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDL/">HDL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KM/">KM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kruskal/">Kruskal</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LaTex/">LaTex</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/NEMU/">NEMU</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Prim/">Prim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tarjan/">Tarjan</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Trie/">Trie</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linear-algebra/">linear algebra</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E5%90%91%E6%98%9F%E5%92%8C%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">前向星和链式前向星</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E6%A0%88/">单调栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">单调队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">并行计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%A0%E9%87%8F%E7%BD%91%E7%BB%9C/">张量网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/">数字逻辑与数字系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a></li></ul>
+    </div>
+</article>
+
+
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://i.loli.net/2017/11/26/5a19c56faa29f.jpg)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="https://i.loli.net/2021/07/05/Yf2EJr7egbH4sSc.png" alt="Serial">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="Serial">Serial © 2021</a>
+			
+				
+			        <span hidden="true" id="/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" class="leancloud-visitors" data-flag-title="数据库复习">
+			            <span>阅读量 </span>
+			            <span class="leancloud-visitors-count">0</span>
+			        </span>
+	    		
+    		
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async=""></script>
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        
+        
+            var bLazy = new Blazy();
+        
+
+        
+        
+
+        
+        
+        
+            searchFunc("/");
+        
+        
+    })
+</script>
+
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+
+
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+
+
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+
+<script id="valineScript" src="//unpkg.com/valine/dist/Valine.min.js" async=""></script>
+<script>
+    document.getElementById('valineScript').addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Just go go',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true
+        })
+    });
+</script>
+
+
+
+
+
+
+
+</body></html>
