@@ -130,7 +130,7 @@
             <h1 class="site-title">
                 Archives
             </h1>
-            <h2 class="site-description">Total: 86</h2>
+            <h2 class="site-description">Total: 88</h2>
         </div>
         
         
@@ -141,6 +141,111 @@
 <div id="site-main" class="site-main outer" role="main">
 	<div class="inner">
 		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="poj3259" href="/2020/06/23/poj3259/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								Bellman-Ford &amp; SPFA
+								| 
+								
+								<time datetime="2020-06-23T14:02:44.000Z">
+									2020-06-23
+								</time>
+							</span>
+							<h2 class="post-card-title">poj3259</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								传送门
+第一种方法：Bellman-Ford
+123456789101112131415161718192021222324252627282930313233
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							3
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="Bellman-Ford算法及SPFA算法" href="/2020/06/23/Bellman-Ford%E7%AE%97%E6%B3%95%E5%8F%8ASPFA%E7%AE%97%E6%B3%95/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								Bellman-Ford &amp; SPFA
+								| 
+								
+								<time datetime="2020-06-23T12:50:20.000Z">
+									2020-06-23
+								</time>
+							</span>
+							<h2 class="post-card-title">Bellman-Ford算法及SPFA算法</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								Bellman-Ford算法Bellman-Ford算法能解决存在负权边的单源点最短路径问题。
+123456789101112131415161718bool Bellman_Ford(){    bool f;    for(int i = 0; i &lt; n; i++){        f = false;        for(int j = 0; j &lt; m; j++){            int x = edge[j].f
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							4
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
 			
 			<article class="post-card post  no-image ">
 				
@@ -168,9 +273,8 @@
 								
 								
 								
-								
-								
-								基本概念多源最短路，即要求算出图中每两个顶点之间的最短路。一种方法是把n个点分别当成源点用Dijkstra算，时间复杂度是O(n3)，优化后也可以变为O(n2l
+								基本概念多源最短路，即要求算出图中每两个顶点之间的最短路。一种方法是把n个点分别当成源点用Dijkstra算，时间复杂度是O(n3)，优化后也可以变为O(n2logn)。另一种方法就是经典Floyd算法，虽然复杂度是O(n3)，但是代码只有4行。Floyd算法本质上是一个动态规划算法。
+经典实现123456789void Floyd(){    for(int k = 1; k &lt;= N; k++){        for(int i = 1; i 
 								...
 							</p>
 						</div>
@@ -569,111 +673,6 @@ j -= 1。若j &gt; 1，则返回步骤P_2。数学原理其实很简单。第一
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="排序算法总结" href="/2020/06/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								算法
-								| 
-								
-								<time datetime="2020-06-15T00:45:39.000Z">
-									2020-06-15
-								</time>
-							</span>
-							<h2 class="post-card-title">排序算法总结</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								
-								
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">preccrep</div>
-								
-								<a href="/about" class="static-avatar author-profile-image">
-									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							0
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="数据结构复习 查找" href="/2020/06/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								数据结构
-								| 
-								
-								<time datetime="2020-06-02T06:06:07.000Z">
-									2020-06-02
-								</time>
-							</span>
-							<h2 class="post-card-title">数据结构复习 查找</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								查找表是由同一类型的数据元素（或记录）组成的集合。
-查找表的分类：
-1.静态查找表：仅作查询和检索操作的查找表
-2.动态查找表：在查找过程中同时插入查找表中不存在的数据元素，或者从查找表中删除某个已存在的数据元素
-关键字：是数据元素（或记录）中某个数据项的值，用以标识（识别）一个数据元素（或记录）。若此关键字可以识别唯一的一个记录，则称之为“主关键字”。若此关键字能识别若干记录，则称之为“次关键字”。
-查找：根据给定的某个值，在查找表中确定一个其关键字等于给定值的数据元素或记
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">preccrep</div>
-								
-								<a href="/about" class="static-avatar author-profile-image">
-									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							4
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -718,20 +717,24 @@ j -= 1。若j &gt; 1，则返回步骤P_2。数学原理其实很简单。第一
       
       
       <li>
+        <a href="/2021/07/08/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/">网络攻防</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/07/05/Swift%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">Swift开发学习</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2021/06/24/Logging/">Logging</a>
       </li>
       
       
       
-      <li>
-        <a href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">MIPS汇编语言编程</a>
-      </li>
       
-      
-      
-      <li>
-        <a href="/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">数据链路层</a>
-      </li>
       
       
       
@@ -930,7 +933,7 @@ j -= 1。若j &gt; 1，则返回步骤P_2。数学原理其实很简单。第一
 		<h3 class="read-next-card-header-title">Tag Cloud</h3>
 	</header>
 	<div class="read-next-card-content-ext">
-		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Network-Security/" style="font-size: 14px;">Network Security</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/Swift/" style="font-size: 14px;">Swift</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
 	</div>
 </article>
 

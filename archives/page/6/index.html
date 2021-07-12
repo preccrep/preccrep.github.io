@@ -130,7 +130,7 @@
             <h1 class="site-title">
                 Archives
             </h1>
-            <h2 class="site-description">Total: 86</h2>
+            <h2 class="site-description">Total: 88</h2>
         </div>
         
         
@@ -141,6 +141,117 @@
 <div id="site-main" class="site-main outer" role="main">
 	<div class="inner">
 		<div class="post-feed">
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="MATLAB学习记录" href="/2020/07/14/MATLAB%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								笔记
+								| 
+								
+								<time datetime="2020-07-14T02:03:25.000Z">
+									2020-07-14
+								</time>
+							</span>
+							<h2 class="post-card-title">MATLAB学习记录</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								注：这篇文章主要是我学习基础语法时的一些零散记录。
+MATLAB数值数据数值数据类型整型无/有 符号 8/16/32/64 位整数
+数据类型转换函数
+12345
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							14
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
+			
+			<article class="post-card post  no-image ">
+				
+				<div class="post-card-content">
+					<a class="post-card-content-link" title="树形dp" href="/2020/07/14/%E6%A0%91%E5%BD%A2dp/">
+						<header class="post-card-header">
+							<span class="post-card-tags">
+								
+								
+								动态规划
+								| 
+								
+								<time datetime="2020-07-14T01:13:17.000Z">
+									2020-07-14
+								</time>
+							</span>
+							<h2 class="post-card-title">树形dp</h2>
+						</header>
+						<div class="post-card-excerpt">
+							<p>
+								
+								
+								
+								
+								
+								
+								
+								树形dp就是在树的结构上用动态规划，主要用DFS。
+1dp[i][j][0/1]，其中i指以i为根的子树，j指在以i为根的子树中选择j个子节点，0表示不选这个节点，1表示选择这个节点。有时候j或0/1这一维可以压掉。
+基本方程：
+选择节点类
+12dp[i][0] = dp[j][1]dp[i][1] = max/min(dp[j][0], dp[j][1])
+树形背包类
+12dp[v][k] = dp[u][k] + valdp[u][k] = max(dp[u][k], d
+								...
+							</p>
+						</div>
+					</a>
+					<footer class="post-card-meta">
+						<div class="author-list">
+							<div class="author-list-item">
+								<div class="author-name-tooltip">preccrep</div>
+								
+								<a href="/about" class="static-avatar author-profile-image">
+									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
+								</a>
+								
+							</div>
+						</div>
+						<span class="reading-time">
+							3
+							min read
+						</span>
+					</footer>
+				</div>
+			</article>
 			
 			<article class="post-card post  no-image ">
 				
@@ -168,12 +279,14 @@
 								
 								
 								
-								
-								
 								这篇文章主要记录各种数据结构的基本操作以及一些相关题目。
 队列队尾插入，队头删除。
 基本操作顺序队列队列的类型定义：
-12345#define MAXLEN 1
+12345#define MAXLEN 1000struct SeqQueue{    int front, rear;    int data[MAXLEN];};
+队列的初始化：
+123void init(SeqQueue &amp;q){    q.front = q.rear = 0;}
+判断队列是否为空：
+12
 								...
 							</p>
 						</div>
@@ -576,111 +689,6 @@ https://blog.csdn.net/heimu24/article/details/81159099
 				</div>
 			</article>
 			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="线段树" href="/2020/06/28/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								线段树
-								| 
-								
-								<time datetime="2020-06-28T06:37:20.000Z">
-									2020-06-28
-								</time>
-							</span>
-							<h2 class="post-card-title">线段树</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								基本概念
-线段树(segment tree)是一种二叉搜索树，它的每一个结点对应着一个区间 [L, R]，叶子结点对应的是一个单位区间，即 L == R。对于一个非叶子结点 [L, R]，它的左儿子所表示的区间为 [L, (L + R) / 2]，右儿子所表示的区间为 [(L + R) / 2 + 1, R] (也可以用位运算，更快：[L, (L + R) &gt;&gt; 1] 和 [((L + R) &gt;&gt; 1) | 1, R])。根据定义，线段树是一棵平衡二叉
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">preccrep</div>
-								
-								<a href="/about" class="static-avatar author-profile-image">
-									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							1
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
-			<article class="post-card post  no-image ">
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="树状数组" href="/2020/06/28/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								树状数组
-								| 
-								
-								<time datetime="2020-06-28T06:37:02.000Z">
-									2020-06-28
-								</time>
-							</span>
-							<h2 class="post-card-title">树状数组</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								什么是树状数组？
-就是用数组来模拟树形结构，可以解决大部分基于区间上的更新以及求和问题。树状数组可以解决的问题都可以用线段树解决，这两者的区别在哪里呢？树状数组修改和查询的复杂度都是 O(log n)，而且相比线段树系数要少很多，比传统数组要快，而且容易写。缺点是遇到复杂的区间问题还是不能解决，功能还是有限。树状数组多用于高效计算数列的前缀和。
-核心思想
-(1) 树状数组中的每个元素是原数组中的一个或多个连续元素的和；
-(2) 在进行连续求和时，只需要将树状数组中某几个元素进
-								...
-							</p>
-						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">preccrep</div>
-								
-								<a href="/about" class="static-avatar author-profile-image">
-									<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"></path></g></svg>
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							10
-							min read
-						</span>
-					</footer>
-				</div>
-			</article>
-			
 		</div>
 	</div>
 </div>
@@ -725,20 +733,24 @@ https://blog.csdn.net/heimu24/article/details/81159099
       
       
       <li>
+        <a href="/2021/07/08/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/">网络攻防</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/2021/07/05/Swift%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">Swift开发学习</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2021/06/24/Logging/">Logging</a>
       </li>
       
       
       
-      <li>
-        <a href="/2021/06/13/MIPS%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">MIPS汇编语言编程</a>
-      </li>
       
-      
-      
-      <li>
-        <a href="/2021/06/13/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">数据链路层</a>
-      </li>
       
       
       
@@ -937,7 +949,7 @@ https://blog.csdn.net/heimu24/article/details/81159099
 		<h3 class="read-next-card-header-title">Tag Cloud</h3>
 	</header>
 	<div class="read-next-card-content-ext">
-		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+		<a href="/tags/AVL%E6%A0%91/" style="font-size: 14px;">AVL树</a> <a href="/tags/Computer-Networking/" style="font-size: 14px;">Computer Networking</a> <a href="/tags/DataBase/" style="font-size: 14px;">DataBase</a> <a href="/tags/Database/" style="font-size: 16px;">Database</a> <a href="/tags/ICS-Experiments/" style="font-size: 14px;">ICS Experiments</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/LaTex/" style="font-size: 14px;">LaTex</a> <a href="/tags/LeetCode/" style="font-size: 14px;">LeetCode</a> <a href="/tags/MATLAB/" style="font-size: 22px;">MATLAB</a> <a href="/tags/MIPS/" style="font-size: 14px;">MIPS</a> <a href="/tags/Network-Security/" style="font-size: 14px;">Network Security</a> <a href="/tags/Questions/" style="font-size: 14px;">Questions</a> <a href="/tags/Swift/" style="font-size: 14px;">Swift</a> <a href="/tags/SystemVerilog/" style="font-size: 14px;">SystemVerilog</a> <a href="/tags/algorithm/" style="font-size: 14px;">algorithm</a> <a href="/tags/divide-and-conquer/" style="font-size: 14px;">divide-and-conquer</a> <a href="/tags/experience/" style="font-size: 18px;">experience</a> <a href="/tags/hdu/" style="font-size: 18px;">hdu</a> <a href="/tags/markdown/" style="font-size: 14px;">markdown</a> <a href="/tags/pthread/" style="font-size: 14px;">pthread</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/tensorflow/" style="font-size: 14px;">tensorflow</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 14px;">动态规划</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px;">哈希</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px;">操作系统</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" style="font-size: 14px;">数字逻辑</a> <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F/" style="font-size: 14px;">数字逻辑与数字系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/" style="font-size: 14px;">最大流</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px;">机器学习</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 14px;">正则表达式</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 24px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" style="font-size: 14px;">算法分析</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 16px;">计算机组成原理</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
 	</div>
 </article>
 
